@@ -1,10 +1,9 @@
-import { writable } from 'svelte/store'
+import { get, writable } from 'svelte/store'
 import * as ö from 'ouml'
 
 export const isRedDotActive = writable(true)
 export const isMessagePaneActive = writable(false)
 
-export const activeMessageId = writable(-1)
 export const types = ö.createEnum([
 	'massMessage',
 	'marketingMessage',
@@ -36,7 +35,7 @@ UnreadCount
 		{
 			id: 666,
 			dateSent: '1683653834315',
-			header: 'This is a test message',
+			header: 'This is a test message with att the things.',
 			content:
 				'This is the message body. It can be either a string, an HTML string, or an array of threaded messages.',
 			type: types.massMessage,
@@ -44,7 +43,8 @@ UnreadCount
 			isImportant: true,
 			isRead: false,
 			tags: ['dodo'],
-			attachments: [],
+			cases: ['answer', 'reply'],
+			attachments: ['biff.pdf', 'boff.xls'],
 			thumbnailImage: '',
 			action: {
 				actionText: 'Gör grejen',
@@ -295,3 +295,5 @@ UnreadCount
 		},
 	],
 )
+
+export const activeMessageId = writable(get(messages)[0].id)

@@ -33,7 +33,36 @@
 				/>
 			</svg>
 		{:else if message.type === types.marketingMessage}
-			<img src={message.thumbnailImage} alt="" />
+			{#if message.thumbnailImage}
+				<img src={message.thumbnailImage} alt="" />
+			{:else}
+				<svg
+					width="16"
+					height="16"
+					viewBox="0 0 16 16"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						fill-rule="evenodd"
+						clip-rule="evenodd"
+						d="M5.70996 0V4.44112H11.5257V15.9668H15.9669V0H5.70996Z"
+						fill="#005AA0"
+					/>
+					<path
+						fill-rule="evenodd"
+						clip-rule="evenodd"
+						d="M0 0.00012207V15.9669H10.2567V11.526H4.44097V0.00012207H0Z"
+						fill="#005AA0"
+					/>
+					<path
+						fill-rule="evenodd"
+						clip-rule="evenodd"
+						d="M5.70996 10.2568H10.2568V5.70996H5.70996V10.2568Z"
+						fill="#E30613"
+					/>
+				</svg>
+			{/if}
 		{:else if message.type === types.secureMessage}
 			<svg
 				width="24"

@@ -57,9 +57,10 @@
 		margin: auto 1rem;
 	}
 	.messagePane {
+		--headerHeight: 3.75rem;
 		max-width: calc(1226px - 2rem);
 
-		margin: 4.75rem auto;
+		margin: 1rem auto;
 
 		filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.1))
 			drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.1));
@@ -68,7 +69,7 @@
 			background: var(--white);
 			border-radius: 4px;
 			overflow: hidden;
-			max-height: calc(100dvh - 5.75rem);
+			max-height: calc(100dvh - --headerHeight - 1rem);
 
 			.messagesHeader {
 				box-shadow: 0 4px 4px rgba(34, 34, 34, 0.05);

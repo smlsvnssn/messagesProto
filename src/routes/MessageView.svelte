@@ -41,7 +41,7 @@
 			header {
 				display: flex;
 				align-items: baseline;
-				gap: 1rem;
+				gap: 0.5rem;
 				padding-bottom: 0.5rem;
 				margin-bottom: 2rem;
 				border-bottom: 1px solid var(--shadow);

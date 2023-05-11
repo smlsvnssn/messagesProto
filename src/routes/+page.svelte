@@ -17,20 +17,43 @@
 	{#if $isMessagePaneActive}
 		<MessagePane />
 	{/if}
+
+	<div class="fejkbody">
+		<aside />
+		<article />
+	</div>
 </main>
 
 <style lang="scss">
 	:global(body) {
+		--headerHeight: 3.75rem;
 		background: var(--tint) !important;
-		height: 100svh;
+		height: calc(100svh - var(--headerHeight));
 		inset: 0;
 		position: absolute;
+
+		margin-top: var(--headerHeight);
 
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 		text-rendering: optimizeLegibility;
 	}
 
-	main {
+	.fejkbody {
+		max-width: 1226px;
+		margin: auto;
+		display: flex;
+		min-height: calc(100svh - var(--headerHeight));
+		align-content: stretch;
+
+		aside {
+			flex: 0 1 260px;
+			background: var(--blue);
+		}
+
+		article {
+			flex: 1;
+			background: var(--white);
+		}
 	}
 </style>
