@@ -1,10 +1,10 @@
 <script>
 	import MessagePane from './MessagePane.svelte'
-
 	import Header from './Header.svelte'
-	export const prerender = true
 	import { isMessagePaneActive } from './stuff'
 	import '../style.css'
+
+	export const prerender = true
 </script>
 
 <svelte:head>

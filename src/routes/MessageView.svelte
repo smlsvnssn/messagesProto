@@ -1,8 +1,6 @@
 <script>
 	import Mailbox from './MailboxIcon.svelte'
 
-	import { activeMessageId } from './stuff'
-
 	export let message
 </script>
 
@@ -23,6 +21,14 @@
 			</time>
 		</header>
 		{@html message.content}
+
+		{#if message.action}
+			<a
+				href={message.action.actionUrl}
+				class="action btn btn-primary btn-sm-block"
+				>{message.action.actionText}</a
+			>
+		{/if}
 	{:else}
 		<Mailbox />
 	{/if}
@@ -58,6 +64,12 @@
 					text-align: end;
 				}
 			}
+			a.action {
+				display: block;
+				width: fit-content;
+				margin-top: 2rem;
+			}
+
 			// scroll shadow bottom
 			-webkit-overflow-scrolling: touch;
 			overflow-scrolling: touch;

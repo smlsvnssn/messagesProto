@@ -1,6 +1,5 @@
 <script>
 	import MessageIcon from './MessageIcon.svelte'
-
 	import { messages, activeMessageId } from './stuff'
 
 	export let message
@@ -91,6 +90,11 @@
 
 		list-style: none;
 		transition: all 0.3s;
+
+		&:not(.unread) .content .metadata .importante {
+			background: var(--silver);
+			color: var(--white);
+		}
 
 		.content {
 			display: grid;

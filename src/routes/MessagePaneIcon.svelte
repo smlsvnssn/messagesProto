@@ -1,11 +1,8 @@
 <script>
 	import EnvelopeIcon from './EnvelopeIcon.svelte'
 	import { isRedDotActive, isMessagePaneActive } from './stuff'
-	import { fly } from 'svelte/transition'
-	import { tick } from 'svelte'
 
 	const activateMessagePane = async () => {
-		await tick()
 		$isMessagePaneActive = !$isMessagePaneActive
 		$isRedDotActive = false
 	}
