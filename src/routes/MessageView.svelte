@@ -1,5 +1,5 @@
 <script>
-	import Mailbox from './Mailbox.svelte'
+	import Mailbox from './MailboxIcon.svelte'
 
 	import { activeMessageId } from './stuff'
 
