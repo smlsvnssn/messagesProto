@@ -3,6 +3,7 @@ import * as ö from 'ouml'
 
 export const isRedDotActive = writable(true)
 export const isMessagePaneActive = writable(false)
+
 export const activeMessageId = writable(-1)
 export const types = ö.createEnum([
 	'massMessage',
