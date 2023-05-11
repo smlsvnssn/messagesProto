@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="947px" height="135px" viewBox="0 0 947 135" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.2 (33826) - http://www.bohemiancoding.com/sketch -->
+    <title>00</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Footer">
+            <g id="10" transform="translate(1.000000, 1.000000)">
+                <g id="Page-1">
+                    <g id="Background">
+                        <g id="00">
+                            <g id="Husbil" transform="translate(892.000000, 87.000000)" stroke-width="2">
+                                <polyline id="Shape" stroke="#075BA1" points="39 18 51.4969568 18 53 12.9551346 50.4053779 0 6.01117413 0 0 12.9551346 3.96084343 18 7 18"></polyline>
+                                <polyline id="Shape" stroke="#075BA1" points="11 3 11 9 5 9"></polyline>
+                                <path d="M29,18 L17,18" id="Shape" stroke="#075BA1"></path>
+                                <polyline id="Shape" stroke="#E30D18" points="46 9 46 4 37 4"></polyline>
+                                <polyline id="Shape" stroke="#075BA1" points="26 16 26 4 19 4 19 16"></polyline>
+                                <path d="M53,13 L47,13" id="Shape" stroke="#075BA1"></path>
+                                <circle id="Oval" stroke="#075BA1" cx="34" cy="18" r="3"></circle>
+                                <circle id="Oval" stroke="#075BA1" cx="12" cy="18" r="3"></circle>
+                            </g>
+                            <g id="Bänk" transform="translate(861.000000, 114.000000)" stroke="#075BA1" stroke-width="2">
+                                <path d="M2,1 L29,1" id="Shape"></path>
+                                <path d="M2,5 L29,5" id="Shape"></path>
+                                <path d="M0,9 L31,9" id="Shape"></path>
+                                <path d="M6.164,1.672 L6.164,9.194" id="Shape"></path>
+                                <path d="M25.176,1.672 L25.176,9.194" id="Shape"></path>
+                                <path d="M3,10 L3,14" id="Shape"></path>
+                                <path d="M28,10 L28,14" id="Shape"></path>
+                            </g>
+                            <g id="LF-kontor" transform="translate(856.000000, 17.000000)">
+                                <polyline id="Shape" stroke="#075BA1" stroke-width="2" points="0 50.6844796 0 20 45 20 45 54"></polyline>
+                                <g id="Logo" transform="translate(6.000000, 4.000000)">
+                                    <polyline id="Shape" stroke="#075BA1" stroke-width="2" points="2 1 7 1 7 9"></polyline>
+                                    <rect id="Rectangle-path" fill="#E20717" x="2" y="3" width="3" height="3"></rect>
+                                    <polyline id="Shape" stroke="#075BA1" stroke-width="2" points="5 8 0 8 0 0"></polyline>
+                                </g>
+                                <polyline id="Shape" stroke="#075BA1" stroke-width="2" points="6 50 6 32 16 32 16 50"></polyline>
+                                <polyline id="Shape" stroke="#075BA1" stroke-width="2" points="0 22 0 0 21 0 21 20.0505298"></polyline>
+                                <path d="M0,16 L21,16" id="Shape" stroke="#075BA1" stroke-width="2"></path>
+                                <rect id="Rectangle-path" stroke="#075BA1" stroke-width="2" x="21" y="32" width="18" height="10"></rect>
+                                <path d="M17,50 L3,50" id="Shape" stroke="#075BA1" stroke-width="2"></path>
+                                <path d="M14,53 L0,53" id="Shape" stroke="#075BA1" stroke-width="2"></path>
+                            </g>
+                            <g id="Förälder" transform="translate(828.000000, 97.000000)">
+                                <path d="M10.031,0.07 C12.522,0.07 14.543,2.091 14.543,4.585 C14.543,7.077 12.522,9.098 10.031,9.098 C7.536,9.098 5.515,7.077 5.515,4.585 C5.516,2.09 7.536,0.07 10.031,0.07 L10.031,0.07 L10.031,0.07 Z" id="Shape" stroke="#075BA1" stroke-width="2"></path>
+                                <path d="M7.841,4.172 C8.144,4.172 8.389,4.418 8.389,4.719 C8.389,5.022 8.144,5.268 7.841,5.268 C7.539,5.268 7.293,5.022 7.293,4.719 C7.293,4.418 7.539,4.172 7.841,4.172" id="Shape" fill="#0A5DA8"></path>
+                                <path d="M9.483,3.352 C9.786,3.352 10.031,3.598 10.031,3.899 C10.031,4.203 9.786,4.447 9.483,4.447 C9.182,4.447 8.935,4.203 8.935,3.899 C8.936,3.598 9.183,3.352 9.483,3.352" id="Shape" fill="#0A5DA8"></path>
+                                <path d="M7.841,6.772 C8.526,7.045 9.484,6.908 10.303,6.362 C11.124,5.952 11.672,5.268 11.946,4.585" id="Shape" stroke="#075BA1" stroke-width="2"></path>
+                                <polyline id="Shape" stroke="#075BA1" stroke-width="2" points="14 7 14 31 11 31"></polyline>
+                                <polyline id="Shape" stroke="#075BA1" stroke-width="2" points="9 9 9 31 6 31"></polyline>
+                                <path d="M14.135,7.456 C14.135,7.456 17.826,10.057 17.826,13.476 C17.826,16.895 14.135,18.948 14.135,18.948" id="Shape" stroke="#075BA1" stroke-width="2"></path>
+                                <path d="M0.319,13.2 C0.319,13.2 6.748,17.03 8.935,10.056" id="Shape" stroke="#075BA1" stroke-width="2"></path>
+                            </g>
+                            <g id="Barnvagn" transform="translate(807.000000, 107.000000)">
+                                <path d="M19,8 C19,12.8966889 14.8089888,17 9.49948927,17 C4.3299285,17 0,13.029241 0,8 L19,8 L19,8 L19,8 Z" id="Shape" stroke="#075BA1" stroke-width="2"></path>
+                                <path d="M0,8 C0,3.64914081 3.50891597,0 8,0 L8,8" id="Shape" stroke="#075BA1" stroke-width="2"></path>
+                                <path d="M18.721,7.851 L22.96,3.475" id="Shape" stroke="#075BA1" stroke-width="2"></path>
+                                <path d="M4.5,17.5 C5.32724252,17.5 6,18.1702128 6,19 C6,19.8297872 5.32724252,20.5 4.5,20.5 C3.6717608,20.5 3,19.8297872 3,19 C3,18.1702128 3.6717608,17.5 4.5,17.5" id="Shape" fill="#0A5DA8"></path>
+                                <path d="M14.5009973,17.5 C15.3267952,17.5 16,18.1702128 16,19 C16,19.8297872 15.3267952,20.5 14.5009973,20.5 C13.6722074,20.5 13,19.8297872 13,19 C13,18.1702128 13.6722074,17.5 14.5009973,17.5" id="Shape" fill="#0A5DA8"></path>
+                            </g>
+                            <g id="Gungor" transform="translate(754.000000, 100.000000)" stroke-width="2">
+                                <path d="M37.938,0.352 L33.013,31.127" id="Shape" stroke="#075BA1"></path>
+                                <path d="M5.521,0.352 L10.444,31.127" id="Shape" stroke="#075BA1"></path>
+                                <polyline id="Shape" stroke="#075BA1" points="0 31 4.94349847 0 38.0524841 0 43 31"></polyline>
+                                <path d="M17,2 L17,22" id="Shape" stroke="#075BA1"></path>
+                                <path d="M26,2 L26,22" id="Shape" stroke="#075BA1"></path>
+                                <path d="M15.231,23.331 C17.146,24.289 19.335,24.836 21.66,24.836 C23.984,24.836 26.173,24.289 28.088,23.331" id="Shape" stroke="#E30D18"></path>
+                            </g>
+                            <g id="Låst-cykel" transform="translate(800.000000, 36.000000)" stroke-width="2">
+                                <g id="Vägskylt" transform="translate(34.000000, 0.000000)" stroke="#075BA1">
+                                    <path d="M5,9 L5,38" id="Shape"></path>
+                                    <circle id="Oval" cx="5" cy="5" r="5"></circle>
+                                </g>
+                                <path d="M36.758,28.927 C39.629,28.38 42.502,27.969 42.228,26.192 C41.955,24.55 38.125,23.866 35.936,24.414 C33.065,24.961 31.288,26.602 31.698,28.243 C31.97,29.884 33.884,29.473 36.758,28.927 L36.758,28.927 L36.758,28.927 Z" id="Shape" stroke="#075BA1"></path>
+                                <g id="Cykel" transform="translate(0.000000, 15.000000)">
+                                    <path d="M6.709,6.814 C10.408,6.814 13.412,9.816 13.412,13.516 C13.412,17.218 10.408,20.219 6.709,20.219 C3.008,20.219 0.006,17.218 0.006,13.516 C0.006,9.816 3.008,6.814 6.709,6.814 L6.709,6.814 L6.709,6.814 Z" id="Shape" stroke="#075BA1"></path>
+                                    <circle id="Oval" stroke="#075BA1" cx="29.277" cy="13.517" r="6.703"></circle>
+                                    <polyline id="Shape" stroke="#075BA1" points="6 13 11 4 25 4 29 13"></polyline>
+                                    <polyline id="Shape" stroke="#075BA1" points="14 0 11 0 11 4"></polyline>
+                                    <path d="M19,1 L25,1" id="Shape" stroke="#E30D18"></path>
+                                    <path d="M11,4 L19,13" id="Shape" stroke="#075BA1"></path>
+                                </g>
+                            </g>
+                            <g id="Måsar" transform="translate(761.000000, 40.000000)" stroke-width="2">
+                                <path d="M0,1 L7,1" id="Shape" stroke="#075BA1"></path>
+                                <path d="M13,1 L20,1" id="Shape" stroke="#E30D18"></path>
+                                <path d="M6,8 L13,8" id="Shape" stroke="#075BA1"></path>
+                            </g>
+                            <g id="Skyltar" transform="translate(693.000000, 43.000000)" stroke-width="2" stroke="#075BA1">
+                                <polygon id="Shape" points="39.2237555 26 43 22 39.2237555 18 19 18 19 26"></polygon>
+                                <polygon id="Shape" points="3.77572397 5 0 8.99947774 3.77572397 13 24 13 24 5"></polygon>
+                                <g id="Stolpe" transform="translate(21.000000, 0.000000)">
+                                    <path d="M1,0 L1,5" id="Shape"></path>
+                                    <path d="M1,13 L1,17" id="Shape"></path>
+                                    <path d="M1,25 L1,53" id="Shape"></path>
+                                </g>
+                                <path d="M35,53 L8,53" id="Shape"></path>
+                                <path d="M35,53 C40.3532144,53 44,49.2838059 44,44 L44,41 C44,31.920533 52.1608012,24 61.3615443,24 L70.5602799,24 L102,24" id="Shape"></path>
+                            </g>
+                            <g id="Mark" transform="translate(658.000000, 116.000000)" stroke-width="2">
+                                <path d="M35,6 L42,6" id="Shape" stroke="#075BA1"></path>
+                                <path d="M29,13 L36,13" id="Shape" stroke="#075BA1"></path>
+                                <path d="M7,6 L14,6" id="Shape" stroke="#075BA1"></path>
+                                <g id="Övre">
+                                    <path d="M43,1 L50,1" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M28,1 L35,1" id="Shape" stroke="#E30D18"></path>
+                                    <path d="M15,1 L22,1" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M0,1 L7,1" id="Shape" stroke="#075BA1"></path>
+                                </g>
+                            </g>
+                            <g id="Lastbil" transform="translate(639.000000, 74.000000)" stroke-width="2">
+                                <polyline id="Shape" stroke="#075BA1" points="46 22 50 22 50 17"></polyline>
+                                <path d="M38,22.9994778 C38,23.4276762 38.1420613,23.9989556 38.2841226,24.2851175 C38.7123955,25.2845953 39.8561978,26 41,26 C42.7141365,26 44,24.7133159 44,22.9994778 C44,21.2835509 42.7141365,20 41,20 C39.4289694,20 38,21.4287206 38,22.9994778 L38,22.9994778 L38,22.9994778 Z" id="Shape" stroke="#075BA1" transform="translate(41.000000, 23.000000) rotate(1.000000) translate(-41.000000, -23.000000) "></path>
+                                <path d="M9,22.9994778 C9,23.4276762 9.14415042,23.9989556 9.28412256,24.2851175 C9.71448468,25.2845953 10.8561978,26 12,26 C13.7151811,26 15,24.7133159 15,22.9994778 C15,21.2835509 13.7151811,20 12,20 C10.2879526,20 9,21.4287206 9,22.9994778 L9,22.9994778 L9,22.9994778 Z" id="Shape" stroke="#E30D18"></path>
+                                <path d="M36,22 L17,22" id="Shape" stroke="#075BA1"></path>
+                                <polyline id="Shape" stroke="#075BA1" points="20.1336352 17 54 17 54 0 15 0 15 10.9590937"></polyline>
+                                <path d="M47,12 L47,15" id="Shape" stroke="#075BA1"></path>
+                                <path d="M36,12 L36,15" id="Shape" stroke="#075BA1"></path>
+                                <path d="M25,12 L25,15" id="Shape" stroke="#075BA1"></path>
+                                <polyline id="Shape" stroke="#075BA1" points="7 22 0 22 0 17 6 5 12 5"></polyline>
+                            </g>
+                            <path d="M915,74 L807,74" id="Shape" stroke="#075BA1" stroke-width="2"></path>
+                            <path d="M622,103 L727.997725,103 C737.151438,103 744.663356,95.5473864 744.663356,86.4679194 L744.663356,83.4846942 C744.663356,78.2008883 748.67315,74 754,74 L810,74" id="Shape" stroke="#075BA1" stroke-width="2"></path>
+                            <g id="Buskage" transform="translate(576.000000, 84.000000)" stroke="#075BA1" stroke-width="2">
+                                <path d="M22.1377934,9.98619381 L28.110176,24 L43.8595189,24 C45.4893431,21.8434994 46.3032626,19.1481198 45.8963028,16.3197446 C45.0813907,10.7940195 39.7869435,7.02186743 34.3575047,7.96465917 C33.9495523,7.96465917 33.5416,8.10061033 33.1346402,8.23459118 C32.1847366,2.84580244 27.0252809,-0.793353978 21.5938569,0.14845261 C17.2493133,0.825252951 13.8546733,4.1915219 13.1777305,8.36857204 C11.684883,7.96465917 10.1910429,7.83067832 8.56221122,7.96465917 C2.99678832,8.7724849 -0.805804001,14.0282779 0.146084811,19.419037 C0.417060458,21.1706396 1.09598845,22.6542805 2.18187621,24 L14.5355865,24" id="Shape"></path>
+                                <polyline id="Shape" points="18.019 15.804 25.405 17.309 28.55 12.112"></polyline>
+                            </g>
+                            <g id="Träd" transform="translate(642.000000, 37.000000)" stroke="#075BA1" stroke-width="2">
+                                <g transform="translate(17.000000, 3.000000)" id="Shape">
+                                    <path d="M4,7 L4,14"></path>
+                                    <path d="M8,4.00056235 C8,4.92394208 7.69187518,5.84732181 7.07562553,6.46140869 C6.30643801,7.38478842 5.23137475,8 4,8 C1.8476244,8 0,6.15324055 0,4.00056235 C0,1.84788416 1.8476244,0 4,0 C6.15350014,0 8,1.84675945 8,4.00056235 L8,4.00056235 L8,4.00056235 Z"></path>
+                                </g>
+                                <g id="Shape">
+                                    <path d="M7,13 L7,22"></path>
+                                    <path d="M14,6.99893374 C14,10.7916222 10.936867,14 7.00159927,14 C5.10486635,14 3.50026654,13.2706778 2.18779986,12.1041889 C0.87639936,10.7916222 0,9.0418888 0,6.99893374 C0,3.2073115 3.06313304,0 7.00053309,0 C10.9358008,0 14,3.2073115 14,6.99893374 L14,6.99893374 L14,6.99893374 Z"></path>
+                                </g>
+                            </g>
+                            <g id="Småhus-2" transform="translate(596.000000, 29.000000)" stroke-width="2" stroke="#075BA1">
+                                <polyline id="Shape" points="23 24 23 8.89969605 11.431211 0 0 8.89969605 0 24"></polyline>
+                                <polyline id="Shape" points="7 24 7 14 14 14 14 24"></polyline>
+                                <path d="M0,10 L9,10" id="Shape"></path>
+                            </g>
+                            <g id="Småhus-1" transform="translate(550.000000, 18.000000)" stroke-width="2" stroke="#075BA1">
+                                <polyline id="Shape" points="20 35 20 21 27 21 27 35"></polyline>
+                                <polygon id="Rectangle-path" points="7 21 13 21 12.971 27 7 27"></polygon>
+                                <path d="M34,14 L14,14" id="Shape"></path>
+                                <polyline id="Shape" points="5 0 5 9 0 13 0 35"></polyline>
+                                <polyline id="Shape" points="34.004 35 34.004 13.2275056 17.2462769 0 9.004 6.33771804 9.004 0"></polyline>
+                            </g>
+                            <path d="M628,53 L530,53" id="Shape" stroke="#075BA1" stroke-width="2"></path>
+                            <g id="Strand" transform="translate(365.000000, 71.000000)">
+                                <g id="Simmare" transform="translate(146.000000, 36.000000)">
+                                    <circle id="Oval" stroke="#075BA1" stroke-width="2" cx="21.605" cy="9.219" r="4.376"></circle>
+                                    <path d="M16.271,8.398 L3,15" id="Shape" stroke="#075BA1" stroke-width="2"></path>
+                                    <path d="M21.742,0.875 C19.142,1.148 17.228,2.105 15.998,3.475 C14.904,4.704 14.355,6.756 15.861,9.218" id="Shape" stroke="#075BA1" stroke-width="2"></path>
+                                    <path d="M23.657,7.851 C23.959,7.851 24.204,8.096 24.204,8.398 C24.204,8.7 23.959,8.947 23.657,8.947 C23.354,8.947 23.108,8.7 23.108,8.398 C23.108,8.096 23.354,7.851 23.657,7.851" id="Shape" fill="#0A5DA8"></path>
+                                    <path d="M22.017,7.03 C22.318,7.03 22.563,7.277 22.563,7.578 C22.563,7.881 22.318,8.125 22.017,8.125 C21.713,8.125 21.469,7.881 21.469,7.578 C21.469,7.277 21.713,7.03 22.017,7.03" id="Shape" fill="#0A5DA8"></path>
+                                    <path d="M23.657,10.861 C22.973,11.133 22.016,10.997 21.195,10.45 C20.374,10.04 19.827,9.356 19.553,8.673" id="Shape" stroke="#075BA1" stroke-width="2"></path>
+                                    <path d="M0.268,11.133 C0.268,11.133 1.636,11.407 2.184,12.091" id="Shape" stroke="#E30D18" stroke-width="2"></path>
+                                    <path d="M3.413,9.218 C3.413,9.218 4.099,10.449 3.824,11.271" id="Shape" stroke="#E30D18" stroke-width="2"></path>
+                                    <path d="M30.223,14.553 C30.223,14.553 28.992,14.005 28.171,14.279" id="Shape" stroke="#075BA1" stroke-width="2"></path>
+                                    <path d="M28.855,11.133 C28.855,11.133 27.624,11.818 27.349,12.637" id="Shape" stroke="#075BA1" stroke-width="2"></path>
+                                </g>
+                                <g id="Båt" transform="translate(103.000000, 29.000000)" stroke="#075BA1" stroke-width="2">
+                                    <path d="M5,3.92592991 L34,3 C34,7.49903247 29.6745669,12 25,12 L6.23797644,12 L6.1013167,6.57310256" id="Shape"></path>
+                                    <path d="M7.979,3.635 C7.979,1.719 6.611,0.352 4.97,0.352 C3.327,0.352 2,1.72 2,3.635 L2,12 L0,12" id="Shape"></path>
+                                </g>
+                                <g id="Klippa-2" transform="translate(52.000000, 42.000000)" stroke-width="2">
+                                    <path d="M0,15 L7,15" id="Shape" stroke="#E30D18"></path>
+                                    <path d="M15,15 L22,15" id="Shape" stroke="#075BA1"></path>
+                                    <polyline id="Shape" stroke="#075BA1" points="6 9 7 5 14 0 20 3 24 9"></polyline>
+                                </g>
+                                <g id="Vatten" transform="translate(46.000000, 23.000000)" stroke="#075BA1" stroke-width="2">
+                                    <path d="M33,28 C37.2441827,28 37.2441827,31 41.6265015,31 C45.8706842,31 45.8706842,28 50.25,28 C54.4961846,28 54.4961846,31 58.8744995,31 C63.1206842,31 63.1206842,28 67.5,28 C71.7431817,28 71.7431817,31 76.1244995,31 C80.3706842,31 80.3706842,28 84.75,28 C88.9951837,28 88.9951837,31 93.3775025,31 C97.6206842,31 97.6206842,28 102,28 C106.245184,28 106.245184,31 110.6245,31 C114.871685,31 114.871685,28 119.25,28 C123.63332,28 123.495184,31 127.877502,31 C132.119683,31 132.119683,28 136.5,28 C140.746185,28 140.746185,31 145.126501,31 C149.370684,31 149.370684,28 153.751001,28 C157.994183,28 157.994183,31 162.376501,31 C166.757819,31 166.619683,28 171,28" id="Shape"></path>
+                                    <path d="M17,0 C20.8978622,0 23.672209,3.15659715 23.672209,6.99949832 C23.672209,10.8423995 20.4696301,14 16.5707499,14 L7.1024771,14 C3.20359688,14 0,17.1555938 0,20.9994983 C0,24.8423995 3.10111978,28 7,28 L33,28" id="Shape"></path>
+                                </g>
+                                <g id="Klippa-1" transform="translate(13.000000, 10.000000)" stroke-width="2" stroke="#075BA1">
+                                    <polyline id="Shape" points="0 13 3 6 6 6 13 0 24 3 28 13"></polyline>
+                                    <path d="M5,6 L12,6" id="Shape"></path>
+                                </g>
+                                <path d="M65,0 L11.6315474,0 C5.19947975,0 0,5.140455 0,11.4995054 C0,17.8575668 5.20048023,23 11.6315474,23 L63,23" id="Shape" stroke="#075BA1" stroke-width="2"></path>
+                            </g>
+                            <g id="Mark" transform="translate(534.000000, 57.000000)" stroke-width="2">
+                                <g id="Fyra" transform="translate(37.000000, 0.000000)">
+                                    <path d="M3,13 L10,13" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M8,7 L15,7" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M16,1 L23,1" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M0.998,1 L7.998,1" id="Shape" stroke="#E30D18"></path>
+                                </g>
+                                <g id="Tre" stroke="#075BA1">
+                                    <path d="M15,1 L22,1" id="Shape"></path>
+                                    <path d="M7,7 L14,7" id="Shape"></path>
+                                    <path d="M0,1 L7,1" id="Shape"></path>
+                                </g>
+                            </g>
+                            <g id="Träd" transform="translate(558.000000, 66.000000)" stroke="#075BA1" stroke-width="2">
+                                <path d="M5,10 L5,19" id="Shape"></path>
+                                <path d="M0,4.99892473 C0,6.17526882 0.441887969,7.20537634 1.02999677,8.08602151 C1.91054725,9.26451613 3.38350715,10 4.99946242,10 C7.79486077,10 10,7.79247312 10,4.99892473 C10,2.20322581 7.79378561,0 4.99946242,0 C2.20728954,0 0,2.20430108 0,4.99892473 L0,4.99892473 L0,4.99892473 Z" id="Shape"></path>
+                            </g>
+                            <g id="Höghus-2" transform="translate(474.000000, 1.000000)" stroke-width="2">
+                                <g id="Fönster" transform="translate(5.000000, 39.000000)">
+                                    <path d="M1,14 L1,21" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M9,14 L9,21" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M9,0 L9,7" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M1,0 L1,7" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M16,0.3 L19.5,6.4" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M16,17.5 C16,17.8567699 16.1200835,18.3327532 16.2384267,18.57118 C16.5951967,19.4048033 17.5489036,20 18.4991298,20 C19.9296902,20 21,18.9279499 21,17.5 C21,16.07118 19.9296902,15 18.4991298,15 C17.0720501,15 16,16.07118 16,17.5 L16,17.5 L16,17.5 Z" id="Shape" stroke="#E30D18"></path>
+                                </g>
+                                <polyline id="Shape" stroke="#075BA1" points="0 81 0 35 34 35 34 46.7446809"></polyline>
+                                <polyline id="Shape" stroke="#075BA1" points="9 34.6171291 9 0 55 0 55 81"></polyline>
+                                <g id="Fönster" transform="translate(35.000000, 19.000000)" stroke="#075BA1">
+                                    <path d="M5,1 L0,1" id="Shape"></path>
+                                    <path d="M5,8 L0,8" id="Shape"></path>
+                                </g>
+                                <g id="Fönster" transform="translate(25.000000, 19.000000)" stroke="#075BA1">
+                                    <path d="M5,8 L0,8" id="Shape"></path>
+                                    <path d="M5,1 L0,1" id="Shape"></path>
+                                </g>
+                                <g id="Fönster" transform="translate(45.000000, 5.000000)">
+                                    <path d="M5,22 L0,22" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M5,15 L0,15" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M5,8 L0,8" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M5,1 L0,1" id="Shape" stroke="#E30D18"></path>
+                                </g>
+                                <polyline id="Shape" stroke="#075BA1" points="19 6 14 6 17.6821855 12"></polyline>
+                            </g>
+                            <g id="Höghus-1" transform="translate(409.000000, 6.000000)" stroke-width="2">
+                                <path d="M35,60.9994778 C35,61.4276762 35.1420366,61.9989556 35.2851175,62.2840731 C35.7133159,63.2845953 36.8558747,64 37.9994778,64 C39.7133159,64 41,62.7143603 41,60.9994778 C41,59.2856397 39.7133159,58 37.9994778,58 C36.2845953,58 35,59.2856397 35,60.9994778 L35,60.9994778 L35,60.9994778 Z" id="Shape" stroke="#075BA1"></path>
+                                <g id="Fönster" transform="translate(27.000000, 18.000000)" stroke="#075BA1">
+                                    <path d="M15,0 L15,7" id="Shape"></path>
+                                    <path d="M10,0 L10,7" id="Shape"></path>
+                                    <path d="M1,0 L1,7" id="Shape"></path>
+                                </g>
+                                <g id="Ventil" transform="translate(14.000000, 28.000000)" stroke="#075BA1">
+                                    <path d="M7,7 L7,44" id="Shape"></path>
+                                    <path d="M0,4 C0,1.69178853 1.61667135,0 3.49901602,0 C5.38431262,0 7,1.8447694 7,4" id="Shape"></path>
+                                </g>
+                                <polyline id="Shape" stroke="#075BA1" points="0 42.0117052 0 7.0227776 22.9795 6.97479279 22.9795 0.0249920911 46 0 46 79"></polyline>
+                                <g id="Stege" transform="translate(46.000000, 64.000000)" stroke="#075BA1">
+                                    <path d="M0,11 L10,11" id="Shape"></path>
+                                    <path d="M0,6 L10,6" id="Shape"></path>
+                                    <path d="M0,1 L10,1" id="Shape"></path>
+                                </g>
+                                <g id="Fönster" transform="translate(4.000000, 11.000000)">
+                                    <path d="M1,0 L1,5" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M6,0 L6,5" id="Shape" stroke="#E30D18"></path>
+                                </g>
+                                <g id="Fönster" transform="translate(27.000000, 4.000000)">
+                                    <path d="M1,0 L1,5" id="Shape" stroke="#E30D18"></path>
+                                    <path d="M10,0 L10,5" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M15,0 L15,5" id="Shape" stroke="#075BA1"></path>
+                                </g>
+                                <path d="M51,21 L51,62" id="Shape" stroke="#075BA1"></path>
+                                <path d="M51,11 L51,15" id="Shape" stroke="#075BA1"></path>
+                                <g id="Horisontella-linjer" transform="translate(25.000000, 34.000000)" stroke="#075BA1">
+                                    <path d="M0,11 L5,11" id="Shape"></path>
+                                    <path d="M0,6 L5,6" id="Shape"></path>
+                                    <path d="M0,1 L5,1" id="Shape"></path>
+                                </g>
+                                <path d="M46,7 L56,7 L56,78.3202739 C56,80.6606403 57.2536163,83 62.0556676,83 C66.310891,83 66.310891,80.1090184 70.7015673,80.1090184 C74.9557874,80.1090184 74.9557874,83 79.3464636,83 C83.6006838,83 83.6006838,80.1090184 87.9923634,80.1090184 C92.2465835,80.1090184 92.2465835,83 96.6382631,83 C100.89148,83 100.89148,80.1090184 105.284163,80.1090184 C109.536376,80.1090184 109.536376,83 113.929059,83 C118.183279,83 118.183279,80.1090184 122.573956,80.1090184 C126.827172,80.1090184 126.827172,83 131.217849,83 C135.473072,83 135.473072,80.1090184 139.865755,80.1090184 C144.117968,80.1090184 144.117968,83 148.509648,83 C153.862541,83 154,79.2825923 154,78.3202739" id="Shape" stroke="#075BA1"></path>
+                                <polyline id="Shape" stroke="#075BA1" points="25 72 25 56 30 56 30 72"></polyline>
+                            </g>
+                            <g id="Skärgård-3" transform="translate(181.000000, 57.000000)" stroke-width="2">
+                                <g id="Brygga" transform="translate(98.000000, 29.000000)">
+                                    <polygon id="Shape" stroke="#075BA1" points="72 23 84 23 84 12.8619009 77.9314286 8 72 12.8619009"></polygon>
+                                    <path d="M78,14 L78,20" id="Shape" stroke="#075BA1"></path>
+                                    <polygon id="Shape" stroke="#075BA1" points="46 15 58 15 58 4.90638879 52.0680729 0 46 4.90638879"></polygon>
+                                    <ellipse id="Oval" stroke="#E30D18" cx="52" cy="9" rx="2" ry="2"></ellipse>
+                                    <path d="M0,15 L63,15" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M7,12 L7,22" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M20,12 L20,22" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M33,12 L33,20" id="Shape" stroke="#075BA1"></path>
+                                </g>
+                                <g id="Träd" transform="translate(122.000000, 58.000000)" stroke="#075BA1">
+                                    <path d="M4,8 L4,15" id="Shape"></path>
+                                    <path d="M8,3.99943765 C8,4.92281738 7.69512024,5.8461971 7.07748559,6.46140869 C6.30797356,7.38478842 5.23020672,8 3.99943749,8 C1.84502883,8 0,6.15436525 0,3.99943765 C0,1.84563475 1.84615385,0 3.99943749,0 C6.15497117,0 8,1.69155068 8,3.99943765 L8,3.99943765 L8,3.99943765 Z" id="Shape"></path>
+                                </g>
+                                <g id="Träd" transform="translate(105.000000, 55.000000)" stroke="#075BA1">
+                                    <path d="M7,14 L7,22" id="Shape"></path>
+                                    <path d="M14,6.99946691 C14,10.7918666 10.9374667,14 7.00053317,14 C5.10457765,14 3.50079976,13.2696672 2.1870668,12.1043333 C0.874400183,10.7918666 0,9.04013403 0,6.99946691 C0,3.20813342 3.06253332,0 7.00053317,0 C10.9374667,0 14,3.2091996 14,6.99946691 L14,6.99946691 L14,6.99946691 Z" id="Shape"></path>
+                                </g>
+                                <g id="Måsar" transform="translate(109.000000, 0.000000)">
+                                    <path d="M27,1 L34,1" id="Shape" stroke="#E30D18"></path>
+                                    <path d="M35,7 L42,7" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M43,1 L50,1" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M29,13 L36,13" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M0,1 L7,1" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M7,7 L14,7" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M22,7 L29,7" id="Shape" stroke="#075BA1"></path>
+                                </g>
+                                <g id="Båt" transform="translate(49.000000, 22.000000)" stroke="#075BA1">
+                                    <path d="M26.998,27.233 C29.733,26.139 31.237,24.089 31.102,21.899 L0.054,23.814 L0.6,29.833" id="Shape"></path>
+                                    <path d="M11.542,7.402 L12.5,23.13" id="Shape"></path>
+                                    <polyline id="Shape" points="14.141 19.848 28.503 19.027 11.132 0.7 3.336 20.533 10.448 20.122"></polyline>
+                                </g>
+                                <path d="M138.096,51.695 C133.856,51.695 133.856,48.824 129.477,48.824 C125.238,48.824 125.238,51.695 120.862,51.695 C116.621,51.695 116.621,48.824 112.245,48.824 C108.004,48.824 108.004,51.695 103.628,51.695 C99.389,51.695 99.389,48.824 95.011,48.824 C90.77,48.824 90.77,51.695 86.394,51.695 C82.154,51.695 82.154,48.824 77.776,48.824 C73.537,48.824 73.537,51.695 69.161,51.695 C64.92,51.695 64.92,48.824 60.544,48.824 C56.303,48.824 56.303,51.695 51.928,51.695 C47.688,51.695 47.688,48.824 43.309,48.824 C39.07,48.824 39.07,51.695 34.694,51.695 C30.453,51.695 30.453,48.824 26.076,48.824 C21.836,48.824 21.836,51.695 17.46,51.695 C13.221,51.695 13.221,48.824 8.843,48.824 C4.602,48.824 4.602,51.695 0.226,51.695" id="Shape" stroke="#075BA1"></path>
+                                <path d="M90.223,8.612 C85.984,8.612 85.984,5.739 81.605,5.739 C77.366,5.739 77.366,8.612 72.99,8.612 C68.749,8.612 68.749,5.739 64.373,5.739 C60.132,5.739 60.132,8.612 55.756,8.612 C51.517,8.612 51.517,5.739 47.14,5.739 C42.899,5.739 42.899,8.612 38.523,8.612" id="Shape" stroke="#075BA1"></path>
+                            </g>
+                            <g id="Skärgård-2" transform="translate(132.000000, 0.000000)" stroke-width="2">
+                                <g id="Träd" transform="translate(238.000000, 18.000000)" stroke="#075BA1">
+                                    <path d="M4,8 L4,15" id="Shape"></path>
+                                    <path d="M8,3.99943765 C8,4.92281738 7.69512024,5.8461971 7.07748559,6.46140869 C6.30797356,7.38478842 5.23020672,8 3.99943749,8 C1.84502883,8 0,6.15436525 0,3.99943765 C0,1.84563475 1.84615385,0 3.99943749,0 C6.15497117,0 8,1.69155068 8,3.99943765 L8,3.99943765 L8,3.99943765 Z" id="Shape"></path>
+                                </g>
+                                <g id="Träd" transform="translate(221.000000, 15.000000)" stroke="#075BA1">
+                                    <path d="M7,14 L7,22" id="Shape"></path>
+                                    <path d="M14,6.99946691 C14,10.7918666 10.9374667,14 7.00053317,14 C5.10457765,14 3.50079976,13.2696672 2.1870668,12.1043333 C0.874400183,10.7918666 0,9.04013403 0,6.99946691 C0,3.20813342 3.06253332,0 7.00053317,0 C10.9374667,0 14,3.2091996 14,6.99946691 L14,6.99946691 L14,6.99946691 Z" id="Shape"></path>
+                                </g>
+                                <g id="Öar" transform="translate(25.000000, 17.000000)" stroke="#075BA1">
+                                    <path d="M77.293,12.638 C68.129,5.116 56.503,0.601 43.646,0.601 L41.73,0.601 C25.317,0.601 10.544,8.123 0.834,19.888" id="Shape"></path>
+                                    <path d="M101.639,19.997 C98.082,14.5965951 92.065,10.997 85.088,10.997 L84.404,10.997 C77.428,10.997 71.41,14.5965951 67.854,19.997" id="Shape"></path>
+                                </g>
+                                <g id="Gran" transform="translate(49.000000, 1.000000)">
+                                    <polyline id="Shape" stroke="#075BA1" points="0.5 4.331 5.833 0.5 11.168 4.331"></polyline>
+                                    <polyline id="Shape" stroke="#075BA1" points="0.5 14 5.99896888 10 11.5 14"></polyline>
+                                    <path d="M0.908,8.942 L3.643,7.027" id="Shape" stroke="#E30D18"></path>
+                                    <path d="M11,8.942 L8.5,7.027" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M6,10 L6,18" id="Shape" stroke="#075BA1"></path>
+                                </g>
+                                <g id="Gran" transform="translate(67.000000, 0.000000)" stroke="#075BA1">
+                                    <polyline id="Shape" points="0.416 4.471 5.886 0.642 11.221 4.471"></polyline>
+                                    <polyline id="Shape" points="0.416 13.635 5.886 9.669 11.221 13.499"></polyline>
+                                    <path d="M0.416,8.848 L3.151,6.934" id="Shape"></path>
+                                    <path d="M11.221,8.848 L8.485,6.934" id="Shape"></path>
+                                    <path d="M6,10 L6,17" id="Shape"></path>
+                                </g>
+                                <g id="Båt" transform="translate(122.000000, 27.000000)" stroke="#075BA1">
+                                    <path d="M19.685,11.255 C17.086,10.16 15.855,6.194 15.992,4.143 L40.476,5.921 L39.929,10.16" id="Shape"></path>
+                                    <path d="M0.673,3.595 C0.673,3.595 8.333,9.888 16.128,4.964" id="Shape"></path>
+                                    <path d="M1.904,0.45 L0.399,4.69" id="Shape"></path>
+                                </g>
+                                <path d="M249,37 L198.1313,37 C193.893492,37 193.893492,40 189.518722,40 C185.278914,40 185.278914,37 180.903144,37 C176.664335,37 176.664335,40 172.288565,40 C167.914795,40 168.049757,37 163.673987,37 C159.436179,37 159.436179,40 155.061408,40 C150.8216,40 150.8216,37 146.44583,37 C142.207022,37 142.207022,40 137.831252,40 C133.454483,40 133.591444,37 129.216674,37 C124.978865,37 124.978865,40 120.604095,40 C116.363287,40 116.363287,37 111.988517,37 C107.750709,37 107.750709,40 103.375938,40 C99.1361304,40 99.1361304,37 94.7593608,37 C90.5215522,37 90.5215522,40 86.1457823,40 C81.9069739,40 81.9069739,37 77.5312041,37 C73.2923957,37 73.2923957,40 68.9176256,40 C64.6788172,40 64.6788172,37 60.3020476,37 C56.0632393,37 56.0632393,40 51.6874694,40 C47.4476613,40 47.4476613,37 43.0728912,37 C38.8350825,37 38.8350825,40 34.4603124,40 C30.2185048,40 30.2185048,37 25.8437347,37 C21.605926,37 21.605926,40 17.2311559,40 C12.9913478,40 12.9913478,37 8.61457823,37 C4.37576986,37 4.37576986,40 0,40" id="Shape" stroke="#075BA1"></path>
+                            </g>
+                            <g id="Skärgård-1" transform="translate(81.000000, 37.000000)">
+                                <path d="M121,49 C116.747206,49 116.747206,46 112.357,46 C107.966793,46 108.103203,49 103.713999,49 C99.4612056,49 99.4612056,46 95.0720017,46 C90.8172022,46 90.8172022,49 86.4279983,49 C82.1752047,49 82.1752047,46 77.7860009,46 C73.5332073,46 73.5332073,49 69.1419974,49 C64.8902069,49 64.8902069,46 60.498997,46 C56.2452004,46 56.2452004,49 51.8569996,49 C47.4657896,49 47.604206,46 43.2150022,46 C38.9612056,46 38.9612056,49 34.5709987,49 C30.3182052,49 30.3182052,46 25.9279983,46 C21.6752047,46 21.6752047,49 17.2860009,49 C13.0342104,49 13.0342104,46 8.64400345,46 C4.38920389,46 4.38920389,49 0,49" id="Shape" stroke="#075BA1" stroke-width="2"></path>
+                                <g id="Skärgårdsö" transform="translate(57.000000, 11.000000)">
+                                    <path d="M0,36 C7.24917673,30.9475305 16.1720245,28 26.0703309,28 C35.8289948,28 44.891485,30.9475305 52,35.8604233" id="Shape" stroke="#075BA1" stroke-width="2"></path>
+                                    <g id="Hus" transform="translate(20.000000, 13.000000)" stroke-width="2">
+                                        <polyline id="Shape" stroke="#075BA1" points="12 15 12 4.86223005 6.00102006 0 0 4.86223005 0 15"></polyline>
+                                        <path d="M6,6 L6,11" id="Shape" stroke="#E30D18"></path>
+                                    </g>
+                                    <g id="Flaggstång" transform="translate(37.000000, 0.000000)">
+                                        <path d="M2,5 L2,32" id="Shape" stroke="#075BA1" stroke-width="2"></path>
+                                        <path d="M4,6.122 C9.06,6.122 10.292,7.764 15.079,7.764 L15.079,14.193 C10.428,14.193 9.06,12.551 4,12.551" id="Shape" stroke="#075BA1" stroke-width="2"></path>
+                                        <path d="M2,0.5 C2.82785088,0.5 3.5,1.17190354 3.5,1.99945195 C3.5,2.82700037 2.82785088,3.5 2,3.5 C1.17324561,3.5 0.5,2.82809646 0.5,1.99945195 C0.5,1.17299963 1.17324561,0.5 2,0.5" id="Shape" fill="#0A5DA8"></path>
+                                    </g>
+                                </g>
+                                <g id="Fyrtorn" transform="translate(19.000000, 0.000000)" stroke-width="2">
+                                    <path d="M5.354,19.216 L1.798,20.173" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M28.2,12 L24.63,12.8925311" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M1.798,11.924 L5.354,12.881" id="Shape" stroke="#E30D18"></path>
+                                    <path d="M24.63,19.216 L28.2,20.139139" id="Shape" stroke="#E30D18"></path>
+                                    <path d="M5,16 L1,16" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M29,16 L25,16" id="Shape" stroke="#075BA1"></path>
+                                    <polyline id="Shape" stroke="#075BA1" points="24 46 24 41 18 41"></polyline>
+                                    <polyline id="Shape" stroke="#075BA1" points="11 41 5 41 5 46"></polyline>
+                                    <path d="M21,41 L19.0136988,24.1164397" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M8,41 L10.9543507,24.2586795" id="Shape" stroke="#075BA1"></path>
+                                    <polyline id="Shape" stroke="#075BA1" points="13.0421733 24 9 24 9 20 21 20 21 24 17.0843466 24"></polyline>
+                                    <rect id="Rectangle-path" stroke="#075BA1" x="11" y="12" width="8" height="8"></rect>
+                                    <polygon id="Shape" stroke="#075BA1" points="14.9298125 5 21 12 9 12"></polygon>
+                                    <path d="M15,0 L15,5" id="Shape" stroke="#075BA1"></path>
+                                </g>
+                            </g>
+                            <g id="Gran" transform="translate(138.000000, 96.000000)" stroke-width="2">
+                                <polyline id="Shape" stroke="#075BA1" points="1 5.719 8.112 0.522 15.226 5.584"></polyline>
+                                <polyline id="Shape" stroke="#075BA1" points="1 17.756 8.112 12.695 15.226 17.756"></polyline>
+                                <path d="M0.548,11.465 L4.104,8.866" id="Shape" stroke="#E30D18"></path>
+                                <path d="M14.774,11.465 L11.217,8.866" id="Shape" stroke="#075BA1"></path>
+                                <path d="M8,13 L8,20" id="Shape" stroke="#075BA1"></path>
+                            </g>
+                            <g id="Gran" transform="translate(159.800000, 97.000000)" stroke-width="2" stroke="#075BA1">
+                                <polyline id="Shape" points="0.2 5.23968421 8.04683017 0 15.7 5.23968421"></polyline>
+                                <polyline id="Shape" points="0.7 16.6571613 8.29370662 11.2300034 15.7 16.471056"></polyline>
+                                <path d="M0.596266667,11.1077895 L4.51643333,8.48863158" id="Shape"></path>
+                                <path d="M16.0834333,11.1077895 L12.1618333,8.48863158" id="Shape"></path>
+                                <path d="M8.2,12 L8.2,21" id="Shape"></path>
+                            </g>
+                            <g id="Skog" transform="translate(0.000000, 74.000000)" stroke-width="2">
+                                <g id="Gran" transform="translate(0.000000, 7.000000)" stroke="#075BA1">
+                                    <polyline id="Shape" points="1 5 7.99901589 0 15 5"></polyline>
+                                    <polyline id="Shape" points="1 17 7.99901589 12 15 16.8672822"></polyline>
+                                    <path d="M0.5,10.854 L4.056,8.255" id="Shape"></path>
+                                    <path d="M14.726,10.854 L11.168,8.255" id="Shape"></path>
+                                    <path d="M8,13 L8,20" id="Shape"></path>
+                                </g>
+                                <g id="Gran" transform="translate(18.000000, 0.000000)" stroke="#075BA1">
+                                    <polyline id="Shape" points="1 5 7.99901589 0 15 5"></polyline>
+                                    <polyline id="Shape" points="1 17 7.99901589 12 15 16.8672822"></polyline>
+                                    <path d="M0.5,10.854 L4.056,8.255" id="Shape"></path>
+                                    <path d="M14.726,10.854 L11.168,8.255" id="Shape"></path>
+                                    <path d="M8,13 L8,20" id="Shape"></path>
+                                </g>
+                                <g id="Gran" transform="translate(66.000000, 22.000000)">
+                                    <polyline id="Shape" stroke="#075BA1" points="1 5 7.99901575 0 15 5"></polyline>
+                                    <polyline id="Shape" stroke="#075BA1" points="1 18 7.99901575 13 15 17.8682185"></polyline>
+                                    <path d="M0.604,11.191 L4.16,8.729" id="Shape" stroke="#E30D18"></path>
+                                    <path d="M14.828,11.191 L11.271,8.729" id="Shape" stroke="#075BA1"></path>
+                                    <path d="M8,14 L8,21" id="Shape" stroke="#075BA1"></path>
+                                </g>
+                                <g id="Träd" transform="translate(35.000000, 16.000000)" stroke="#075BA1">
+                                    <path d="M7,14 L7,28" id="Shape"></path>
+                                    <path d="M12.360834,11.4419706 C11.0231614,13.0978133 9.08576736,14 6.85341051,14 C2.98297612,14 -0.142976514,10.8401461 0.00504909832,6.92883667 C0.00504909832,3.01532679 3.13100173,-0.144527122 7.00143613,0.00510384326 C11.0231614,0.00510384326 14,3.16495776 14,7.0773674 C14,8.73321007 13.4035439,10.2372213 12.360834,11.4419706 L12.360834,11.4419706 Z" id="Shape"></path>
+                                    <path d="M2,17 L7,19" id="Shape"></path>
+                                </g>
+                                <g id="Träd" transform="translate(48.000000, 0.000000)" stroke="#075BA1">
+                                    <path d="M8,15 L8,29" id="Shape"></path>
+                                    <path d="M1,8.07901154 C1,9.73362394 1.59436861,11.2364169 2.63723515,12.4432718 C3.97837459,14.0978842 5.91279405,15 8.14657499,15 C12.0175911,15 15.1440135,11.8403944 14.9948771,7.92829219 C14.9948771,4.01508984 11.8684546,0.855484235 7.99852713,1.00510344 C4.12642245,1.00510344 1,4.16800947 1,8.07901154 L1,8.07901154 L1,8.07901154 Z" id="Shape" transform="translate(8.000000, 8.000000) rotate(1.000000) translate(-8.000000, -8.000000) "></path>
+                                    <path d="M13,18 L8,21" id="Shape"></path>
+                                </g>
+                            </g>
+                            <g id="Kullar" transform="translate(12.000000, 33.000000)" stroke-width="2">
+                                <path d="M74,22 L55.4640036,3.32018209 C51.0691706,-1.10672736 43.9298256,-1.10672736 39.5349925,3.32018209 L21,22" id="Shape" stroke="#075BA1"></path>
+                                <path d="M28,14.31756 L22.6472654,9.10469012 C19.7651781,6.29843663 15.098846,6.29843663 12.2157551,9.10469012 L0,21" id="Shape" stroke="#075BA1"></path>
+                                <path d="M35,8 L41,8" id="Shape" stroke="#075BA1"></path>
+                                <path d="M44,8 L48,8" id="Shape" stroke="#E30D18"></path>
+                                <path d="M40,13 L44,13" id="Shape" stroke="#075BA1"></path>
+                                <path d="M58,13 L65,13" id="Shape" stroke="#075BA1"></path>
+                                <path d="M55,16 L59,16" id="Shape" stroke="#E30D18"></path>
+                                <path d="M52,8 L57,8" id="Shape" stroke="#075BA1"></path>
+                                <path d="M47,4 L51,4" id="Shape" stroke="#075BA1"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

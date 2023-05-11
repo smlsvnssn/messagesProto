@@ -1,0 +1,66 @@
+<script>
+	import EnvelopeIcon from './EnvelopeIcon.svelte'
+	import { isRedDotActive, isMessagePaneActive } from './stuff'
+	import { fly } from 'svelte/transition'
+	import { tick } from 'svelte'
+
+	const activateMessagePane = async () => {
+		await tick()
+		$isMessagePaneActive = !$isMessagePaneActive
+		$isRedDotActive = false
+	}
+</script>
+
+<button
+	data-test-id="header-messages-menu-button"
+	aria-haspopup="true"
+	aria-expanded="false"
+	role="button"
+	on:click|stopPropagation={activateMessagePane}
+>
+	<span class="sr-only">Visa mina meddelanden</span>
+	<EnvelopeIcon />
+	<span class="dot {$isRedDotActive ? 'red-dot' : 'no-dot'}" />
+</button>
+
+<style lang="scss">
+	button {
+		position: relative;
+		height: 100%;
+		border: none;
+		background: none;
+		padding: 1rem;
+		transition: all 0.5s;
+		&:hover {
+			background: var(--mist);
+		}
+	}
+	.dot {
+		aspect-ratio: 1;
+		background: var(--red);
+		border-radius: 50%;
+		position: absolute;
+		right: 14px;
+		transform: scale(1);
+		transition: all 0.5s;
+		width: 0.5rem;
+	}
+	.no-dot {
+		transform: scale(0);
+	}
+	.red-dot {
+		animation: 1s 1 ease-out blinko;
+	}
+
+	@keyframes blinko {
+		0% {
+			transform: translate(0) scale(0);
+		}
+		50% {
+			transform: translate(2px, -4px) scale(0.5);
+		}
+		100% {
+			transform: translate(0);
+		}
+	}
+</style>
