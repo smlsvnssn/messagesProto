@@ -15,9 +15,13 @@
 	nav {
 		max-height: calc(100dvh - 9.375rem);
 		overflow-y: auto;
+		flex: 0 1 37%;
+
+		@media (max-width: 800px) {
+			flex: 0 1 50%;
+		}
 	}
 	ul {
-		max-width: 28rem;
 		margin: 0 !important;
 		padding: 0 !important;
 		display: flex;

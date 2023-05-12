@@ -11,7 +11,7 @@
 		>
 		<nav class="n-header-wrapper" aria-label="Sidhuvud" role="navigation">
 			<ul class="navbar-nav nav">
-				<li class="nav-item" style="display: none;">
+				<li class="nav-item meny">
 					<button
 						class="nav-link n-header-toggle"
 						type="button"
@@ -106,5 +106,20 @@
 <style lang="scss">
 	.navbar {
 		top: 0 !important;
+	}
+	.meny {
+		display: none;
+	}
+	@media (max-width: 800px) {
+		.meny {
+			display: block;
+		}
+		.n-header-logo-type-img,
+		.n-header-user-name.lg {
+			display: none;
+		}
+		body {
+			line-height: 1.4;
+		}
 	}
 </style>

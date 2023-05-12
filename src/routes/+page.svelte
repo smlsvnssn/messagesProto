@@ -49,6 +49,9 @@
 		aside {
 			flex: 0 1 260px;
 			background: var(--blue);
+			@media (max-width: 800px) {
+				display: none;
+			}
 		}
 
 		article {

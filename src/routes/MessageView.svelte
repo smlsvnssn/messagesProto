@@ -1,10 +1,17 @@
 <script>
 	import Mailbox from './MailboxIcon.svelte'
+	import { isMessageActive, activeMessageId } from './stuff'
 
 	export let message
+
+	const setAsInactive = () => {
+		$isMessageActive = false
+		$activeMessageId = -1
+	}
 </script>
 
 <article class:hasMessage={message}>
+	<button class="smallScreenBack" on:click={setAsInactive}>Tillbaka</button>
 	{#if message}
 		<header>
 			{#if message.category}
@@ -42,6 +49,15 @@
 		position: relative;
 		max-height: calc(100dvh - 9.375rem);
 		overflow-y: auto;
+
+		@media (max-width: 800px) {
+			padding: 1.5rem;
+		}
+		@media (min-width: 800px) {
+			.smallScreenBack {
+				display: none;
+			}
+		}
 
 		&.hasMessage {
 			header {

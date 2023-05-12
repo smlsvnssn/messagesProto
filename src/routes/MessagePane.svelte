@@ -2,7 +2,12 @@
 	import MessageView from './MessageView.svelte'
 	import MessageList from './MessageList.svelte'
 	import MessageActions from './MessageActions.svelte'
-	import { messages, isMessagePaneActive, activeMessageId } from './stuff'
+	import {
+		messages,
+		isMessagePaneActive,
+		activeMessageId,
+		isMessageActive,
+	} from './stuff'
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
 	import { clickOutside } from './actions'
@@ -36,7 +41,10 @@
 						<MessageActions />
 					</ul>
 				</header>
-				<div class="messagesBody">
+				<div
+					class="messagesBody"
+					class:messageActive={$isMessageActive}
+				>
 					<MessageList />
 					<MessageView
 						message={$messages.find(m => m.id === $activeMessageId)}
@@ -111,6 +119,13 @@
 
 			.messagesBody {
 				display: flex;
+				transition: transform 0.3s;
+				@media (max-width: 800px) {
+					width: 200%;
+					&.messageActive {
+						transform: translateX(-50%);
+					}
+				}
 			}
 		}
 	}

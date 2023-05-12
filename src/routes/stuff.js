@@ -3,6 +3,7 @@ import * as ö from 'ouml'
 
 export const isRedDotActive = writable(true)
 export const isMessagePaneActive = writable(false)
+export const isMessageActive = writable(false)
 
 export const types = ö.createEnum([
 	'massMessage',
@@ -48,7 +49,7 @@ UnreadCount
 			thumbnailImage: '',
 			action: {
 				actionText: 'Gör grejen',
-				actionUrl: '/dostuff?data=12345',
+				actionUrl: '#',
 			},
 		},
 		{
@@ -132,7 +133,7 @@ UnreadCount
 			thumbnailImage: '',
 			action: {
 				actionText: 'Gör grejen',
-				actionUrl: '/dostuff?data=12345',
+				actionUrl: '#',
 			},
 		},
 		{
@@ -220,7 +221,7 @@ UnreadCount
 			thumbnailImage: '',
 			action: {
 				actionText: 'Gör grejen',
-				actionUrl: '/dostuff?data=12345',
+				actionUrl: '#',
 			},
 		},
 		{
