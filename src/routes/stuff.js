@@ -225,4 +225,5 @@ UnreadCount
 	],
 )
 
-export const activeMessageId = writable(get(messages)[0].id)
+//export const activeMessageId = writable(get(messages)[0].id)
+export const activeMessageId = writable(-1)
