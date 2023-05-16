@@ -1,13 +1,21 @@
 <script>
+	import ImportantMessagesNotice from './ImportantMessagesNotice.svelte'
+
 	import MessagePane from './MessagePane.svelte'
 	import Header from './Header.svelte'
-	import { isMessagePaneActive, isSmallWindow } from './stuff'
+	import {
+		isMessagePaneActive,
+		isSmallWindow,
+		isRedDotActive,
+		messages,
+	} from './stuff'
 	import '../style.css'
 
 	export const prerender = true
 	let innerWidth
 
 	$: $isSmallWindow = innerWidth < 800
+	$: importantMessages = $messages.filter(m => m.isImportant)
 </script>
 
 <svelte:window bind:innerWidth />
@@ -19,13 +27,24 @@
 <main class="lb4">
 	<Header />
 
+	{#if $isRedDotActive && importantMessages.length}
+		<ImportantMessagesNotice messages={importantMessages} />
+	{/if}
+
 	{#if $isMessagePaneActive}
 		<MessagePane />
 	{/if}
 
 	<div class="fejkbody">
 		<aside />
-		<article />
+		<article>
+			<p />
+			<p />
+			<p />
+			<p />
+			<p />
+			<p />
+		</article>
 	</div>
 </main>
 
@@ -61,7 +80,16 @@
 
 		article {
 			flex: 1;
+			padding: 2rem;
+			display: grid;
+			gap: 2rem;
 			background: var(--white);
+
+			p {
+				margin: 0%;
+				background: var(--tint);
+				border-radius: 0.25rem;
+			}
 		}
 	}
 </style>

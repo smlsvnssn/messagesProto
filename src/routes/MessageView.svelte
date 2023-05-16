@@ -1,21 +1,18 @@
 <script>
 	import Mailbox from './MailboxIcon.svelte'
-	import { activeMessageId } from './stuff'
 
 	export let message
-
-	const setAsInactive = () => ($activeMessageId = -1)
 </script>
 
 <article class:hasMessage={message}>
-	<!-- TODO snygga till -->
-	<button class="smallScreenBack" on:click={setAsInactive}>Tillbaka</button>
 	{#if message}
 		<header>
 			{#if message.category}
 				<h6 class="category">{message.category}</h6>
 			{/if}
-			<span class="header">{message.header}</span>
+			<span class="header"
+				>{message.header.replace(/(<([^>]+)>)/gi, '')}</span
+			>
 			<time>
 				{new Date(+message.dateSent).toLocaleDateString('sv-SE', {
 					month: 'short',

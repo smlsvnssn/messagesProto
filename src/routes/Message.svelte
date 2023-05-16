@@ -54,7 +54,7 @@
 				<span class="thread">{message.cases.length}</span>
 			{/if}
 		</p>
-		<p class="header">{message.header}</p>
+		<p class="header">{message.header.replace(/(<([^>]+)>)/gi, '')}</p>
 		<p>{message.content.replace(/(<([^>]+)>)/gi, '')}</p>
 		{#if message.action}
 			<a class="action" href={message.action.actionUrl} alt="dunno"

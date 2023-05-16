@@ -14,9 +14,11 @@
 
 	const hidePane = () => ($isMessagePaneActive = false)
 
+	const setAsInactive = () => ($activeMessageId = -1)
+
 	$: unread = $messages.filter(m => !m.isRead).length
 
-	$: arrowXpos = `--x:${$isSmallWindow ? 11 : 15.25}rem;`
+	$: arrowXpos = `--x:${$isSmallWindow ? 11 : 15.125}rem;`
 </script>
 
 <div class="background" transition:fade={{ duration: 200 }}>
@@ -31,13 +33,38 @@
 					<ul>
 						<li>
 							<h4>
-								Dina meddelanden
-								<h6>
-									{unread || ''}
-									{#if unread}
-										Oläst{unread > 1 ? 'a' : ''}
-									{/if}
-								</h6>
+								{#if $isSmallWindow && $activeMessageId > -1}
+									<!-- TODO snygga till -->
+									<a
+										href="#"
+										class="smallScreenBack"
+										on:click|stopPropagation={setAsInactive}
+									>
+										<svg
+											width="24"
+											height="24"
+											viewBox="0 0 24 24"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+										>
+											<path
+												fill-rule="evenodd"
+												clip-rule="evenodd"
+												d="M6.6 6L8 7.375L4.81818 10.5H22V12.5H4.81818L8 15.625L6.6 17L1 11.5L6.6 6Z"
+												fill="#005AA0"
+											/>
+										</svg>
+										Tillbaka</a
+									>
+								{:else}
+									Dina meddelanden
+									<h6>
+										{unread || ''}
+										{#if unread}
+											Oläst{unread > 1 ? 'a' : ''}
+										{/if}
+									</h6>
+								{/if}
 							</h4>
 						</li>
 						<MessageActions />
@@ -79,7 +106,7 @@
 			background: var(--white);
 			border-radius: 4px;
 			overflow: hidden;
-			max-height: calc(100dvh - --headerHeight - 1rem);
+			max-height: calc(100dvh - var(--headerHeight) - 1rem);
 
 			.messagesHeader {
 				--x: 0;
@@ -93,8 +120,8 @@
 					border-width: 0 0.5rem 1rem 0.5rem;
 					border-color: transparent transparent var(--white)
 						transparent;
-					position: fixed;
-					top: -1rem;
+					position: absolute;
+					top: -0.875rem;
 					right: var(--x);
 				}
 
@@ -115,6 +142,9 @@
 						h6 {
 							margin-left: 0.25rem;
 							display: inline;
+						}
+						a {
+							text-align: baseline;
 						}
 					}
 				}
