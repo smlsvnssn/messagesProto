@@ -1,11 +1,16 @@
 <script>
 	import MessagePane from './MessagePane.svelte'
 	import Header from './Header.svelte'
-	import { isMessagePaneActive } from './stuff'
+	import { isMessagePaneActive, isSmallWindow } from './stuff'
 	import '../style.css'
 
 	export const prerender = true
+	let innerWidth
+
+	$: $isSmallWindow = innerWidth < 800
 </script>
+
+<svelte:window bind:innerWidth />
 
 <svelte:head>
 	<title>Messages demo</title>

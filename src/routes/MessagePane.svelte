@@ -6,7 +6,7 @@
 		messages,
 		isMessagePaneActive,
 		activeMessageId,
-		isMessageActive,
+		isSmallWindow,
 	} from './stuff'
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
@@ -15,6 +15,8 @@
 	const hidePane = () => ($isMessagePaneActive = false)
 
 	$: unread = $messages.filter(m => !m.isRead).length
+
+	$: arrowXpos = `--x:${$isSmallWindow ? 11 : 15.25}rem;`
 </script>
 
 <div class="background" transition:fade={{ duration: 200 }}>
@@ -25,7 +27,7 @@
 			out:fly={{ y: -200, duration: 200, easing: sineOut }}
 		>
 			<div class="content" use:clickOutside on:clickoutside={hidePane}>
-				<header class="messagesHeader">
+				<header class="messagesHeader" style={arrowXpos}>
 					<ul>
 						<li>
 							<h4>
@@ -43,7 +45,7 @@
 				</header>
 				<div
 					class="messagesBody"
-					class:messageActive={$isMessageActive}
+					class:messageActive={$activeMessageId > -1}
 				>
 					<MessageList />
 					<MessageView
@@ -80,6 +82,7 @@
 			max-height: calc(100dvh - --headerHeight - 1rem);
 
 			.messagesHeader {
+				--x: 0;
 				box-shadow: 0 4px 4px rgba(34, 34, 34, 0.05);
 				&:before {
 					// arrow
@@ -90,9 +93,9 @@
 					border-width: 0 0.5rem 1rem 0.5rem;
 					border-color: transparent transparent var(--white)
 						transparent;
-					position: absolute;
+					position: fixed;
 					top: -1rem;
-					right: 15.1rem;
+					right: var(--x);
 				}
 
 				ul {

@@ -1,15 +1,14 @@
 <script>
 	import MessageIcon from './MessageIcon.svelte'
-	import { messages, activeMessageId, isMessageActive } from './stuff'
+	import { messages, activeMessageId } from './stuff'
 
 	export let message
 
 	const setAsActive = () => {
 		$activeMessageId = $activeMessageId === message.id ? -1 : message.id
-		$messages.find(m => m.id === $activeMessageId).isRead = true
+		if ($activeMessageId > -1)
+			$messages.find(m => m.id === $activeMessageId).isRead = true
 		$messages = $messages //to refresh store
-
-		$isMessageActive = true
 	}
 </script>
 

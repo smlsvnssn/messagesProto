@@ -1,16 +1,14 @@
 <script>
 	import Mailbox from './MailboxIcon.svelte'
-	import { isMessageActive, activeMessageId } from './stuff'
+	import { activeMessageId } from './stuff'
 
 	export let message
 
-	const setAsInactive = () => {
-		$isMessageActive = false
-		$activeMessageId = -1
-	}
+	const setAsInactive = () => ($activeMessageId = -1)
 </script>
 
 <article class:hasMessage={message}>
+	<!-- TODO snygga till -->
 	<button class="smallScreenBack" on:click={setAsInactive}>Tillbaka</button>
 	{#if message}
 		<header>
@@ -33,8 +31,9 @@
 			<a
 				href={message.action.actionUrl}
 				class="action btn btn-primary btn-sm-block"
-				>{message.action.actionText}</a
 			>
+				{message.action.actionText}
+			</a>
 		{/if}
 	{:else}
 		<Mailbox />
