@@ -1,6 +1,5 @@
 <script>
 	import ImportantMessagesNotice from './ImportantMessagesNotice.svelte'
-
 	import MessagePane from './MessagePane.svelte'
 	import Header from './Header.svelte'
 	import {
