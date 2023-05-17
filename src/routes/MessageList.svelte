@@ -26,7 +26,6 @@
 </script>
 
 <nav>
-	{activeFilter}
 	<div
 		class="btn-group btn-group-stretch"
 		name="button-group"

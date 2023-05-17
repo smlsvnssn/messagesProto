@@ -15,7 +15,7 @@
 <li
 	class:unread={!message.isRead}
 	class:active={message.id == $activeMessageId}
-	on:click={setAsActive}
+	on:click|stopPropagation={setAsActive}
 	on:keypress
 >
 	<MessageIcon {message} />

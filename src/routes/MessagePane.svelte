@@ -153,6 +153,7 @@
 			.messagesBody {
 				display: flex;
 				transition: transform 0.3s;
+				min-height: 30rem;
 				@media (max-width: 800px) {
 					width: 200%;
 					&.messageActive {

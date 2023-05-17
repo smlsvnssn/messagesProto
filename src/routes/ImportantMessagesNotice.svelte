@@ -6,7 +6,6 @@
 	import { onMount } from 'svelte'
 
 	export let messages
-
 	export let isVisible = false
 
 	const hidePane = () => (isVisible = false)
@@ -37,9 +36,9 @@
 							{@html messages[0].header}
 						</p>
 						{#if messages[0].action}
-							<a href="#" class="btn btn-secondary btn-sm-block"
-								>{messages[0].action.actionText}</a
-							>
+							<a href="#" class="btn btn-secondary btn-sm-block">
+								{messages[0].action.actionText}
+							</a>
 						{/if}
 					{:else}
 						<p>
