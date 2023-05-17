@@ -2,8 +2,7 @@
 	import Message from './Message.svelte'
 	import { messages, types } from './stuff'
 
-	let filteredMessages = $messages
-
+	let filteredMessages
 	let filters = ['Alla', 'Olästa', 'Personliga']
 	let activeFilter = filters[0]
 
@@ -26,13 +25,7 @@
 </script>
 
 <nav>
-	<div
-		class="btn-group btn-group-stretch"
-		name="button-group"
-		role="group"
-		aria-label="Basic example"
-		data-bs-toggle="buttons"
-	>
+	<div class="btn-group btn-group-stretch">
 		{#each filters as filter}
 			<label class="btn" class:active={filter === activeFilter}>
 				<input

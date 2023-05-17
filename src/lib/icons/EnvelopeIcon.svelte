@@ -1,5 +1,5 @@
 <script>
-	import { isRedDotActive } from './stuff'
+	import { isRedDotActive } from '../../routes/stuff'
 </script>
 
 <svg

@@ -1,4 +1,6 @@
 <script>
+	import ArrowLeftIcon from '../lib/icons/ArrowLeftIcon.svelte'
+
 	import MessageView from './MessageView.svelte'
 	import MessageList from './MessageList.svelte'
 	import MessageActions from './MessageActions.svelte'
@@ -40,22 +42,9 @@
 										class="smallScreenBack"
 										on:click|stopPropagation={setAsInactive}
 									>
-										<svg
-											width="24"
-											height="24"
-											viewBox="0 0 24 24"
-											fill="none"
-											xmlns="http://www.w3.org/2000/svg"
-										>
-											<path
-												fill-rule="evenodd"
-												clip-rule="evenodd"
-												d="M6.6 6L8 7.375L4.81818 10.5H22V12.5H4.81818L8 15.625L6.6 17L1 11.5L6.6 6Z"
-												fill="#005AA0"
-											/>
-										</svg>
-										Tillbaka</a
-									>
+										<ArrowLeftIcon />
+										Tillbaka
+									</a>
 								{:else}
 									Dina meddelanden
 									<h6>

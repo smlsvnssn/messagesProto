@@ -1,5 +1,5 @@
 <script>
-	import Mailbox from './MailboxIcon.svelte'
+	import Mailbox from '$lib/icons/MailboxIcon.svelte'
 
 	export let message
 </script>

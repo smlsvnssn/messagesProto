@@ -1,5 +1,5 @@
 <script>
-	import MessagePaneIcon from './MessagePaneIcon.svelte'
+	import MessagePaneButton from './MessagePaneButton.svelte'
 	import { isRedDotActive } from './stuff'
 </script>
 
@@ -42,7 +42,7 @@
 				</li>
 				<li class="layout-grow">
 					<ul class="reset-list layout-flex justify-content-end">
-						<li class="nav-item"><MessagePaneIcon /></li>
+						<li class="nav-item"><MessagePaneButton /></li>
 					</ul>
 				</li>
 				<li class="">

@@ -1,5 +1,5 @@
 <script>
-	import EnvelopeIcon from './EnvelopeIcon.svelte'
+	import EnvelopeIcon from '$lib/icons/EnvelopeIcon.svelte'
 	import { isRedDotActive, isMessagePaneActive } from './stuff'
 
 	const activateMessagePane = async () => {
