@@ -1,11 +1,53 @@
 <script>
 	import Message from './Message.svelte'
-	import { messages } from './stuff'
+	import { messages, types } from './stuff'
+
+	let filteredMessages = $messages
+
+	let filters = ['Alla', 'Olästa', 'Personliga']
+	let activeFilter = filters[0]
+
+	$: {
+		switch (activeFilter) {
+			case 'Olästa':
+				filteredMessages = $messages.filter(m => !m.isRead)
+				break
+			case 'Personliga':
+				filteredMessages = $messages.filter(
+					m => m.type === types.secureMessage,
+				)
+				break
+
+			default:
+				filteredMessages = [...$messages]
+				break
+		}
+	}
 </script>
 
 <nav>
+	{activeFilter}
+	<div
+		class="btn-group btn-group-stretch"
+		name="button-group"
+		role="group"
+		aria-label="Basic example"
+		data-bs-toggle="buttons"
+	>
+		{#each filters as filter}
+			<label class="btn" class:active={filter === activeFilter}>
+				<input
+					type="radio"
+					bind:group={activeFilter}
+					name="filters"
+					value={filter}
+				/>
+				{filter}
+			</label>
+		{/each}
+	</div>
 	<ul>
-		{#each $messages as message (message.id)}
+		{#each filteredMessages as message (message.id)}
 			<Message {message} />
 		{/each}
 	</ul>
@@ -20,6 +62,9 @@
 		@media (max-width: 800px) {
 			flex: 0 1 50%;
 		}
+	}
+	label {
+		font-size: 0.875rem !important;
 	}
 	ul {
 		margin: 0 !important;
