@@ -37,9 +37,7 @@
 							{@html messages[0].header}
 						</p>
 						{#if messages[0].action}
-							<a
-								href="#"
-								class="btn btn-sm btn-secondary btn-sm-block"
+							<a href="#" class="btn btn-secondary btn-sm-block"
 								>{messages[0].action.actionText}</a
 							>
 						{/if}
@@ -51,7 +49,7 @@
 						<a
 							href="#"
 							on:click|stopPropagation={showMessagePane}
-							class="btn btn-sm btn-secondary btn-sm-block"
+							class="btn btn-secondary"
 						>
 							Läs meddelanden
 						</a>
@@ -123,8 +121,8 @@
 				}
 
 				p {
-					color: var(--gray);
-					font-size: 0.875rem;
+					//color: var(--gray);
+					//font-size: 0.875rem;
 					margin-bottom: 0;
 				}
 				.importante {

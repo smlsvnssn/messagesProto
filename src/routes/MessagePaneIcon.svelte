@@ -41,6 +41,7 @@
 		transform: scale(1);
 		transition: all 0.5s;
 		width: 0.5rem;
+		//border: 2px solid var(--white);
 	}
 	.no-dot {
 		transform: scale(0);
