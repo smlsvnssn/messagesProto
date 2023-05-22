@@ -7,7 +7,7 @@
 		isSmallWindow,
 		isRedDotActive,
 		messages,
-	} from './stuff'
+	} from './globals'
 	import '../style.css'
 
 	export const prerender = true

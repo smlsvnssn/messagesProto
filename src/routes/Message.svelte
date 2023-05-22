@@ -4,7 +4,7 @@
 	import AttachmentsIcon from '../lib/icons/AttachmentsIcon.svelte'
 
 	import MessageIcon from '$lib/icons/MessageIcon.svelte'
-	import { messages, activeMessageId } from './stuff'
+	import { messages, activeMessageId } from './globals'
 
 	export let message
 
@@ -41,7 +41,7 @@
 			{/if}
 			<span class="spacer" />
 			{#if message.attachments.length}
-				<AttachmentsIcon />
+				<AttachmentsIcon inverted={message.id == $activeMessageId} />
 			{/if}
 			{#if message.cases?.length}
 				<span class="thread">{message.cases.length}</span>
@@ -97,7 +97,7 @@
 				font-size: 11px;
 				display: flex;
 				gap: 0.375rem;
-				align-items: baseline;
+				align-items: center;
 
 				h6 {
 					display: inline-block;
@@ -111,10 +111,6 @@
 					color: var(--white);
 					padding: 1px 0.5rem 0;
 					margin-bottom: 0;
-				}
-
-				svg {
-					align-self: end;
 				}
 
 				.spacer {

@@ -1,9 +1,14 @@
 <script>
-	import { isMessagePaneActive, isRedDotActive, isSmallWindow } from './stuff'
+	import {
+		isMessagePaneActive,
+		isRedDotActive,
+		isSmallWindow,
+	} from './globals'
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
 	import { clickOutside } from './actions'
 	import { onMount } from 'svelte'
+	import CloseIcon from '$lib/icons/CloseIcon.svelte'
 
 	export let messages
 	export let isVisible = false
@@ -53,6 +58,9 @@
 							Läs meddelanden
 						</a>
 					{/if}
+					<span class="close" on:click={hidePane}
+						><CloseIcon isGray={true} /></span
+					>
 				</header>
 			</div>
 		</div>
@@ -131,6 +139,19 @@
 					color: var(--white);
 					padding: 1px 0.5rem 0;
 					margin: 0;
+				}
+
+				.close {
+					position: absolute;
+					right: 0.5rem;
+					top: 0.5rem;
+					list-style: none;
+					cursor: pointer;
+					transition: transform 0.3s;
+
+					&:hover {
+						transform: scale(1.1);
+					}
 				}
 			}
 		}

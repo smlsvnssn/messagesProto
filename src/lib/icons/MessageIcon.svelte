@@ -1,5 +1,5 @@
 <script>
-	import { types } from '../../routes/stuff'
+	import { types } from '../../routes/globals'
 	export let message
 </script>
 

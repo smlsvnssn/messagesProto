@@ -1,6 +1,6 @@
 <script>
 	import MessagePaneButton from './MessagePaneButton.svelte'
-	import { isRedDotActive } from './stuff'
+	import { isRedDotActive } from './globals'
 </script>
 
 <div id="header" class="lb4">
@@ -117,9 +117,6 @@
 		.n-header-logo-type-img,
 		.n-header-user-name.lg {
 			display: none;
-		}
-		body {
-			line-height: 1.4;
 		}
 	}
 </style>

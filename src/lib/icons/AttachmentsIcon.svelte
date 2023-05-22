@@ -1,4 +1,9 @@
+<script>
+	export let inverted = false
+</script>
+
 <svg
+	class:inverted
 	width="16"
 	height="17"
 	viewBox="0 0 16 17"
@@ -10,3 +15,9 @@
 		fill="#005AA0"
 	/>
 </svg>
+
+<style>
+	.inverted path {
+		fill: var(--white);
+	}
+</style>

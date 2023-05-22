@@ -9,7 +9,7 @@
 		isMessagePaneActive,
 		activeMessageId,
 		isSmallWindow,
-	} from './stuff'
+	} from './globals'
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
 	import { clickOutside } from './actions'
