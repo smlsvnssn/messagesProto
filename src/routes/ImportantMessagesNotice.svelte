@@ -3,6 +3,7 @@
 		isMessagePaneActive,
 		isRedDotActive,
 		isSmallWindow,
+		activeMessageId,
 	} from './globals'
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
@@ -18,6 +19,7 @@
 	const showMessagePane = () => {
 		$isMessagePaneActive = true
 		$isRedDotActive = false
+		$activeMessageId = messages.find(m => m.isImportant).id
 		hidePane()
 	}
 

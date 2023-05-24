@@ -1,10 +1,13 @@
 <script>
+	import NewMessage from './NewMessage.svelte'
+
 	import Mailbox from '$lib/icons/MailboxIcon.svelte'
+	import { isNewMessageActive } from './globals'
 
 	export let message
 </script>
 
-<article class:hasMessage={message}>
+<article class:hasMessage={message || $isNewMessageActive}>
 	{#if message}
 		<header>
 			{#if message.category}
@@ -32,6 +35,8 @@
 				{message.action.actionText}
 			</a>
 		{/if}
+	{:else if $isNewMessageActive}
+		<NewMessage />
 	{:else}
 		<Mailbox />
 	{/if}
