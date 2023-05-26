@@ -35,7 +35,7 @@
 					<ul>
 						<li>
 							<h4>
-								{#if $isSmallWindow && $activeMessageId > -1}
+								{#if /* $isSmallWindow && */ $activeMessageId > -1}
 									<!-- TODO snygga till -->
 									<a
 										href="#"
@@ -80,13 +80,15 @@
 		position: absolute;
 	}
 	.marginwrapper {
-		margin: auto 1rem;
+		max-width: calc(1226px);
+		margin: auto;
+		padding-left: 1rem;
 	}
 	.messagePane {
 		--headerHeight: 3.75rem;
-		max-width: calc(1226px - 2rem);
+		max-width: calc(32rem);
 
-		margin: 1rem auto;
+		margin: 1rem 1rem 1rem auto;
 
 		filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.1))
 			drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.1));
@@ -143,12 +145,12 @@
 				display: flex;
 				transition: transform 0.3s;
 				min-height: 30rem;
-				@media (max-width: 800px) {
-					width: 200%;
-					&.messageActive {
-						transform: translateX(-50%);
-					}
+				//@media (max-width: 800px) {
+				width: 200%;
+				&.messageActive {
+					transform: translateX(-50%);
 				}
+				//}
 			}
 		}
 	}

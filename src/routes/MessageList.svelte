@@ -49,9 +49,9 @@
 	nav {
 		flex: 0 1 37%;
 
-		@media (max-width: 800px) {
-			flex: 0 1 50%;
-		}
+		//@media (max-width: 800px) {
+		flex: 0 1 50%;
+		//}
 	}
 	label {
 		font-size: 0.875rem !important;
