@@ -37,7 +37,7 @@
 		>
 			<div class="content" use:clickOutside on:clickoutside={hidePane}>
 				<header class="messagesHeader" style={arrowXpos}>
-					<h6 class="importante">Viktigt</h6>
+					<h6 class="importante">Att göra</h6>
 					{#if messages.length === 1}
 						<p>
 							{@html messages[0].header}

@@ -1,8 +1,6 @@
 <script>
 	import ChevronIcon from '../lib/icons/ChevronIcon.svelte'
-
 	import AttachmentsIcon from '../lib/icons/AttachmentsIcon.svelte'
-
 	import MessageIcon from '$lib/icons/MessageIcon.svelte'
 	import { messages, activeMessageId } from './globals'
 
@@ -27,7 +25,7 @@
 	<div class="content">
 		<p class="metadata">
 			{#if message.isImportant}
-				<h6 class="importante">Viktigt</h6>
+				<h6 class="importante">Att göra</h6>
 			{/if}
 			<date>
 				{new Date(+message.dateSent).toLocaleDateString('sv-SE', {

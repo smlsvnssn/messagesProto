@@ -1,3 +1,7 @@
+<script>
+	import { isNewMessageActive } from '../../routes/globals'
+</script>
+
 <div>
 	<svg
 		width="58"
@@ -16,7 +20,11 @@
 		direkt till oss, genom att skriva ett meddelande.
 	</p>
 
-	<button type="submit" class="btn btn-secondary btn-sm-block">
+	<button
+		type="submit"
+		class="btn btn-secondary btn-sm-block"
+		on:click|stopPropagation={() => ($isNewMessageActive = true)}
+	>
 		<svg class="icon align-bottom" width="24" height="24">
 			<use href="/assets/icons/24/icons.svg#pencil-24" />
 		</svg>

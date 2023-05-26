@@ -1,16 +1,47 @@
 <script>
+	import { onDestroy, onMount } from 'svelte'
+	import * as ö from 'ouml'
+	import { isNewMessageActive, messages, types } from './globals'
+
 	let options = ['Bank', 'Försäkring', 'Pension']
-	let activeOption = options[0]
 
-	let subject = 'bobo'
-	let body = 'bibi'
-
-	export const snapshot = {
-		capture: () => {
-			activeOption, subject, body
-		},
-		restore: value => ({ activeOption, subject, body } = value),
+	const newMessageTemplate = {
+		activeOption: options[0],
+		subject: '',
+		body: '',
 	}
+
+	let newMessage = newMessageTemplate
+
+	const clearMessage = () => {
+		newMessage = newMessageTemplate
+		ö.setLocal('newMessage', null)
+		$isNewMessageActive = false
+	}
+
+	const sendMessage = () => {
+		$messages = [
+			{
+				id: Math.random(),
+				dateSent: Date.now(),
+				header: newMessage.subject,
+				content: newMessage.body,
+				type: types.secureMessage,
+				isImportant: false,
+				isRead: true,
+				tags: ['dodo'],
+				cases: ['answer', 'reply'],
+				attachments: ['biff.pdf', 'boff.xls'],
+				thumbnailImage: '',
+			},
+			...$messages,
+		]
+		clearMessage()
+	}
+
+	onMount(() => (newMessage = ö.getLocal('newMessage') || newMessageTemplate))
+
+	onDestroy(() => ö.setLocal('newMessage', newMessage))
 </script>
 
 <header><h4>Skriv ett nytt meddelande till oss</h4></header>
@@ -18,10 +49,13 @@
 	<label for="validationCustom01">Vad handlar ditt meddelande om?</label>
 	<div class="btn-group btn-group-stretch">
 		{#each options as option}
-			<label class="btn" class:active={option === activeOption}>
+			<label
+				class="btn"
+				class:active={option === newMessage.activeOption}
+			>
 				<input
 					type="radio"
-					bind:group={activeOption}
+					bind:group={newMessage.activeOption}
 					name="filters"
 					value={option}
 				/>
@@ -40,7 +74,7 @@
 		id="exampleInputEmail1"
 		aria-describedby="emailHelp1"
 		placeholder=""
-		bind:value={subject}
+		bind:value={newMessage.subject}
 	/>
 </div>
 
@@ -51,7 +85,7 @@
 		required=""
 		id="exampleTextarea"
 		rows="10"
-		bind:value={body}
+		bind:value={newMessage.body}
 	/>
 </div>
 
@@ -86,8 +120,13 @@
 <hr />
 
 <div class="exits">
-	<a href="#">Avbryt</a>
-	<a href="#" type="button" class="btn btn-primary btn-sm-block">Skicka</a>
+	<a href="#" on:click|stopPropagation={clearMessage}>Avbryt</a>
+	<a
+		href="#"
+		on:click|stopPropagation={sendMessage}
+		type="button"
+		class="btn btn-primary btn-sm-block">Skicka</a
+	>
 </div>
 
 <style lang="scss">
