@@ -1,6 +1,5 @@
 <script>
 	import ArrowLeftIcon from '../lib/icons/ArrowLeftIcon.svelte'
-
 	import MessageView from './MessageView.svelte'
 	import MessageList from './MessageList.svelte'
 	import MessageActions from './MessageActions.svelte'
