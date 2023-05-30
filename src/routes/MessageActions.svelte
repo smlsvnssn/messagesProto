@@ -4,12 +4,7 @@
 	import NewMessageIcon from '../lib/icons/NewMessageIcon.svelte'
 	import FingerIcon from '../lib/icons/FingerIcon.svelte'
 	import TrashIcon from '../lib/icons/TrashIcon.svelte'
-	import {
-		activeMessageId,
-		isMessagePaneActive,
-		isNewMessageActive,
-		messages,
-	} from './globals'
+	import { activeMessageId, isMessagePaneActive, messages } from './globals'
 
 	const closeMessagePane = () => ($isMessagePaneActive = false)
 
@@ -19,12 +14,11 @@
 	}
 
 	const showNewMessage = () => {
-		$isNewMessageActive = true
-		$activeMessageId = -1
+		$activeMessageId = -0.5 // TODO: fix hack, should use its own var
 	}
 </script>
 
-{#if $activeMessageId > -1}
+{#if $activeMessageId >= 0}
 	<li on:click|stopPropagation={deleteMessage}>
 		<TrashIcon />
 	</li>
@@ -32,9 +26,11 @@
 		<FingerIcon />
 	</li>
 {/if}
-<li on:click|stopPropagation={showNewMessage}>
-	<NewMessageIcon />
-</li>
+{#if $activeMessageId !== -0.5}
+	<li on:click|stopPropagation={showNewMessage}>
+		<NewMessageIcon />
+	</li>
+{/if}
 <li>
 	<SettingsIcon />
 </li>

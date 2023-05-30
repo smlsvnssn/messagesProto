@@ -118,7 +118,17 @@
 				/>
 			</svg>
 		{:else}
-			?
+			<svg
+				aria-hidden="true"
+				class="s-Cmt25qOMERl7"
+				focusable="false"
+				width="20"
+				height="20"
+				><use
+					xlink:href="/assets/icons/20/icons.svg#user-20"
+					class="s-Cmt25qOMERl7"
+				/></svg
+			>
 		{/if}
 	</div>
 </div>
@@ -135,7 +145,8 @@
 			display: grid;
 			align-items: center;
 			justify-items: center;
-
+			fill: currentColor;
+			color: var(--navy);
 			overflow: hidden;
 
 			background: var(--white);

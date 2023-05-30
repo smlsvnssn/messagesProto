@@ -7,6 +7,7 @@
 		isSmallWindow,
 		isRedDotActive,
 		messages,
+		activeMessageId,
 	} from './globals'
 	import '../style.css'
 
@@ -25,6 +26,9 @@
 
 <main class="lb4">
 	<Header />
+
+	<!-- Debug stuff -->
+	<!-- {$activeMessageId} -->
 
 	{#if $isRedDotActive && importantMessages.length}
 		<ImportantMessagesNotice messages={importantMessages} />

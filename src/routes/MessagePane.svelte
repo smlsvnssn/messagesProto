@@ -96,7 +96,7 @@
 			background: var(--white);
 			border-radius: 4px;
 			overflow: hidden;
-			max-height: calc(100dvh - var(--headerHeight) - 1rem);
+			max-height: calc(100mvh - var(--headerHeight) - 1rem);
 
 			.messagesHeader {
 				--x: 0;
@@ -119,7 +119,7 @@
 					margin: 0%;
 					padding: 1rem;
 					display: flex;
-					gap: 1rem;
+					gap: 0.75rem;
 
 					li {
 						&:first-child {
@@ -128,6 +128,9 @@
 						list-style: none;
 						h4 {
 							margin-bottom: 0;
+							@media (max-width: 800px) {
+								font-size: 1.125rem;
+							}
 						}
 						h6 {
 							margin-left: 0.25rem;

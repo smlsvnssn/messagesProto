@@ -38,15 +38,21 @@
 				<h6>{message?.category}</h6>
 			{/if}
 			<span class="spacer" />
-			{#if message.attachments.length}
+			{#if message.attachments?.length}
 				<AttachmentsIcon inverted={message.id == $activeMessageId} />
 			{/if}
-			{#if message.cases?.length}
-				<span class="thread">{message.cases.length}</span>
+			{#if Array.isArray(message.content)}
+				<span class="thread">{message.content.length}</span>
 			{/if}
 		</p>
 		<p class="header">{message.header.replace(/(<([^>]+)>)/gi, '')}</p>
-		<p>{message.content.replace(/(<([^>]+)>)/gi, '')}</p>
+		<p>
+			{#if Array.isArray(message.content)}
+				{message.content[0].content.replace(/(<([^>]+)>)/gi, '')}
+			{:else}
+				{message.content.replace(/(<([^>]+)>)/gi, '')}
+			{/if}
+		</p>
 		{#if message.action}
 			<a class="action" href={message.action.actionUrl} alt="dunno"
 				>{message.action.actionText}</a
@@ -73,6 +79,7 @@
 		&:not(.unread) .content .metadata .importante {
 			background: var(--silver);
 			color: var(--white);
+			text-decoration: line-through;
 		}
 
 		.content {
@@ -105,7 +112,7 @@
 				.importante {
 					display: inline-block;
 					border-radius: 3rem;
-					background: var(--wine);
+					background: var(--blue);
 					color: var(--white);
 					padding: 1px 0.5rem 0;
 					margin-bottom: 0;

@@ -4,8 +4,6 @@ import * as ö from 'ouml'
 export const isRedDotActive = writable(true)
 export const isMessagePaneActive = writable(false)
 export const isSmallWindow = writable(null)
-export const isNewMessageActive = writable(false)
-
 export const types = ö.createEnum([
 	'massMessage',
 	'marketingMessage',
@@ -15,31 +13,72 @@ export const types = ö.createEnum([
 	'newDocument',
 ])
 export const messages = writable([
-	{
-		id: 6,
-		dateSent: '1683653834315',
-		header: 'This is a test message with all the things.',
-		content:
-			'This is the message body. It can be either a string, an HTML string, or an array of threaded messages.',
-		type: types.massMessage,
-		category: 'Erbjudande',
-		isImportant: true,
-		isRead: false,
-		tags: ['dodo'],
-		cases: ['answer', 'reply'],
-		attachments: ['biff.pdf', 'boff.xls'],
-		thumbnailImage: '',
-		action: {
-			actionResolveBefore: '1683653834315',
-			actionText: 'Gör grejen',
-			actionUrl: '#',
-		},
-	},
+	// {
+	// 	id: 6,
+	// 	dateSent: '1683653834315',
+	// 	header: 'This is a test message with all the things.',
+	// 	content:
+	// 		'This is the message body. It can be either a string, an HTML string, or an array of threaded messages.',
+	// 	type: types.massMessage,
+	// 	category: 'Erbjudande',
+	// 	isImportant: true,
+	// 	isRead: false,
+	// 	tags: ['dodo'],
+	// 	cases: ['answer', 'reply'],
+	// 	attachments: ['biff.pdf', 'boff.xls'],
+	// 	thumbnailImage: '',
+	// 	action: {
+	// 		actionResolveBefore: '1683653834315',
+	// 		actionText: 'Gör grejen',
+	// 		actionUrl: '#',
+	// 	},
+	// },
 	{
 		id: 666,
 		dateSent: '1683653834315',
-		header: 'Hej igen, logga in och testa. Det borde funka!',
-		content: 'Detta är ett trådat meddelande. Den vyn är inte här ännu.',
+		header: 'Hej banken, jag kan inte logga in!',
+		content: [
+			{
+				id: Math.random(),
+				dateSent: Date.now(),
+				content: 'Hej igen, logga in och testa. Det borde funka!',
+				type: types.massMessage,
+				isImportant: false,
+				isRead: false,
+			},
+			{
+				id: Math.random(),
+				dateSent: Date.now(),
+				content:
+					'Hej banken, jag kan fortfarande inte logga in, och jag fattar inte vad ni menar!',
+				type: '',
+				isImportant: false,
+				isRead: false,
+			},
+			{
+				id: Math.random(),
+				dateSent: Date.now(),
+				content: `
+				<p><span>Lörem ipsum nor desinar.</span> Epilödenade nysm. Anare gyliga i minar megaber song dism. Susam närvaropeng, eller tetugigt plus kron fihörat i mobildagis tunynade. Ol sesa, i mikrose direktare dihoska. Vosam plabel krod rös nepp dorungen i haffa. </p><p>Sars kabelt van nysare prese medan föheten päbel deskemi i fisa. Nylig nirad kawaii ovobenat anasörad us, töbolig att pronar. Maseligt nen, det vill säga soröras otrohetsdejting att nynera sor. Plaprenat omiktig homor. Reade alkobom pädir, misk alltså tirar och monon nyck förutom reras dininas arade. Rerat paduk, jag kvasirade rede sena sökäsa medan otelig, dial, timäs grexit. </p><p>Polytion hölig il därför att tenining då prosinaskapet. Pseudokäna segisk vosade. Hunde jätibelt rölase, än nysa öna. Iren hexatevis käkang rurar vir receptmotionär. Dor semilingar seda pretul till degisk, kas, prekrosk mukbang, nons sapress. Euror kaska utom giniment lör mide kvasibore tösor telede: prengen. </p>
+
+				<p><span>Lörem ipsum såvana synel</span> ysk: ontometer wiki jinde så dådån: benade i pupp utan interaktiv skrivtavla. Ryska bes funs. Tånende kavaheten digifysisk dor exorar i kolig. Grindstad prende, postvalens kvasiplastisk maska tiling kott som telöck, beskade plapiliga. Kirat dial det vill säga suprask binat on. Monosat dipusat ontovision belogi tivis kronysa sesamma nenera. </p><p>Orade decisönera ist i önat pobelt klimatångest i fulbryt trajas jäv i ljudöra. Guskapet tetrana nyr om benat i trigisk pynisk matnationalism om ultragisk. Barriärvård sitskate, supraskap vok pseudol i framåtlutad. Diarelig diliga sperad geovåjårat. Klustersmitta gigagunde, oligen, terrapatologi. Dådång geonar som semisat assa våssa nysade sana, lasafavis att realekare. </p><p>Nis ibelt sona plana att oning mobilvirus i plaligen ditålig. Ifan går lageska hexasade vir. Nerat menskopp och metrotik. Keltisk tiger avinvestera jibel makroskap, trel fastän klimathot i diskap. Seprenat stenogera inte sadott i varat nyhet dihet för att dekalyssa. Vådoheten nejäfaska, jobbtorg. </p>
+
+			`,
+				type: types.massMessage,
+				isImportant: false,
+				isRead: false,
+				attachments: ['biff.pdf', 'boff.xls'],
+			},
+			{
+				id: Math.random(),
+				dateSent: Date.now(),
+				content: 'Hej banken, jag kan inte logga in!',
+				type: '',
+				isImportant: false,
+				isRead: false,
+				attachments: ['biff.pdf', 'boff.xls'],
+			},
+		],
 		type: types.secureMessage,
 		category: '',
 		isImportant: false,

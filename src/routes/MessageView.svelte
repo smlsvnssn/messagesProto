@@ -1,15 +1,17 @@
 <script>
+	import ThreadedMessageView from './ThreadedMessageView.svelte'
 	import NewMessage from './NewMessage.svelte'
-
 	import Mailbox from '$lib/icons/MailboxIcon.svelte'
-	import { isNewMessageActive } from './globals'
+	import { activeMessageId } from './globals'
 
 	export let message
 </script>
 
-<article class:hasMessage={message || $isNewMessageActive}>
-	{#if message}
-		<header>
+<article class:hasMessage={$activeMessageId > -1}>
+	{#if $activeMessageId === -0.5}
+		<NewMessage />
+	{:else if message}
+		<header class:isThreaded={typeof message.content !== 'string'}>
 			{#if message.category}
 				<h6 class="category">{message.category}</h6>
 			{/if}
@@ -25,7 +27,17 @@
 				})}
 			</time>
 		</header>
-		{@html message.content}
+
+		{#if typeof message.content === 'string'}
+			{@html message.content}
+		{:else if message.content.length}
+			<ThreadedMessageView
+				threadedMessages={message.content}
+				id={message.id}
+			/>
+		{:else}
+			Oopsies! Det finns inget att se här.
+		{/if}
 
 		{#if message.action}
 			<a
@@ -35,8 +47,6 @@
 				{message.action.actionText}
 			</a>
 		{/if}
-	{:else if $isNewMessageActive}
-		<NewMessage />
 	{:else}
 		<Mailbox />
 	{/if}
@@ -46,7 +56,7 @@
 	article {
 		flex: 1;
 		background: var(--tint);
-		padding: 3.5rem;
+		padding: 2.5rem;
 		position: relative;
 		max-height: calc(100dvh - 9.375rem);
 		overflow-y: auto;
@@ -66,8 +76,12 @@
 				align-items: baseline;
 				gap: 0.5rem;
 				padding-bottom: 0.5rem;
-				margin-bottom: 2rem;
+				margin-bottom: 1.5rem;
 				border-bottom: 1px solid var(--shadow);
+
+				&.isThreaded {
+					margin-bottom: 0;
+				}
 				.category {
 					display: inline;
 				}

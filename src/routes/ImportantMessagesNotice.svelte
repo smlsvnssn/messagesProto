@@ -19,8 +19,27 @@
 	const showMessagePane = () => {
 		$isMessagePaneActive = true
 		$isRedDotActive = false
-		$activeMessageId = messages.find(m => m.isImportant).id
+		//$activeMessageId = messages.find(m => m.isImportant).id
 		hidePane()
+	}
+
+	const svenskify = n => {
+		const t = [
+			'noll',
+			'ett',
+			'två',
+			'tre',
+			'fyra',
+			'fem',
+			'sex',
+			'sju',
+			'åtta',
+			'nio',
+			'tio',
+			'elva',
+			'tolv',
+		]
+		return n >= 0 && n < t.length ? t[n] : n
 	}
 
 	onMount(() => (isVisible = true))
@@ -49,8 +68,8 @@
 						{/if}
 					{:else}
 						<p>
-							Du har {messages.length} viktiga meddelanden som du måste
-							agera på innan <b>3:e juni</b>.
+							Du har {svenskify(messages.length)} meddelanden som du
+							behöver agera på innan <b>3:e juni</b>.
 						</p>
 						<a
 							href="#"
@@ -137,7 +156,7 @@
 				.importante {
 					display: inline-block;
 					border-radius: 3rem;
-					background: var(--wine);
+					background: var(--blue);
 					color: var(--white);
 					padding: 1px 0.5rem 0;
 					margin: 0;

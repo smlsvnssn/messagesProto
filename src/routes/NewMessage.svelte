@@ -1,7 +1,7 @@
 <script>
 	import { onDestroy, onMount } from 'svelte'
 	import * as ö from 'ouml'
-	import { isNewMessageActive, messages, types } from './globals'
+	import { messages, types, activeMessageId } from './globals'
 
 	let options = ['Bank', 'Försäkring', 'Pension']
 
@@ -16,7 +16,7 @@
 	const clearMessage = () => {
 		newMessage = newMessageTemplate
 		ö.setLocal('newMessage', null)
-		$isNewMessageActive = false
+		$activeMessageId = -1
 	}
 
 	const sendMessage = () => {
@@ -25,22 +25,31 @@
 				id: Math.random(),
 				dateSent: Date.now(),
 				header: newMessage.subject,
-				content: newMessage.body,
+				content: [
+					{
+						id: Math.random(),
+						dateSent: Date.now(),
+						content: newMessage.body,
+						type: '',
+						isImportant: false,
+						isRead: false,
+					},
+				],
 				type: types.secureMessage,
 				isImportant: false,
 				isRead: true,
-				tags: ['dodo'],
-				cases: ['answer', 'reply'],
-				attachments: ['biff.pdf', 'boff.xls'],
-				thumbnailImage: '',
+				//tags: ['dodo'],
+				//cases: ['answer', 'reply'],
+				//attachments: ['biff.pdf', 'boff.xls'],
+				//thumbnailImage: '',
 			},
 			...$messages,
 		]
 		clearMessage()
 	}
 
+	// save user input to local
 	onMount(() => (newMessage = ö.getLocal('newMessage') || newMessageTemplate))
-
 	onDestroy(() => ö.setLocal('newMessage', newMessage))
 </script>
 
