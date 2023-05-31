@@ -89,7 +89,7 @@
 					font-size: 0.875rem;
 				}
 				time {
-					flex: 1;
+					flex: 1 0 auto;
 					color: var(--gray);
 					font-size: 11px;
 					text-align: end;

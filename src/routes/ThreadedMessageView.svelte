@@ -121,7 +121,7 @@
 	li {
 		padding: 1rem 0rem 1rem 0rem;
 		border-bottom: 1px solid var(--shadow);
-		font-size: 0.875rem;
+		//font-size: 0.875rem;
 		cursor: pointer;
 		display: flex;
 		gap: 1rem;
