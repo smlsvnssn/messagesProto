@@ -15,7 +15,7 @@
 	let innerWidth
 
 	$: $isSmallWindow = innerWidth < 800
-	$: importantMessages = $messages.filter(m => m.isImportant)
+	$: importantMessages = $messages.filter(m => m.isImportant && !m.isRead)
 </script>
 
 <svelte:window bind:innerWidth />
@@ -31,7 +31,7 @@
 	<!-- {$activeMessageId} -->
 
 	{#if $isRedDotActive && importantMessages.length}
-		<ImportantMessagesNotice messages={importantMessages} />
+		<ImportantMessagesNotice {importantMessages} />
 	{/if}
 
 	{#if $isMessagePaneActive}

@@ -6,6 +6,8 @@
 	import TrashIcon from '../lib/icons/TrashIcon.svelte'
 	import { activeMessageId, isMessagePaneActive, messages } from './globals'
 
+	export let remind
+
 	const closeMessagePane = () => ($isMessagePaneActive = false)
 
 	const deleteMessage = () => {
@@ -16,18 +18,20 @@
 	const showNewMessage = () => {
 		$activeMessageId = -0.5 // TODO: fix this hack, should use its own var, or be typed in some way
 	}
+
+	const toggleRemind = () => (remind = !remind)
 </script>
 
 {#if $activeMessageId >= 0}
 	<li on:click|stopPropagation={deleteMessage} title="Ta bort meddelande">
 		<TrashIcon />
 	</li>
-	<li title="Påminn mig om detta">
+	<li on:click|stopPropagation={toggleRemind} title="Påminn mig om detta">
 		<FingerIcon />
 	</li>
 {/if}
 {#if $activeMessageId !== -0.5}
-	<li on:click|stopPropagation={showNewMessage} title="Nytt meddelande">
+	<li on:click|stopPropagation={showNewMessage} title="Skriv nytt meddelande">
 		<NewMessageIcon />
 	</li>
 {/if}

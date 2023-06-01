@@ -36,8 +36,7 @@ export const messages = writable([
 		id: 6627,
 		dateSent: '1683653834315',
 		header: 'Du har ett nytt dokument',
-		content:
-			'Du har ett nytt dokument, <b>Mossgraffiti lakrosade liksom cykelbox</b>.',
+		content: 'Du har ett nytt dokument, <b>Bank Avtal 10322181Xx</b>.',
 		type: types.newDocument,
 		category: '',
 		isImportant: false,
@@ -125,10 +124,11 @@ export const messages = writable([
 	{
 		id: 66,
 		dateSent: '1683653834315',
-		header: 'Flytta “Försäkrad Pension” till “Nya Trad”',
+		header: 'Sparkonto med ännu bättre ränta',
 		content: `
+				<figure class="img"><img src="https://picsum.photos/600/400?nocache=0.7706885968347514"></figure>
 				
-				<h1>Red astroning episkade daktiga milyligen eftersom fivoliga, dinde: kontrajöde</h1>
+				<h1>Nu kan du få ännu bättre ränta på sparkontot</h1>
 				
 			
 				
@@ -136,9 +136,16 @@ export const messages = writable([
 				
 				<h2>Rehet dianologi tills multivis, hövis</h2>
 				
-				<figure class="img"><img src="https://picsum.photos/200/200?nocache=0.7706885968347514"></figure>
+				
 				
 				<p><span>Lörem ipsum rikroktig terade</span> popuktig men nyde. Mårat plasade trena liksom puvena pavol. Viktigt sekelsiffror megasuvis pana. Kask revevis dilyrösarade nygt att servicebarn på divis. Huskapet ved obel. Sehull semibar huruvida stenovessa nydåst medan plabel komtotal ifall kasa hexaras men televis. Du kan vara drabbad. </p>
+
+				<a
+				href=#
+				class="action btn btn-primary btn-sm-block"
+			>
+				Öppna sparkonto
+			</a>
 				
 				`,
 		type: types.marketingMessage,
@@ -175,8 +182,8 @@ export const messages = writable([
 		content: `Du har en osignerad betalning på 356 kr till <b>Hår & fön</b>, som förfaller om tre dagar.`,
 		type: types.notification,
 		category: '',
-		isImportant: false,
-		isRead: false,
+		isImportant: true,
+		isRead: true,
 		tags: ['dodo'],
 		attachments: [],
 		thumbnailImage: '',
@@ -194,7 +201,7 @@ export const messages = writable([
 		type: '',
 		type: types.notification,
 		isImportant: false,
-		isRead: false,
+		isRead: true,
 		tags: ['dodo'],
 		attachments: [],
 		thumbnailImage: '',

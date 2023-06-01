@@ -71,6 +71,11 @@
 		}
 
 		&.hasMessage {
+			:global(figure.img img) {
+				width: 100%;
+				aspect-ratio: 3/2;
+				object-fit: cover;
+			}
 			header {
 				display: flex;
 				align-items: baseline;

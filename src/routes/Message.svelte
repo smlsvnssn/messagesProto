@@ -41,7 +41,7 @@
 			{#if message.attachments?.length}
 				<AttachmentsIcon inverted={message.id == $activeMessageId} />
 			{/if}
-			{#if Array.isArray(message.content)}
+			{#if Array.isArray(message.content) && message.content.length > 1}
 				<span class="thread">{message.content.length}</span>
 			{/if}
 		</p>

@@ -53,6 +53,7 @@
 		flex: 0 1 50%;
 		//}
 	}
+
 	label {
 		font-size: 0.875rem !important;
 	}

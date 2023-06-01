@@ -9,9 +9,11 @@
 		activeMessageId,
 		isSmallWindow,
 	} from './globals'
-	import { fly, fade } from 'svelte/transition'
+	import { fly, fade, slide } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
 	import { clickOutside } from './actions'
+
+	let remind = false
 
 	const hidePane = () => ($isMessagePaneActive = false)
 
@@ -20,6 +22,8 @@
 	$: unread = $messages.filter(m => !m.isRead).length
 
 	$: arrowXpos = `--x:${$isSmallWindow ? 11 : 15.125}rem;`
+
+	$: if ($activeMessageId < 0) remind = false
 </script>
 
 <div class="background" transition:fade={{ duration: 200 }}>
@@ -55,9 +59,77 @@
 								{/if}
 							</h4>
 						</li>
-						<MessageActions />
+						<MessageActions bind:remind />
 					</ul>
 				</header>
+				{#if remind && $activeMessageId > -0.01}
+					<div
+						transition:slide={{
+							y: -200,
+							duration: 200,
+							easing: sineOut,
+						}}
+						use:clickOutside
+						on:clickOutside={() => (remind = false)}
+						class="remind form-group"
+					>
+						<b>Påminn mig:</b>
+						<div
+							class="d-md-inline-block"
+							on:click|stopPropagation={() => (remind = false)}
+						>
+							<div
+								class="custom-control custom-radio mr-05 mb-05"
+							>
+								<input
+									id="radio1"
+									name="radio"
+									type="radio"
+									class="custom-control-input"
+								/>
+								<label class="custom-control-label" for="radio1"
+									>I morgon</label
+								>
+							</div>
+						</div>
+						<div
+							class="d-md-inline-block"
+							on:click|stopPropagation={() => (remind = false)}
+						>
+							<div
+								class="custom-control custom-radio mr-05 mb-05"
+							>
+								<input
+									id="radio1"
+									name="radio"
+									type="radio"
+									class="custom-control-input"
+								/>
+								<label class="custom-control-label" for="radio1"
+									>I övermorgon</label
+								>
+							</div>
+						</div>
+						<div
+							class="d-md-inline-block"
+							on:click|stopPropagation={() => (remind = false)}
+						>
+							<div
+								class="custom-control custom-radio mr-05 mb-05"
+							>
+								<input
+									id="radio1"
+									name="radio"
+									type="radio"
+									class="custom-control-input"
+								/>
+								<label class="custom-control-label" for="radio1"
+									>Om en vecka</label
+								>
+							</div>
+						</div>
+					</div>
+				{/if}
 				<div
 					class="messagesBody"
 					class:messageActive={$activeMessageId > -1}
@@ -91,6 +163,33 @@
 
 		filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.1))
 			drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.1));
+
+		.remind {
+			padding: 1rem;
+			padding-bottom: 2px;
+			background: #f9fbfdcc;
+			box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+			position: absolute;
+			z-index: 1;
+			width: 100%;
+			backdrop-filter: blur(0.5rem);
+
+			b {
+				display: inline-block;
+				padding-bottom: 0.5rem;
+			}
+
+			font-size: 0.875rem;
+			.custom-control {
+				translate: 0 -3px;
+				&:first-child {
+					margin-left: 0.25rem;
+				}
+			}
+			label {
+				vertical-align: -3px;
+			}
+		}
 
 		.content {
 			background: var(--white);

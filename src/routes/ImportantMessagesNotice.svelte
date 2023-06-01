@@ -4,6 +4,7 @@
 		isRedDotActive,
 		isSmallWindow,
 		activeMessageId,
+		messages,
 	} from './globals'
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
@@ -11,7 +12,7 @@
 	import { onMount } from 'svelte'
 	import CloseIcon from '$lib/icons/CloseIcon.svelte'
 
-	export let messages
+	export let importantMessages
 	export let isVisible = false
 
 	const hidePane = () => (isVisible = false)
@@ -39,7 +40,7 @@
 			'elva',
 			'tolv',
 		]
-		return n >= 0 && n < t.length ? t[n] : n
+		return n >= 0 && n < t.length ? t[n] : String(n)
 	}
 
 	onMount(() => (isVisible = true))
@@ -47,8 +48,8 @@
 	$: arrowXpos = `--x:${$isSmallWindow ? 11 : 15.125}rem;`
 </script>
 
-<div class="marginwrapper">
-	{#if isVisible}
+{#if isVisible}
+	<div class="marginwrapper">
 		<div
 			class="messagePane"
 			in:fly={{ y: -200, duration: 300, easing: backOut }}
@@ -57,19 +58,36 @@
 			<div class="content" use:clickOutside on:clickoutside={hidePane}>
 				<header class="messagesHeader" style={arrowXpos}>
 					<h6 class="importante">Att göra</h6>
-					{#if messages.length === 1}
+					{#if importantMessages.length === 1}
 						<p>
-							{@html messages[0].header}
+							{@html importantMessages[0].header}
 						</p>
-						{#if messages[0].action}
-							<a href="#" class="btn btn-secondary btn-sm-block">
-								{messages[0].action.actionText}
+						{#if importantMessages[0].action}
+							<a
+								href="#"
+								on:click|stopPropagation={() => {
+									console.log(
+										$messages.find(
+											m =>
+												m.id ===
+												importantMessages[0].id,
+										),
+									)
+									$messages.find(
+										m => m.id === importantMessages[0].id,
+									).isRead = true
+									//$messages = $messages
+									hidePane()
+								}}
+								class="btn btn-secondary btn-sm-block"
+							>
+								{importantMessages[0].action.actionText}
 							</a>
 						{/if}
 					{:else}
 						<p>
-							Du har {svenskify(messages.length)} meddelanden som du
-							behöver agera på innan <b>3:e juni</b>.
+							Du har {svenskify(importantMessages.length)} meddelanden
+							som du behöver agera på innan <b>3:e juni</b>.
 						</p>
 						<a
 							href="#"
@@ -85,8 +103,8 @@
 				</header>
 			</div>
 		</div>
-	{/if}
-</div>
+	</div>
+{/if}
 
 <style lang="scss">
 	.marginwrapper {
