@@ -24,7 +24,6 @@ export const messages = writable([
 	// 	isImportant: true,
 	// 	isRead: false,
 	// 	tags: ['dodo'],
-	// 	cases: ['answer', 'reply'],
 	// 	attachments: ['biff.pdf', 'boff.xls'],
 	// 	thumbnailImage: '',
 	// 	action: {
@@ -33,6 +32,24 @@ export const messages = writable([
 	// 		actionUrl: '#',
 	// 	},
 	// },
+	{
+		id: 6627,
+		dateSent: '1683653834315',
+		header: 'Du har ett nytt dokument',
+		content:
+			'Du har ett nytt dokument, <b>Mossgraffiti lakrosade liksom cykelbox</b>.',
+		type: types.newDocument,
+		category: '',
+		isImportant: false,
+		isRead: false,
+		tags: ['dodo'],
+		attachments: ['dokument.pdf'],
+		thumbnailImage: '',
+		action: {
+			actionText: 'Visa dokumentet',
+			actionUrl: '#',
+		},
+	},
 	{
 		id: 666,
 		dateSent: '1683653834315',
@@ -84,16 +101,6 @@ export const messages = writable([
 		isImportant: false,
 		isRead: false,
 		tags: ['dodo'],
-		cases: [
-			'answer',
-			'reply',
-			'gjgjg',
-			'gjgjg',
-			'gjgjg',
-			'gjgjg',
-			'gjgjg',
-			'gjgjg',
-		],
 		attachments: ['biff.pdf', 'boff.xls'],
 		thumbnailImage: '',
 	},
@@ -160,24 +167,7 @@ export const messages = writable([
 			actionUrl: '#',
 		},
 	},
-	{
-		id: 6627,
-		dateSent: '1683653834315',
-		header: 'Du har ett nytt dokument',
-		content:
-			'Du har ett nytt dokument, <b>Mossgraffiti lakrosade liksom cykelbox</b>.',
-		type: types.newDocument,
-		category: '',
-		isImportant: false,
-		isRead: true,
-		tags: ['dodo'],
-		attachments: ['dokument.pdf'],
-		thumbnailImage: '',
-		action: {
-			actionText: 'Visa dokumentet',
-			actionUrl: '#',
-		},
-	},
+
 	{
 		id: 667,
 		dateSent: '1683653834315',

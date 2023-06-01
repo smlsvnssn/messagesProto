@@ -42,7 +42,7 @@
 										on:click|stopPropagation={setAsInactive}
 									>
 										<ArrowLeftIcon />
-										Tillbaka
+										<!-- Tillbaka -->
 									</a>
 								{:else}
 									Dina meddelanden
@@ -137,7 +137,12 @@
 							display: inline;
 						}
 						a {
-							text-align: baseline;
+							display: flex;
+							align-items: center;
+							gap: 0.5rem;
+							&:hover {
+								background: none;
+							}
 						}
 					}
 				}

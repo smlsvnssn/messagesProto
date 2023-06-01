@@ -14,27 +14,27 @@
 	}
 
 	const showNewMessage = () => {
-		$activeMessageId = -0.5 // TODO: fix hack, should use its own var
+		$activeMessageId = -0.5 // TODO: fix this hack, should use its own var, or be typed in some way
 	}
 </script>
 
 {#if $activeMessageId >= 0}
-	<li on:click|stopPropagation={deleteMessage}>
+	<li on:click|stopPropagation={deleteMessage} title="Ta bort meddelande">
 		<TrashIcon />
 	</li>
-	<li>
+	<li title="Påminn mig om detta">
 		<FingerIcon />
 	</li>
 {/if}
 {#if $activeMessageId !== -0.5}
-	<li on:click|stopPropagation={showNewMessage}>
+	<li on:click|stopPropagation={showNewMessage} title="Nytt meddelande">
 		<NewMessageIcon />
 	</li>
 {/if}
-<li>
+<li title="Inställningar">
 	<SettingsIcon />
 </li>
-<li on:click={closeMessagePane}>
+<li on:click={closeMessagePane} title="Stäng meddelanden">
 	<CloseIcon />
 </li>
 
