@@ -3,6 +3,7 @@
 	import NewMessage from './NewMessage.svelte'
 	import Mailbox from '$lib/icons/MailboxIcon.svelte'
 	import { activeMessageId } from './globals'
+	import * as ö from 'ouml'
 
 	export let message
 </script>
@@ -15,9 +16,7 @@
 			{#if message.category}
 				<h6 class="category">{message.category}</h6>
 			{/if}
-			<span class="header"
-				>{message.header.replace(/(<([^>]+)>)/gi, '')}</span
-			>
+			<span class="header">{ö.stripTags(message.header)}</span>
 			<time>
 				{new Date(+message.dateSent).toLocaleDateString('sv-SE', {
 					month: 'short',

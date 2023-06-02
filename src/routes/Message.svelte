@@ -3,6 +3,7 @@
 	import AttachmentsIcon from '../lib/icons/AttachmentsIcon.svelte'
 	import MessageIcon from '$lib/icons/MessageIcon.svelte'
 	import { messages, activeMessageId } from './globals'
+	import * as ö from 'ouml'
 
 	export let message
 
@@ -45,12 +46,12 @@
 				<span class="thread">{message.content.length}</span>
 			{/if}
 		</p>
-		<p class="header">{message.header.replace(/(<([^>]+)>)/gi, '')}</p>
+		<p class="header">{ö.stripTags(message.header)}</p>
 		<p>
 			{#if Array.isArray(message.content)}
-				{message.content[0].content.replace(/(<([^>]+)>)/gi, '')}
+				{ö.stripTags(message.content[0].content)}
 			{:else}
-				{message.content.replace(/(<([^>]+)>)/gi, '')}
+				{ö.stripTags(message.content)}
 			{/if}
 		</p>
 		{#if message.action}

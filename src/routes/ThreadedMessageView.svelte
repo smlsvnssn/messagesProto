@@ -54,7 +54,6 @@
 						<AttachmentsIcon />
 					{/if}
 				</div>
-				<!-- <p class="header">{message.header.replace(/(<([^>]+)>)/gi, '')}</p> -->
 				<p>
 					{@html message.content}
 				</p>

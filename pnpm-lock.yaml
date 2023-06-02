@@ -4,7 +4,7 @@ specifiers:
   '@sveltejs/adapter-auto': 1.0.0-next.84
   '@sveltejs/adapter-static': 1.0.0-next.46
   '@sveltejs/kit': 1.0.0-next.525
-  ouml: ^0.0.23
+  ouml: ^0.0.24
   prettier: ^2.8.8
   prettier-plugin-svelte: ^2.10.1
   svelte: ^3.59.1
@@ -18,7 +18,7 @@ devDependencies:
   '@sveltejs/adapter-auto': 1.0.0-next.84
   '@sveltejs/adapter-static': 1.0.0-next.46
   '@sveltejs/kit': 1.0.0-next.525_svelte@3.59.1+vite@3.2.7
-  ouml: 0.0.23
+  ouml: 0.0.24
   prettier: 2.8.8
   prettier-plugin-svelte: 2.10.1_blbg2s7pis747igzn3ilcyh5ou
   svelte: 3.59.1
@@ -982,8 +982,8 @@ packages:
       wrappy: 1.0.2
     dev: true
 
-  /ouml/0.0.23:
-    resolution: {integrity: sha512-VbsjjpCpny8AewlBs7wm787A5dV8v0vxLGYI0TqoTnTDoU60+iF/0HF+xWoVblwuaKZE1HZk6Oo/8trAZs85Dw==}
+  /ouml/0.0.24:
+    resolution: {integrity: sha512-i8eO3VJ14p4myraAeT31r6+U3iBcHnRGPICwyvO0Esj3PXnBsSsjlo/fuiqfmoV0guzf8s5XZFhPZouCCq/hUg==}
     dependencies:
       '@types/node': 16.18.34
     dev: true
