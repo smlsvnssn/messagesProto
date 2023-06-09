@@ -3,38 +3,30 @@
 	import { messages, types } from './globals'
 
 	let filteredMessages
-	let filters = ['Alla', 'Olästa', 'Personliga']
-	let activeFilter = filters[0]
+	let filters = [
+		{ name: 'Alla', filter: () => [...$messages] },
+		{ name: 'Olästa', filter: () => $messages.filter(m => !m.isRead) },
+		{
+			name: 'Personliga',
+			filter: () => $messages.filter(m => m.type === types.secureMessage),
+		},
+	]
+	let activeFilter = 0
 
-	$: {
-		switch (activeFilter) {
-			case 'Olästa':
-				filteredMessages = $messages.filter(m => !m.isRead)
-				break
-			case 'Personliga':
-				filteredMessages = $messages.filter(
-					m => m.type === types.secureMessage,
-				)
-				break
-
-			default:
-				filteredMessages = [...$messages]
-				break
-		}
-	}
+	$: filteredMessages = filters[activeFilter].filter()
 </script>
 
 <nav>
 	<div class="btn-group btn-group-stretch">
-		{#each filters as filter}
-			<label class="btn" class:active={filter === activeFilter}>
+		{#each filters as filter, i}
+			<label class="btn" class:active={i === activeFilter}>
 				<input
 					type="radio"
 					bind:group={activeFilter}
 					name="filters"
-					value={filter}
+					value={i}
 				/>
-				{filter}
+				{filter.name} ({filter.filter().length})
 			</label>
 		{/each}
 	</div>

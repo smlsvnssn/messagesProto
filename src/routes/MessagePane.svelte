@@ -50,12 +50,12 @@
 									</a>
 								{:else}
 									Dina meddelanden
-									<h6>
+									<!-- <h6>
 										{unread || ''}
 										{#if unread}
 											Oläst{unread > 1 ? 'a' : ''}
 										{/if}
-									</h6>
+									</h6> -->
 								{/if}
 							</h4>
 						</li>
