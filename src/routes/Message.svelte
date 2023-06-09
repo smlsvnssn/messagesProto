@@ -8,6 +8,7 @@
 	export let message
 
 	const setAsActive = () => {
+		ö.log(message)
 		$activeMessageId = $activeMessageId === message.id ? -1 : message.id
 		if ($activeMessageId > -1)
 			$messages.find(m => m.id === $activeMessageId).isRead = true

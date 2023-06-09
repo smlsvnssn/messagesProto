@@ -13,7 +13,7 @@
 	]
 	let activeFilter = 0
 
-	$: filteredMessages = filters[activeFilter].filter()
+	$: filteredMessages = $messages && filters[activeFilter].filter()
 </script>
 
 <nav>
