@@ -1,6 +1,7 @@
 <script>
 	import CloseIcon from '../lib/icons/CloseIcon.svelte'
 	import SettingsIcon from '../lib/icons/SettingsIcon.svelte'
+	import SearchIcon from '../lib/icons/SearchIcon.svelte'
 	import NewMessageIcon from '../lib/icons/NewMessageIcon.svelte'
 	import FingerIcon from '../lib/icons/FingerIcon.svelte'
 	import TrashIcon from '../lib/icons/TrashIcon.svelte'
@@ -35,6 +36,9 @@
 		<NewMessageIcon />
 	</li>
 {/if}
+<li title="Sök">
+	<SearchIcon />
+</li>
 <li title="Inställningar">
 	<SettingsIcon />
 </li>

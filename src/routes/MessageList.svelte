@@ -26,7 +26,7 @@
 					name="filters"
 					value={i}
 				/>
-				{filter.name} ({filter.filter().length})
+				{filter.name}<!-- ({filter.filter().length}) -->
 			</label>
 		{/each}
 	</div>

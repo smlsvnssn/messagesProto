@@ -1,0 +1,14 @@
+{
+	"name": "Linus Lustig",
+	"customerValue": 4.2,
+	"engagements": [
+		{
+			"name": "Bank",
+			"products": ["Savings account", "Transaction account", "Etc..."]
+		},
+		{
+			"name": "Sak",
+			"products": ["Car insurance", "Etc..."]
+		}
+	]
+}
