@@ -16,7 +16,7 @@
 			{#if message.category}
 				<h6 class="category">{message.category}</h6>
 			{/if}
-			<span class="header">{ö.stripTags(message.header)}</span>
+			<span class="header"><b>{ö.stripTags(message.header)}</b></span>
 			<time>
 				{new Date(+message.dateSent).toLocaleDateString('sv-SE', {
 					month: 'short',
