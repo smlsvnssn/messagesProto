@@ -46,7 +46,7 @@ export const messages = writable([
 		thumbnailImage: '',
 		action: {
 			actionText: 'Visa dokumentet',
-			actionUrl: '#',
+			actionUrl: 'visadokument',
 		},
 	},
 	{
@@ -171,7 +171,7 @@ export const messages = writable([
 		thumbnailImage: '',
 		action: {
 			actionText: 'Se över bolånet',
-			actionUrl: '#',
+			actionUrl: 'genericAction',
 		},
 	},
 
@@ -189,7 +189,7 @@ export const messages = writable([
 		thumbnailImage: '',
 		action: {
 			actionText: 'Signera betalningen',
-			actionUrl: '#',
+			actionUrl: 'genericAction',
 		},
 	},
 	{
@@ -207,7 +207,7 @@ export const messages = writable([
 		thumbnailImage: '',
 		action: {
 			actionText: 'Se över din köporder',
-			actionUrl: '#',
+			actionUrl: 'genericAction',
 		},
 	},
 	{

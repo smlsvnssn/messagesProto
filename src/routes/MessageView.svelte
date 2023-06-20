@@ -2,7 +2,7 @@
 	import ThreadedMessageView from './ThreadedMessageView.svelte'
 	import NewMessage from './NewMessage.svelte'
 	import Mailbox from '$lib/icons/MailboxIcon.svelte'
-	import { activeMessageId } from './globals'
+	import { activeMessageId, isMessagePaneActive } from './globals'
 	import * as ö from 'ouml'
 
 	export let message
@@ -42,6 +42,7 @@
 			<a
 				href={message.action.actionUrl}
 				class="action btn btn-primary btn-sm-block"
+				on:click={() => ($isMessagePaneActive = false)}
 			>
 				{message.action.actionText}
 			</a>

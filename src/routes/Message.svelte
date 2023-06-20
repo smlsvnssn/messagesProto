@@ -2,7 +2,8 @@
 	import ChevronIcon from '../lib/icons/ChevronIcon.svelte'
 	import AttachmentsIcon from '../lib/icons/AttachmentsIcon.svelte'
 	import MessageIcon from '$lib/icons/MessageIcon.svelte'
-	import { messages, activeMessageId } from './globals'
+	import { messages, activeMessageId, isMessagePaneActive } from './globals'
+	import { goto } from '$app/navigation'
 	import * as ö from 'ouml'
 
 	export let message
@@ -55,8 +56,15 @@
 			{/if}
 		</p>
 		{#if message.action}
-			<a class="action" href={message.action.actionUrl} alt="dunno"
-				>{message.action.actionText}</a
+			<a
+				class="action"
+				href="#"
+				alt="dunno"
+				on:click|stopPropagation={() => {
+					$messages.find(m => m.id === message.id).isRead = true
+					$isMessagePaneActive = false
+					goto(message.action.actionUrl)
+				}}>{message.action.actionText}</a
 			>
 		{/if}
 	</div>
