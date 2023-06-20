@@ -1,5 +1,6 @@
 <script>
 	import Reminder from './Reminder.svelte'
+	import SearchBar from './SearchBar.svelte'
 
 	import ArrowLeftIcon from '../lib/icons/ArrowLeftIcon.svelte'
 	import MessageView from './MessageView.svelte'
@@ -16,6 +17,7 @@
 	import { clickOutside } from './actions'
 
 	let remind = false
+	let search = false
 
 	const hidePane = () => ($isMessagePaneActive = false)
 
@@ -61,11 +63,14 @@
 								{/if}
 							</h4>
 						</li>
-						<MessageActions bind:remind />
+						<MessageActions bind:remind bind:search />
 					</ul>
 				</header>
 				{#if remind && $activeMessageId > -0.01}
 					<Reminder bind:remind />
+				{/if}
+				{#if search && $activeMessageId === -1}
+					<SearchBar bind:search />
 				{/if}
 				<div
 					class="messagesBody"
@@ -85,10 +90,11 @@
 	.background {
 		inset: 0;
 		background: rgba(34, 34, 34, 0.25);
-		position: absolute;
+		position: fixed;
+		margin: var(--headerHeight) auto 0;
 	}
 	.marginwrapper {
-		max-width: calc(1226px);
+		max-width: calc(1140px);
 		margin: auto;
 		padding-left: 1rem;
 	}

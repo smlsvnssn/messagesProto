@@ -7,7 +7,7 @@
 	import TrashIcon from '../lib/icons/TrashIcon.svelte'
 	import { activeMessageId, isMessagePaneActive, messages } from './globals'
 
-	export let remind
+	export let remind, search
 
 	const closeMessagePane = () => ($isMessagePaneActive = false)
 
@@ -21,6 +21,7 @@
 	}
 
 	const toggleRemind = () => (remind = !remind)
+	const toggleSearch = () => (search = !search)
 </script>
 
 {#if $activeMessageId >= 0}
@@ -31,14 +32,17 @@
 		<FingerIcon />
 	</li>
 {/if}
+{#if $activeMessageId === -1}
+	<li on:click|stopPropagation={toggleSearch} title="Sök">
+		<SearchIcon />
+	</li>
+{/if}
 {#if $activeMessageId !== -0.5}
 	<li on:click|stopPropagation={showNewMessage} title="Skriv nytt meddelande">
 		<NewMessageIcon />
 	</li>
 {/if}
-<li title="Sök">
-	<SearchIcon />
-</li>
+
 <li title="Inställningar">
 	<SettingsIcon />
 </li>

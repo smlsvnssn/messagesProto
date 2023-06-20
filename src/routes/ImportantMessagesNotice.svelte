@@ -64,8 +64,8 @@
 						</p>
 						{#if importantMessages[0].action}
 							<a
-								href="#"
-								on:click|stopPropagation={() => {
+								href="/signeraavtal"
+								on:click={() => {
 									console.log(
 										$messages.find(
 											m =>
@@ -109,12 +109,12 @@
 <style lang="scss">
 	.marginwrapper {
 		inset: 0;
-		position: absolute;
-		margin: auto 1rem;
+		position: fixed;
+		margin: var(--headerHeight) auto 1rem;
 	}
 	.messagePane {
 		--headerHeight: 3.75rem;
-		max-width: calc(1226px - 2rem);
+		max-width: calc(1140px - 2rem);
 
 		margin: 1rem auto;
 

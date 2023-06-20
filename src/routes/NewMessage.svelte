@@ -124,7 +124,7 @@
 			Tillåtna filformat är: .exe, .sh, .msi, .js, .doc, .xls
 		</p>
 		<p class="text-sm text-muted">
-			Du får en notifiering på <b>SMS</b> när du får svar.
+			Du får en notifiering på <b>sms</b> när du får svar.
 			<a href="#">Ändra</a>
 		</p>
 	</div>

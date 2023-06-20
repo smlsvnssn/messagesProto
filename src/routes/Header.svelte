@@ -107,6 +107,9 @@
 	.navbar {
 		top: 0 !important;
 	}
+	.n-header-wrapper {
+		max-width: 1140px;
+	}
 	.meny {
 		display: none;
 	}
