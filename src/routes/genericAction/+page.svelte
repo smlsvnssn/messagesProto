@@ -5,8 +5,8 @@
 <aside />
 <article>
 	<p>
-		Om det hade varit på riktigt hade det något att se här, men nu får du
-		bara föreställa dig att du kommit till rätt ställe.
+		Om det hade varit på riktigt hade det funnits något att se här, men nu
+		får du bara föreställa dig att du kommit till rätt ställe.
 		<br /><br />
 	</p>
 	<p />

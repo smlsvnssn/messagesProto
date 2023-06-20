@@ -6,7 +6,7 @@
 <article>
 	<p>
 		Om det hade varit på riktigt hade det funnits ett dokument här, men nu
-		får du föreställa dig det istället :-).
+		får du föreställa dig det istället.
 		<br /><br />
 	</p>
 	<p />
