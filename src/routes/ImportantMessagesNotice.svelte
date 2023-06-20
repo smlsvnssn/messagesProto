@@ -64,18 +64,8 @@
 						</p>
 						{#if importantMessages[0].action}
 							<a
-								href="/signeraavtal"
+								href={importantMessages[0].action.actionUrl}
 								on:click={() => {
-									console.log(
-										$messages.find(
-											m =>
-												m.id ===
-												importantMessages[0].id,
-										),
-									)
-									$messages.find(
-										m => m.id === importantMessages[0].id,
-									).isRead = true
 									//$messages = $messages
 									hidePane()
 								}}

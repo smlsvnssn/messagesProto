@@ -1,6 +1,24 @@
+<script>
+	import { messages } from '../globals'
+</script>
+
 <aside />
 <article>
-	<p />
+	<p>
+		Om det hade varit på riktigt hade det funnits ett gränssnitt för att
+		signera här, men nu finns det bara en liten knapp.
+		<br /><br />
+		<a
+			href="/"
+			class="action btn btn-primary btn-sm-block"
+			on:click={() =>
+				($messages.find(
+					m => m.id === 662, // hardcoded for demo
+				).isRead = true)}
+		>
+			Signera avtalet
+		</a>
+	</p>
 	<p />
 	<p />
 	<p />
@@ -25,6 +43,7 @@
 		background: var(--white);
 
 		p {
+			padding: 2rem;
 			margin: 0%;
 			background: var(--tint);
 			border-radius: 0.25rem;

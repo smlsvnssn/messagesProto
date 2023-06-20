@@ -118,7 +118,7 @@ export const messages = writable([
 		action: {
 			actionResolveBefore: '1683653834315',
 			actionText: 'Signera avtalet',
-			actionUrl: '#',
+			actionUrl: 'signeraavtal',
 		},
 	},
 	{

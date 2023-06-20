@@ -1,7 +1,7 @@
 <script>
 	import MessagePaneButton from './MessagePaneButton.svelte'
 	import { isRedDotActive } from './globals'
-	//
+	import { goto } from '$app/navigation'
 </script>
 
 <div id="header" class="lb4">
@@ -26,7 +26,10 @@
 					<button
 						class="nav-link n-header-logo"
 						role="button"
-						on:click={() => ($isRedDotActive = !$isRedDotActive)}
+						on:click={() => {
+							//$isRedDotActive = !$isRedDotActive
+							goto('/')
+						}}
 						><span class="sr-only"
 							>Tillbaka till Länsförsäkringar</span
 						><img
