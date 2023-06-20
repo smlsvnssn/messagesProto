@@ -1,6 +1,7 @@
 <script>
 	import MessagePaneButton from './MessagePaneButton.svelte'
 	import { isRedDotActive } from './globals'
+	//
 </script>
 
 <div id="header" class="lb4">
