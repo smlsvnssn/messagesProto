@@ -31,14 +31,16 @@
 		<FingerIcon />
 	</li>
 {/if}
+{#if $activeMessageId === -1}
+	<li title="Sök">
+		<SearchIcon />
+	</li>
+{/if}
 {#if $activeMessageId !== -0.5}
 	<li on:click|stopPropagation={showNewMessage} title="Skriv nytt meddelande">
 		<NewMessageIcon />
 	</li>
 {/if}
-<li title="Sök">
-	<SearchIcon />
-</li>
 <li title="Inställningar">
 	<SettingsIcon />
 </li>
