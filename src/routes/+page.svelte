@@ -1,5 +1,20 @@
 <script>
-	import backdrop from '$lib/images/backdrop.png'
+	import ImportantMessagesNotice from './ImportantMessagesNotice.svelte'
+	import MessagePane from './MessagePane.svelte'
+	import Header from './Header.svelte'
+	import {
+		isMessagePaneActive,
+		isSmallWindow,
+		isRedDotActive,
+		messages,
+	} from './globals'
+	import '../style.css'
+
+	export const prerender = true
+	let innerWidth
+
+	$: $isSmallWindow = innerWidth < 800
+	$: importantMessages = $messages.filter(m => m.isImportant)
 </script>
 
 <svelte:window bind:innerWidth />
