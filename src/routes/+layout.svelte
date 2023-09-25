@@ -51,7 +51,7 @@
 		inset: 0;
 		position: absolute;
 
-		padding-top: var(--headerHeight);
+		margin-top: var(--headerHeight);
 
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
