@@ -47,11 +47,11 @@
 	:global(body) {
 		--headerHeight: 3.75rem;
 		background: var(--tint) !important;
-		height: calc(100svh - var(--headerHeight));
+		height: calc(100svh - var(--headerHeight)) !important;
 		inset: 0;
 		position: absolute;
 
-		margin-top: var(--headerHeight);
+		margin-top: var(--headerHeight) !important;
 
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
