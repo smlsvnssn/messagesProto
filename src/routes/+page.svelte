@@ -40,6 +40,7 @@
 
 	<div class="fejkbody">
 		<aside />
+
 		<article>
 			<p />
 			<p />
@@ -88,7 +89,7 @@
 			gap: 2rem;
 			background: var(--white);
 
-			p {
+			> p {
 				margin: 0%;
 				background: var(--tint);
 				border-radius: 0.25rem;
