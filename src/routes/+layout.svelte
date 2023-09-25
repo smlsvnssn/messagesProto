@@ -57,9 +57,8 @@
 		-moz-osx-font-smoothing: grayscale;
 		text-rendering: optimizeLegibility;
 	}
-
 	.fejkbody {
-		max-width: 1140px;
+		max-width: 1226px;
 		margin: auto;
 		display: flex;
 		min-height: calc(100svh - var(--headerHeight));

@@ -33,7 +33,7 @@
 	</li>
 {/if}
 {#if $activeMessageId === -1}
-	<li title="Sök">
+	<li on:click|stopPropagation={toggleSearch} title="Sök">
 		<SearchIcon />
 	</li>
 {/if}
