@@ -53,7 +53,12 @@
 	onDestroy(() => ö.setLocal('newMessage', newMessage))
 </script>
 
-<header><h4>Skriv ett nytt meddelande till oss</h4></header>
+<header>
+	<h4>Skriv ett nytt meddelande till oss</h4>
+	<p>
+		Vi svarar nästan alltid inom ett dygn, och du kan lita på vad vi säger.
+	</p>
+</header>
 <div class="form-group">
 	<label for="validationCustom01">Vad handlar ditt meddelande om?</label>
 	<div class="btn-group btn-group-stretch">
