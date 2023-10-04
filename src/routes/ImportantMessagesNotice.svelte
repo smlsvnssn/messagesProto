@@ -40,12 +40,12 @@
 			'elva',
 			'tolv',
 		]
-		return n >= 0 && n < t.length ? t[n] : String(n)
+		return n >= 0 && n < t.length ? t[n] : 'många'
 	}
 
 	onMount(() => (isVisible = true))
 
-	$: arrowXpos = `--x:${$isSmallWindow ? 11 : 15.125}rem;`
+	$: arrowXpos = `--x:${$isSmallWindow ? 10.75 : 10.75}rem;`
 </script>
 
 {#if isVisible}
@@ -100,7 +100,7 @@
 	.marginwrapper {
 		inset: 0;
 		position: fixed;
-		margin: var(--headerHeight) auto 1rem;
+		margin: var(--headerHeight) 1rem 1rem;
 	}
 	.messagePane {
 		--headerHeight: 3.75rem;

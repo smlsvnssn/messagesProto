@@ -58,7 +58,7 @@
 		text-rendering: optimizeLegibility;
 	}
 	.fejkbody {
-		max-width: 1226px;
+		max-width: 1140px;
 		margin: auto;
 		display: flex;
 		min-height: calc(100svh - var(--headerHeight));

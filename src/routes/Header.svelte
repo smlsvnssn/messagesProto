@@ -2,6 +2,8 @@
 	import MessagePaneButton from './MessagePaneButton.svelte'
 	import { isRedDotActive } from './globals'
 	import { goto } from '$app/navigation'
+	import NewMessageIcon from '../lib/icons/NewMessageIcon.svelte'
+	import SettingsIcon from '../lib/icons/SettingsIcon.svelte'
 </script>
 
 <div id="header" class="lb4">
@@ -49,9 +51,14 @@
 						<li class="nav-item"><MessagePaneButton /></li>
 					</ul>
 				</li>
+
+				<li class="nav-item nav-icon"><NewMessageIcon /></li>
+
+				<li class="nav-item nav-icon"><SettingsIcon /></li>
+
 				<li class="">
 					<ul class="reset-list layout-flex justify-content-end">
-						<li class="nav-item ml-1">
+						<!-- <li class="nav-item ml-1">
 							<span
 								data-test-id="personal-menu"
 								class="nav-link n-header-user rounded lg"
@@ -92,7 +99,7 @@
 									/></svg
 								></span
 							>
-						</li>
+						</li> -->
 						<li class="nav-item">
 							<a
 								class="n-header-logout btn btn-login-logout px-05"
@@ -110,6 +117,16 @@
 <style lang="scss">
 	.navbar {
 		top: 0 !important;
+	}
+	.nav-icon {
+		height: 100%;
+		display: grid;
+		align-items: center;
+		padding: 0.5rem;
+		transition: all 0.5s;
+		&:hover {
+			background: var(--mist);
+		}
 	}
 	.n-header-wrapper {
 		max-width: 1140px;

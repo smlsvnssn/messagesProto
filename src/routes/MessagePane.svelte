@@ -25,7 +25,7 @@
 
 	$: unread = $messages.filter(m => !m.isRead).length
 
-	$: arrowXpos = `--x:${$isSmallWindow ? 11 : 15.125}rem;`
+	$: arrowXpos = `--x:${$isSmallWindow ? 10.75 : 10.75}rem;`
 
 	$: if ($activeMessageId < 0) remind = false
 </script>

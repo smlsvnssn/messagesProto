@@ -1,12 +1,12 @@
 <script>
+	import Taglist from './Taglist.svelte'
+	import Fuse from 'fuse.js'
+
 	import { onDestroy, onMount } from 'svelte'
 	import * as ö from 'ouml'
 	import { messages, types, activeMessageId } from './globals'
 
-	let options = ['Bank', 'Försäkring', 'Pension']
-
 	const newMessageTemplate = {
-		activeOption: options[0],
 		subject: '',
 		body: '',
 	}
@@ -48,36 +48,34 @@
 		clearMessage()
 	}
 
+	const keywords = ['Bank', 'Försäkring', 'Pension', 'Personskada', 'Skada']
+
+	const fuse = new Fuse(keywords, {
+		includeScore: true,
+		threshold: 0.4,
+		minMatchCharLength: 4,
+		ignoreLocation: true,
+	})
+
+	const getShortlist = str => {
+		const res = ö.unique(str.split(' ')).map(w => fuse.search(w))
+		return ö.unique(res.flatMap(l => l.map(a => a.item)))
+	}
+
 	// save user input to local
-	onMount(() => (newMessage = ö.getLocal('newMessage') || newMessageTemplate))
+	onMount(() => {
+		newMessage = ö.getLocal('newMessage') || newMessageTemplate
+		shortlist = getShortlist(`${newMessage.subject} ${newMessage.body}`)
+	})
 	onDestroy(() => ö.setLocal('newMessage', newMessage))
+
+	$: shortlist = getShortlist(`${newMessage.subject} ${newMessage.body}`)
 </script>
 
 <header>
-	<h4>Skriv ett nytt meddelande till oss</h4>
-	<p>
-		Vi svarar nästan alltid inom ett dygn, och du kan lita på vad vi säger.
-	</p>
+	<h4>Skriv ett meddelande till oss</h4>
+	<p>Vår målsättning är att svara dig inom 24 timmar på vardagar.</p>
 </header>
-<div class="form-group">
-	<label for="validationCustom01">Vad handlar ditt meddelande om?</label>
-	<div class="btn-group btn-group-stretch">
-		{#each options as option}
-			<label
-				class="btn"
-				class:active={option === newMessage.activeOption}
-			>
-				<input
-					type="radio"
-					bind:group={newMessage.activeOption}
-					name="filters"
-					value={option}
-				/>
-				{option}
-			</label>
-		{/each}
-	</div>
-</div>
 
 <div class="form-group">
 	<label for="validationCustom01">Ämne</label>
@@ -128,12 +126,22 @@
 		<p class="text-sm text-muted">
 			Tillåtna filformat är: .exe, .sh, .msi, .js, .doc, .xls
 		</p>
-		<p class="text-sm text-muted">
-			Du får en notifiering på <b>sms</b> när du får svar.
-			<a href="#">Ändra</a>
-		</p>
 	</div>
 </div>
+
+<div class="form-group">
+	<label for="validationCustom01">Vad handlar ditt meddelande om?</label>
+	<Taglist {shortlist} {keywords} />
+	<p class="text-sm text-muted">
+		Hjälp oss kategorisera ditt meddelande, så kan vi svara dig snabbare! Du
+		kan lägga till flera ämnen.
+	</p>
+</div>
+
+<p class="text-sm text-muted">
+	Du får en notifiering på <b>sms</b> när du får svar.
+	<a href="#">Ändra</a>
+</p>
 
 <hr />
 
@@ -151,7 +159,7 @@
 	header {
 		padding-bottom: 0.5rem;
 		margin-bottom: 2rem;
-		border-bottom: 2px solid var(--shadow);
+		border-bottom: 1px solid var(--shadow);
 	}
 	.upload {
 		margin-top: 1rem;

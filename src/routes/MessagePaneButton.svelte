@@ -26,7 +26,7 @@
 		height: 100%;
 		border: none;
 		background: none;
-		padding: 1rem;
+		padding: 0.5rem;
 		transition: all 0.5s;
 		&:hover {
 			background: var(--mist);
@@ -37,7 +37,7 @@
 		background: var(--red);
 		border-radius: 50%;
 		position: absolute;
-		right: 14px;
+		right: 6px;
 		transform: scale(1);
 		transition: all 0.5s;
 		width: 0.5rem;

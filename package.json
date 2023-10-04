@@ -24,5 +24,9 @@
 		"typescript": "^4.9.5",
 		"vite": "^3.2.7"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@formkit/auto-animate": "^0.8.0",
+		"fuse.js": "^6.6.2"
+	}
 }

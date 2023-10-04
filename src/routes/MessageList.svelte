@@ -1,4 +1,6 @@
 <script>
+	import CoffeeBreak from '$lib/icons/CoffeeBreak.svelte'
+
 	import Message from './Message.svelte'
 	import { messages, types } from './globals'
 
@@ -6,10 +8,10 @@
 	let filters = [
 		{ name: 'Alla', filter: () => [...$messages] },
 		{ name: 'Olästa', filter: () => $messages.filter(m => !m.isRead) },
-		{
-			name: 'Personliga',
-			filter: () => $messages.filter(m => m.type === types.secureMessage),
-		},
+		// {
+		// 	name: 'Personliga',
+		// 	filter: () => $messages.filter(m => m.type === types.secureMessage),
+		// },
 	]
 	let activeFilter = 0
 
@@ -35,6 +37,14 @@
 			<Message {message} />
 		{/each}
 	</ul>
+	{#if activeFilter === 1 && filteredMessages.length === 0}
+		<div class="coffeeBreak">
+			<div>
+				<CoffeeBreak />
+				<p>Du har inga olästa meddelanden. <br /> Dags för en fika?</p>
+			</div>
+		</div>
+	{/if}
 </nav>
 
 <style lang="scss">
@@ -44,6 +54,24 @@
 		//@media (max-width: 800px) {
 		flex: 0 1 50%;
 		//}
+	}
+
+	.coffeeBreak {
+		height: 80%;
+		display: grid;
+		align-items: center;
+		justify-items: center;
+
+		> div {
+			display: grid;
+			gap: 1rem;
+			justify-items: center;
+			p {
+				font-size: 0.875rem !important;
+				text-align: center;
+				color: var(--gray);
+			}
+		}
 	}
 
 	label {
