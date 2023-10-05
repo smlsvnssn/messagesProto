@@ -1,12 +1,11 @@
 <script>
 	import DummyUploader from './DummyUploader.svelte'
-
 	import Taglist from './Taglist.svelte'
 	import Fuse from 'fuse.js'
-
-	import { onDestroy, onMount } from 'svelte'
 	import * as ö from 'ouml'
+	import { onDestroy, onMount } from 'svelte'
 	import { messages, types, activeMessageId } from './globals'
+	import { keywords } from './keywords'
 
 	const newMessageTemplate = {
 		subject: '',
@@ -46,73 +45,10 @@
 		clearMessage()
 	}
 
-	const keywords = [
-		{
-			group: 'Bank',
-			words: [
-				'bank',
-				'banken',
-				'bankärende',
-				'konto',
-				'transaktion',
-				'överföring',
-				'fond',
-				'fonder',
-				'aktie',
-				'innehav',
-				'kort',
-				'bankkort',
-				'spara',
-				'investering',
-			],
-		},
-		{
-			group: 'Försäkring',
-			words: [
-				'försäkra',
-				'försäkring',
-				'hemförsäkring',
-				'försäkrad',
-				'försäkringsskydd',
-				'livförsäkring',
-				'bil',
-				'båt',
-				'lägenhet',
-				'bostadsrätt',
-			],
-		},
-		{
-			group: 'Pension',
-			words: [
-				'pension',
-				'tjänstepension',
-				'pensionssparande',
-				'förvaltningsform',
-			],
-		},
-		{
-			group: 'Skada',
-			words: [
-				'benbrott',
-				'skada',
-				'ont',
-				'motor',
-				'krock',
-				'kollision',
-				'stulen',
-				'bärgning',
-				'inbrott',
-				'brand',
-				'sjuk',
-				'cykel',
-			],
-		},
-	]
-
 	const fuse = new Fuse(keywords, {
 		keys: ['words'],
 		includeScore: true,
-		threshold: 0.3,
+		threshold: 0.2,
 		minMatchCharLength: 4,
 		ignoreLocation: true,
 	})
@@ -125,11 +61,9 @@
 			ö.unique,
 			// match with keywords
 			a => a.map(v => fuse.search(v)),
-			ö.log,
 			// and flatten to unique matches
 			a => a.flatMap(v => v.map(r => r.item)),
 			a => a.map(v => v.group),
-			ö.log,
 			ö.unique,
 		)
 
@@ -149,19 +83,19 @@
 </header>
 
 <div class="form-group">
-	<label for="validationCustom01">Ämne</label>
+	<label>Ämne</label>
 	<input type="text" class="form-control" bind:value={newMessage.subject} />
 </div>
 
 <div class="form-group">
-	<label for="validationCustom01">Meddelande</label>
+	<label>Meddelande</label>
 	<textarea class="form-control" rows="10" bind:value={newMessage.body} />
 </div>
 
 <DummyUploader />
 
 <div class="form-group">
-	<label for="validationCustom01">Vad handlar ditt meddelande om?</label>
+	<label>Vad handlar ditt meddelande om?</label>
 	<Taglist {shortlist} keywords={keywords.map(v => v.group)} />
 	<p class="text-sm text-muted">
 		Hjälp oss kategorisera ditt meddelande, så kan vi svara dig snabbare! Du

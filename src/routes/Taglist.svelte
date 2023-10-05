@@ -57,7 +57,7 @@
 					list="keywords"
 					on:blur={exitEditingTag}
 					on:keyup={e => {
-						if (e.key === 'Enter') saveAndAddNewTag()
+						if (e?.key === 'Enter') saveAndAddNewTag()
 					}}
 					bind:value={item}
 				/>
