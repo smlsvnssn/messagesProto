@@ -8,15 +8,29 @@
 	export let shortlist = []
 	export let keywords = []
 
-	let deletedlist = []
-	let addedlist = []
+	let deletedFromAutotags = []
+	let manualTags = []
 	let isEditing = false
-	$: longlist = [...ö.subtract(shortlist, deletedlist)]
+
+	$: autotags = [...ö.subtract(shortlist, deletedFromAutotags)]
 
 	const addTag = () => {
-		addedlist = [...ö.unique(addedlist.filter(v => v !== '')), '']
+		manualTags = [...ö.unique(manualTags.filter(v => v !== '')), '']
 		isEditing = true
 	}
+	const saveAndAddNewTag = async () => {
+		isEditing = false
+		await tick()
+		addTag()
+	}
+	const exitEditingTag = () => {
+		isEditing = false
+		manualTags = [...ö.unique(manualTags.filter(v => v !== ''))]
+	}
+	const addToDeletedList = item =>
+		(deletedFromAutotags = [...deletedFromAutotags, item])
+	const deleteManualTag = item =>
+		(addedlist = [...addedlist.filter(v => v !== item)])
 </script>
 
 <datalist id="keywords">
@@ -26,45 +40,30 @@
 </datalist>
 
 <ul class="taglist" use:autoAnimate>
-	{#each longlist as item}
+	{#each autotags as item}
 		<li>
 			{item}
-			<CloseIcon
-				on:click={() => (deletedlist = [...deletedlist, item])}
-			/>
+			<CloseIcon on:click={() => addToDeletedList(item)} />
 		</li>
 	{/each}
 
-	{#each addedlist as item, i (i)}
-		{@const isEditable = isEditing && i === addedlist.length - 1}
+	{#each manualTags as item, i (i)}
+		{@const isEditable = isEditing && i === manualTags.length - 1}
 		<li class:edit={isEditable} use:autoAnimate>
 			{#if isEditable}
 				<input
 					autofocus={isEditable}
 					maxlength="20"
 					list="keywords"
-					on:blur={() => {
-						isEditing = false
-						addedlist = [
-							...ö.unique(addedlist.filter(v => v !== '')),
-						]
-					}}
-					on:keyup={async e => {
-						if (e.key === 'Enter') {
-							isEditing = false
-							await tick()
-							addTag()
-						}
+					on:blur={exitEditingTag}
+					on:keyup={e => {
+						if (e.key === 'Enter') saveAndAddNewTag()
 					}}
 					bind:value={item}
 				/>
 			{:else}
 				{item}
-				<CloseIcon
-					on:click={() => {
-						addedlist = [...addedlist.filter(v => v !== item)]
-					}}
-				/>
+				<CloseIcon on:click={() => deleteManualTag(item)} />
 			{/if}
 		</li>
 	{/each}

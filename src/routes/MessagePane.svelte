@@ -14,7 +14,7 @@
 	} from './globals'
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
-	import { clickOutside } from './actions'
+	import { clickOutside } from '$lib/actions'
 
 	let remind = false
 	let search = false

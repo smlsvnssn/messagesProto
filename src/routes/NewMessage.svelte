@@ -1,4 +1,6 @@
 <script>
+	import DummyUploader from './DummyUploader.svelte'
+
 	import Taglist from './Taglist.svelte'
 	import Fuse from 'fuse.js'
 
@@ -38,29 +40,98 @@
 				type: types.secureMessage,
 				isImportant: false,
 				isRead: true,
-				//tags: ['dodo'],
-				//cases: ['answer', 'reply'],
-				//attachments: ['biff.pdf', 'boff.xls'],
-				//thumbnailImage: '',
 			},
 			...$messages,
 		]
 		clearMessage()
 	}
 
-	const keywords = ['Bank', 'Försäkring', 'Pension', 'Personskada', 'Skada']
+	const keywords = [
+		{
+			group: 'Bank',
+			words: [
+				'bank',
+				'banken',
+				'bankärende',
+				'konto',
+				'transaktion',
+				'överföring',
+				'fond',
+				'fonder',
+				'aktie',
+				'innehav',
+				'kort',
+				'bankkort',
+				'spara',
+				'investering',
+			],
+		},
+		{
+			group: 'Försäkring',
+			words: [
+				'försäkra',
+				'försäkring',
+				'hemförsäkring',
+				'försäkrad',
+				'försäkringsskydd',
+				'livförsäkring',
+				'bil',
+				'båt',
+				'lägenhet',
+				'bostadsrätt',
+			],
+		},
+		{
+			group: 'Pension',
+			words: [
+				'pension',
+				'tjänstepension',
+				'pensionssparande',
+				'förvaltningsform',
+			],
+		},
+		{
+			group: 'Skada',
+			words: [
+				'benbrott',
+				'skada',
+				'ont',
+				'motor',
+				'krock',
+				'kollision',
+				'stulen',
+				'bärgning',
+				'inbrott',
+				'brand',
+				'sjuk',
+				'cykel',
+			],
+		},
+	]
 
 	const fuse = new Fuse(keywords, {
+		keys: ['words'],
 		includeScore: true,
-		threshold: 0.4,
+		threshold: 0.3,
 		minMatchCharLength: 4,
 		ignoreLocation: true,
 	})
 
-	const getShortlist = str => {
-		const res = ö.unique(str.split(' ')).map(w => fuse.search(w))
-		return ö.unique(res.flatMap(l => l.map(a => a.item)))
-	}
+	const getShortlist = str =>
+		ö.pipe(
+			str,
+			// get unique words
+			s => s.split(' '),
+			ö.unique,
+			// match with keywords
+			a => a.map(v => fuse.search(v)),
+			ö.log,
+			// and flatten to unique matches
+			a => a.flatMap(v => v.map(r => r.item)),
+			a => a.map(v => v.group),
+			ö.log,
+			ö.unique,
+		)
 
 	// save user input to local
 	onMount(() => {
@@ -74,64 +145,24 @@
 
 <header>
 	<h4>Skriv ett meddelande till oss</h4>
-	<p>Vår målsättning är att svara dig inom 24 timmar på vardagar.</p>
+	<p>Vi svarar nästan alltid inom 24 timmar på vardagar.</p>
 </header>
 
 <div class="form-group">
 	<label for="validationCustom01">Ämne</label>
-	<input
-		type="text"
-		required=""
-		class="form-control"
-		id="exampleInputEmail1"
-		aria-describedby="emailHelp1"
-		placeholder=""
-		bind:value={newMessage.subject}
-	/>
+	<input type="text" class="form-control" bind:value={newMessage.subject} />
 </div>
 
 <div class="form-group">
 	<label for="validationCustom01">Meddelande</label>
-	<textarea
-		class="form-control"
-		required=""
-		id="exampleTextarea"
-		rows="10"
-		bind:value={newMessage.body}
-	/>
+	<textarea class="form-control" rows="10" bind:value={newMessage.body} />
 </div>
 
-<div class="form-group">
-	<div class="upload w-100">
-		<div class="upload-placeholder" />
-		<input
-			class="upload-input"
-			type="file"
-			name="filename"
-			id="upload"
-			multiple
-		/>
-		<label class="upload-label btn btn-secondary px-1" for="upload">
-			<svg
-				focusable="false"
-				aria-hidden="true"
-				class="icon mr-025"
-				width="24"
-				height="24"
-			>
-				<use xlink:href="/assets/icons/24/icons.svg#image-doc-24" />
-			</svg>
-			Bifoga fil
-		</label>
-		<p class="text-sm text-muted">
-			Tillåtna filformat är: .exe, .sh, .msi, .js, .doc, .xls
-		</p>
-	</div>
-</div>
+<DummyUploader />
 
 <div class="form-group">
 	<label for="validationCustom01">Vad handlar ditt meddelande om?</label>
-	<Taglist {shortlist} {keywords} />
+	<Taglist {shortlist} keywords={keywords.map(v => v.group)} />
 	<p class="text-sm text-muted">
 		Hjälp oss kategorisera ditt meddelande, så kan vi svara dig snabbare! Du
 		kan lägga till flera ämnen.

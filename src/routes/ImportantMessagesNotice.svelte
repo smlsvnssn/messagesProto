@@ -8,7 +8,7 @@
 	} from './globals'
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
-	import { clickOutside } from './actions'
+	import { clickOutside } from '$lib/actions'
 	import { onMount } from 'svelte'
 	import CloseIcon from '$lib/icons/CloseIcon.svelte'
 
@@ -125,7 +125,7 @@
 				border-radius: 4px;
 				overflow: visible;
 				max-height: calc(100dvh - --headerHeight - 1rem);
-				max-width: 450px;
+				max-width: 400px;
 
 				position: absolute;
 				right: var(--x);
