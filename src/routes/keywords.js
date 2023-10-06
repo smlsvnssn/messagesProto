@@ -40,6 +40,7 @@ export const keywords = [
 			'tjänstepension',
 			'pensionssparande',
 			'förvaltningsform',
+			'kapitalförsäkring',
 		],
 	},
 	{
