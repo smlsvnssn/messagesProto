@@ -73,6 +73,7 @@
 <style lang="scss">
 	.taglist {
 		padding-left: 0;
+		padding-top: 0.5rem;
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;

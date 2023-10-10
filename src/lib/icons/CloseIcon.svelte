@@ -18,3 +18,9 @@
 		fill={isGray ? '#b1b3b6' : '#005AA0'}
 	/>
 </svg>
+
+<style>
+	svg {
+		cursor: pointer;
+	}
+</style>

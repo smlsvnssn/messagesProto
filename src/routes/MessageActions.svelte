@@ -37,14 +37,14 @@
 		<SearchIcon />
 	</li>
 {/if}
-{#if $activeMessageId !== -0.5}
+<!-- {#if $activeMessageId !== -0.5}
 	<li on:click|stopPropagation={showNewMessage} title="Skriv nytt meddelande">
 		<NewMessageIcon />
 	</li>
-{/if}
-<li title="Inställningar">
+{/if} -->
+<!-- <li title="Inställningar">
 	<SettingsIcon />
-</li>
+</li> -->
 <li on:click={closeMessagePane} title="Stäng meddelanden">
 	<CloseIcon />
 </li>

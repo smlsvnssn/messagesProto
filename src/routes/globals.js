@@ -3,6 +3,8 @@ import * as ö from 'ouml'
 
 export const isRedDotActive = writable(true)
 export const isMessagePaneActive = writable(false)
+export const isNewMessagePaneActive = writable(false)
+export const isSettingsPaneActive = writable(false)
 export const isSmallWindow = writable(null)
 export const types = ö.createEnum([
 	'massMessage',
@@ -106,8 +108,8 @@ export const messages = writable([
 	{
 		id: 662,
 		dateSent: '1683653834315',
-		header: 'Du har ett avtal om <b>Hemförsäkring</b> att signera.',
-		content: '',
+		header: 'Du har ett avtal om <b>hemförsäkring</b> att signera.',
+		content: 'Här kan det vara copy om vi vill',
 		type: types.signDocument,
 		category: '',
 		isImportant: true,

@@ -1,9 +1,24 @@
 <script>
 	import MessagePaneButton from './MessagePaneButton.svelte'
-	import { isRedDotActive } from './globals'
 	import { goto } from '$app/navigation'
-	import NewMessageIcon from '../lib/icons/NewMessageIcon.svelte'
+	import KundtjänstIcon from '../lib/icons/KundtjänstIcon.svelte'
 	import SettingsIcon from '../lib/icons/SettingsIcon.svelte'
+
+	import {
+		isNewMessagePaneActive,
+		isMessagePaneActive,
+		isSettingsPaneActive,
+	} from './globals'
+	import NewMessageIcon from '../lib/icons/NewMessageIcon.svelte'
+
+	const activateNewMessagePane = () => {
+		$isNewMessagePaneActive = !$isNewMessagePaneActive
+		$isMessagePaneActive = $isSettingsPaneActive = false
+	}
+	const activateSettingsPane = () => {
+		$isSettingsPaneActive = !$isSettingsPaneActive
+		$isMessagePaneActive = $isNewMessagePaneActive = false
+	}
 </script>
 
 <div id="header" class="lb4">
@@ -52,9 +67,20 @@
 					</ul>
 				</li>
 
-				<li class="nav-item nav-icon"><NewMessageIcon /></li>
+				<li
+					class="nav-item nav-icon"
+					on:click|stopPropagation={activateNewMessagePane}
+				>
+					<!-- <KundtjänstIcon /> -->
+					<NewMessageIcon />
+				</li>
 
-				<li class="nav-item nav-icon"><SettingsIcon /></li>
+				<li
+					class="nav-item nav-icon"
+					on:click|stopPropagation={activateSettingsPane}
+				>
+					<SettingsIcon />
+				</li>
 
 				<li class="">
 					<ul class="reset-list layout-flex justify-content-end">
@@ -122,6 +148,7 @@
 		height: 100%;
 		display: grid;
 		align-items: center;
+		cursor: pointer !important;
 		padding: 0.5rem;
 		transition: all 0.5s;
 		&:hover {

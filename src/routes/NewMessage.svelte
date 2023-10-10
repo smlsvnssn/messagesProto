@@ -6,6 +6,7 @@
 	import { onDestroy, onMount } from 'svelte'
 	import { messages, types, activeMessageId } from './globals'
 	import { keywords } from './keywords'
+	import { slide } from 'svelte/transition'
 
 	const newMessageTemplate = {
 		subject: '',
@@ -69,18 +70,16 @@
 
 	// save user input to local
 	onMount(() => {
-		newMessage = ö.getLocal('newMessage') || newMessageTemplate
+		newMessage = ö.log(ö.getLocal('newMessage')) || newMessageTemplate
 		shortlist = getShortlist(`${newMessage.subject} ${newMessage.body}`)
 	})
-	onDestroy(() => ö.setLocal('newMessage', newMessage))
+	onDestroy(() => {
+		ö.log(ö.setLocal('newMessage', ö.log(newMessage)))
+		ö.log(ö.getLocal('newMessage'))
+	})
 
 	$: shortlist = getShortlist(`${newMessage.subject} ${newMessage.body}`)
 </script>
-
-<header>
-	<h4>Skriv ett meddelande till oss</h4>
-	<p>Vi svarar nästan alltid inom 24 timmar på vardagar.</p>
-</header>
 
 <div class="form-group">
 	<label>Ämne</label>
@@ -94,19 +93,18 @@
 
 <DummyUploader />
 
-<div class="form-group">
-	<label>Vad handlar ditt meddelande om?</label>
-	<Taglist {shortlist} keywords={keywords.map(v => v.group)} />
-	<p class="text-sm text-muted">
-		Hjälp oss kategorisera ditt meddelande, så kan vi svara dig snabbare! Du
-		kan lägga till flera ämnen.
-	</p>
-</div>
+{#if newMessage.subject.length || newMessage.body.length}
+	<div class="form-group" transition:slide>
+		<label>Vad handlar ditt meddelande om?</label>
 
-<p class="text-sm text-muted">
-	Du får en notifiering på <b>sms</b> när du får svar.
-	<a href="#">Ändra</a>
-</p>
+		<Taglist {shortlist} keywords={keywords.map(v => v.group)} />
+
+		<p class="text-sm text-muted">
+			Hjälp oss kategorisera ditt meddelande, så kan vi svara dig
+			snabbare! Du kan lägga till flera ämnen.
+		</p>
+	</div>
+{/if}
 
 <hr />
 

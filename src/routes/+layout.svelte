@@ -4,12 +4,16 @@
 	import Header from './Header.svelte'
 	import {
 		isMessagePaneActive,
+		isNewMessagePaneActive,
+		isSettingsPaneActive,
 		isSmallWindow,
 		isRedDotActive,
 		messages,
 		activeMessageId,
 	} from './globals'
 	import '../style.css'
+	import NewMessagePane from './NewMessagePane.svelte'
+	import SettingsPane from './SettingsPane.svelte'
 
 	export const prerender = true
 	let innerWidth
@@ -36,6 +40,12 @@
 
 	{#if $isMessagePaneActive}
 		<MessagePane />
+	{/if}
+	{#if $isNewMessagePaneActive}
+		<NewMessagePane />
+	{/if}
+	{#if $isSettingsPaneActive}
+		<SettingsPane />
 	{/if}
 
 	<div class="fejkbody">
