@@ -4,7 +4,12 @@
 	import Fuse from 'fuse.js'
 	import * as ö from 'ouml'
 	import { onDestroy, onMount } from 'svelte'
-	import { messages, types, activeMessageId } from './globals'
+	import {
+		messages,
+		types,
+		activeMessageId,
+		isNewMessagePaneActive,
+	} from './globals'
 	import { keywords } from './keywords'
 	import { slide } from 'svelte/transition'
 
@@ -44,6 +49,7 @@
 			...$messages,
 		]
 		clearMessage()
+		$isNewMessagePaneActive = false
 	}
 
 	const fuse = new Fuse(keywords, {
