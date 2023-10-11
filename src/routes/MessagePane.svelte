@@ -34,8 +34,8 @@
 	<div class="marginwrapper">
 		<div
 			class="messagePane"
-			in:fly={{ y: -200, duration: 300, easing: backOut }}
-			out:fly={{ y: -200, duration: 200, easing: sineOut }}
+			in:fly={{ y: -100, duration: 300, easing: backOut }}
+			out:fly={{ y: -100, duration: 200, easing: sineOut }}
 		>
 			<div class="content" use:clickOutside on:clickoutside={hidePane}>
 				<header class="messagesHeader" style={arrowXpos}>

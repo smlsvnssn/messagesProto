@@ -23,7 +23,7 @@
 	const clearMessage = () => {
 		newMessage = newMessageTemplate
 		ö.setLocal('newMessage', null)
-		$activeMessageId = -1
+		//$activeMessageId = -1
 	}
 
 	const sendMessage = () => {
@@ -76,12 +76,11 @@
 
 	// save user input to local
 	onMount(() => {
-		newMessage = ö.log(ö.getLocal('newMessage')) || newMessageTemplate
+		newMessage = ö.getLocal('newMessage') || newMessageTemplate
 		shortlist = getShortlist(`${newMessage.subject} ${newMessage.body}`)
 	})
 	onDestroy(() => {
-		ö.log(ö.setLocal('newMessage', ö.log(newMessage)))
-		ö.log(ö.getLocal('newMessage'))
+		ö.setLocal('newMessage', newMessage)
 	})
 
 	$: shortlist = getShortlist(`${newMessage.subject} ${newMessage.body}`)
@@ -100,7 +99,7 @@
 <DummyUploader />
 
 {#if newMessage.subject.length || newMessage.body.length}
-	<div class="form-group" transition:slide>
+	<div class="form-group" transition:slide={{ delay: 500 }}>
 		<label>Vad handlar ditt meddelande om?</label>
 
 		<Taglist {shortlist} keywords={keywords.map(v => v.group)} />
