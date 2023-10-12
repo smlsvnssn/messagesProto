@@ -1,11 +1,5 @@
 <script>
-	import {
-		isMessagePaneActive,
-		isRedDotActive,
-		isSmallWindow,
-		activeMessageId,
-		messages,
-	} from './globals'
+	import { panes, activePane, isRedDotActive, isSmallWindow } from './globals'
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
 	import { clickOutside } from '$lib/actions'
@@ -15,14 +9,8 @@
 	export let importantMessages
 	export let isVisible = false
 
-	const hidePane = () => (isVisible = false)
-
-	const showMessagePane = () => {
-		$isMessagePaneActive = true
-		$isRedDotActive = false
-		//$activeMessageId = messages.find(m => m.isImportant).id
-		hidePane()
-	}
+	const showMessagePane = () => ($activePane = panes.message)
+	const hidePane = () => ($activePane = panes.none)
 
 	const svenskify = n => {
 		const t = [
@@ -65,10 +53,7 @@
 						{#if importantMessages[0].action}
 							<a
 								href={importantMessages[0].action.actionUrl}
-								on:click={() => {
-									//$messages = $messages
-									hidePane()
-								}}
+								on:click={hidePane}
 								class="btn btn-secondary btn-sm-block"
 							>
 								{importantMessages[0].action.actionText}

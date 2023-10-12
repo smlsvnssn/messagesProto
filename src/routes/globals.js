@@ -2,9 +2,17 @@ import { get, writable } from 'svelte/store'
 import * as ö from 'ouml'
 
 export const isRedDotActive = writable(true)
-export const isMessagePaneActive = writable(false)
-export const isNewMessagePaneActive = writable(false)
-export const isSettingsPaneActive = writable(false)
+
+export const panes = ö.createEnum([
+	'none',
+	'message',
+	'newMessage',
+	'settings',
+	'importantMessagesNotice',
+])
+
+export const activePane = writable(panes.importantMessagesNotice)
+
 export const isSmallWindow = writable(null)
 export const types = ö.createEnum([
 	'massMessage',

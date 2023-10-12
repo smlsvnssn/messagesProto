@@ -2,16 +2,14 @@
 	import ThreadedMessageView from './ThreadedMessageView.svelte'
 	import NewMessage from './NewMessage.svelte'
 	import Mailbox from '$lib/icons/MailboxIcon.svelte'
-	import { activeMessageId, isMessagePaneActive } from './globals'
+	import { activeMessageId, panes, activePane } from './globals'
 	import * as ö from 'ouml'
 
 	export let message
 </script>
 
 <article class:hasMessage={$activeMessageId > -1}>
-	{#if $activeMessageId === -0.5}
-		<NewMessage />
-	{:else if message}
+	{#if message}
 		<header class:isThreaded={typeof message.content !== 'string'}>
 			{#if message.category}
 				<h6 class="category">{message.category}</h6>
@@ -42,7 +40,7 @@
 			<a
 				href={message.action.actionUrl}
 				class="action btn btn-primary btn-sm-block"
-				on:click={() => ($isMessagePaneActive = false)}
+				on:click={() => ($activePane = panes.none)}
 			>
 				{message.action.actionText}
 			</a>

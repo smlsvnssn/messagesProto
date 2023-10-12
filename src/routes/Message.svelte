@@ -2,7 +2,7 @@
 	import ChevronIcon from '../lib/icons/ChevronIcon.svelte'
 	import AttachmentsIcon from '../lib/icons/AttachmentsIcon.svelte'
 	import MessageIcon from '$lib/icons/MessageIcon.svelte'
-	import { messages, activeMessageId, isMessagePaneActive } from './globals'
+	import { messages, activeMessageId, panes, activePane } from './globals'
 	import { goto } from '$app/navigation'
 	import * as ö from 'ouml'
 
@@ -62,7 +62,7 @@
 				alt="dunno"
 				on:click|stopPropagation={() => {
 					$messages.find(m => m.id === message.id).isRead = true
-					$isMessagePaneActive = false
+					$activePane = panes.none
 					goto(message.action.actionUrl)
 				}}>{message.action.actionText}</a
 			>

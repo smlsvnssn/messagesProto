@@ -3,13 +3,11 @@
 	import MessagePane from './MessagePane.svelte'
 	import Header from './Header.svelte'
 	import {
-		isMessagePaneActive,
-		isNewMessagePaneActive,
-		isSettingsPaneActive,
+		panes,
+		activePane,
 		isSmallWindow,
 		isRedDotActive,
 		messages,
-		activeMessageId,
 	} from './globals'
 	import '../style.css'
 	import NewMessagePane from './NewMessagePane.svelte'
@@ -33,19 +31,20 @@
 	<Header />
 
 	<!-- Debug stuff -->
+	<!-- {$activePane} -->
 	<!-- {$activeMessageId} -->
 
-	{#if $isRedDotActive && importantMessages.length}
+	{#if $isRedDotActive && importantMessages.length && $activePane === panes.importantMessagesNotice}
 		<ImportantMessagesNotice {importantMessages} />
 	{/if}
 
-	{#if $isMessagePaneActive}
+	{#if $activePane === panes.message}
 		<MessagePane />
 	{/if}
-	{#if $isNewMessagePaneActive}
+	{#if $activePane === panes.newMessage}
 		<NewMessagePane />
 	{/if}
-	{#if $isSettingsPaneActive}
+	{#if $activePane === panes.settings}
 		<SettingsPane />
 	{/if}
 
@@ -68,6 +67,9 @@
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 		text-rendering: optimizeLegibility;
+	}
+	:global(.btn) {
+		position: initial !important;
 	}
 	.fejkbody {
 		max-width: 1140px;

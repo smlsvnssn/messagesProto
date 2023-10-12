@@ -1,5 +1,5 @@
 <script>
-	import { isNewMessagePaneActive } from './globals'
+	import { panes, activePane } from './globals'
 </script>
 
 <aside class="navbar navbar-stacked navbar-blue">
@@ -245,7 +245,7 @@
 		</li>
 		<li
 			class="nav-item lvl-1"
-			on:click|stopPropagation={() => ($isNewMessagePaneActive = true)}
+			on:click|stopPropagation={() => ($activePane = panes.newMessage)}
 		>
 			<button class="nav-link text-truncate w-100" data-test-id="contact"
 				><svg

@@ -1,11 +1,11 @@
 <script>
-	import { isSettingsPaneActive, isSmallWindow } from './globals'
+	import { panes, activePane, isSmallWindow } from './globals'
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
 	import { clickOutside } from '$lib/actions'
 	import CloseIcon from '../lib/icons/CloseIcon.svelte'
 
-	const hidePane = () => ($isSettingsPaneActive = false)
+	const hidePane = () => ($activePane = panes.none)
 
 	$: arrowXpos = `--x:${$isSmallWindow ? 5.75 : 5.75}rem;`
 </script>

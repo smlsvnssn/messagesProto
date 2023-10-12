@@ -3,22 +3,12 @@
 	import { goto } from '$app/navigation'
 	import KundtjänstIcon from '../lib/icons/KundtjänstIcon.svelte'
 	import SettingsIcon from '../lib/icons/SettingsIcon.svelte'
-
-	import {
-		isNewMessagePaneActive,
-		isMessagePaneActive,
-		isSettingsPaneActive,
-	} from './globals'
 	import NewMessageIcon from '../lib/icons/NewMessageIcon.svelte'
+	import { panes, activePane } from './globals'
 
-	const activateNewMessagePane = () => {
-		$isNewMessagePaneActive = !$isNewMessagePaneActive
-		$isMessagePaneActive = $isSettingsPaneActive = false
-	}
-	const activateSettingsPane = () => {
-		$isSettingsPaneActive = !$isSettingsPaneActive
-		$isMessagePaneActive = $isNewMessagePaneActive = false
-	}
+	const activateNewMessagePane = () => ($activePane = panes.newMessage)
+
+	const activateSettingsPane = () => ($activePane = panes.settings)
 </script>
 
 <div id="header" class="lb4">

@@ -8,8 +8,10 @@
 	import MessageActions from './MessageActions.svelte'
 	import {
 		messages,
-		isMessagePaneActive,
+		panes,
+		activePane,
 		activeMessageId,
+		isRedDotActive,
 		isSmallWindow,
 	} from './globals'
 	import { fly, fade } from 'svelte/transition'
@@ -19,7 +21,7 @@
 	let remind = false
 	let search = false
 
-	const hidePane = () => ($isMessagePaneActive = false)
+	const hidePane = () => ($activePane = panes.none)
 
 	const setAsInactive = () => ($activeMessageId = -1)
 
@@ -28,6 +30,8 @@
 	$: arrowXpos = `--x:${$isSmallWindow ? 10.75 : 10.75}rem;`
 
 	$: if ($activeMessageId < 0) remind = false
+
+	$isRedDotActive = false
 </script>
 
 <div class="background" transition:fade={{ duration: 200 }}>
@@ -66,7 +70,7 @@
 						<MessageActions bind:remind bind:search />
 					</ul>
 				</header>
-				{#if remind && $activeMessageId > -0.01}
+				{#if remind && $activeMessageId >= 0}
 					<Reminder bind:remind />
 				{/if}
 				{#if search && $activeMessageId === -1}
@@ -74,7 +78,7 @@
 				{/if}
 				<div
 					class="messagesBody"
-					class:messageActive={$activeMessageId > -1}
+					class:messageActive={$activeMessageId >= 0}
 				>
 					<MessageList />
 					<MessageView

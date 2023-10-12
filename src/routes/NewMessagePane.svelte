@@ -1,5 +1,5 @@
 <script>
-	import { isNewMessagePaneActive, isSmallWindow } from './globals'
+	import { panes, activePane, isSmallWindow } from './globals'
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
 	import { clickOutside } from '$lib/actions'
@@ -7,7 +7,7 @@
 	import NewMessage from './NewMessage.svelte'
 	import NewMessageIcon from '../lib/icons/NewMessageIcon.svelte'
 
-	const hidePane = () => ($isNewMessagePaneActive = false)
+	const hidePane = () => ($activePane = panes.none)
 
 	$: arrowXpos = `--x:${$isSmallWindow ? 8.25 : 8.25}rem;`
 </script>

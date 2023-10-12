@@ -1,5 +1,5 @@
 <script>
-	import { activeMessageId } from '../../routes/globals'
+	import { panes, activePane } from '../../routes/globals'
 </script>
 
 <div>
@@ -23,7 +23,7 @@
 	<button
 		type="submit"
 		class="btn btn-secondary btn-sm-block"
-		on:click|stopPropagation={() => ($activeMessageId = -0.5)}
+		on:click|stopPropagation={() => ($activePane = panes.newMessage)}
 	>
 		<svg class="icon align-bottom" width="24" height="24">
 			<use href="/assets/icons/24/icons.svg#pencil-24" />
