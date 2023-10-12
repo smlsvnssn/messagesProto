@@ -1,42 +1,35 @@
 <script>
-	import LeftMenu from './LeftMenu.svelte'
-
-	import ImportantMessagesNotice from './ImportantMessagesNotice.svelte'
-	import MessagePane from './MessagePane.svelte'
-	import Header from './Header.svelte'
-	import {
-		isMessagePaneActive,
-		isSmallWindow,
-		isRedDotActive,
-		messages,
-	} from './globals'
+	import { isSmallWindow } from './globals'
 	import '../style.css'
 
 	export const prerender = true
 	let innerWidth
 
 	$: $isSmallWindow = innerWidth < 800
-	$: importantMessages = $messages.filter(m => m.isImportant)
 </script>
 
-<article>
-	<p />
-	<p />
-	<p />
-	<p />
-	<p />
-	<p />
-</article>
+<div class="wrapper">
+	<div class="hero" />
+	<article>
+		<p />
+		<p />
+		<p />
+		<p />
+	</article>
+</div>
 
 <style lang="scss">
-	aside {
-		flex: 0 1 260px;
-		background: var(--blue);
-		@media (max-width: 800px) {
-			display: none;
-		}
+	.wrapper {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
 	}
-
+	.hero {
+		height: 300px;
+		width: 100%;
+		background: url(/src/lib/images/hero_2x.jpg);
+		background-size: cover;
+	}
 	article {
 		flex: 1;
 		padding: 2rem;
