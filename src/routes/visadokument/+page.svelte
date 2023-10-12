@@ -2,7 +2,6 @@
 	import { messages } from '../globals'
 </script>
 
-<aside />
 <article>
 	<p>
 		Om det hade varit på riktigt hade det funnits ett dokument här, men nu
@@ -17,14 +16,6 @@
 </article>
 
 <style lang="scss">
-	aside {
-		flex: 0 1 260px;
-		background: var(--blue);
-		@media (max-width: 800px) {
-			display: none;
-		}
-	}
-
 	article {
 		flex: 1;
 		padding: 2rem;

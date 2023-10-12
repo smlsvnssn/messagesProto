@@ -4,7 +4,6 @@
 	import { backOut, sineOut } from 'svelte/easing'
 	import { clickOutside } from '$lib/actions'
 	import CloseIcon from '../lib/icons/CloseIcon.svelte'
-	import NewMessage from './NewMessage.svelte'
 
 	const hidePane = () => ($isSettingsPaneActive = false)
 

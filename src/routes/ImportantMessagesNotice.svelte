@@ -40,7 +40,7 @@
 			'elva',
 			'tolv',
 		]
-		return n >= 0 && n < t.length ? t[n] : 'många'
+		return n >= 0 && n < t.length ? t[n] : n
 	}
 
 	onMount(() => (isVisible = true))
@@ -128,8 +128,9 @@
 				max-width: 400px;
 
 				position: absolute;
-				right: var(--x);
-				transform: translateX(50%);
+				//right: var(--x);
+				right: 0;
+				//transform: translateX(50%);
 
 				@media (max-width: 800px) {
 					position: relative;
@@ -151,9 +152,9 @@
 					position: absolute;
 					top: -0.875rem;
 					right: 50%;
-					@media (max-width: 800px) {
-						right: var(--x);
-					}
+					//@media (max-width: 800px) {
+					right: var(--x);
+					//}
 				}
 
 				p {

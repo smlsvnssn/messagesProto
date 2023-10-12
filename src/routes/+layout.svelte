@@ -14,6 +14,7 @@
 	import '../style.css'
 	import NewMessagePane from './NewMessagePane.svelte'
 	import SettingsPane from './SettingsPane.svelte'
+	import LeftMenu from './LeftMenu.svelte'
 
 	export const prerender = true
 	let innerWidth
@@ -49,6 +50,7 @@
 	{/if}
 
 	<div class="fejkbody">
+		<LeftMenu />
 		<slot />
 	</div>
 </main>

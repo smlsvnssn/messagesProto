@@ -1,4 +1,6 @@
 <script>
+	import LeftMenu from './LeftMenu.svelte'
+
 	import ImportantMessagesNotice from './ImportantMessagesNotice.svelte'
 	import MessagePane from './MessagePane.svelte'
 	import Header from './Header.svelte'
@@ -17,7 +19,6 @@
 	$: importantMessages = $messages.filter(m => m.isImportant)
 </script>
 
-<aside />
 <article>
 	<p />
 	<p />
