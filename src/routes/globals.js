@@ -1,4 +1,4 @@
-import { get, writable } from 'svelte/store'
+import { writable } from 'svelte/store'
 import * as ö from 'ouml'
 
 export const isRedDotActive = writable(true)
@@ -10,7 +10,6 @@ export const panes = ö.createEnum([
 	'settings',
 	'importantMessagesNotice',
 ])
-
 export const activePane = writable(panes.importantMessagesNotice)
 
 export const isSmallWindow = writable(null)
@@ -22,6 +21,10 @@ export const types = ö.createEnum([
 	'signDocument',
 	'newDocument',
 ])
+
+//export const activeMessageId = writable(get(messages)[0].id)
+export const activeMessageId = writable(-1)
+
 export const messages = writable([
 	// {
 	// 	id: 6,
@@ -250,6 +253,3 @@ export const messages = writable([
 		thumbnailImage: '',
 	},
 ])
-
-//export const activeMessageId = writable(get(messages)[0].id)
-export const activeMessageId = writable(-1)

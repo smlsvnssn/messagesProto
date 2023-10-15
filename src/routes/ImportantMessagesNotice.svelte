@@ -37,61 +37,58 @@
 </script>
 
 {#if isVisible}
-	<div class="marginwrapper">
-		<div
-			class="messagePane"
-			in:fly={{ y: -200, duration: 300, easing: backOut }}
-			out:fly={{ y: -200, duration: 200, easing: sineOut }}
-		>
-			<div class="content" use:clickOutside on:clickoutside={hidePane}>
-				<header class="messagesHeader" style={arrowXpos}>
-					<h6 class="importante">Att göra</h6>
-					{#if importantMessages.length === 1}
-						<p>
-							{@html importantMessages[0].header}
-						</p>
-						{#if importantMessages[0].action}
-							<a
-								href={importantMessages[0].action.actionUrl}
-								on:click={hidePane}
-								class="btn btn-secondary btn-sm-block"
-							>
-								{importantMessages[0].action.actionText}
-							</a>
-						{/if}
-					{:else}
-						<p>
-							Du har {svenskify(importantMessages.length)} meddelanden
-							som du behöver agera på innan <b>3:e juni</b>.
-						</p>
+	<div
+		class="messagePane"
+		in:fly={{ y: -200, duration: 300, easing: backOut }}
+		out:fly={{ y: -200, duration: 200, easing: sineOut }}
+	>
+		<div class="content" use:clickOutside on:clickoutside={hidePane}>
+			<header class="messagesHeader" style={arrowXpos}>
+				<h6 class="importante">Att göra</h6>
+				{#if importantMessages.length === 1}
+					<p>
+						{@html importantMessages[0].header}
+					</p>
+					{#if importantMessages[0].action}
 						<a
-							href="#"
-							on:click|stopPropagation={showMessagePane}
-							class="btn btn-secondary"
+							href={importantMessages[0].action.actionUrl}
+							on:click={hidePane}
+							class="btn btn-secondary btn-sm-block"
 						>
-							Läs meddelanden
+							{importantMessages[0].action.actionText}
 						</a>
 					{/if}
-					<span class="close" on:click={hidePane}
-						><CloseIcon isGray={true} /></span
+				{:else}
+					<p>
+						Du har {svenskify(importantMessages.length)} meddelanden
+						som du behöver agera på innan <b>3:e juni</b>.
+					</p>
+					<a
+						href="#"
+						on:click|stopPropagation={showMessagePane}
+						class="btn btn-secondary"
 					>
-				</header>
-			</div>
+						Läs meddelanden
+					</a>
+				{/if}
+				<span class="close" on:click={hidePane}
+					><CloseIcon isGray={true} /></span
+				>
+			</header>
 		</div>
 	</div>
 {/if}
 
 <style lang="scss">
-	.marginwrapper {
-		inset: 0;
-		position: fixed;
-		margin: var(--headerHeight) 1rem 1rem;
-	}
 	.messagePane {
 		--headerHeight: 3.75rem;
-		max-width: calc(1140px - 2rem);
+		max-width: 1140px;
 
-		margin: 1rem auto;
+		position: relative;
+		top: 1rem;
+		right: 0;
+
+		margin: 0 auto;
 
 		filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.1))
 			drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.1));
@@ -106,11 +103,14 @@
 				gap: 0.75rem;
 				justify-items: left;
 
+				margin: 0 1rem;
+
 				background: var(--white);
 				border-radius: 4px;
 				overflow: visible;
 				max-height: calc(100dvh - --headerHeight - 1rem);
 				max-width: 400px;
+				min-width: 300px;
 
 				position: absolute;
 				//right: var(--x);
@@ -118,11 +118,11 @@
 				//transform: translateX(50%);
 
 				@media (max-width: 800px) {
-					position: relative;
-					width: 100%;
-					max-width: 100%;
-					right: 0;
-					transform: translateX(0%);
+					// position: relative;
+					// width: 100%;
+					// max-width: 100%;
+					// right: 0;
+					// transform: translateX(0%);
 				}
 
 				&:before {

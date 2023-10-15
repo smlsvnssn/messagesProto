@@ -188,6 +188,8 @@
 		inset: 0;
 		background: rgba(34, 34, 34, 0.25);
 		position: fixed;
+		z-index: 1;
+
 		margin: var(--headerHeight) auto 0;
 	}
 	.marginwrapper {

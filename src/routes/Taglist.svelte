@@ -41,7 +41,7 @@
 
 <ul class="taglist" use:autoAnimate>
 	{#each autotags as item}
-		<li>
+		<li class="text-sm">
 			{item}
 			<CloseIcon on:click={() => addToDeletedList(item)} />
 		</li>

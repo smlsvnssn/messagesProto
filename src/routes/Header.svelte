@@ -6,9 +6,13 @@
 	import NewMessageIcon from '../lib/icons/NewMessageIcon.svelte'
 	import { panes, activePane } from './globals'
 
-	const activateNewMessagePane = () => ($activePane = panes.newMessage)
+	const activateNewMessagePane = () =>
+		($activePane =
+			$activePane === panes.newMessage ? panes.none : panes.newMessage)
 
-	const activateSettingsPane = () => ($activePane = panes.settings)
+	const activateSettingsPane = () =>
+		($activePane =
+			$activePane === panes.settings ? panes.none : panes.settings)
 </script>
 
 <div id="header" class="lb4">
