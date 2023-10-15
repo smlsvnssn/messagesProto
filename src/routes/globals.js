@@ -1,8 +1,11 @@
-import { writable } from 'svelte/store'
+import { writable, derived } from 'svelte/store'
 import * as ö from 'ouml'
 
+// misc
 export const isRedDotActive = writable(true)
+export const isSmallWindow = writable(null)
 
+// panes
 export const panes = ö.createEnum([
 	'none',
 	'message',
@@ -10,9 +13,9 @@ export const panes = ö.createEnum([
 	'settings',
 	'importantMessagesNotice',
 ])
-export const activePane = writable(panes.importantMessagesNotice)
+export const activePane = writable(panes.none)
 
-export const isSmallWindow = writable(null)
+// messages
 export const types = ö.createEnum([
 	'massMessage',
 	'marketingMessage',
@@ -21,10 +24,8 @@ export const types = ö.createEnum([
 	'signDocument',
 	'newDocument',
 ])
-
 //export const activeMessageId = writable(get(messages)[0].id)
 export const activeMessageId = writable(-1)
-
 export const messages = writable([
 	// {
 	// 	id: 6,
@@ -253,3 +254,9 @@ export const messages = writable([
 		thumbnailImage: '',
 	},
 ])
+
+export const isAvtalRedDotActive = derived(messages, $messages =>
+	$messages.some(
+		m => m.type === types.signDocument && m.isImportant && !m.isRead,
+	),
+)

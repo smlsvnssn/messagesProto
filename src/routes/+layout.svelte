@@ -13,12 +13,15 @@
 	import NewMessagePane from './NewMessagePane.svelte'
 	import SettingsPane from './SettingsPane.svelte'
 	import LeftMenu from './LeftMenu.svelte'
+	import { onMount } from 'svelte'
 
 	export const prerender = true
 	let innerWidth
 
 	$: $isSmallWindow = innerWidth < 800
 	$: importantMessages = $messages.filter(m => m.isImportant && !m.isRead)
+
+	onMount(() => ($activePane = panes.importantMessagesNotice))
 </script>
 
 <svelte:window bind:innerWidth />
@@ -33,7 +36,6 @@
 	<!-- Debug stuff -->
 	<!-- {$activePane} -->
 	<!-- {$activeMessageId} -->
-
 	{#if $isRedDotActive && importantMessages.length && $activePane === panes.importantMessagesNotice}
 		<ImportantMessagesNotice {importantMessages} />
 	{/if}

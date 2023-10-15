@@ -1,10 +1,11 @@
 <script>
-	import { panes, activePane } from './globals'
+	import { panes, activePane, isAvtalRedDotActive } from './globals'
+	import { goto } from '$app/navigation'
 </script>
 
 <aside class="navbar navbar-stacked navbar-blue">
 	<ul class="navbar-nav nav">
-		<li class="nav-item lvl-1 active">
+		<li class="nav-item lvl-1" on:click={() => goto('/')}>
 			<button class="nav-link text-truncate w-100" data-test-id="start"
 				><svg
 					aria-hidden="true"
@@ -29,7 +30,7 @@
 				Start
 			</button>
 		</li>
-		<li class="nav-item lvl-1 has-sub">
+		<li class="nav-item lvl-1" on:click={() => goto('genericAction')}>
 			<button class="nav-link text-truncate w-100" data-test-id="accounts"
 				><svg
 					aria-hidden="true"
@@ -49,7 +50,7 @@
 			>
 		</li>
 
-		<li class="nav-item lvl-1 has-sub">
+		<li class="nav-item lvl-1" on:click={() => goto('genericAction')}>
 			<button class="nav-link text-truncate w-100" data-test-id="savings"
 				><svg
 					aria-hidden="true"
@@ -71,7 +72,7 @@
 			>
 		</li>
 
-		<li class="nav-item lvl-1 has-sub">
+		<li class="nav-item lvl-1" on:click={() => goto('genericAction')}>
 			<button class="nav-link text-truncate w-100" data-test-id="card"
 				><svg
 					aria-hidden="true"
@@ -97,7 +98,7 @@
 			>
 		</li>
 
-		<li class="nav-item lvl-1 has-sub">
+		<li class="nav-item lvl-1" on:click={() => goto('genericAction')}>
 			<button class="nav-link text-truncate w-100" data-test-id="loan"
 				><svg
 					aria-hidden="true"
@@ -130,7 +131,7 @@
 				Lån</button
 			>
 		</li>
-		<li class="nav-item lvl-1">
+		<li class="nav-item lvl-1" on:click={() => goto('genericAction')}>
 			<button
 				class="nav-link text-truncate w-100"
 				data-test-id="insurances"
@@ -155,7 +156,7 @@
 				Försäkringar</button
 			>
 		</li>
-		<li class="nav-item lvl-1">
+		<li class="nav-item lvl-1" on:click={() => goto('genericAction')}>
 			<button class="nav-link text-truncate w-100" data-test-id="pension"
 				><svg
 					aria-hidden="true"
@@ -174,7 +175,7 @@
 				Pension</button
 			>
 		</li>
-		<li class="nav-item lvl-1">
+		<li class="nav-item lvl-1" on:click={() => goto('genericAction')}>
 			<button class="nav-link text-truncate w-100" data-test-id="contact"
 				><svg
 					aria-hidden="true"
@@ -220,7 +221,8 @@
 				BankID och Swish</button
 			>
 		</li>
-		<li class="nav-item lvl-1">
+
+		<li class="nav-item lvl-1" on:click={() => goto('signeraavtal')}>
 			<button class="nav-link text-truncate w-100" data-test-id="contact"
 				><svg
 					aria-hidden="true"
@@ -240,7 +242,9 @@
 					<path d="M11 22.5H21V20.5H11V22.5Z" fill="white" />
 				</svg>
 
-				Avtal och dokument</button
+				Avtal och dokument<span
+					class="dot {$isAvtalRedDotActive ? 'red-dot' : 'no-dot'}"
+				/></button
 			>
 		</li>
 		<li
@@ -297,5 +301,20 @@
 			background: var(--tint);
 			border-radius: 0.25rem;
 		}
+	}
+	.dot {
+		aspect-ratio: 1;
+		background: var(--red);
+		border-radius: 50%;
+		position: relative;
+		right: -2px;
+		top: -0.5rem;
+		transform: scale(1);
+		transition: all 0.5s;
+		width: 0.5rem;
+		//border: 2px solid var(--white);
+	}
+	.no-dot {
+		transform: scale(0);
 	}
 </style>

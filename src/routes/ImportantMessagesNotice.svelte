@@ -1,13 +1,11 @@
 <script>
-	import { panes, activePane, isRedDotActive, isSmallWindow } from './globals'
-	import { fly, fade } from 'svelte/transition'
+	import { panes, activePane, isSmallWindow } from './globals'
+	import { fly } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
 	import { clickOutside } from '$lib/actions'
-	import { onMount } from 'svelte'
 	import CloseIcon from '$lib/icons/CloseIcon.svelte'
 
 	export let importantMessages
-	export let isVisible = false
 
 	const showMessagePane = () => ($activePane = panes.message)
 	const hidePane = () => ($activePane = panes.none)
@@ -31,62 +29,59 @@
 		return n >= 0 && n < t.length ? t[n] : n
 	}
 
-	onMount(() => (isVisible = true))
-
 	$: arrowXpos = `--x:${$isSmallWindow ? 10.75 : 10.75}rem;`
 </script>
 
-{#if isVisible}
-	<div
-		class="messagePane"
-		in:fly={{ y: -200, duration: 300, easing: backOut }}
-		out:fly={{ y: -200, duration: 200, easing: sineOut }}
-	>
-		<div class="content" use:clickOutside on:clickoutside={hidePane}>
-			<header class="messagesHeader" style={arrowXpos}>
-				<h6 class="importante">Att göra</h6>
-				{#if importantMessages.length === 1}
-					<p>
-						{@html importantMessages[0].header}
-					</p>
-					{#if importantMessages[0].action}
-						<a
-							href={importantMessages[0].action.actionUrl}
-							on:click={hidePane}
-							class="btn btn-secondary btn-sm-block"
-						>
-							{importantMessages[0].action.actionText}
-						</a>
-					{/if}
-				{:else}
-					<p>
-						Du har {svenskify(importantMessages.length)} meddelanden
-						som du behöver agera på innan <b>3:e juni</b>.
-					</p>
+<div
+	class="messagePane"
+	in:fly={{ y: -200, duration: 300, easing: backOut }}
+	out:fly={{ y: -200, duration: 200, easing: sineOut }}
+>
+	<div class="content" use:clickOutside on:clickoutside={hidePane}>
+		<header class="messagesHeader" style={arrowXpos}>
+			<h6 class="importante">Att göra</h6>
+			{#if importantMessages.length === 1}
+				<p>
+					{@html importantMessages[0].header}
+				</p>
+				{#if importantMessages[0].action}
 					<a
-						href="#"
-						on:click|stopPropagation={showMessagePane}
-						class="btn btn-secondary"
+						href={importantMessages[0].action.actionUrl}
+						on:click={hidePane}
+						class="btn btn-secondary btn-sm-block"
 					>
-						Läs meddelanden
+						{importantMessages[0].action.actionText}
 					</a>
 				{/if}
-				<span class="close" on:click={hidePane}
-					><CloseIcon isGray={true} /></span
+			{:else}
+				<p>
+					Du har {svenskify(importantMessages.length)} meddelanden som
+					du behöver agera på innan <b>3:e juni</b>.
+				</p>
+				<a
+					href="#"
+					on:click|stopPropagation={showMessagePane}
+					class="btn btn-secondary"
 				>
-			</header>
-		</div>
+					Läs meddelanden
+				</a>
+			{/if}
+			<span class="close" on:click={hidePane}
+				><CloseIcon isGray={true} /></span
+			>
+		</header>
 	</div>
-{/if}
+</div>
 
 <style lang="scss">
 	.messagePane {
 		--headerHeight: 3.75rem;
-		max-width: 1140px;
 
-		position: relative;
-		top: 1rem;
+		max-width: 1140px;
 		right: 0;
+		top: var(--headerHeight);
+		position: sticky;
+		z-index: 1;
 
 		margin: 0 auto;
 
@@ -103,7 +98,7 @@
 				gap: 0.75rem;
 				justify-items: left;
 
-				margin: 0 1rem;
+				margin: 1rem 1rem;
 
 				background: var(--white);
 				border-radius: 4px;

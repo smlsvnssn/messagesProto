@@ -58,7 +58,7 @@
 		{#if message.action}
 			<a
 				class="action"
-				href="#"
+				href={message.action.actionUrl}
 				alt="dunno"
 				on:click|stopPropagation={() => {
 					$messages.find(m => m.id === message.id).isRead = true

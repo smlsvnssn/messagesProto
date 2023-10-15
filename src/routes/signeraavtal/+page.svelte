@@ -10,10 +10,12 @@
 		<a
 			href="/"
 			class="action btn btn-primary btn-sm-block"
-			on:click={() =>
-				($messages.find(
+			on:click={() => {
+				$messages.find(
 					m => m.id === 662, // hardcoded for demo
-				).isRead = true)}
+				).isRead = true
+				$messages = $messages
+			}}
 		>
 			Signera avtalet
 		</a>
