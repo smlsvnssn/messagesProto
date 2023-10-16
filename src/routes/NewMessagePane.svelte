@@ -48,12 +48,12 @@
 		inset: 0;
 		background: rgba(34, 34, 34, 0.25);
 		position: fixed;
-				z-index: 1;
+		z-index: 1;
 
 		margin: var(--headerHeight) auto 0;
 	}
 	.marginwrapper {
-		max-width: calc(1140px);
+		max-width: calc(1280px);
 		margin: auto;
 		padding-left: 1rem;
 	}

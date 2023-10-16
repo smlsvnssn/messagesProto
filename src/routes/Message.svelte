@@ -60,7 +60,7 @@
 				class="action"
 				href={message.action.actionUrl}
 				alt="dunno"
-				on:click|stopPropagation={() => {
+				on:click|stopPropagation|preventDefault={() => {
 					$messages.find(m => m.id === message.id).isRead = true
 					$activePane = panes.none
 					goto(message.action.actionUrl)

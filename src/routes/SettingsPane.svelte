@@ -193,7 +193,7 @@
 		margin: var(--headerHeight) auto 0;
 	}
 	.marginwrapper {
-		max-width: calc(1140px);
+		max-width: calc(1280px);
 		margin: auto;
 		padding-left: 1rem;
 	}

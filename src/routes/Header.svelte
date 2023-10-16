@@ -150,7 +150,8 @@
 		}
 	}
 	.n-header-wrapper {
-		max-width: 1140px;
+		width: 100% !important;
+		max-width: 1280px;
 	}
 	.meny {
 		display: none;

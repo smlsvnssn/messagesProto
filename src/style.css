@@ -1031,7 +1031,7 @@ html body #onetrust-pc-sdk .ot-cat-grp .ot-always-active {
 
 @media (min-width: 1200px) {
 	.modal-xl {
-		max-width: 1140px;
+		max-width: 1280px;
 	}
 }
 
@@ -2232,7 +2232,7 @@ html body #onetrust-pc-sdk .ot-cat-grp .ot-always-active {
 	.lb4 .container,
 	.lb4 .lf-footer,
 	.lb4 .lf-header.navbar {
-		max-width: 1140px;
+		max-width: 1280px;
 	}
 }
 .lb4 .container-fluid {
@@ -16950,7 +16950,7 @@ html body #onetrust-pc-sdk .ot-cat-grp .ot-always-active {
 }
 @media (min-width: 1200px) {
 	.lb4 .modal-xl {
-		max-width: 1140px;
+		max-width: 1280px;
 	}
 }
 .lb4 .modal-content {

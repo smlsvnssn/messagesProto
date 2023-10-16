@@ -4,6 +4,7 @@ import * as ö from 'ouml'
 // misc
 export const isRedDotActive = writable(true)
 export const isSmallWindow = writable(null)
+export const isFirstRun = writable(true)
 
 // panes
 export const panes = ö.createEnum([

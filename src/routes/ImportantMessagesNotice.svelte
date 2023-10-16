@@ -37,47 +37,50 @@
 	in:fly={{ y: -200, duration: 300, easing: backOut }}
 	out:fly={{ y: -200, duration: 200, easing: sineOut }}
 >
-	<div class="content" use:clickOutside on:clickoutside={hidePane}>
-		<header class="messagesHeader" style={arrowXpos}>
-			<h6 class="importante">Att göra</h6>
-			{#if importantMessages.length === 1}
-				<p>
-					{@html importantMessages[0].header}
-				</p>
-				{#if importantMessages[0].action}
-					<a
-						href={importantMessages[0].action.actionUrl}
-						on:click={hidePane}
-						class="btn btn-secondary btn-sm-block"
-					>
-						{importantMessages[0].action.actionText}
-					</a>
-				{/if}
-			{:else}
-				<p>
-					Du har {svenskify(importantMessages.length)} meddelanden som
-					du behöver agera på innan <b>3:e juni</b>.
-				</p>
+	<header
+		class="messagesHeader"
+		style={arrowXpos}
+		use:clickOutside
+		on:clickoutside={hidePane}
+	>
+		<h6 class="importante">Att göra</h6>
+		{#if importantMessages.length === 1}
+			<p>
+				{@html importantMessages[0].header}
+			</p>
+			{#if importantMessages[0].action}
 				<a
-					href="#"
-					on:click|stopPropagation={showMessagePane}
-					class="btn btn-secondary"
+					href={importantMessages[0].action.actionUrl}
+					on:click={hidePane}
+					class="btn btn-secondary btn-sm-block"
 				>
-					Läs meddelanden
+					{importantMessages[0].action.actionText}
 				</a>
 			{/if}
-			<span class="close" on:click={hidePane}
-				><CloseIcon isGray={true} /></span
+		{:else}
+			<p>
+				Du har {svenskify(importantMessages.length)} meddelanden som du behöver
+				agera på innan <b>3:e juni</b>.
+			</p>
+			<a
+				href="#"
+				on:click|stopPropagation={showMessagePane}
+				class="btn btn-secondary"
 			>
-		</header>
-	</div>
+				Läs meddelanden
+			</a>
+		{/if}
+		<span class="close" on:click={hidePane}
+			><CloseIcon isGray={true} /></span
+		>
+	</header>
 </div>
 
 <style lang="scss">
 	.messagePane {
 		--headerHeight: 3.75rem;
 
-		max-width: 1140px;
+		max-width: 1280px;
 		right: 0;
 		top: var(--headerHeight);
 		position: sticky;
@@ -85,83 +88,83 @@
 
 		margin: 0 auto;
 
+		backdrop-filter: blur(10px);
+
 		filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.1))
 			drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.1));
 
-		.content {
-			.messagesHeader {
-				--x: 0;
+		.messagesHeader {
+			--x: 0;
 
-				padding: 1rem;
+			padding: 1rem;
 
-				display: grid;
-				gap: 0.75rem;
-				justify-items: left;
+			display: grid;
+			gap: 0.75rem;
+			justify-items: left;
 
-				margin: 1rem 1rem;
+			margin: 1rem 1rem;
 
-				background: var(--white);
-				border-radius: 4px;
-				overflow: visible;
-				max-height: calc(100dvh - --headerHeight - 1rem);
-				max-width: 400px;
-				min-width: 300px;
+			//background: var(--white);
+			background: var(--white);
+			border-radius: 4px;
+			overflow: visible;
+			max-height: calc(100dvh - --headerHeight - 1rem);
+			max-width: 500px;
+			min-width: 300px;
 
+			position: absolute;
+			//right: var(--x);
+			right: 0;
+			//transform: translateX(50%);
+
+			@media (max-width: 800px) {
+				// position: relative;
+				// width: 100%;
+				// max-width: 100%;
+				// right: 0;
+				// transform: translateX(0%);
+			}
+
+			&:before {
+				// arrow
+				content: '';
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-width: 0 0.5rem 1rem 0.5rem;
+				border-color: transparent transparent var(--white) transparent;
 				position: absolute;
-				//right: var(--x);
-				right: 0;
-				//transform: translateX(50%);
+				top: -0.875rem;
+				right: 50%;
+				//@media (max-width: 800px) {
+				right: var(--x);
+				//}
+			}
 
-				@media (max-width: 800px) {
-					// position: relative;
-					// width: 100%;
-					// max-width: 100%;
-					// right: 0;
-					// transform: translateX(0%);
-				}
+			p {
+				//color: var(--gray);
+				//font-size: 0.875rem;
+				margin-bottom: 0;
+			}
+			.importante {
+				display: inline-block;
+				border-radius: 3rem;
+				background: var(--blue);
+				color: var(--white);
+				padding: 1px 0.5rem 0;
+				margin: 0;
+			}
 
-				&:before {
-					// arrow
-					content: '';
-					width: 0;
-					height: 0;
-					border-style: solid;
-					border-width: 0 0.5rem 1rem 0.5rem;
-					border-color: transparent transparent var(--white)
-						transparent;
-					position: absolute;
-					top: -0.875rem;
-					right: 50%;
-					//@media (max-width: 800px) {
-					right: var(--x);
-					//}
-				}
+			.close {
+				position: absolute;
+				right: 0.5rem;
+				top: 0.5rem;
+				list-style: none;
+				cursor: pointer;
+				transition: transform 0.3s;
 
-				p {
-					//color: var(--gray);
-					//font-size: 0.875rem;
-					margin-bottom: 0;
-				}
-				.importante {
-					display: inline-block;
-					border-radius: 3rem;
-					background: var(--blue);
-					color: var(--white);
-					padding: 1px 0.5rem 0;
-					margin: 0;
-				}
-
-				.close {
-					position: absolute;
-					right: 0.5rem;
-					top: 0.5rem;
-					list-style: none;
-					cursor: pointer;
-					transition: transform 0.3s;
-
-					&:hover {
-						transform: scale(1.1);
-					}
+				&:hover {
+					transform: scale(1.1);
 				}
 			}
 		}

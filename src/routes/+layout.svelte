@@ -7,6 +7,7 @@
 		activePane,
 		isSmallWindow,
 		isRedDotActive,
+		isFirstRun,
 		messages,
 	} from './globals'
 	import '../style.css'
@@ -21,7 +22,12 @@
 	$: $isSmallWindow = innerWidth < 800
 	$: importantMessages = $messages.filter(m => m.isImportant && !m.isRead)
 
-	onMount(() => ($activePane = panes.importantMessagesNotice))
+	onMount(() => {
+		if ($isFirstRun) {
+			$activePane = panes.importantMessagesNotice
+			$isFirstRun = false
+		}
+	})
 </script>
 
 <svelte:window bind:innerWidth />
@@ -34,19 +40,17 @@
 	<Header />
 
 	<!-- Debug stuff -->
+	<!-- {$isFirstRun} -->
 	<!-- {$activePane} -->
 	<!-- {$activeMessageId} -->
+
 	{#if $isRedDotActive && importantMessages.length && $activePane === panes.importantMessagesNotice}
 		<ImportantMessagesNotice {importantMessages} />
-	{/if}
-
-	{#if $activePane === panes.message}
+	{:else if $activePane === panes.message}
 		<MessagePane />
-	{/if}
-	{#if $activePane === panes.newMessage}
+	{:else if $activePane === panes.newMessage}
 		<NewMessagePane />
-	{/if}
-	{#if $activePane === panes.settings}
+	{:else if $activePane === panes.settings}
 		<SettingsPane />
 	{/if}
 
@@ -74,7 +78,7 @@
 		position: initial !important;
 	}
 	.fejkbody {
-		max-width: 1140px;
+		max-width: 1280px;
 		margin: auto;
 		display: flex;
 		min-height: calc(100svh - var(--headerHeight));
