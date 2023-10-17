@@ -1,7 +1,7 @@
 <script>
-	import AttachmentsIcon from '../lib/icons/AttachmentsIcon.svelte'
+	import AttachmentsIcon from '$lib/icons/AttachmentsIcon.svelte'
 	import MessageIcon from '$lib/icons/MessageIcon.svelte'
-	import { messages } from './globals'
+	import { messages } from '$lib/globals'
 
 	export let threadedMessages, id
 

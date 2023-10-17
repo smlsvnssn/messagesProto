@@ -1,5 +1,5 @@
 <script>
-	import CloseIcon from '../lib/icons/CloseIconSmall.svelte'
+	import CloseIcon from '$lib/icons/CloseIconSmall.svelte'
 	import PlusIcon from '$lib/icons/PlusIcon.svelte'
 	import autoAnimate from '@formkit/auto-animate'
 	import { tick } from 'svelte'

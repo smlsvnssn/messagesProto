@@ -1,6 +1,4 @@
 <script>
-	import Row from './Row.svelte'
-
 	export let header = 'header'
 	let isOpen = false
 </script>
@@ -31,7 +29,8 @@
 			background: var(--white);
 			border-radius: 0.5rem;
 			overflow: hidden;
-			//box-shadow: 0 0.125rem 0.125rem #00000005, 0 0.25rem 0.5rem #00000003;
+			box-shadow: 0 0.125rem 0.125rem #00000005,
+				0 0.25rem 0.5rem #00000003;
 			container-type: inline-size;
 
 			h4,

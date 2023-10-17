@@ -1,5 +1,5 @@
 <script>
-	import { panes, activePane, isSmallWindow } from './globals'
+	import { panes, activePane, isSmallWindow } from '$lib/globals'
 	import { fly } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
 	import { clickOutside } from '$lib/actions'

@@ -1,11 +1,11 @@
 <script>
-	import CloseIcon from '../lib/icons/CloseIcon.svelte'
-	import SettingsIcon from '../lib/icons/SettingsIcon.svelte'
-	import SearchIcon from '../lib/icons/SearchIcon.svelte'
-	import NewMessageIcon from '../lib/icons/NewMessageIcon.svelte'
-	import FingerIcon from '../lib/icons/FingerIcon.svelte'
-	import TrashIcon from '../lib/icons/TrashIcon.svelte'
-	import { activeMessageId, panes, activePane, messages } from './globals'
+	import CloseIcon from '$lib/icons/CloseIcon.svelte'
+	import SettingsIcon from '$lib/icons/SettingsIcon.svelte'
+	import SearchIcon from '$lib/icons/SearchIcon.svelte'
+	import NewMessageIcon from '$lib/icons/NewMessageIcon.svelte'
+	import FingerIcon from '$lib/icons/FingerIcon.svelte'
+	import TrashIcon from '$lib/icons/TrashIcon.svelte'
+	import { activeMessageId, panes, activePane, messages } from '$lib/globals'
 
 	export let remind, search
 

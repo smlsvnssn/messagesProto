@@ -1,5 +1,5 @@
 <script>
-	import { panes, activePane, isAvtalRedDotActive } from './globals'
+	import { panes, activePane, isAvtalRedDotActive } from '$lib/globals'
 	import { goto } from '$app/navigation'
 </script>
 

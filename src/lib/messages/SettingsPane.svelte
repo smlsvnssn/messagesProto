@@ -1,9 +1,9 @@
 <script>
-	import { panes, activePane, isSmallWindow } from './globals'
+	import { panes, activePane, isSmallWindow } from '$lib/globals'
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
 	import { clickOutside } from '$lib/actions'
-	import CloseIcon from '../lib/icons/CloseIcon.svelte'
+	import CloseIcon from '$lib/icons/CloseIcon.svelte'
 
 	const hidePane = () => ($activePane = panes.none)
 

@@ -1,5 +1,5 @@
 <script>
-	import { panes, activePane } from '../../routes/globals'
+	import { panes, activePane } from '$lib/globals'
 </script>
 
 <div>

@@ -1,8 +1,8 @@
 <script>
-	import ChevronIcon from '../lib/icons/ChevronIcon.svelte'
-	import AttachmentsIcon from '../lib/icons/AttachmentsIcon.svelte'
+	import ChevronIcon from '$lib/icons/ChevronIcon.svelte'
+	import AttachmentsIcon from '$lib/icons/AttachmentsIcon.svelte'
 	import MessageIcon from '$lib/icons/MessageIcon.svelte'
-	import { messages, activeMessageId, panes, activePane } from './globals'
+	import { messages, activeMessageId, panes, activePane } from '$lib/globals'
 	import { goto } from '$app/navigation'
 	import * as ö from 'ouml'
 

@@ -2,7 +2,7 @@
 	import ThreadedMessageView from './ThreadedMessageView.svelte'
 	import NewMessage from './NewMessage.svelte'
 	import Mailbox from '$lib/icons/MailboxIcon.svelte'
-	import { activeMessageId, panes, activePane } from './globals'
+	import { activeMessageId, panes, activePane } from '$lib/globals'
 	import * as ö from 'ouml'
 
 	export let message

@@ -1,5 +1,5 @@
 <script>
-	import { messages } from '../globals'
+	import { messages } from '$lib/globals'
 </script>
 
 <article>

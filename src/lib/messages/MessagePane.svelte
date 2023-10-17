@@ -2,7 +2,7 @@
 	import Reminder from './Reminder.svelte'
 	import SearchBar from './SearchBar.svelte'
 
-	import ArrowLeftIcon from '../lib/icons/ArrowLeftIcon.svelte'
+	import ArrowLeftIcon from '$lib/icons/ArrowLeftIcon.svelte'
 	import MessageView from './MessageView.svelte'
 	import MessageList from './MessageList.svelte'
 	import MessageActions from './MessageActions.svelte'
@@ -13,7 +13,7 @@
 		activeMessageId,
 		isRedDotActive,
 		isSmallWindow,
-	} from './globals'
+	} from '$lib/globals'
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
 	import { clickOutside } from '$lib/actions'
@@ -126,7 +126,7 @@
 			background: var(--white);
 			border-radius: 4px;
 			overflow: hidden;
-			max-height: calc(100mvh - var(--headerHeight) - 1rem);
+			max-height: calc(100mvh - var(--headerHeight) - 10rem);
 
 			.messagesHeader {
 				--x: 0;

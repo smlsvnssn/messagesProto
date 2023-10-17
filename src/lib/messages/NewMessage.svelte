@@ -4,7 +4,7 @@
 	import Fuse from 'fuse.js'
 	import * as ö from 'ouml'
 	import { onDestroy, onMount } from 'svelte'
-	import { messages, types, panes, activePane } from './globals'
+	import { messages, types, panes, activePane } from '$lib/globals'
 	import { keywords } from './keywords'
 	import { slide } from 'svelte/transition'
 

@@ -1,10 +1,10 @@
 <script>
-	import MessagePaneButton from './MessagePaneButton.svelte'
+	import MessagePaneButton from '$lib/messages/MessagePaneButton.svelte'
 	import { goto } from '$app/navigation'
-	import KundtjänstIcon from '../lib/icons/KundtjänstIcon.svelte'
-	import SettingsIcon from '../lib/icons/SettingsIcon.svelte'
-	import NewMessageIcon from '../lib/icons/NewMessageIcon.svelte'
-	import { panes, activePane } from './globals'
+	import KundtjänstIcon from '$lib/icons/KundtjänstIcon.svelte'
+	import SettingsIcon from '$lib/icons/SettingsIcon.svelte'
+	import NewMessageIcon from '$lib/icons/NewMessageIcon.svelte'
+	import { panes, activePane } from '$lib/globals'
 
 	const activateNewMessagePane = () =>
 		($activePane =

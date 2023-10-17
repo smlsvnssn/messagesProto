@@ -1,11 +1,11 @@
 <script>
-	import { panes, activePane, isSmallWindow } from './globals'
+	import { panes, activePane, isSmallWindow } from '$lib/globals'
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
 	import { clickOutside } from '$lib/actions'
-	import CloseIcon from '../lib/icons/CloseIcon.svelte'
+	import CloseIcon from '$lib/icons/CloseIcon.svelte'
 	import NewMessage from './NewMessage.svelte'
-	import NewMessageIcon from '../lib/icons/NewMessageIcon.svelte'
+	import NewMessageIcon from '$lib/icons/NewMessageIcon.svelte'
 
 	const hidePane = () => ($activePane = panes.none)
 
@@ -151,6 +151,9 @@
 		padding: 2.5rem;
 		position: relative;
 		max-height: calc(100dvh - 9.375rem);
+		@media (width < 800px) {
+			max-height: calc(100dvh - 8.375rem);
+		}
 		overflow-y: auto;
 
 		@media (max-width: 800px) {

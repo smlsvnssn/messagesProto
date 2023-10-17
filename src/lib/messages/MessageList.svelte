@@ -3,7 +3,7 @@
 	import autoAnimate from '@formkit/auto-animate'
 
 	import Message from './Message.svelte'
-	import { messages, types } from './globals'
+	import { messages, types } from '$lib/globals'
 
 	export let searchresult
 	export let searchstr
@@ -93,6 +93,9 @@
 	}
 	ul {
 		max-height: calc(100dvh - 11.875rem);
+		@media (width < 800px) {
+			max-height: calc(100dvh - 10.875rem);
+		}
 		overflow-y: auto;
 
 		margin: 0 !important;

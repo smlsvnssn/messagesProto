@@ -1,7 +1,7 @@
 <script>
 	import { slide } from 'svelte/transition'
 	import { sineOut } from 'svelte/easing'
-	import { messages } from './globals'
+	import { messages } from '$lib/globals'
 	import Fuse from 'fuse.js'
 	import * as ö from 'ouml'
 

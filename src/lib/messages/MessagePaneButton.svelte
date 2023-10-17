@@ -1,6 +1,6 @@
 <script>
 	import EnvelopeIcon from '$lib/icons/EnvelopeIcon.svelte'
-	import { panes, activePane, isRedDotActive } from './globals'
+	import { panes, activePane, isRedDotActive } from '$lib/globals'
 
 	const activateMessagePane = () =>
 		($activePane =

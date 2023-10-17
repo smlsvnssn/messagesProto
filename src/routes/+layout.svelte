@@ -1,6 +1,6 @@
 <script>
-	import ImportantMessagesNotice from './ImportantMessagesNotice.svelte'
-	import MessagePane from './MessagePane.svelte'
+	import ImportantMessagesNotice from '$lib/messages/ImportantMessagesNotice.svelte'
+	import MessagePane from '$lib/messages/MessagePane.svelte'
 	import Header from './Header.svelte'
 	import {
 		panes,
@@ -9,10 +9,10 @@
 		isRedDotActive,
 		isFirstRun,
 		messages,
-	} from './globals'
+	} from '$lib/globals'
 	import '../style.css'
-	import NewMessagePane from './NewMessagePane.svelte'
-	import SettingsPane from './SettingsPane.svelte'
+	import NewMessagePane from '$lib/messages/NewMessagePane.svelte'
+	import SettingsPane from '$lib/messages/SettingsPane.svelte'
 	import LeftMenu from './LeftMenu.svelte'
 	import { onMount } from 'svelte'
 
