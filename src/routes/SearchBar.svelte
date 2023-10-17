@@ -1,8 +1,32 @@
 <script>
 	import { slide } from 'svelte/transition'
 	import { sineOut } from 'svelte/easing'
+	import { messages } from './globals'
+	import Fuse from 'fuse.js'
+	import * as ö from 'ouml'
 
+	export let searchstr = ''
 	export let search
+	export let searchresult
+
+	const fuse = new Fuse($messages, {
+		keys: ['header', 'content'],
+		includeScore: true,
+		threshold: 0.4,
+		minMatchCharLength: 3,
+		ignoreLocation: true,
+	})
+
+	const getResult = str =>
+		ö.pipe(
+			str,
+			ö.log,
+			s => fuse.search(s),
+			a => a.map(v => v.item),
+			ö.log,
+		)
+
+	$: searchresult = getResult(searchstr)
 </script>
 
 <div
@@ -16,6 +40,7 @@
 	<div class="form-group">
 		<div class="input-group">
 			<input
+				bind:value={searchstr}
 				type="text"
 				required=""
 				class="form-control"

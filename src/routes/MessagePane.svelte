@@ -21,6 +21,9 @@
 	let remind = false
 	let search = false
 
+	let searchresult = []
+	let searchstr = ''
+
 	const hidePane = () => ($activePane = panes.none)
 
 	const setAsInactive = () => ($activeMessageId = -1)
@@ -74,13 +77,13 @@
 					<Reminder bind:remind />
 				{/if}
 				{#if search && $activeMessageId === -1}
-					<SearchBar bind:search />
+					<SearchBar bind:searchresult bind:searchstr />
 				{/if}
 				<div
 					class="messagesBody"
 					class:messageActive={$activeMessageId >= 0}
 				>
-					<MessageList />
+					<MessageList {searchresult} {searchstr} />
 					<MessageView
 						message={$messages.find(m => m.id === $activeMessageId)}
 					/>

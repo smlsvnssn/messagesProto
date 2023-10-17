@@ -1,13 +1,17 @@
 <script>
 	import CoffeeBreak from '$lib/icons/CoffeeBreak.svelte'
+	import autoAnimate from '@formkit/auto-animate'
 
 	import Message from './Message.svelte'
 	import { messages, types } from './globals'
 
+	export let searchresult
+	export let searchstr
+
 	let filteredMessages
 	let filters = [
-		{ name: 'Alla', filter: () => [...$messages] },
-		{ name: 'Olästa', filter: () => $messages.filter(m => !m.isRead) },
+		{ name: 'Alla', filter: list => [...list] },
+		{ name: 'Olästa', filter: list => list.filter(m => !m.isRead) },
 		// {
 		// 	name: 'Personliga',
 		// 	filter: () => $messages.filter(m => m.type === types.secureMessage),
@@ -15,7 +19,10 @@
 	]
 	let activeFilter = 0
 
-	$: filteredMessages = $messages && filters[activeFilter].filter()
+	$: filteredMessages =
+		searchstr.length > 2
+			? filters[activeFilter].filter(searchresult)
+			: filters[activeFilter].filter($messages)
 </script>
 
 <nav>
@@ -32,12 +39,19 @@
 			</label>
 		{/each}
 	</div>
-	<ul>
-		{#each filteredMessages as message (message.id)}
+
+	<ul use:autoAnimate>
+		{#each filteredMessages as message (message?.id)}
 			<Message {message} />
 		{/each}
 	</ul>
-	{#if activeFilter === 1 && filteredMessages.length === 0}
+	{#if searchstr.length > 2 && filteredMessages.length === 0}
+		<div class="coffeeBreak">
+			<div>
+				<p>Vi hittade inga meddelanden som matchar din sökning.</p>
+			</div>
+		</div>
+	{:else if activeFilter === 1 && filteredMessages.length === 0}
 		<div class="coffeeBreak">
 			<div>
 				<CoffeeBreak />
