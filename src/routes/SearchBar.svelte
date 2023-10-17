@@ -41,6 +41,7 @@
 		<div class="input-group">
 			<input
 				bind:value={searchstr}
+				autofocus
 				type="text"
 				required=""
 				class="form-control"
