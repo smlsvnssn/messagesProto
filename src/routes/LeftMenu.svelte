@@ -241,11 +241,17 @@
 					<path d="M11 18.5H21V16.5H11V18.5Z" fill="white" />
 					<path d="M11 22.5H21V20.5H11V22.5Z" fill="white" />
 				</svg>
+				<span
+					class="dot icon {$isAvtalRedDotActive
+						? 'red-dot'
+						: 'no-dot'}"
+				/>
 
-				Avtal och dokument<span
+				Avtal och dokument
+				<!-- <span
 					class="dot {$isAvtalRedDotActive ? 'red-dot' : 'no-dot'}"
-				/></button
-			>
+				/> -->
+			</button>
 		</li>
 		<li
 			class="nav-item lvl-1"
@@ -313,6 +319,13 @@
 		transition: all 0.5s;
 		width: 0.5rem;
 		//border: 2px solid var(--white);
+
+		&.icon {
+			position: absolute;
+			right: inherit;
+			left: 2.5rem;
+			top: 0.75rem;
+		}
 	}
 	.no-dot {
 		transform: scale(0);

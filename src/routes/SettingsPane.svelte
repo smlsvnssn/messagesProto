@@ -220,11 +220,11 @@
 					width: 0;
 					height: 0;
 					border-style: solid;
-					border-width: 0 0.5rem 1rem 0.5rem;
+					border-width: 0 0.5rem 0.75rem 0.5rem;
 					border-color: transparent transparent var(--white)
 						transparent;
 					position: absolute;
-					top: -0.875rem;
+					top: -0.675rem;
 					right: var(--x);
 				}
 
