@@ -29,7 +29,7 @@
 		return n >= 0 && n < t.length ? t[n] : n
 	}
 
-	$: arrowXpos = `--x:${$isSmallWindow ? 10.75 : 10.75}rem;`
+	$: arrowXpos = `--x:${$isSmallWindow ? 11.25 : 10.75}rem;`
 </script>
 
 <div
@@ -118,11 +118,7 @@
 			//transform: translateX(50%);
 
 			@media (max-width: 800px) {
-				// position: relative;
-				// width: 100%;
-				// max-width: 100%;
-				// right: 0;
-				// transform: translateX(0%);
+				margin: 0.5rem;
 			}
 
 			&:before {
@@ -131,14 +127,14 @@
 				width: 0;
 				height: 0;
 				border-style: solid;
-				border-width: 0 0.5rem 1rem 0.5rem;
+				border-width: 0 0.5rem 0.75rem 0.5rem;
 				border-color: transparent transparent var(--white) transparent;
 				position: absolute;
-				top: -0.875rem;
-				right: 50%;
-				//@media (max-width: 800px) {
+				top: -0.675rem;
 				right: var(--x);
-				//}
+				@media (width < 800px) {
+					top: -0.5rem;
+				}
 			}
 
 			p {

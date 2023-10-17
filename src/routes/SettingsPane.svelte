@@ -7,7 +7,7 @@
 
 	const hidePane = () => ($activePane = panes.none)
 
-	$: arrowXpos = `--x:${$isSmallWindow ? 5.75 : 5.75}rem;`
+	$: arrowXpos = `--x:${$isSmallWindow ? 6.25 : 5.75}rem;`
 </script>
 
 <div class="background" transition:fade={{ duration: 200 }}>
@@ -196,12 +196,20 @@
 		max-width: calc(1280px);
 		margin: auto;
 		padding-left: 1rem;
+		@media (width < 800px) {
+			padding-left: 0.5rem;
+		}
 	}
 	.messagePane {
 		--headerHeight: 3.75rem;
-		max-width: calc(16rem);
+		min-width: calc(16rem);
+		width: fit-content;
 
 		margin: 1rem 1rem 1rem auto;
+
+		@media (width < 800px) {
+			margin: 0.5rem 0.5rem 0.5rem auto;
+		}
 
 		filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.1))
 			drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.1));
@@ -226,6 +234,9 @@
 					position: absolute;
 					top: -0.675rem;
 					right: var(--x);
+					@media (width < 800px) {
+						top: -0.5rem;
+					}
 				}
 
 				ul {
