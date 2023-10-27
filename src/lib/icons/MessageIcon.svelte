@@ -1,11 +1,14 @@
 <script>
 	import { types } from '$lib/globals'
+	import SkadaIcon from './SkadaIcon.svelte'
 	export let message
 </script>
 
 <div class="iconwrapper">
 	<div class="icon">
-		{#if message.type === types.massMessage}
+		{#if message.type === types.skadeärende}
+			<SkadaIcon />
+		{:else if message.type === types.massMessage}
 			<svg
 				width="16"
 				height="16"

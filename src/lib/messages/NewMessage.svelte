@@ -55,30 +55,28 @@
 		ignoreLocation: true,
 	})
 
-	const getShortlist = str =>
-		ö.pipe(
-			str,
-			// get unique words
-			s => s.split(' '),
-			ö.unique,
-			// match with keywords
-			a => a.map(v => fuse.search(v)),
-			// and flatten to unique matches
-			a => a.flatMap(v => v.map(r => r.item)),
-			a => a.map(v => v.group),
-			ö.unique,
-		)
+	const getShortlist = ''
 
 	// save user input to local
 	onMount(() => {
 		newMessage = ö.getLocal('newMessage') || newMessageTemplate
-		shortlist = getShortlist(`${newMessage.subject} ${newMessage.body}`)
 	})
 	onDestroy(() => {
 		ö.setLocal('newMessage', newMessage)
 	})
 
-	$: shortlist = getShortlist(`${newMessage.subject} ${newMessage.body}`)
+	$: shortlist = ö.pipe(
+		newMessage.subject + newMessage.body,
+		// get unique words
+		s => s.split(' '),
+		ö.unique,
+		// match with keywords
+		a => a.map(v => fuse.search(v)),
+		// and flatten to unique matches
+		a => a.flatMap(v => v.map(r => r.item)),
+		a => a.map(v => v.group),
+		ö.unique,
+	)
 </script>
 
 <div class="form-group">

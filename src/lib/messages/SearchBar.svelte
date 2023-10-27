@@ -15,18 +15,17 @@
 		threshold: 0.4,
 		minMatchCharLength: 3,
 		ignoreLocation: true,
+		includeMatches: true,
 	})
 
-	const getResult = str =>
-		ö.pipe(
-			str,
-			ö.log,
-			s => fuse.search(s),
-			a => a.map(v => v.item),
-			ö.log,
-		)
-
-	$: searchresult = getResult(searchstr)
+	$: searchresult = ö.pipe(
+		searchstr,
+		//ö.log,
+		s => fuse.search(s),
+		//ö.log,
+		a => a.map(v => v.item),
+		//ö.log,
+	)
 </script>
 
 <div

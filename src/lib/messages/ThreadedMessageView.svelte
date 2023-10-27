@@ -1,9 +1,10 @@
 <script>
 	import AttachmentsIcon from '$lib/icons/AttachmentsIcon.svelte'
 	import MessageIcon from '$lib/icons/MessageIcon.svelte'
-	import { messages } from '$lib/globals'
+	import { messages, activePane, panes } from '$lib/globals'
+	import { message } from 'ouml'
 
-	export let threadedMessages, id
+	export let threadedMessages, id, isOld
 
 	let open = [1]
 
@@ -70,47 +71,59 @@
 </ul>
 
 <div class="exits">
-	<textarea
-		class="form-control"
-		required=""
-		placeholder="Svara på meddelandet"
-		bind:value={newMessage}
-		id="exampleTextarea"
-		rows="1"
-	/>
-	<div class="upload w-100">
-		<div class="upload-placeholder" />
-		<input
-			class="upload-input"
-			type="file"
-			name="filename"
-			id="upload"
-			multiple
-		/>
-		<label class="upload-label btn btn-secondary px-1" for="upload">
-			<svg
-				focusable="false"
-				aria-hidden="true"
-				class="icon mr-025"
-				width="24"
-				height="24"
+	{#if isOld}
+		<p class="isOld">
+			Den här konversationen är gammal och går inte längre att svara på.
+			<br /><a
+				href="#"
+				on:click|stopPropagation={() =>
+					($activePane = panes.newMessage)}
+				>Skriv ett nytt meddelande istället!</a
 			>
-				<use xlink:href="/assets/icons/24/icons.svg#image-doc-24" />
-			</svg>
-			Bifoga fil
-		</label>
-	</div>
+		</p>
+	{:else}
+		<textarea
+			class="form-control"
+			required=""
+			placeholder="Svara på meddelandet"
+			bind:value={newMessage}
+			id="exampleTextarea"
+			rows="1"
+		/>
+		<div class="upload w-100">
+			<div class="upload-placeholder" />
+			<input
+				class="upload-input"
+				type="file"
+				name="filename"
+				id="upload"
+				multiple
+			/>
+			<label class="upload-label btn btn-secondary px-1" for="upload">
+				<svg
+					focusable="false"
+					aria-hidden="true"
+					class="icon mr-025"
+					width="24"
+					height="24"
+				>
+					<use xlink:href="/assets/icons/24/icons.svg#image-doc-24" />
+				</svg>
+				Bifoga fil
+			</label>
+		</div>
 
-	<div class="exit">
-		<a
-			on:mousedown={() => send(newMessage)}
-			href="#"
-			type="button"
-			class="btn btn-primary btn-sm-block"
-		>
-			Skicka
-		</a>
-	</div>
+		<div class="exit">
+			<a
+				on:mousedown={() => send(newMessage)}
+				href="#"
+				type="button"
+				class="btn btn-primary btn-sm-block"
+			>
+				Skicka
+			</a>
+		</div>
+	{/if}
 </div>
 
 <style lang="scss">
@@ -201,6 +214,12 @@
 			padding: 1.5rem;
 			translate: 0 1.5rem;
 			margin: 0 -1.5rem;
+		}
+
+		.isOld {
+			grid-column: 1 / -1;
+			font-size: 0.875rem;
+			color: var(--gray);
 		}
 		.exit {
 			justify-self: end;

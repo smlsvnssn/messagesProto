@@ -55,16 +55,17 @@
 				{ö.stripTags(message.content)}
 			{/if}
 		</p>
-		{#if message.action}
+		{#if message.action || message.content[0]?.action}
+			{@const action = message.action || message.content[0]?.action}
 			<a
 				class="action"
-				href={message.action.actionUrl}
+				href={action.actionUrl}
 				alt="dunno"
 				on:click|stopPropagation|preventDefault={() => {
 					$messages.find(m => m.id === message.id).isRead = true
 					$activePane = panes.none
-					goto(message.action.actionUrl)
-				}}>{message.action.actionText}</a
+					goto(action.actionUrl)
+				}}>{action.actionText}</a
 			>
 		{/if}
 	</div>

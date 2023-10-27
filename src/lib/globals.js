@@ -19,6 +19,7 @@ export const activePane = writable(panes.none)
 // messages
 export const types = ö.createEnum([
 	'massMessage',
+	'skadeärende',
 	'marketingMessage',
 	'secureMessage',
 	'notification',
@@ -47,6 +48,41 @@ export const messages = writable([
 	// 		actionUrl: '#',
 	// 	},
 	// },
+	{
+		id: 12345675,
+		dateSent: '1683653834315',
+		header: 'Ny information om din skada',
+		content: [
+			{
+				id: Math.random(),
+				dateSent: Date.now(),
+				content:
+					'Du har ett nytt dokument, <b>Utvärdering skada 10322181Xx</b>.',
+				type: types.massMessage,
+				isImportant: false,
+				isRead: false,
+				action: {
+					actionText: 'Visa dokumentet',
+					actionUrl: 'visadokument',
+				},
+			},
+			{
+				id: Math.random(),
+				dateSent: Date.now(),
+				content: 'Hej försäkringsbolaget, jag har skadat en grej.',
+				type: '',
+				isImportant: false,
+				isRead: false,
+			},
+		],
+		type: types.skadeärende,
+		category: '',
+		isImportant: false,
+		isRead: false,
+		tags: ['dodo'],
+		attachments: ['dokument.pdf'],
+		thumbnailImage: '',
+	},
 	{
 		id: 6627,
 		dateSent: '1683653834315',
@@ -243,12 +279,21 @@ export const messages = writable([
 		id: 668,
 		dateSent: '1683653834315',
 		header: 'Välkommen som kund till Länsförsäkringar Bank!',
-		content: `Uk tredade. Trisumögt vasuse krons desfaktisk, ninat. Fapäling påk samt valigt vid. Lagt kirar respektive lafyvust om dertad. Gäd relig premylig om pulverbrev tramyrade.
-
-`,
+		content: [
+			{
+				id: Math.random(),
+				dateSent: Date.now(),
+				content:
+					'Uk tredade. Trisumögt vasuse krons desfaktisk, ninat. Fapäling påk samt valigt vid. Lagt kirar respektive lafyvust om dertad. Gäd relig premylig om pulverbrev tramyrade.',
+				type: types.massMessage,
+				isImportant: false,
+				isRead: false,
+			},
+		],
 		type: types.secureMessage,
 		category: '',
 		isImportant: false,
+		isOld: true,
 		isRead: true,
 		tags: ['dodo'],
 		attachments: [],

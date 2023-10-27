@@ -30,6 +30,7 @@
 		{:else if message.content.length}
 			<ThreadedMessageView
 				threadedMessages={message.content}
+				isOld={message.isOld}
 				id={message.id}
 			/>
 		{:else}
