@@ -15,6 +15,7 @@
 	import SettingsPane from '$lib/messages/SettingsPane.svelte'
 	import LeftMenu from './LeftMenu.svelte'
 	import { onMount } from 'svelte'
+	import { onNavigate } from '$app/navigation'
 
 	export const prerender = true
 	let innerWidth
@@ -27,6 +28,17 @@
 			$activePane = panes.importantMessagesNotice
 			$isFirstRun = false
 		}
+	})
+
+	onNavigate(navigation => {
+		if (!document.startViewTransition) return
+
+		return new Promise(resolve => {
+			document.startViewTransition(async () => {
+				resolve()
+				await navigation.complete
+			})
+		})
 	})
 </script>
 
