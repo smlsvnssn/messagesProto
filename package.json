@@ -26,6 +26,7 @@
 		"@formkit/auto-animate": "^0.8.0",
 		"@sveltejs/adapter-auto": "^2.1.0",
 		"fuse.js": "^6.6.2",
+		"loerem": "^1.0.6",
 		"svelte": "^4.2.1"
 	}
 }

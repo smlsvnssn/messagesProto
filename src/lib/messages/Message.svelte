@@ -10,8 +10,12 @@
 
 	const setAsActive = () => {
 		$activeMessageId = $activeMessageId === message.id ? -1 : message.id
-		if ($activeMessageId > -1)
-			$messages.find(m => m.id === $activeMessageId).isRead = true
+		if ($activeMessageId > -1) {
+			const activeMessage = $messages.find(m => m.id === $activeMessageId)
+			activeMessage.isRead = true
+			activeMessage.isReadThisSession = true
+		}
+
 		$messages = $messages //to refresh store
 	}
 </script>

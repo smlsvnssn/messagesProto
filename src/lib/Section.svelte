@@ -1,5 +1,5 @@
 <script>
-	export let header = 'header'
+	export let header = 'header (set to empty string to remove)'
 	let isOpen = false
 </script>
 

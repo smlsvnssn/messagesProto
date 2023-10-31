@@ -1,14 +1,13 @@
 <script>
 	import BåtIcon70 from '$lib/icons/BåtIcon70.svelte'
-
 	import VillaIcon70 from '$lib/icons/VillaIcon70.svelte'
-
-	import Section from '$lib/Section.svelte'
 	import MoneyIcon from '$lib/icons/MoneyIcon.svelte'
 
-	import { isSmallWindow } from '$lib/globals'
+	import Section from '$lib/Section.svelte'
 	import Row from '$lib/Row.svelte'
 
+	import { isSmallWindow } from '$lib/globals'
+	import lorem from 'loerem'
 	export const prerender = true
 	let innerWidth
 
@@ -17,10 +16,12 @@
 
 <div class="wrapper">
 	<div class="hero" />
-	<Section>
+	<Section header="Investeringssparkonton">
 		<Row>
-			<MoneyIcon slot="icon" />
-			<h5 style:grid-column="span 4">Semester 2024</h5>
+			<h5 style:grid-column="span 4" class="hasIcon">
+				<MoneyIcon />
+				Semester 2024
+			</h5>
 			<figure style:grid-column="span 4" class="r">
 				<figcaption>Tillgängligt</figcaption>
 				42 000 000 kr
@@ -35,10 +36,10 @@
 			</figure>
 
 			<svelte:fragment slot="details">
-				<p style:grid-column="span 6">
+				<p style:grid-column="span 4">
 					Här finns det lite detaljer, för den som gillar detaljer.
 				</p>
-				<p style:grid-column="span 2" class="r">
+				<p style:grid-column="span 4" class="r">
 					<figcaption>Tillgängligt</figcaption>
 					0 kr
 				</p>
@@ -52,9 +53,11 @@
 				</p>
 			</svelte:fragment>
 		</Row>
-		<Row>
-			<MoneyIcon slot="icon" />
-			<h5 style:grid-column="span 6">Framtiden</h5>
+		<Row url="genericAction">
+			<h5 style:grid-column="span 6" class="hasIcon">
+				<MoneyIcon />
+				Framtiden
+			</h5>
 			<figure style:grid-column="span 2" class="r">
 				<figcaption>Tillgängligt</figcaption>
 				4 300 kr
@@ -70,13 +73,65 @@
 		</Row>
 	</Section>
 
-	<Section header="Investeringssparkonton">
+	<Section header="">
 		<Row>
-			<MoneyIcon slot="icon" />
-			<h5 style:grid-column="span 6">Semester 2024</h5>
-			<figure style:grid-column="span 2" class="r">
+			<figure style:grid-column="span 6" class="hasIcon">
+				<VillaIcon70 />
+				<div>
+					<h3>Villa-Hem</h3>
+					<p>
+						<span class="marginbottom">
+							Skadenummer: 28-808329-21
+						</span>
+						<figcaption>Självrisk: 2 000 kr</figcaption>
+					</p>
+				</div>
+			</figure>
+			<figure class="r" style:grid-column="span 6">
+				<h5 class="black">1 250 kr/år</h5>
+				<span class="tagsy text-sm">Aktiv</span>
+			</figure>
+		</Row>
+		<Row>
+			<figure style:grid-column="span 6" class="hasIcon">
+				<BåtIcon70 />
+				<div>
+					<h3>Buster X 60hp - 70hp 2008</h3>
+					<p>
+						<span class="marginbottom">
+							Skadenummer: 28-808329-21
+						</span>
+						<figcaption>Självrisk: 2 500 kr</figcaption>
+					</p>
+				</div>
+			</figure>
+			<figure class="r" style:grid-column="span 6">
+				<h5 class="black">2 150 kr/år</h5>
+				<span class="tagsy text-sm">Aktiv</span>
+			</figure>
+		</Row>
+	</Section>
+
+	<Section header="Tabelltest">
+		<Row type="tableheader">
+			<figure style:grid-column="span 4">
+				<figcaption>Konto</figcaption>
+			</figure>
+			<figure style:grid-column="span 4" class="r">
 				<figcaption>Tillgängligt</figcaption>
-				0 kr
+			</figure>
+			<figure style:grid-column="span 2" class="r">
+				<figcaption>Värde</figcaption>
+			</figure>
+			<figure style:grid-column="span 2" class="r">
+				<figcaption>Utveckling</figcaption>
+			</figure>
+		</Row>
+		<Row type="tablerow">
+			<h5 style:grid-column="span 4" class="hasIcon">Semester 2024</h5>
+			<figure style:grid-column="span 4" class="r">
+				<figcaption>Tillgängligt</figcaption>
+				42 000 000 kr
 			</figure>
 			<figure style:grid-column="span 2" class="r">
 				<figcaption>Värde</figcaption>
@@ -86,67 +141,65 @@
 				<figcaption>Utveckling</figcaption>
 				<span class="plus">+2.4 %</span>
 			</figure>
+			<svelte:fragment slot="details">
+				<p style:grid-column="span 10">Here be details</p>
+			</svelte:fragment>
 		</Row>
-		<Row>
-			<MoneyIcon slot="icon" />
-			<h5 style:grid-column="span 4">Framtiden</h5>
-			<figure style:grid-column="span 2" class="r">
-				<figcaption>En grej till</figcaption>
-				66 300 kr
-			</figure>
-			<figure style:grid-column="span 2" class="r">
+		<Row type="tablerow">
+			<h5 style:grid-column="span 4" class="hasIcon">Barnens konto</h5>
+			<figure style:grid-column="span 4" class="r">
 				<figcaption>Tillgängligt</figcaption>
-				4 300 kr
+				42 000 kr
 			</figure>
 			<figure style:grid-column="span 2" class="r">
 				<figcaption>Värde</figcaption>
-				819 452 kr
+				27 361 419 kr
 			</figure>
 			<figure style:grid-column="span 2" class="r">
 				<figcaption>Utveckling</figcaption>
-				<span class="plus">+6.4 %</span>
+				<span class="minus">-2.6 %</span>
 			</figure>
-			<svelte:fragment slot="details">Here be details</svelte:fragment>
+			<svelte:fragment slot="details">
+				<p style:grid-column="span 10">Here be details</p>
+			</svelte:fragment>
 		</Row>
-	</Section>
-
-	<Section header="">
-		<Row>
-			<span slot="icon"><VillaIcon70 /></span>
-			<figure style:grid-column="span 6">
-				<h3>Villa-Hem</h3>
-				<p>
-					<span class="marginbottom">
-						Skadenummer: 28-808329-21
-					</span>
-					<figcaption>Självrisk: 2 000 kr</figcaption>
-				</p>
+		<Row type="tablerow">
+			<h5 style:grid-column="span 4" class="hasIcon">
+				Hemliga schweiziska kontot
+			</h5>
+			<figure style:grid-column="span 4" class="r">
+				<figcaption>Tillgängligt</figcaption>
+				619 000 kr
 			</figure>
-			<figure class="r" style:grid-column="span 6">
-				<h5 class="black">1 250 kr/år</h5>
-				<span class="tagsy text-sm">Aktiv</span>
+			<figure style:grid-column="span 2" class="r">
+				<figcaption>Värde</figcaption>
+				619 412 422 kr
 			</figure>
+			<figure style:grid-column="span 2" class="r">
+				<figcaption>Utveckling</figcaption>
+				<span class="plus">+3.2 %</span>
+			</figure>
+			<svelte:fragment slot="details">
+				<p style:grid-column="span 10">Here be details</p>
+			</svelte:fragment>
 		</Row>
 		<Row>
-			<span slot="icon"><BåtIcon70 /></span>
-			<figure style:grid-column="span 6">
-				<h3>Buster X 60hp - 70hp 2008</h3>
-				<p>
-					<span class="marginbottom">
-						Skadenummer: 28-808329-21
-					</span>
-					<figcaption>Självrisk: 2 500 kr</figcaption>
-				</p>
-			</figure>
-			<figure class="r" style:grid-column="span 6">
-				<h5 class="black">2 150 kr/år</h5>
-				<span class="tagsy text-sm">Aktiv</span>
-			</figure>
+			<h3 class="hasIcon" style:grid-column="2 / span 7">
+				Den här raden innehåller bara rubrik och en liten text, och
+				ligger nästan i mitten.
+			</h3>
+			<p style:grid-column="2 / span 7">{lorem()}</p>
+			<svelte:fragment slot="details">
+				<p style:grid-column="span 10">Here be details</p>
+			</svelte:fragment>
 		</Row>
 	</Section>
 </div>
 
 <style lang="scss">
+	* {
+		hyphens: auto;
+	}
 	.wrapper {
 		display: flex;
 		flex-direction: column;
@@ -189,8 +242,23 @@
 			font-weight: normal;
 		}
 
+		.hasIcon {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+		}
 		.r {
 			text-align: right;
+
+			@container (width < 500px) {
+				text-align: left;
+				display: flex;
+				align-items: center;
+				width: 100%;
+				gap: 1rem;
+				justify-content: space-between;
+				//border-bottom: 1px solid var(--shadow);
+			}
 		}
 
 		.h {

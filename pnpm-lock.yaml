@@ -14,6 +14,9 @@ dependencies:
   fuse.js:
     specifier: ^6.6.2
     version: 6.6.2
+  loerem:
+    specifier: ^1.0.6
+    version: 1.0.6
   svelte:
     specifier: ^4.2.1
     version: 4.2.1
@@ -672,6 +675,10 @@ packages:
 
   /locate-character@3.0.0:
     resolution: {integrity: sha512-SW13ws7BjaeJ6p7Q6CO2nchbYEc3X3J6WrmTTDto7yMPqVSZTUyY5Tjbid+Ab8gLnATtygYtiDIJGQRRn2ZOiA==}
+
+  /loerem@1.0.6:
+    resolution: {integrity: sha512-ZiGJi/T5yIp8JPeJgl9NBtE9Kvl0QKy44bsXE8CRgS7xyVWQXhRmxiXuSUcwI5KU6UAK2e/KRSGKihPwKgZR4g==}
+    dev: false
 
   /magic-string@0.25.9:
     resolution: {integrity: sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ==}

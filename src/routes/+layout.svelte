@@ -77,6 +77,9 @@
 	:global(.btn) {
 		position: initial !important;
 	}
+	:global(p) {
+		line-height: 1.35;
+	}
 	.fejkbody {
 		max-width: 1280px;
 		margin: auto;

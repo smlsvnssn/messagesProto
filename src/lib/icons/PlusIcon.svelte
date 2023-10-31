@@ -14,3 +14,9 @@
 	/>
 	<path d="M15 8V15H8V17H15V24H17V17H24V15H17V8H15Z" fill="#005AA0" />
 </svg>
+
+<style>
+	svg {
+		cursor: pointer;
+	}
+</style>

@@ -4,14 +4,26 @@
 
 	import Message from './Message.svelte'
 	import { messages, types } from '$lib/globals'
+	import * as ö from 'ouml'
 
 	export let searchresult
 	export let searchstr
 
 	let filteredMessages
 	let filters = [
-		{ name: 'Alla', filter: list => [...list] },
-		{ name: 'Olästa', filter: list => list.filter(m => !m.isRead) },
+		{
+			name: 'Alla',
+			filter: list => {
+				$messages.forEach(m => {
+					m.isReadThisSession = false
+				})
+				return list
+			},
+		},
+		{
+			name: 'Olästa',
+			filter: list => list.filter(m => !m.isRead || m.isReadThisSession),
+		},
 		// {
 		// 	name: 'Personliga',
 		// 	filter: () => $messages.filter(m => m.type === types.secureMessage),
