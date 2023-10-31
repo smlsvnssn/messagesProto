@@ -83,8 +83,8 @@
 						<span class="marginbottom">
 							Skadenummer: 28-808329-21
 						</span>
-						<figcaption>Självrisk: 2 000 kr</figcaption>
 					</p>
+					<figcaption>Självrisk: 2 000 kr</figcaption>
 				</div>
 			</figure>
 			<figure class="r" style:grid-column="span 6">
@@ -101,8 +101,8 @@
 						<span class="marginbottom">
 							Skadenummer: 28-808329-21
 						</span>
-						<figcaption>Självrisk: 2 500 kr</figcaption>
 					</p>
+					<figcaption>Självrisk: 2 500 kr</figcaption>
 				</div>
 			</figure>
 			<figure class="r" style:grid-column="span 6">
