@@ -22,16 +22,15 @@
 	export const prerender = true
 	let innerWidth
 
-	// let newMessage = source('api/listenForNewMessages').onError(event =>
-	// 	console.error({ event }),
-	// )
+	let newMessage = source('api/listenForNewMessages').onError(event =>
+		console.error({ event }),
+	)
 
-	// $: {
-	// 	try {
-	// 		$messages = [JSON.parse($newMessage), ...$messages]
-	// 	} catch (error) {}
-	// }
-
+	$: {
+		try {
+			$messages = [JSON.parse($newMessage), ...$messages]
+		} catch (error) {}
+	}
 	$: $isSmallWindow = innerWidth < 800
 	$: importantMessages = $messages.filter(m => m.isImportant && !m.isRead)
 
