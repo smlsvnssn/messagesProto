@@ -43,6 +43,9 @@ devDependencies:
   svelte-preprocess:
     specifier: ^5.0.4
     version: 5.0.4(svelte@4.2.1)(typescript@4.9.5)
+  sveltekit-sse:
+    specifier: ^0.3.7
+    version: 0.3.7(svelte@4.2.1)
   typescript:
     specifier: ^4.9.5
     version: 4.9.5
@@ -1098,6 +1101,14 @@ packages:
       locate-character: 3.0.0
       magic-string: 0.30.5
       periscopic: 3.1.0
+
+  /sveltekit-sse@0.3.7(svelte@4.2.1):
+    resolution: {integrity: sha512-oyL8h6g9ZXmA9BnhNLSpXkuMsVQ/OM8wtt6Ihy8wooLkWN/AHB0rEauDxxX0fP8p3Qm6UY8UK7ngwQLcJONt8Q==}
+    peerDependencies:
+      svelte: ^4.0.0
+    dependencies:
+      svelte: 4.2.1
+    dev: true
 
   /tiny-glob@0.2.9:
     resolution: {integrity: sha512-g/55ssRPUjShh+xkfx9UPDXqhckHEsHr4Vd9zX55oSdGZc/MD0m3sferOkwWtp98bv+kcVfEHtRJgBVJzelrzg==}

@@ -9,6 +9,7 @@
 		isRedDotActive,
 		isFirstRun,
 		messages,
+		types,
 	} from '$lib/globals'
 	import '../style.css'
 	import NewMessagePane from '$lib/messages/NewMessagePane.svelte'
@@ -16,9 +17,20 @@
 	import LeftMenu from './LeftMenu.svelte'
 	import { onMount } from 'svelte'
 	import { onNavigate } from '$app/navigation'
+	import { source } from 'sveltekit-sse'
 
 	export const prerender = true
 	let innerWidth
+
+	let newMessage = source('api/listenForNewMessages').onError(event =>
+		console.error({ event }),
+	)
+
+	$: {
+		try {
+			$messages = [JSON.parse($newMessage), ...$messages]
+		} catch (error) {}
+	}
 
 	$: $isSmallWindow = innerWidth < 800
 	$: importantMessages = $messages.filter(m => m.isImportant && !m.isRead)
@@ -26,6 +38,7 @@
 	onMount(() => {
 		if ($isFirstRun) {
 			$activePane = panes.importantMessagesNotice
+
 			$isFirstRun = false
 		}
 	})
