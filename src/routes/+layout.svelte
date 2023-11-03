@@ -28,6 +28,7 @@
 
 	const getMessagesWithoutReactiveUpdateSvelteHack = () => $messages
 	$: {
+		console.log($newMessage)
 		if ($newMessage !== 'ping') {
 			try {
 				$messages = [
