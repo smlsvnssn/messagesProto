@@ -15,7 +15,7 @@
 	import NewMessagePane from '$lib/messages/NewMessagePane.svelte'
 	import SettingsPane from '$lib/messages/SettingsPane.svelte'
 	import LeftMenu from './LeftMenu.svelte'
-	import { onMount } from 'svelte'
+	import { onMount, tick } from 'svelte'
 	import { onNavigate } from '$app/navigation'
 	import { source } from 'sveltekit-sse'
 
@@ -27,17 +27,21 @@
 	)
 
 	const getMessagesWithoutReactiveUpdateSvelteHack = () => $messages
+	const resetImportantPane = async () => {
+		$isRedDotActive = true
+		if ($activePane === panes.none)
+			$activePane = panes.importantMessagesNotice
+	}
 	$: {
 		console.log($newMessage)
 		let m
 		try {
 			m = JSON.parse($newMessage)
-		} catch (error) {
-			console.log($newMessage)
-			console.log(error)
-		}
-		if (m?.id)
+		} catch (error) {}
+		if (m?.id) {
 			$messages = [m, ...getMessagesWithoutReactiveUpdateSvelteHack()]
+			resetImportantPane()
+		}
 	}
 	$: $isSmallWindow = innerWidth < 800
 	$: importantMessages = $messages.filter(m => m.isImportant && !m.isRead)

@@ -8,6 +8,7 @@
 
 	import { isSmallWindow } from '$lib/globals'
 	import lorem from 'loerem'
+	import Sparkline from '$lib/messages/Sparkline.svelte'
 	export const prerender = true
 	let innerWidth
 
@@ -22,7 +23,7 @@
 				<MoneyIcon />
 				Semester 2024
 			</h5>
-			<figure style:grid-column="span 4" class="r">
+			<figure style:grid-column="span 3" class="r">
 				<figcaption>Tillgängligt</figcaption>
 				42 000 000 kr
 			</figure>
@@ -30,16 +31,16 @@
 				<figcaption>Värde</figcaption>
 				67 819 kr
 			</figure>
-			<figure style:grid-column="span 2" class="r">
+			<figure style:grid-column="span 3" class="r">
 				<figcaption>Utveckling</figcaption>
-				<span class="plus">+2.4 %</span>
+				<span class="plus"><Sparkline /> +2.4 %</span>
 			</figure>
 
 			<svelte:fragment slot="details">
 				<p style:grid-column="span 4">
 					Här finns det lite detaljer, för den som gillar detaljer.
 				</p>
-				<p style:grid-column="span 4" class="r">
+				<p style:grid-column="span 3" class="r">
 					<figcaption>Tillgängligt</figcaption>
 					0 kr
 				</p>
@@ -47,14 +48,14 @@
 					<figcaption>Värde</figcaption>
 					67 819 kr
 				</p>
-				<p style:grid-column="span 2" class="r">
+				<p style:grid-column="span 3" class="r">
 					<figcaption>Utveckling</figcaption>
 					<span class="plus">+2.4 %</span>
 				</p>
 			</svelte:fragment>
 		</Row>
 		<Row url="genericAction">
-			<h5 style:grid-column="span 6" class="hasIcon">
+			<h5 style:grid-column="span 5" class="hasIcon">
 				<MoneyIcon />
 				Framtiden
 			</h5>
@@ -66,9 +67,12 @@
 				<figcaption>Värde</figcaption>
 				819 452 kr
 			</figure>
-			<figure style:grid-column="span 2" class="r">
+			<figure style:grid-column="span 3" class="r">
 				<figcaption>Utveckling</figcaption>
-				<span class="plus">+6.4 %</span>
+				<span class="minus">
+					<Sparkline direction="-1" />
+					-6.4 %</span
+				>
 			</figure>
 		</Row>
 	</Section>
@@ -139,7 +143,10 @@
 			</figure>
 			<figure style:grid-column="span 2" class="r">
 				<figcaption>Utveckling</figcaption>
-				<span class="plus">+2.4 %</span>
+				<span class="plus">
+					<Sparkline direction="1" />
+					+2.4 %</span
+				>
 			</figure>
 			<svelte:fragment slot="details">
 				<p style:grid-column="span 10">Here be details</p>
@@ -157,7 +164,10 @@
 			</figure>
 			<figure style:grid-column="span 2" class="r">
 				<figcaption>Utveckling</figcaption>
-				<span class="minus">-2.6 %</span>
+				<span class="minus">
+					<Sparkline direction="-1" />
+					-2.6 %</span
+				>
 			</figure>
 			<svelte:fragment slot="details">
 				<p style:grid-column="span 10">Here be details</p>
@@ -177,7 +187,10 @@
 			</figure>
 			<figure style:grid-column="span 2" class="r">
 				<figcaption>Utveckling</figcaption>
-				<span class="plus">+3.2 %</span>
+				<span class="plus">
+					<Sparkline direction="1" />
+					+3.2 %</span
+				>
 			</figure>
 			<svelte:fragment slot="details">
 				<p style:grid-column="span 10">Here be details</p>
@@ -277,7 +290,7 @@
 			color: var(--green);
 		}
 		.minus {
-			color: var(--red);
+			color: var(--wine);
 		}
 
 		figure {
