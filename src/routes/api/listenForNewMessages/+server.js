@@ -8,7 +8,7 @@ export function GET() {
 		while (true) {
 			await new Promise(r => setTimeout(r, delay))
 			if (Math.random() < 0.1) emit(JSON.stringify(newMessage()))
-			else emit('ping')
+			else emit(String(Math.random()))
 		}
 	}).toResponse()
 }

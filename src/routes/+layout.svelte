@@ -29,17 +29,15 @@
 	const getMessagesWithoutReactiveUpdateSvelteHack = () => $messages
 	$: {
 		console.log($newMessage)
-		if ($newMessage !== 'ping') {
-			try {
-				$messages = [
-					JSON.parse($newMessage),
-					...getMessagesWithoutReactiveUpdateSvelteHack(),
-				]
-			} catch (error) {
-				console.log($newMessage)
-				console.log(error)
-			}
+		let m
+		try {
+			m = JSON.parse($newMessage)
+		} catch (error) {
+			console.log($newMessage)
+			console.log(error)
 		}
+		if (m?.id)
+			$messages = [m, ...getMessagesWithoutReactiveUpdateSvelteHack()]
 	}
 	$: $isSmallWindow = innerWidth < 800
 	$: importantMessages = $messages.filter(m => m.isImportant && !m.isRead)
