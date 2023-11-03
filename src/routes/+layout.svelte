@@ -28,12 +28,14 @@
 
 	const getMessagesWithoutReactiveUpdateSvelteHack = () => $messages
 	$: {
-		try {
-			$messages = [
-				JSON.parse($newMessage),
-				...getMessagesWithoutReactiveUpdateSvelteHack(),
-			]
-		} catch (error) {}
+		if ($newMessage !== 'ping') {
+			try {
+				$messages = [
+					JSON.parse($newMessage),
+					...getMessagesWithoutReactiveUpdateSvelteHack(),
+				]
+			} catch (error) {}
+		}
 	}
 	$: $isSmallWindow = innerWidth < 800
 	$: importantMessages = $messages.filter(m => m.isImportant && !m.isRead)

@@ -2,13 +2,13 @@ import { event } from 'sveltekit-sse'
 import lorem from 'loerem'
 import { types } from '$lib/globals'
 
-let delay = 30000
+let delay = 5000
 export function GET() {
 	return event(async emit => {
 		while (true) {
-			await new Promise(r => setTimeout(r, Math.random() * delay))
-			emit(JSON.stringify(newMessage()))
-			if (delay === 30000) delay = 300000
+			await new Promise(r => setTimeout(r, delay))
+			if (Math.random() < 0.1) emit(JSON.stringify(newMessage()))
+			else emit('ping')
 		}
 	}).toResponse()
 }
