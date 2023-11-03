@@ -1,8 +1,14 @@
 <script>
-	import linefont from 'linefont'
 	import * as ö from 'ouml'
 
 	export let direction = 1
+
+	const linefont = (...values) =>
+		String.fromCharCode(
+			...values.map(
+				value => Math.floor(Math.min(Math.max(value, 0), 100)) + 0x100,
+			),
+		)
 
 	let sparkline = ö.pipe(
 		ö.times(40, i => ö.randomNormal(direction > 0 ? 30 + i : 70 - i, 25)),
