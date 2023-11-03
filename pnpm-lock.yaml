@@ -4,11 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-dependencies:
-  linefont:
-    specifier: ^3.2.0
-    version: 3.2.0
-
 devDependencies:
   '@formkit/auto-animate':
     specifier: ^0.8.0
@@ -22,6 +17,9 @@ devDependencies:
   fuse.js:
     specifier: ^6.6.2
     version: 6.6.2
+  linefont:
+    specifier: ^3.2.0
+    version: 3.2.0
   loerem:
     specifier: ^1.0.6
     version: 1.0.6
@@ -734,7 +732,7 @@ packages:
 
   /linefont@3.2.0:
     resolution: {integrity: sha512-//X6LwPxbwx2RDp9W5+6bryJJJMh+J/vkgi+pYLTDfJ/YHIz/OP8yOtkWJwb8yWbiW/n5SC0TILgDguigSSMhA==}
-    dev: false
+    dev: true
 
   /locate-character@3.0.0:
     resolution: {integrity: sha512-SW13ws7BjaeJ6p7Q6CO2nchbYEc3X3J6WrmTTDto7yMPqVSZTUyY5Tjbid+Ab8gLnATtygYtiDIJGQRRn2ZOiA==}
