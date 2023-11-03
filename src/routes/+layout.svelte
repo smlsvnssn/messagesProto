@@ -26,9 +26,13 @@
 		console.error({ event }),
 	)
 
+	const getMessagesWithoutReactiveUpdateSvelteHack = () => $messages
 	$: {
 		try {
-			$messages = [JSON.parse($newMessage), ...$messages]
+			$messages = [
+				JSON.parse($newMessage),
+				...getMessagesWithoutReactiveUpdateSvelteHack(),
+			]
 		} catch (error) {}
 	}
 	$: $isSmallWindow = innerWidth < 800
