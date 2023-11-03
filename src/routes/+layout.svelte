@@ -35,7 +35,10 @@
 					JSON.parse($newMessage),
 					...getMessagesWithoutReactiveUpdateSvelteHack(),
 				]
-			} catch (error) {}
+			} catch (error) {
+				console.log($newMessage)
+				console.log(error)
+			}
 		}
 	}
 	$: $isSmallWindow = innerWidth < 800
