@@ -24,6 +24,9 @@
 </svg>
 
 <style lang="scss">
+	svg {
+		//margin: -0.25rem;
+	}
 	path {
 		//fill: var(--blue);
 		fill: var(--silver);

@@ -6,6 +6,10 @@
 	import CloseIcon from '$lib/icons/CloseIcon.svelte'
 	import NewMessage from './NewMessage.svelte'
 	import NewMessageIcon from '$lib/icons/NewMessageIcon.svelte'
+	import * as ö from 'ouml'
+
+	const messageStatuses = ö.createEnum(['unsent', 'pending', 'sent'])
+	let messageStatus = messageStatuses.unsent
 
 	const hidePane = () => ($activePane = panes.none)
 
@@ -23,7 +27,11 @@
 				<header class="messagesHeader" style={arrowXpos}>
 					<ul>
 						<li>
-							<h4>Skriv ett meddelande till oss</h4>
+							<h4>
+								{messageStatus === messageStatuses.unsent
+									? 'Skriv ett meddelande till oss'
+									: 'Tack för ditt meddelande'}
+							</h4>
 						</li>
 						<li
 							on:click|stopPropagation={hidePane}
@@ -35,7 +43,7 @@
 				</header>
 				<div class="messagesBody">
 					<article>
-						<NewMessage />
+						<NewMessage bind:messageStatus {messageStatuses} />
 					</article>
 				</div>
 			</div>
@@ -135,7 +143,8 @@
 			.messagesBody {
 				display: flex;
 				transition: transform 0.3s;
-				min-height: 30rem;
+				overflow: auto;
+				//min-height: 30rem;
 				//@media (max-width: 800px) {
 				//width: 200%;
 				&.messageActive {

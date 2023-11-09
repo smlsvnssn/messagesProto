@@ -33,7 +33,7 @@
 			$activePane = panes.importantMessagesNotice
 	}
 	$: {
-		console.log($newMessage)
+		//console.log($newMessage)
 		let m
 		try {
 			m = JSON.parse($newMessage)

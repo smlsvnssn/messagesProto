@@ -9,6 +9,7 @@
 	import { isSmallWindow } from '$lib/globals'
 	import lorem from 'loerem'
 	import Sparkline from '$lib/messages/Sparkline.svelte'
+	import Treeview from '$lib/treemap/Treeview.svelte'
 	export const prerender = true
 	let innerWidth
 
@@ -17,62 +18,65 @@
 
 <div class="wrapper">
 	<div class="hero" />
-	<Section header="Investeringssparkonton">
+	<Section header="Min ekonomi">
+		<Row>
+			<div style:grid-column="span 13"><Treeview /></div>
+		</Row>
 		<Row>
 			<h5 style:grid-column="span 4" class="hasIcon">
 				<MoneyIcon />
 				Semester 2024
 			</h5>
-			<figure style:grid-column="span 3" class="r">
+			<figure style:grid-column="span 4" class="r">
 				<figcaption>Tillgängligt</figcaption>
 				42 000 000 kr
 			</figure>
 			<figure style:grid-column="span 2" class="r">
-				<figcaption>Värde</figcaption>
-				67 819 kr
-			</figure>
-			<figure style:grid-column="span 3" class="r">
 				<figcaption>Utveckling</figcaption>
-				<span class="plus"><Sparkline /> +2.4 %</span>
+				<span class="plus"><Sparkline /> +2.4&nbsp%</span>
+			</figure>
+			<figure style:grid-column="span 2" class="r">
+				<figcaption>Värde</figcaption>
+				<strong>67 819 kr</strong>
 			</figure>
 
 			<svelte:fragment slot="details">
 				<p style:grid-column="span 4">
 					Här finns det lite detaljer, för den som gillar detaljer.
 				</p>
-				<p style:grid-column="span 3" class="r">
+				<p style:grid-column="span 4" class="r">
 					<figcaption>Tillgängligt</figcaption>
 					0 kr
+				</p>
+				<p style:grid-column="span 2" class="r">
+					<figcaption>Utveckling</figcaption>
+					<span class="plus">+2.4&nbsp;%</span>
 				</p>
 				<p style:grid-column="span 2" class="r">
 					<figcaption>Värde</figcaption>
 					67 819 kr
 				</p>
-				<p style:grid-column="span 3" class="r">
-					<figcaption>Utveckling</figcaption>
-					<span class="plus">+2.4 %</span>
-				</p>
 			</svelte:fragment>
 		</Row>
 		<Row url="genericAction">
-			<h5 style:grid-column="span 5" class="hasIcon">
+			<h5 style:grid-column="span 4" class="hasIcon">
 				<MoneyIcon />
 				Framtiden
 			</h5>
-			<figure style:grid-column="span 2" class="r">
+			<figure style:grid-column="span 4" class="r">
 				<figcaption>Tillgängligt</figcaption>
 				4 300 kr
 			</figure>
 			<figure style:grid-column="span 2" class="r">
-				<figcaption>Värde</figcaption>
-				819 452 kr
-			</figure>
-			<figure style:grid-column="span 3" class="r">
 				<figcaption>Utveckling</figcaption>
 				<span class="minus">
 					<Sparkline direction="-1" />
-					-6.4 %</span
+					-6.4&nbsp;%</span
 				>
+			</figure>
+			<figure style:grid-column="span 2" class="r">
+				<figcaption>Värde</figcaption>
+				<strong>819 452 kr</strong>
 			</figure>
 		</Row>
 	</Section>
@@ -83,11 +87,11 @@
 				<VillaIcon70 />
 				<div>
 					<h3>Villa-Hem</h3>
-					<p>
-						<span class="marginbottom">
-							Skadenummer: 28-808329-21
-						</span>
-					</p>
+
+					<span class="marginbottom">
+						Skadenummer: 28-808329-21
+					</span>
+
 					<figcaption>Självrisk: 2 000 kr</figcaption>
 				</div>
 			</figure>
@@ -101,11 +105,11 @@
 				<BåtIcon70 />
 				<div>
 					<h3>Buster X 60hp - 70hp 2008</h3>
-					<p>
-						<span class="marginbottom">
-							Skadenummer: 28-808329-21
-						</span>
-					</p>
+
+					<span class="marginbottom">
+						Skadenummer: 28-808329-21
+					</span>
+
 					<figcaption>Självrisk: 2 500 kr</figcaption>
 				</div>
 			</figure>
@@ -125,10 +129,10 @@
 				<figcaption>Tillgängligt</figcaption>
 			</figure>
 			<figure style:grid-column="span 2" class="r">
-				<figcaption>Värde</figcaption>
+				<figcaption>Utveckling</figcaption>
 			</figure>
 			<figure style:grid-column="span 2" class="r">
-				<figcaption>Utveckling</figcaption>
+				<figcaption>Värde</figcaption>
 			</figure>
 		</Row>
 		<Row type="tablerow">
@@ -138,15 +142,15 @@
 				42 000 000 kr
 			</figure>
 			<figure style:grid-column="span 2" class="r">
-				<figcaption>Värde</figcaption>
-				67 819 kr
-			</figure>
-			<figure style:grid-column="span 2" class="r">
 				<figcaption>Utveckling</figcaption>
 				<span class="plus">
 					<Sparkline direction="1" />
-					+2.4 %</span
+					+2.4&nbsp;%</span
 				>
+			</figure>
+			<figure style:grid-column="span 2" class="r">
+				<figcaption>Värde</figcaption>
+				<strong>67 819 kr</strong>
 			</figure>
 			<svelte:fragment slot="details">
 				<p style:grid-column="span 10">Here be details</p>
@@ -159,15 +163,15 @@
 				42 000 kr
 			</figure>
 			<figure style:grid-column="span 2" class="r">
-				<figcaption>Värde</figcaption>
-				27 361 419 kr
-			</figure>
-			<figure style:grid-column="span 2" class="r">
 				<figcaption>Utveckling</figcaption>
 				<span class="minus">
 					<Sparkline direction="-1" />
-					-2.6 %</span
+					-2.6&nbsp;%</span
 				>
+			</figure>
+			<figure style:grid-column="span 2" class="r">
+				<figcaption>Värde</figcaption>
+				<strong>27 361 419 kr</strong>
 			</figure>
 			<svelte:fragment slot="details">
 				<p style:grid-column="span 10">Here be details</p>
@@ -182,26 +186,26 @@
 				619 000 kr
 			</figure>
 			<figure style:grid-column="span 2" class="r">
-				<figcaption>Värde</figcaption>
-				619 412 422 kr
-			</figure>
-			<figure style:grid-column="span 2" class="r">
 				<figcaption>Utveckling</figcaption>
 				<span class="plus">
 					<Sparkline direction="1" />
-					+3.2 %</span
+					+3.2&nbsp;%</span
 				>
+			</figure>
+			<figure style:grid-column="span 2" class="r">
+				<figcaption>Värde</figcaption>
+				<strong>619 412 422 kr</strong>
 			</figure>
 			<svelte:fragment slot="details">
 				<p style:grid-column="span 10">Here be details</p>
 			</svelte:fragment>
 		</Row>
 		<Row>
-			<h3 class="hasIcon" style:grid-column="2 / span 7">
+			<h3 class="hasIcon" style:grid-column="3 / span 7">
 				Den här raden innehåller bara rubrik och en liten text, och
 				ligger nästan i mitten.
 			</h3>
-			<p style:grid-column="2 / span 7">{lorem()}</p>
+			<p style:grid-column="3 / span 7">{lorem()}</p>
 			<svelte:fragment slot="details">
 				<p style:grid-column="span 10">Here be details</p>
 			</svelte:fragment>
@@ -284,7 +288,7 @@
 
 		.marginbottom {
 			display: inline-block;
-			margin-bottom: 0.25rem;
+			margin-bottom: 0.5rem;
 		}
 		.plus {
 			color: var(--green);
@@ -295,14 +299,21 @@
 
 		figure {
 			font-family: var(--font-family-sans-serif);
-			font-weight: 600;
+			font-weight: 300;
 			margin-bottom: 0;
 			font-size: 1.125rem;
+
+			strong {
+				font-weight: bold;
+				margin-top: -0.125rem;
+				display: inline-block;
+			}
 		}
 		figcaption {
 			font-family: var(--font-family-sans-serif);
 			font-weight: 300;
 			font-size: 1rem;
+			line-height: 1.3;
 		}
 	}
 </style>

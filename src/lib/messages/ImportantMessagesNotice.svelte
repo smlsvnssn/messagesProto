@@ -109,7 +109,7 @@
 			border-radius: 4px;
 			overflow: visible;
 			max-height: calc(100dvh - --headerHeight - 1rem);
-			max-width: 500px;
+			max-width: 450px;
 			min-width: 300px;
 
 			position: absolute;

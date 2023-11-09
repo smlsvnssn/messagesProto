@@ -26,7 +26,7 @@
 		</header>
 
 		{#if typeof message.content === 'string'}
-			{@html message.content}
+			<p>{@html message.content}</p>
 		{:else if message.content.length}
 			<ThreadedMessageView
 				threadedMessages={message.content}

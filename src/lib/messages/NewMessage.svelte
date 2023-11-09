@@ -4,15 +4,17 @@
 	import Fuse from 'fuse.js'
 	import * as ö from 'ouml'
 	import { onDestroy, onMount } from 'svelte'
+
 	import { messages, types, panes, activePane } from '$lib/globals'
 	import { keywords } from './keywords'
-	import { slide } from 'svelte/transition'
+	import { slide, fade } from 'svelte/transition'
+
+	export let messageStatus, messageStatuses
 
 	const newMessageTemplate = {
 		subject: '',
 		body: '',
 	}
-
 	let newMessage = newMessageTemplate
 
 	const clearMessage = () => {
@@ -21,7 +23,7 @@
 		//$activeMessageId = -1
 	}
 
-	const sendMessage = () => {
+	const sendMessage = async () => {
 		$messages = [
 			{
 				id: Math.random(),
@@ -43,9 +45,14 @@
 			},
 			...$messages,
 		]
+		messageStatus = messageStatuses.pending
+		await ö.wait(200)
 		clearMessage()
-		$activePane = panes.none
+		messageStatus = messageStatuses.sent
+		//$activePane = panes.none
 	}
+
+	const closePane = () => ($activePane = panes.none)
 
 	const fuse = new Fuse(keywords, {
 		keys: ['words'],
@@ -54,8 +61,6 @@
 		minMatchCharLength: 4,
 		ignoreLocation: true,
 	})
-
-	const getShortlist = ''
 
 	// save user input to local
 	onMount(() => {
@@ -79,42 +84,75 @@
 	)
 </script>
 
-<div class="form-group">
-	<label>Ämne</label>
-	<input type="text" class="form-control" bind:value={newMessage.subject} />
-</div>
+{#if messageStatus === messageStatuses.unsent}
+	<div transition:fade={{ duration: 200 }}>
+		<div class="form-group">
+			<label>Ämne</label>
+			<input
+				type="text"
+				class="form-control"
+				bind:value={newMessage.subject}
+			/>
+		</div>
 
-<div class="form-group">
-	<label>Meddelande</label>
-	<textarea class="form-control" rows="10" bind:value={newMessage.body} />
-</div>
+		<div class="form-group">
+			<label>Meddelande</label>
+			<textarea
+				class="form-control"
+				rows="10"
+				bind:value={newMessage.body}
+			/>
+		</div>
 
-<DummyUploader />
+		<DummyUploader />
 
-{#if newMessage.subject.length || newMessage.body.length}
-	<div class="form-group" transition:slide={{ delay: 500 }}>
-		<label>Vad handlar ditt meddelande om?</label>
+		{#if newMessage.subject.length || newMessage.body.length}
+			<div class="form-group" transition:slide={{ delay: 500 }}>
+				<label>Vad handlar ditt meddelande om?</label>
 
-		<Taglist {shortlist} keywords={keywords.map(v => v.group)} />
+				<Taglist {shortlist} keywords={keywords.map(v => v.group)} />
 
-		<p class="text-sm text-muted">
-			Hjälp oss kategorisera ditt meddelande, så kan vi svara dig
-			snabbare! Du kan lägga till flera ämnen.
+				<p class="text-sm text-muted">
+					Hjälp oss kategorisera ditt meddelande, så kan vi svara dig
+					snabbare! Du kan lägga till flera ämnen.
+				</p>
+			</div>
+		{/if}
+
+		<hr />
+
+		<div class="exits">
+			<a href="#" on:click|stopPropagation={clearMessage}>Avbryt</a>
+			<a
+				href="#"
+				on:click|stopPropagation={sendMessage}
+				type="button"
+				class="btn btn-primary btn-sm-block">Skicka</a
+			>
+		</div>
+	</div>
+{:else if messageStatus === messageStatuses.sent}
+	<div transition:fade class="top">
+		<h3 class="mb-05" />
+		<p>
+			Vi har tagit emot ditt meddelande. Vi svarar nästan alltid inom 24
+			timmar på vardagar.
+		</p>
+		<p class="text-sm">
+			Om du vill kan du få en notis på sms eller e-post när vi har svarat.
+			Välj vilket du föredrar under
+			<a href="#"> notisinställningar</a>.
+		</p>
+		<p>
+			<a
+				href="#"
+				on:click|stopPropagation={closePane}
+				type="button"
+				class="btn btn-primary btn-sm-block">Stäng</a
+			>
 		</p>
 	</div>
 {/if}
-
-<hr />
-
-<div class="exits">
-	<a href="#" on:click|stopPropagation={clearMessage}>Avbryt</a>
-	<a
-		href="#"
-		on:click|stopPropagation={sendMessage}
-		type="button"
-		class="btn btn-primary btn-sm-block">Skicka</a
-	>
-</div>
 
 <style lang="scss">
 	header {
@@ -125,11 +163,15 @@
 	.upload {
 		margin-top: 1rem;
 	}
+
 	.exits {
 		width: 100%;
 		display: flex;
 		gap: 1rem;
 		align-items: center;
 		justify-content: flex-end;
+	}
+	.text-sm {
+		color: var(--gray);
 	}
 </style>
