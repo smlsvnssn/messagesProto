@@ -11,12 +11,15 @@
 		activeIndex = 0,
 		numItems
 
-	const checkScroll = () => {
-		activeIndex = Math.round(scroller.scrollLeft / scroller.clientWidth)
-		numItems = scroller.scrollWidth / scroller.clientWidth
-	}
+	const checkScroll = () =>
+		(activeIndex = Math.round(scroller.scrollLeft / scroller.clientWidth))
+	const getNumItems = () =>
+		(numItems = scroller.scrollWidth / scroller.clientWidth)
 
-	onMount(checkScroll)
+	onMount(() => {
+		getNumItems()
+		checkScroll()
+	})
 </script>
 
 <nav>
@@ -180,12 +183,16 @@
 		img {
 			max-width: 20rem;
 			margin: auto;
+			@media (width <= 450px) {
+				max-width: 50%;
+			}
 		}
 
 		article {
 			flex: 1 0 100%;
 			text-align: center;
 			scroll-snap-align: center;
+			padding: 2rem;
 		}
 
 		h1,
@@ -197,11 +204,17 @@
 		h5 {
 			font-size: 1.25rem;
 			margin-bottom: 0.25rem;
+			@media (width <= 450px) {
+				font-size: 1.125rem;
+			}
 		}
 
 		h1 {
 			font-size: 6rem;
 			line-height: 1;
+			@media (width <= 450px) {
+				font-size: 3.5rem;
+			}
 		}
 
 		p {
@@ -223,6 +236,10 @@
 			padding: 1rem 3rem;
 			border-radius: 0.5rem;
 			margin: 3rem 0;
+			@media (width <= 450px) {
+				margin: 2rem 0;
+				padding: 1rem 2rem;
+			}
 		}
 
 		span,
@@ -232,6 +249,9 @@
 
 		.mb {
 			margin-bottom: 3rem;
+			@media (width <= 450px) {
+				margin-bottom: 2rem;
+			}
 		}
 	}
 </style>
