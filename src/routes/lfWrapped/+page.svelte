@@ -7,13 +7,8 @@
 	import logo from '$lib/images/logotyp-page-1.svg'
 	import { onMount } from 'svelte'
 
-	import { isSmallWindow } from '$lib/globals'
-
-	export const prerender = true
-
-	let scroller
-
-	let activeIndex = 0,
+	let scroller,
+		activeIndex = 0,
 		numItems
 
 	const checkScroll = () => {
@@ -178,7 +173,7 @@
 		flex-direction: row;
 		align-items: center;
 		//max-width: 480px;
-		min-height: 700px;
+		min-height: 100vh;
 		scroll-snap-type: x mandatory;
 		overflow-y: scroll;
 
