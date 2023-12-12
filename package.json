@@ -13,6 +13,7 @@
 	"devDependencies": {
 		"@formkit/auto-animate": "^0.8.0",
 		"@sveltejs/adapter-auto": "^2.1.0",
+		"@sveltejs/enhanced-img": "^0.1.1",
 		"@sveltejs/kit": "1.25.2",
 		"fuse.js": "^6.6.2",
 		"loerem": "^1.0.6",

@@ -126,6 +126,16 @@
 	</small>
 </header>
 
+{#if selected.parent}
+	<button
+		class="breadcrumbs"
+		on:click={() => select(selected.parent)}
+		transition:fade|local
+	>
+		<img src={arrow} alt="Stäng" />
+		{selected.parent.data.name}
+	</button>
+{/if}
 <div class="chart">
 	<Pancake.Chart
 		x1={$extents.x1}
@@ -160,17 +170,6 @@
 		</Treemap>
 	</Pancake.Chart>
 </div>
-
-{#if selected.parent}
-	<button
-		class="breadcrumbs"
-		on:click={() => select(selected.parent)}
-		transition:slide|local
-	>
-		<img src={arrow} alt="Stäng" />
-		{selected.parent.data.name}
-	</button>
-{/if}
 
 <style lang="scss">
 	@use 'sass:color';

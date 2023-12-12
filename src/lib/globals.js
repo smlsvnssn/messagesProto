@@ -101,6 +101,24 @@ export const messages = writable([
 		},
 	},
 	{
+		id: Math.random(),
+		dateSent: Date.now() - 1000000,
+		header: 'Vagnskadegarantin för SIK001 slutar gälla. Teckna din vagnskadeförsäkring här.',
+		content:
+			'Snart går vagnskadegarantin ut som följde med när du köpte din bil. Vi rekemmenderar att du tecknar en vagnskadeförsäkring så att bilen även i fortsättningen är helförsäkrad.',
+		type: '',
+		type: types.notification,
+		isImportant: false,
+		isRead: false,
+		tags: ['dodo'],
+		attachments: [],
+		thumbnailImage: '',
+		action: {
+			actionText: 'Läs mer',
+			actionUrl: 'genericAction',
+		},
+	},
+	{
 		id: 666,
 		dateSent: '1683653834315',
 		header: 'Hej banken, jag kan inte logga in!',

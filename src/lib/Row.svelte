@@ -6,18 +6,21 @@
 	export let isOpen = false
 	export let url = null
 	export let type
+	export let hasChevron = true
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <section on:click={() => (!url ? (isOpen = !isOpen) : goto(url))} class={type}>
 	<slot />
-	<div class="chevron" class:isOpen class:pointRight={!!url}>
-		{#if url}
-			<ChevronIcon />
-		{:else if $$slots.details}
-			<ChevronIcon direction="down" />
-		{/if}
-	</div>
+	{#if hasChevron}
+		<div class="chevron" class:isOpen class:pointRight={!!url}>
+			{#if url}
+				<ChevronIcon />
+			{:else if $$slots.details}
+				<ChevronIcon direction="down" />
+			{/if}
+		</div>
+	{/if}
 	{#if isOpen && $$slots.details}
 		<div
 			transition:slide

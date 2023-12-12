@@ -273,14 +273,9 @@
 				Kontakta oss</button
 			>
 		</li>
-		<li class="nav-item lvl-1 has-external">
-			<a
-				class="nav-link"
-				href="https://www.lansforsakringar.se"
-				target="_blank"
-				data-test-id="public-site"
-				rel="noreferrer"
-				><span class="text-truncate">Länsförsäkringar.se</span>
+		<li class="nav-item lvl-1">
+			<a class="nav-link" href="lfWrapped"
+				><span class="text-truncate">LF Wrapped 2025</span>
 			</a>
 		</li>
 	</ul>

@@ -11,7 +11,7 @@
 		messages,
 		types,
 	} from '$lib/globals'
-	import '../style.css'
+	import '../../style.css'
 	import NewMessagePane from '$lib/messages/NewMessagePane.svelte'
 	import SettingsPane from '$lib/messages/SettingsPane.svelte'
 	import LeftMenu from './LeftMenu.svelte'
@@ -32,17 +32,17 @@
 		if ($activePane === panes.none)
 			$activePane = panes.importantMessagesNotice
 	}
-	$: {
-		//console.log($newMessage)
-		let m
-		try {
-			m = JSON.parse($newMessage)
-		} catch (error) {}
-		if (m?.id) {
-			$messages = [m, ...getMessagesWithoutReactiveUpdateSvelteHack()]
-			resetImportantPane()
-		}
-	}
+	// $: {
+	// 	//console.log($newMessage)
+	// 	let m
+	// 	try {
+	// 		m = JSON.parse($newMessage)
+	// 	} catch (error) {}
+	// 	if (m?.id) {
+	// 		$messages = [m, ...getMessagesWithoutReactiveUpdateSvelteHack()]
+	// 		resetImportantPane()
+	// 	}
+	// }
 	$: $isSmallWindow = innerWidth < 800
 	$: importantMessages = $messages.filter(m => m.isImportant && !m.isRead)
 

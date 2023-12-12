@@ -6,6 +6,8 @@
 	import Section from '$lib/Section.svelte'
 	import Row from '$lib/Row.svelte'
 
+	import heroImg from '$lib/images/hero_2x.jpg?enhanced'
+
 	import { isSmallWindow } from '$lib/globals'
 	import lorem from 'loerem'
 	import Sparkline from '$lib/messages/Sparkline.svelte'
@@ -17,9 +19,11 @@
 </script>
 
 <div class="wrapper">
-	<div class="hero" />
+	<div class="hero">
+		<enhanced:img src={heroImg} alt="öh" />
+	</div>
 	<Section header="Min ekonomi">
-		<Row>
+		<Row hasChevron={false}>
 			<div style:grid-column="span 13"><Treeview /></div>
 		</Row>
 		<Row>
@@ -81,24 +85,41 @@
 		</Row>
 	</Section>
 
-	<Section header="">
+	<Section header="Försäkringar">
 		<Row>
 			<figure style:grid-column="span 6" class="hasIcon">
 				<VillaIcon70 />
 				<div>
 					<h3>Villa-Hem</h3>
 
-					<span class="marginbottom">
+					<!-- <span class="marginbottom">
 						Skadenummer: 28-808329-21
-					</span>
+					</span> -->
 
 					<figcaption>Självrisk: 2 000 kr</figcaption>
 				</div>
 			</figure>
 			<figure class="r" style:grid-column="span 6">
-				<h5 class="black">1 250 kr/år</h5>
+				<h5 class="black">4 320 kr/år</h5>
 				<span class="tagsy text-sm">Aktiv</span>
 			</figure>
+			<svelte:fragment slot="details">
+				<p style:grid-column="span 4">
+					Här finns det lite detaljer, för den som gillar detaljer.
+				</p>
+				<p style:grid-column="span 4" class="r">
+					<figcaption>Tillgängligt</figcaption>
+					0 kr
+				</p>
+				<p style:grid-column="span 2" class="r">
+					<figcaption>Utveckling</figcaption>
+					<span class="plus">+2.4&nbsp;%</span>
+				</p>
+				<p style:grid-column="span 2" class="r">
+					<figcaption>Värde</figcaption>
+					67 819 kr
+				</p>
+			</svelte:fragment>
 		</Row>
 		<Row>
 			<figure style:grid-column="span 6" class="hasIcon">
@@ -106,15 +127,15 @@
 				<div>
 					<h3>Buster X 60hp - 70hp 2008</h3>
 
-					<span class="marginbottom">
+					<!-- <span class="marginbottom">
 						Skadenummer: 28-808329-21
-					</span>
+					</span> -->
 
 					<figcaption>Självrisk: 2 500 kr</figcaption>
 				</div>
 			</figure>
 			<figure class="r" style:grid-column="span 6">
-				<h5 class="black">2 150 kr/år</h5>
+				<h5 class="black">1 279 kr/år</h5>
 				<span class="tagsy text-sm">Aktiv</span>
 			</figure>
 		</Row>
@@ -223,10 +244,13 @@
 		width: 100%;
 
 		.hero {
-			height: 300px;
+			//height: 300px;
 			width: 100%;
-			background: url(/src/lib/images/hero_2x.jpg);
 			background-size: cover;
+			img {
+				height: 300px;
+				object-fit: cover;
+			}
 		}
 		h4,
 		h5,
