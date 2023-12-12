@@ -192,6 +192,8 @@
 			flex: 1 0 100%;
 			text-align: center;
 			scroll-snap-align: center;
+			scroll-snap-stop: always;
+
 			padding: 2rem;
 		}
 
@@ -239,7 +241,7 @@
 			@media (width <= 450px) {
 				font-size: 1rem;
 				margin: 2rem 0;
-				padding: 0.75rem 1rem;
+				padding: 0.5rem 1rem;
 			}
 		}
 
