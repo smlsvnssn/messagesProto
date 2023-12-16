@@ -239,7 +239,7 @@
 			border-radius: 0.5rem;
 			margin: 3rem 0;
 			@media (width <= 450px) {
-				font-size: 1rem;
+				font-size: 1.125rem;
 				margin: 2rem 0;
 				padding: 0.5rem 1rem;
 			}
