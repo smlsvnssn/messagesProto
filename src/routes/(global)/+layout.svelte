@@ -13,7 +13,7 @@
     } from '$lib/globals'
     import '../../style.css'
     import NewMessagePane from '$lib/messages/NewMessagePane.svelte'
-    import SettingsPane from '$lib/messages/SettingsPane.svelte'
+    import SettingsPane from '$lib/settings/SettingsPane.svelte'
     import LeftMenu from './LeftMenu.svelte'
     import { onMount, tick } from 'svelte'
     import { onNavigate } from '$app/navigation'

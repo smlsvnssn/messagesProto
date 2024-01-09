@@ -1,13 +1,18 @@
 <script>
     import MoneyIcon from '$lib/icons/MoneyIcon.svelte'
     import * as ö from 'ouml'
-    export let settings = [
-        { name: 'Inget', value: true, role: 'master' },
-        { name: 'Via epost', value: false, role: 'default' },
-        { name: 'På mina sidor och i appen', value: false },
-        { name: 'På sms', value: false },
-        { name: 'På telefon', value: false },
-    ]
+    export let data = {
+        icon: '',
+        header: 'Erbjudanden',
+        body: 'Förslag och erbjudanden om produkter och tjänster hos oss som vi tror passar dig. ',
+        settings: [
+            { name: 'Inget', value: true, role: 'master' },
+            { name: 'Via epost', value: false, role: 'default' },
+            { name: 'På mina sidor och i appen', value: false },
+            { name: 'På sms', value: false },
+            { name: 'På telefon', value: false },
+        ],
+    }
 
     let isOn = false
 
@@ -18,7 +23,7 @@
         }))
 
     const optionHasChanged = (role, name, newVal) => {
-        const setValues = mapColumn(settings, 'value')
+        const setValues = mapColumn(data.settings, 'value')
 
         const getNewSettings = () => {
             if (role === 'master') {
@@ -51,21 +56,27 @@
                   )
                 : updated
 
-        settings = ö.pipe(getNewSettings(), activateMasterIfAllDeselected)
+        data.settings = ö.pipe(getNewSettings(), activateMasterIfAllDeselected)
     }
 
-    $: isOn = !settings.find(v => v.role === 'master').value
+    $: isOn = !data.settings.find(v => v.role === 'master').value
 </script>
 
 <div class:isOn class="wrapper">
     <MoneyIcon />
     <div class="text">
-        <h5>Erbjudanden</h5>
-        <p>När vi behöver veta hur vi kan skicka pengar till dig.</p>
+        <h5>{data.header}</h5>
+        <p>{data.body}</p>
     </div>
     <div class="settings">
-        {#each settings as option, i}
-            <div class="custom-control custom-checkbox mr-1 {option.role}">
+        {#each data.settings as option, i}
+            {@const id = ö.randomChars(10)}
+            <div
+                class="custom-control custom-{option.role == 'master' ||
+                data.settings.length <= 2
+                    ? 'radio'
+                    : 'checkbox'} mr-1 {option.role}"
+            >
                 <input
                     type="checkbox"
                     on:change={e =>
@@ -76,9 +87,9 @@
                         )}
                     checked={option.value}
                     class="custom-control-input"
-                    id={option.name + i}
+                    id={option.name + id}
                 />
-                <label class="custom-control-label" for={option.name + i}>
+                <label class="custom-control-label" for={option.name + id}>
                     {option.name}
                 </label>
             </div>
@@ -89,7 +100,6 @@
 
 <style lang="scss">
     .wrapper {
-        container-type: inline-size;
         outline-offset: -2px;
         outline: 2px solid var(--smoke);
         border-radius: 0.25rem;

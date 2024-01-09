@@ -1,6 +1,4 @@
 <script>
-    import SettingsBox from './SettingsBox.svelte'
-
     import BåtIcon70 from '$lib/icons/BåtIcon70.svelte'
     import VillaIcon70 from '$lib/icons/VillaIcon70.svelte'
     import MoneyIcon from '$lib/icons/MoneyIcon.svelte'

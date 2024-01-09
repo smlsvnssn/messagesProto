@@ -1,5 +1,5 @@
 <script>
-    import SettingsBox from '../SettingsBox.svelte'
+    import SettingsBox from '$lib/settings/SettingsBox.svelte'
 
     import Section from '$lib/Section.svelte'
     import Row from '$lib/Row.svelte'

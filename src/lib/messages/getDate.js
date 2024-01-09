@@ -10,8 +10,6 @@ const yearFormat = {
     year: 'numeric',
 }
 
-const monoFont = 'Comic Mono'
-
 const isDaysRelativeToToday = (date, numberOfDays) => {
     const dayInMs = 86_400_000
     return (

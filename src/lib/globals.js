@@ -28,6 +28,7 @@ export const types = ö.createEnum([
 ])
 //export const activeMessageId = writable(get(messages)[0].id)
 export const activeMessageId = writable(-1)
+export const activeSettingsTab = writable(-1)
 export const messages = writable([
     // {
     // 	id: 6,
