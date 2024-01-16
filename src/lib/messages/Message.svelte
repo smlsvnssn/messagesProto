@@ -38,7 +38,9 @@
                 {getDate(+message.dateSent)}
             </date>
             {#if message.category}
-                <h6>{message?.category}</h6>
+                <h6>
+                    {message?.category}&nbsp;&nbsp;{message?.tags.join('\xa0 ')}
+                </h6>
             {/if}
             <span class="spacer" />
             {#if message.attachments?.length}

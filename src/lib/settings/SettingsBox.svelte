@@ -1,5 +1,5 @@
 <script>
-    import MoneyIcon from '$lib/icons/MoneyIcon.svelte'
+    import ThumbIcon24 from '$lib/icons/ThumbIcon24.svelte'
     import * as ö from 'ouml'
     export let data = {
         icon: '',
@@ -63,38 +63,40 @@
 </script>
 
 <div class:isOn class="wrapper">
-    <MoneyIcon />
-    <div class="text">
-        <h5>{data.header}</h5>
-        <p>{data.body}</p>
-    </div>
-    <div class="settings">
-        {#each data.settings as option, i}
-            {@const id = ö.randomChars(10)}
-            <div
-                class="custom-control custom-{option.role == 'master' ||
-                data.settings.length <= 2
-                    ? 'radio'
-                    : 'checkbox'} mr-1 {option.role}"
-            >
-                <input
-                    type="checkbox"
-                    on:change={e =>
-                        optionHasChanged(
-                            option.role,
-                            option.name,
-                            e.target.checked,
-                        )}
-                    checked={option.value}
-                    class="custom-control-input"
-                    id={option.name + id}
-                />
-                <label class="custom-control-label" for={option.name + id}>
-                    {option.name}
-                </label>
-            </div>
-            <br />
-        {/each}
+    <ThumbIcon24 />
+    <div class="content">
+        <div class="text">
+            <h5>{data.header}</h5>
+            <p>{data.body}</p>
+        </div>
+        <div class="settings">
+            {#each data.settings as option, i}
+                {@const id = ö.randomChars(10)}
+                <div
+                    class="custom-control custom-{option.role == 'master' ||
+                    data.settings.length <= 2
+                        ? 'radio'
+                        : 'checkbox'} mr-1 {option.role}"
+                >
+                    <input
+                        type="checkbox"
+                        on:change={e =>
+                            optionHasChanged(
+                                option.role,
+                                option.name,
+                                e.target.checked,
+                            )}
+                        checked={option.value}
+                        class="custom-control-input"
+                        id={option.name + id}
+                    />
+                    <label class="custom-control-label" for={option.name + id}>
+                        {option.name}
+                    </label>
+                </div>
+                <br />
+            {/each}
+        </div>
     </div>
 </div>
 
@@ -113,9 +115,12 @@
             margin-bottom: 0.5rem;
         }
 
-        @container (width < 500px) {
-            flex-direction: column;
-            gap: 0;
+        .content {
+            display: flex;
+            @container (width < 500px) {
+                flex-direction: column;
+                gap: 0;
+            }
         }
 
         .text {
