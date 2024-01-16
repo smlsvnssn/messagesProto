@@ -12,10 +12,17 @@
 <article class:hasMessage={$activeMessageId > -1}>
     {#if message}
         <header class:isThreaded={typeof message.content !== 'string'}>
-            {#if message.category}
-                <h6 class="category">{message.category}</h6>
-            {/if}
-            <span class="header"><b>{ö.stripTags(message.header)}</b></span>
+            <div>
+                {#if message.category}
+                    <h6 class="category">
+                        {message?.category}&nbsp;&nbsp;{message?.tags.join(
+                            '\xa0 ',
+                        )}
+                    </h6>
+                    <br />
+                {/if}
+                <span class="header"><b>{ö.stripTags(message.header)}</b></span>
+            </div>
             <time>
                 {getDate(+message.dateSent, true)}
             </time>
