@@ -1,65 +1,17 @@
 <script>
     import ThumbIcon24 from '$lib/icons/ThumbIcon24.svelte'
+    import { slide } from 'svelte/transition'
+
     import * as ö from 'ouml'
-    export let data = {
-        icon: '',
-        header: 'Erbjudanden',
-        body: 'Förslag och erbjudanden om produkter och tjänster hos oss som vi tror passar dig. ',
-        settings: [
-            { name: 'Inget', value: true, role: 'master' },
-            { name: 'Via epost', value: false, role: 'default' },
-            { name: 'På mina sidor och i appen', value: false },
-            { name: 'På sms', value: false },
-            { name: 'På telefon', value: false },
-        ],
+    export let data
+
+    const id = ö.randomChars(10)
+
+    $: isOn = data.isEnabled === 'true'
+    $: if (data.channels.every(c => c.value === false)) {
+        data.isEnabled = 'false'
+        data.channels.find(c => c.role === 'default').value = true
     }
-
-    let isOn = false
-
-    const mapColumn = (arr, column) => f =>
-        arr.map(v => ({
-            ...v,
-            [column]: f(v),
-        }))
-
-    const optionHasChanged = (role, name, newVal) => {
-        const setValues = mapColumn(data.settings, 'value')
-
-        const getNewSettings = () => {
-            if (role === 'master') {
-                if (newVal === true)
-                    return setValues(option =>
-                        option.role === 'master' ? true : false,
-                    )
-                return setValues(option =>
-                    option.role === 'master'
-                        ? false
-                        : option?.role === 'default'
-                          ? true
-                          : option.value,
-                )
-            }
-
-            return setValues(option =>
-                option.role === 'master'
-                    ? false
-                    : option.name === name
-                      ? newVal
-                      : option.value,
-            )
-        }
-
-        const activateMasterIfAllDeselected = updated =>
-            updated.findIndex(option => option.value === true) === -1
-                ? setValues(option =>
-                      option.role === 'master' ? true : option.value,
-                  )
-                : updated
-
-        data.settings = ö.pipe(getNewSettings(), activateMasterIfAllDeselected)
-    }
-
-    $: isOn = !data.settings.find(v => v.role === 'master').value
 </script>
 
 <div class:isOn class="wrapper">
@@ -70,32 +22,56 @@
             <p>{data.body}</p>
         </div>
         <div class="settings">
-            {#each data.settings as option, i}
-                {@const id = ö.randomChars(10)}
-                <div
-                    class="custom-control custom-{option.role == 'master' ||
-                    data.settings.length <= 2
-                        ? 'radio'
-                        : 'checkbox'} mr-1 {option.role}"
-                >
-                    <input
-                        type="checkbox"
-                        on:change={e =>
-                            optionHasChanged(
-                                option.role,
-                                option.name,
-                                e.target.checked,
-                            )}
-                        checked={option.value}
-                        class="custom-control-input"
-                        id={option.name + id}
-                    />
-                    <label class="custom-control-label" for={option.name + id}>
-                        {option.name}
-                    </label>
+            <div class="custom-control custom-radio mr-1">
+                <input
+                    bind:group={data.isEnabled}
+                    type="radio"
+                    class="custom-control-input"
+                    value="true"
+                    id="true{id}"
+                    name="toggle{id}"
+                />
+                <label class="custom-control-label" for="true{id}">
+                    Skicka gärna{isOn ? ':' : '!'}
+                </label>
+            </div>
+            <div class="custom-control custom-radio mr-1 master">
+                <input
+                    bind:group={data.isEnabled}
+                    type="radio"
+                    class="custom-control-input"
+                    value="false"
+                    id="false{id}"
+                    name="toggle{id}"
+                />
+                <label class="custom-control-label" for="false{id}">
+                    Skicka inte
+                </label>
+            </div>
+
+            <br />
+
+            {#if isOn}
+                <div transition:slide>
+                    {#each data.channels as channel}
+                        <div class="custom-control custom-checkbox mr-1">
+                            <input
+                                type="checkbox"
+                                bind:checked={channel.value}
+                                class="custom-control-input"
+                                id={channel.name + id}
+                            />
+                            <label
+                                class="custom-control-label"
+                                for={channel.name + id}
+                            >
+                                {channel.name}
+                            </label>
+                        </div>
+                        <br />
+                    {/each}
                 </div>
-                <br />
-            {/each}
+            {/if}
         </div>
     </div>
 </div>
@@ -129,6 +105,10 @@
         }
         .settings {
             flex: 1 0 50%;
+        }
+
+        label {
+            vertical-align: -0.125rem;
         }
 
         h5 {

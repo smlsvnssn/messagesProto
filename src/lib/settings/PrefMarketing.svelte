@@ -6,8 +6,8 @@
             icon: '',
             header: 'Erbjudanden',
             body: 'Förslag och erbjudanden om produkter och tjänster hos oss som vi tror passar dig. ',
-            settings: [
-                { name: 'Inget', value: false, role: 'master' },
+            isEnabled: 'true',
+            channels: [
                 { name: 'E-post', value: true, role: 'default' },
                 { name: 'Meddelande på Mina sidor/i appen', value: true },
                 { name: 'Sms', value: true },
@@ -18,8 +18,8 @@
             icon: '',
             header: 'Kundinformation',
             body: 'Information knuten till de försäkringar, banktjänster och förmåner du har hos oss, till exempel skadeförebyggande råd. ',
-            settings: [
-                { name: 'Inget', value: true, role: 'master' },
+            isEnabled: 'false',
+            channels: [
                 { name: 'E-post', value: false, role: 'default' },
                 { name: 'Meddelande på Mina sidor/i appen', value: false },
                 { name: 'Sms', value: false },
@@ -30,17 +30,15 @@
             icon: '',
             header: 'Nyheter och tips',
             body: 'Lokala nyheter från ditt länsbolag, samt det senaste inom försäkringar, pension och ekonomi från våra expterter. ',
-            settings: [
-                { name: 'Inget', value: false, role: 'master' },
-                { name: 'E-post', value: true, role: 'default' },
-            ],
+            isEnabled: 'true',
+            channels: [{ name: 'E-post', value: true, role: 'default' }],
         },
         {
             icon: '',
             header: 'Evenemang',
             body: 'Inbjudningar till digitala och fysiska evenemang och seminarier. ',
-            settings: [
-                { name: 'Inget', value: false, role: 'master' },
+            isEnabled: 'true',
+            channels: [
                 { name: 'E-post', value: true, role: 'default' },
                 { name: 'Brev', value: false },
             ],
@@ -49,8 +47,8 @@
             icon: '',
             header: 'Kundundersökningar',
             body: 'Förbättra upplevelsen för dig själv och andra genom att svara på frågor då och då. ',
-            settings: [
-                { name: 'Inget', value: false, role: 'master' },
+            isEnabled: 'true',
+            channels: [
                 { name: 'E-post', value: true, role: 'default' },
                 { name: 'Meddelande på Mina sidor/i appen', value: false },
                 { name: 'Sms', value: false },

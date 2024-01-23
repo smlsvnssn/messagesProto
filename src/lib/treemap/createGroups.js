@@ -1,63 +1,67 @@
-import * as ö from 'ouml';
+import { chain } from 'ouml/chain'
 
-const sliceOnLargest = 5;
+const sliceOnLargest = 5
 
-const createGroupedTransactions = (data) => {
-	const sumGroups = (data) => {
-		const sumAmount = (arr) =>
-			arr.reduce((acc, transaction) => (acc += transaction.amount ?? transaction.sum), 0);
+const groupBySubcategory = map => {
+    map.forEach((category, categoryName, map) => {
+        map.set(categoryName, chain(category).groupBy('subcategory').return())
+    })
+    return map
+}
 
-		const sum = (data) => {
-			if (!data.children) return data;
-			data.children = data.children
-				.map(sum)
-				.sort((a, b) => (b.amount ?? b.sum) - (a.amount ?? a.sum));
-			return { ...data, sum: sumAmount(data.children) };
-		};
+const convertToHierachicObject = map => {
+    let root = {
+        name: 'Totalt',
+        children: [],
+    }
 
-		return sum(data);
-	};
+    map.forEach((category, categoryName) => {
+        const cat = { name: categoryName, children: [] }
+        category.forEach((subcategory, subcategoryName) => {
+            cat.children.push({ name: subcategoryName, children: subcategory })
+        })
+        root.children.push(cat)
+    })
+    return root
+}
 
-	// Do some washing
-	data = data.filter((o) => o.category !== 'Inkomst').map((o) => ({ ...o, amount: -o.amount }));
+const sumAndSortGroups = obj => {
+    if (!obj.children) return obj
+    const children = obj.children
+        .map(sumAndSortGroups)
+        .sort((a, b) => (b.amount ?? b.sum) - (a.amount ?? a.sum))
+    return {
+        ...obj,
+        children,
+        sum: children.reduce(
+            (v, transaction) => (v += transaction.amount ?? transaction.sum),
+            0,
+        ),
+    }
+}
 
-	// Group on category/subcategory
-	const grouped = ö.groupBy(data, 'category');
+const cleanup = obj => {
+    // If only one category, replace root level with children
+    if (obj.children.length === 1) return obj.children[0]
+    // Else, slice root to largest categories
+    obj.children = [
+        ...obj.children.slice(0, sliceOnLargest),
+        {
+            name: 'Övriga kategorier',
+            children: obj.children.slice(sliceOnLargest),
+        },
+    ]
+    return obj
+}
 
-	grouped.forEach((category, categoryName, map) => {
-		map.set(categoryName, ö.groupBy(category, 'subcategory'));
-	});
-
-	// Convert to hierarchic object
-	let groupedObj = {
-		name: 'Totalt',
-		children: [],
-	};
-
-	grouped.forEach((category, categoryName) => {
-		const cat = { name: categoryName, children: [] };
-		category.forEach((subcategory, subcategoryName) => {
-			cat.children.push({ name: subcategoryName, children: subcategory });
-		});
-		groupedObj.children.push(cat);
-	});
-
-	// Sum the groups
-	groupedObj = sumGroups(groupedObj);
-
-	// If only one category, replace root level with children
-	if (groupedObj.children.length === 1) groupedObj = groupedObj.children[0]
-	// Slice root to largest categories
-	else
-		groupedObj.children = [
-			...groupedObj.children.slice(0, sliceOnLargest),
-			{
-				name: 'Övriga kategorier',
-				children: groupedObj.children.slice(sliceOnLargest),
-			},
-		];
-
-	return groupedObj;
-};
-
-export default createGroupedTransactions;
+export default data =>
+    chain(data)
+        .filter(o => o.category !== 'Inkomst')
+        .map(o => ({ ...o, amount: -o.amount }))
+        .groupBy('category')
+        .f(groupBySubcategory)
+        .f(convertToHierachicObject)
+        .f(sumAndSortGroups)
+        .f(cleanup)
+        //.peek()
+        .return()

@@ -1,9 +1,13 @@
-import { POSTGRES_URL } from '$env/static/private'
-import { createPool } from '@vercel/postgres'
-
-const pool = createPool({ connectionString: POSTGRES_URL })
+import { testTable } from '$lib/db/schema'
+import '$lib/db/migrate'
+import db from '$lib/db'
 
 export async function GET() {
-    const r = await pool.sql`SELECT * FROM test`
-    return new Response(JSON.stringify(r.rows))
+    let r
+    try {
+        r = await db.select().from(testTable)
+    } catch (error) {
+        r = { error: "Could'nt connect. Sorry." }
+    }
+    return new Response(JSON.stringify(r, null, 2))
 }

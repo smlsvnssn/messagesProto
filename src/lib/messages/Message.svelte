@@ -21,6 +21,7 @@
     }
 </script>
 
+<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <li
     class:unread={!message.isRead}
     class:active={message.id == $activeMessageId}
