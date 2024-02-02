@@ -19,7 +19,7 @@
 	import { onMount, tick } from 'svelte'
 	import { onNavigate } from '$app/navigation'
 	import { source } from 'sveltekit-sse'
-	import heroImg from '$lib/images/_Z221295_Stellan-Stephenson_.jpg?enhanced'
+	import heroImg from '$lib/images/party.jpg?enhanced'
 
 	export const prerender = true
 	let innerWidth
