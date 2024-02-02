@@ -1,8 +1,8 @@
 <script>
     import ThumbIcon24 from '$lib/icons/ThumbIcon24.svelte'
     import { slide } from 'svelte/transition'
-
     import * as ö from 'ouml'
+
     export let data
 
     const id = ö.randomChars(10)

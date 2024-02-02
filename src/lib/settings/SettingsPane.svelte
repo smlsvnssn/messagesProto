@@ -79,7 +79,7 @@
         inset: 0;
         background: rgba(34, 34, 34, 0.25);
         position: fixed;
-        z-index: 1;
+        z-index: 2;
         margin: var(--headerHeight) auto 0;
     }
     .marginwrapper {
@@ -105,7 +105,7 @@
 
         .content {
             background: var(--white);
-            border-radius: 4px;
+            border-radius: 0.5rem;
             overflow: hidden;
             max-height: calc(100mvh - var(--headerHeight) - 10rem);
 

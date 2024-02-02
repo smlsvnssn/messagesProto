@@ -14,7 +14,7 @@
 
 <style lang="scss">
 	section {
-		margin: 2rem 1rem 0rem 2rem;
+		//margin: 2rem 2rem 0rem 2rem;
 
 		@media (width < 800px) {
 			margin: 1rem;
@@ -29,7 +29,8 @@
 			background: var(--white);
 			border-radius: 0.5rem;
 			overflow: hidden;
-			box-shadow: 0 0.125rem 0.125rem #00000005,
+			box-shadow:
+				0 0.125rem 0.125rem #00000005,
 				0 0.25rem 0.5rem #00000003;
 			container-type: inline-size;
 

@@ -1,10 +1,12 @@
 <script>
 	import { panes, activePane, isAvtalRedDotActive } from '$lib/globals'
+	import KundtjänstIcon from '$lib/icons/KundtjänstIcon.svelte'
+
 	import { goto } from '$app/navigation'
 </script>
 
 <aside class="navbar navbar-stacked navbar-blue">
-	<ul class="navbar-nav nav">
+	<ul class="navbar-nav nav n-header-wrapper">
 		<li class="nav-item lvl-1" on:click={() => goto('/')}>
 			<button class="nav-link text-truncate w-100" data-test-id="start"
 				><svg
@@ -27,10 +29,10 @@
 						fill="white"
 					/>
 				</svg>
-				Start
+				Översikt
 			</button>
 		</li>
-		<li class="nav-item lvl-1" on:click={() => goto('genericAction')}>
+		<li class="nav-item lvl-1" on:click={() => goto('/genericAction')}>
 			<button class="nav-link text-truncate w-100" data-test-id="accounts"
 				><svg
 					aria-hidden="true"
@@ -46,92 +48,11 @@
 						fill="#fff"
 					/>
 				</svg>
-				Konton och betalningar</button
+				Bank</button
 			>
 		</li>
 
-		<li class="nav-item lvl-1" on:click={() => goto('genericAction')}>
-			<button class="nav-link text-truncate w-100" data-test-id="savings"
-				><svg
-					aria-hidden="true"
-					class="icon navbar-icon"
-					focusable="false"
-					width="32"
-					height="32"
-				>
-					<path
-						d="M4.35654 12.3451C3.88068 11.8687 3.88068 11.0149 4.35817 10.5363L2.94233 9.12371C1.68582 10.3831 1.68582 12.5013 2.94274 13.7597C4.20343 15.0175 6.07926 14.8757 7.33665 13.6183L5.89614 12.3459C5.41953 12.8225 4.83507 12.8225 4.35654 12.3451Z"
-						fill="white"
-					/>
-					<path
-						d="M22.6033 22.87V26.5H20.6033V23.5H12.5936V26.5H10.6032V22.87C8.50474 21.8656 6.60325 19.343 6.60325 16.5C6.60325 13.3397 9.46178 10.4699 12.5936 10.5H19.0922C19.1268 10.4221 19.1554 9.5126 20.1043 8.5C21.0532 7.4874 21.5763 7.36181 22.6033 7.36181V11.1244C24.6033 11.7488 25.5095 13.2806 25.757 15.5H28.6033V17.5H25.671C25.6033 21.2794 24.0026 22.1832 22.6033 22.87ZM29.6033 19.5H30.6033V13.5H27.3702C27.0815 11.9417 25.9263 10.5 24.6033 9.93732V5.5C21.8433 5.5 20.7831 5.5 19.5818 6.5C18.499 7.40139 18.1959 7.97875 17.9641 8.5H12.6032C11.6945 8.51275 10.6424 8.70016 9.81472 9.02847C6.84293 10.2072 4.60325 13.2071 4.60325 16.5C4.60325 20.0927 6.37083 23.0733 8.60325 24.0348V28.5H14.6032V25.5H18.6033V28.5H24.6033V24.0348C26.6033 23.072 27.6631 21.0174 27.6651 19.5C27.6651 19.5 29.1033 19.5 29.6033 19.5Z"
-						fill="white"
-					/>
-				</svg>
-				Spara och placera</button
-			>
-		</li>
-
-		<li class="nav-item lvl-1" on:click={() => goto('genericAction')}>
-			<button class="nav-link text-truncate w-100" data-test-id="card"
-				><svg
-					aria-hidden="true"
-					class="icon navbar-icon"
-					focusable="false"
-					width="32"
-					height="32"
-				>
-					<path
-						fill-rule="evenodd"
-						clip-rule="evenodd"
-						d="M26.803 23.187C26.616 23.388 26.332 23.499 26.004 23.499H6.015C5.493 23.499 5 23.058 5 22.59V14.499H26.995L26.996 22.662C27.014 22.906 26.901 23.082 26.803 23.187ZM6.015 9.49902H26.004C26.306 9.49902 26.603 9.62402 26.797 9.83302C26.879 9.92002 27.013 10.103 26.994 10.408V12.499H5V10.408C5 9.94102 5.493 9.49902 6.015 9.49902ZM28.991 10.479C29.044 9.74602 28.785 9.03202 28.261 8.47002C27.687 7.85302 26.865 7.49902 26.004 7.49902H6.015C4.381 7.49902 3 8.83202 3 10.408V22.59C3 24.167 4.381 25.5 6.015 25.5H26.004C26.88 25.5 27.705 25.153 28.267 24.549C28.788 23.99 29.045 23.269 28.994 22.59L28.991 10.479Z"
-						fill="#fff"
-					/>
-					<path
-						fill-rule="evenodd"
-						clip-rule="evenodd"
-						d="M6.9943 18.4995H12.9943V16.4995H6.9943V18.4995Z"
-						fill="#fff"
-					/>
-				</svg>
-				Kort</button
-			>
-		</li>
-
-		<li class="nav-item lvl-1" on:click={() => goto('genericAction')}>
-			<button class="nav-link text-truncate w-100" data-test-id="loan"
-				><svg
-					aria-hidden="true"
-					class="icon navbar-icon"
-					focusable="false"
-					width="32"
-					height="32"
-				>
-					<path
-						d="M26.4083 14.764L23.7705 2.22754L3 6.64695L5.72267 19.1823L15.8889 16.9685L15.4634 15.0143L7.25914 16.8246L5.3993 8.18121L22.2326 4.63201L24.0755 13.2093L20.8091 13.8937L21.2192 15.8512L26.4083 14.764Z"
-						fill="#fff"
-					/>
-					<path
-						d="M22.5178 14.7525C22.5178 12.6814 20.8389 11.0025 18.7678 11.0025C16.6967 11.0025 15.0178 12.6814 15.0178 14.7525C15.0178 16.8235 16.6967 18.5025 18.7678 18.5025C20.8389 18.5025 22.5178 16.8235 22.5178 14.7525ZM17.0178 14.7525C17.0178 13.786 17.8013 13.0025 18.7678 13.0025C19.7343 13.0025 20.5178 13.786 20.5178 14.7525C20.5178 15.719 19.7343 16.5025 18.7678 16.5025C17.8013 16.5025 17.0178 15.719 17.0178 14.7525Z"
-						fill="#fff"
-					/>
-					<path
-						d="M27.5178 21.7525C27.5178 19.9575 26.0627 18.5025 24.2678 18.5025C22.4729 18.5025 21.0178 19.9575 21.0178 21.7525C21.0178 23.5474 22.4729 25.0025 24.2678 25.0025C26.0627 25.0025 27.5178 23.5474 27.5178 21.7525ZM23.0178 21.7525C23.0178 21.0621 23.5774 20.5025 24.2678 20.5025C24.9581 20.5025 25.5178 21.0621 25.5178 21.7525C25.5178 22.4428 24.9581 23.0025 24.2678 23.0025C23.5774 23.0025 23.0178 22.4428 23.0178 21.7525Z"
-						fill="#fff"
-					/>
-					<path
-						d="M20.0178 24.6902L13.0178 19.2346L6.01779 24.6902V30.5025H8.01779V25.7725L13.0178 21.7758L18.0178 25.7725V30.5025H20.0178V24.6902Z"
-						fill="#fff"
-					/>
-					<path
-						d="M12.0178 30.5025H14.0178V26.5025H12.0178V30.5025Z"
-						fill="#fff"
-					/>
-				</svg>
-				Lån</button
-			>
-		</li>
-		<li class="nav-item lvl-1" on:click={() => goto('genericAction')}>
+		<li class="nav-item lvl-1" on:click={() => goto('/genericAction')}>
 			<button
 				class="nav-link text-truncate w-100"
 				data-test-id="insurances"
@@ -156,14 +77,14 @@
 				Försäkringar</button
 			>
 		</li>
-		<li class="nav-item lvl-1" on:click={() => goto('genericAction')}>
+		<li class="nav-item lvl-1" on:click={() => goto('/genericAction')}>
 			<button class="nav-link text-truncate w-100" data-test-id="pension"
 				><svg
 					aria-hidden="true"
 					class="icon navbar-icon"
 					focusable="false"
-					width="32"
-					height="32"
+					width="24"
+					height="24"
 				>
 					<path
 						fill-rule="evenodd"
@@ -175,54 +96,9 @@
 				Pension</button
 			>
 		</li>
-		<li class="nav-item lvl-1" on:click={() => goto('genericAction')}>
-			<button class="nav-link text-truncate w-100" data-test-id="contact"
-				><svg
-					aria-hidden="true"
-					class="icon navbar-icon"
-					focusable="false"
-					width="32"
-					height="32"
-				>
-					<g clip-path="url(#clip0_1550_8632)">
-						<mask
-							id="mask0_1550_8632"
-							style="mask-type:alpha"
-							maskUnits="userSpaceOnUse"
-							x="5"
-							y="5"
-							width="22"
-							height="23"
-						>
-							<path
-								d="M11.9314 26.7465L12.4002 26.169C15.5875 27.0655 19.0951 25.9036 21.2346 23.2884C24.0974 19.7711 23.6065 14.4554 20.0081 11.5101L19.3536 11.0192L22.3291 7.53362L22.9314 7.986C25.493 10.021 27 13.1093 27 16.5C27 22.6022 22.1022 27.5 16 27.5C14.6442 27.5 13.2871 27.2745 11.9314 26.7465ZM9.14425 25.0896C6.507 22.979 5 19.8151 5 16.5C5 10.3977 9.89775 5.5 16 5.5C17.5826 5.5 19.0883 5.80112 20.4454 6.479L19.949 7.02625C16.528 5.962 12.9062 6.93275 10.6829 9.71025C7.82013 13.31 8.3935 18.4635 11.9919 21.4899L12.6464 21.9807L9.67088 25.5406L9.14425 25.0896Z"
-								fill="white"
-							/>
-						</mask>
-						<g mask="url(#mask0_1550_8632)">
-							<path
-								d="M11.9314 26.7465L12.4002 26.169C15.5875 27.0655 19.0951 25.9036 21.2346 23.2884C24.0974 19.7711 23.6065 14.4554 20.0081 11.5101L19.3536 11.0192L22.3291 7.53362L22.9314 7.986C25.493 10.021 27 13.1093 27 16.5C27 22.6022 22.1022 27.5 16 27.5C14.6442 27.5 13.2871 27.2745 11.9314 26.7465ZM9.14425 25.0896C6.507 22.979 5 19.8151 5 16.5C5 10.3977 9.89775 5.5 16 5.5C17.5826 5.5 19.0883 5.80112 20.4454 6.479L19.949 7.02625C16.528 5.962 12.9062 6.93275 10.6829 9.71025C7.82013 13.31 8.3935 18.4635 11.9919 21.4899L12.6464 21.9807L9.67088 25.5406L9.14425 25.0896Z"
-								fill="white"
-							/>
-						</g>
-					</g>
-					<defs>
-						<clipPath id="clip0_1550_8632">
-							<rect
-								width="32"
-								height="32"
-								fill="white"
-								transform="translate(0 0.5)"
-							/>
-						</clipPath>
-					</defs>
-				</svg>
+		<li class="grow"></li>
 
-				BankID och Swish</button
-			>
-		</li>
-
-		<li class="nav-item lvl-1" on:click={() => goto('signeraavtal')}>
+		<li class="nav-item lvl-1" on:click={() => goto('/signeraavtal')}>
 			<button class="nav-link text-truncate w-100" data-test-id="contact"
 				><svg
 					aria-hidden="true"
@@ -242,9 +118,9 @@
 					<path d="M11 22.5H21V20.5H11V22.5Z" fill="white" />
 				</svg>
 				<span
-					class="dot icon {$isAvtalRedDotActive
-						? 'red-dot'
-						: 'no-dot'}"
+					class="dot icon {$isAvtalRedDotActive ? 'red-dot' : (
+						'no-dot'
+					)}"
 				/>
 
 				Avtal och dokument
@@ -259,35 +135,60 @@
 		>
 			<button class="nav-link text-truncate w-100" data-test-id="contact"
 				><svg
-					aria-hidden="true"
-					class="icon navbar-icon"
-					focusable="false"
 					width="32"
 					height="32"
+					viewBox="0 0 26 24"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
 				>
 					<path
-						d="M22 2.5C23.6569 2.5 25 3.84315 25 5.5V27.5C25 29.1569 23.6569 30.5 22 30.5H10C8.34315 30.5 7 29.1569 7 27.5V5.5C7 3.84315 8.34315 2.5 10 2.5H22ZM23 23.5H9V27.5C9 28.0523 9.44772 28.5 10 28.5H22C22.5523 28.5 23 28.0523 23 27.5V23.5ZM16 24.5C16.8284 24.5 17.5 25.1716 17.5 26C17.5 26.8284 16.8284 27.5 16 27.5C15.1716 27.5 14.5 26.8284 14.5 26C14.5 25.1716 15.1716 24.5 16 24.5ZM9 8.5V21.5H23V8.5H9ZM9 6.5H23V5.5C23 4.94772 22.5523 4.5 22 4.5H10C9.44772 4.5 9 4.94772 9 5.5V6.5Z"
-						fill="white"
+						transform="translate(0,2)"
+						d="M14.9744 19.1575C18.2235 18.4537 20.9597 15.5125 20.9597 10.1656C20.9597 9.16493 20.777 8.20962 20.4451 7.33526M18.9941 5.05106C17.56 3.50035 15.2189 2.78027 12.9691 2.78027C8.62335 2.78027 5.10041 6.3894 5.10041 10.8415C5.10041 12.0275 5.34511 13.3075 5.79937 14.1677C2.80111 14.8954 1.99805 12.29 1.99805 11.2752C1.99805 10.2604 2.54676 8.32185 5.40338 8.54366M10.1099 12.7708C10.6974 13.4556 11.5704 14.1677 12.9745 14.1677C14.3786 14.1677 15.2526 13.4751 15.8426 12.7708M20.2828 13.7708C22.9027 14.3131 23.9981 12.8359 23.9981 10.9492C23.9981 9.06249 22.6836 7.61594 19.8887 7.61594C17.0938 7.61594 14.8227 7.61594 14.509 7.61594C12.3345 7.61594 11.4519 7.56574 10.3254 5.60446M14.6966 19.2921C14.6966 20.2354 13.9318 21.0002 12.9885 21.0002C12.0451 21.0002 11.2804 20.2354 11.2804 19.2921C11.2804 18.3487 12.0451 17.5839 12.9885 17.5839C13.9318 17.5839 14.6966 18.3487 14.6966 19.2921Z"
+						stroke="#fff"
+						stroke-width="2"
 					/>
 				</svg>
+
 				Kontakta oss</button
 			>
-		</li>
-		<li class="nav-item lvl-1">
-			<a class="nav-link" href="lfWrapped"
-				><span class="text-truncate">LF Wrapped 2025</span>
-			</a>
 		</li>
 	</ul>
 </aside>
 
 <style lang="scss">
 	aside {
-		flex: 0 1 260px;
-		background: var(--blue);
+		flex: 0 1;
+		background: var(--navy);
+		z-index: 1;
 		@media (max-width: 800px) {
 			display: none !important;
 		}
+	}
+	.navbar-nav {
+		display: flex !important;
+		flex-direction: row;
+
+		padding: 0 0.5rem;
+
+		.nav-item {
+			width: fit-content;
+
+			button,
+			a {
+				font-size: 1rem !important;
+				padding: 0 1rem 0 0.75rem !important;
+				font-weight: 600;
+			}
+		}
+
+		.grow {
+			flex: 1 0;
+		}
+	}
+
+	svg {
+		scale: 75%;
+		margin-right: 0.5rem !important;
 	}
 
 	article {
@@ -318,8 +219,8 @@
 		&.icon {
 			position: absolute;
 			right: inherit;
-			left: 2.5rem;
-			top: 0.75rem;
+			left: 2.125rem;
+			top: 0.875rem;
 		}
 	}
 	.no-dot {

@@ -59,7 +59,7 @@
                 {ö.stripTags(message.content)}
             {/if}
         </p>
-        {#if message.action || message.content[0]?.action}
+        {#if (message.action || message.content[0]?.action) && !message.isRead}
             {@const action = message.action || message.content[0]?.action}
             <a
                 class="action"
@@ -69,8 +69,10 @@
                     $messages.find(m => m.id === message.id).isRead = true
                     $activePane = panes.none
                     goto(action.actionUrl)
-                }}>{action.actionText}</a
+                }}
             >
+                {action.actionText}
+            </a>
         {/if}
     </div>
     <div class="chevron">

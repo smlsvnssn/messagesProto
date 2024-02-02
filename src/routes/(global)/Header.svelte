@@ -5,6 +5,7 @@
     import SettingsIcon from '$lib/icons/SettingsIcon.svelte'
     import NewMessageIcon from '$lib/icons/NewMessageIcon.svelte'
     import { panes, activePane } from '$lib/globals'
+    import LeftMenu from './LeftMenu.svelte'
 
     const activateNewMessagePane = () =>
         ($activePane =
@@ -15,8 +16,8 @@
             $activePane === panes.settings ? panes.none : panes.settings)
 </script>
 
-<div id="header" class="lb4">
-    <div class="navbar fixed-top navbar-light">
+<div id="header" class="lb4 fixed-top">
+    <div class="navbar navbar-light">
         <button class="n-header-skip link-complex sr-only sr-only-focusable"
             ><span class="link-complex-target">Hoppa till innehåll</span
             ></button
@@ -133,11 +134,17 @@
             </ul>
         </nav>
     </div>
+    <LeftMenu />
 </div>
 
 <style lang="scss">
     .navbar {
         top: 0 !important;
+        z-index: 3;
+    }
+
+    .fixed-top {
+        z-index: 1 !important;
     }
     .nav-icon {
         height: 100%;
@@ -157,7 +164,7 @@
         color: var(--blue);
         padding-right: 0.5rem;
     }
-    .n-header-wrapper {
+    :global(.n-header-wrapper) {
         width: 100% !important;
         max-width: 1280px;
     }

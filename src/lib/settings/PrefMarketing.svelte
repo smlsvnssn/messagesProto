@@ -9,7 +9,7 @@
             isEnabled: 'true',
             channels: [
                 { name: 'E-post', value: true, role: 'default' },
-                { name: 'Meddelande på Mina sidor/i appen', value: true },
+                { name: 'På Mina sidor/i appen', value: true },
                 { name: 'Sms', value: true },
                 { name: 'Telefon', value: false },
             ],
@@ -21,7 +21,7 @@
             isEnabled: 'false',
             channels: [
                 { name: 'E-post', value: false, role: 'default' },
-                { name: 'Meddelande på Mina sidor/i appen', value: false },
+                { name: 'På Mina sidor/i appen', value: false },
                 { name: 'Sms', value: false },
                 { name: 'Telefon', value: false },
             ],
@@ -50,7 +50,7 @@
             isEnabled: 'true',
             channels: [
                 { name: 'E-post', value: true, role: 'default' },
-                { name: 'Meddelande på Mina sidor/i appen', value: false },
+                { name: 'På Mina sidor/i appen', value: false },
                 { name: 'Sms', value: false },
                 { name: 'Brev', value: false },
             ],
