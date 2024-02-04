@@ -59,6 +59,10 @@
 		border-bottom: 1px solid var(--tint);
 		padding: 1.5rem 1.25rem;
 
+		@media (width < 500px) {
+			padding: 1rem 1rem;
+		}
+
 		&.tableheader {
 			padding: 0.5rem 1.25rem;
 			background: color-mix(in oklab, var(--cloud), var(--white));

@@ -108,34 +108,33 @@
 			/>
 		</svg>
 		<small>
-			{ö.prettyNumber(Math.abs(percent), 1)}% {percent >= 0
-				? 'mer'
-				: 'mindre'} än förra månaden
+			{ö.prettyNumber(Math.abs(percent), 1)}% {percent >= 0 ? 'mer' : (
+				'mindre'
+			)} än förra månaden
 		</small>
 	</div>
 	<small>
-		{selected.descendants().length - 1} transaktion{selected.descendants()
-			.length -
-			1 ===
-		1
-			? ''
-			: 'er'}. I genomsnitt {ö.prettyNumber(
+		{selected.descendants().length - 1} transaktion{(
+			selected.descendants().length - 1 === 1
+		) ?
+			''
+		:	'er'}. I genomsnitt {ö.prettyNumber(
 			selected.value / (selected.descendants().length - 1),
 			2,
 		)} kr.
 	</small>
+	{#if selected.parent}
+		<button
+			class="breadcrumbs"
+			on:click={() => select(selected.parent)}
+			transition:fade|local
+		>
+			<img src={arrow} alt="Stäng" />
+			{selected.parent.data.name}
+		</button>
+	{/if}
 </header>
 
-{#if selected.parent}
-	<button
-		class="breadcrumbs"
-		on:click={() => select(selected.parent)}
-		transition:fade|local
-	>
-		<img src={arrow} alt="Stäng" />
-		{selected.parent.data.name}
-	</button>
-{/if}
 <div class="chart">
 	<Pancake.Chart
 		x1={$extents.x1}
@@ -174,23 +173,9 @@
 <style lang="scss">
 	@use 'sass:color';
 
-	.breadcrumbs {
-		width: 100%;
-		padding: 0;
-		margin-top: 1rem;
-		margin-left: -0.25rem;
-		color: var(--blue);
-		background-color: transparent;
-		font-family: inherit;
-		font-size: inherit;
-		text-align: left;
-		border: none;
-		cursor: pointer;
-		outline: none;
-	}
-
 	header {
-		margin-bottom: 1rem;
+		position: relative;
+		margin-bottom: 2rem;
 		padding: 1rem;
 		text-align: center;
 		h2 {
@@ -216,8 +201,26 @@
 		padding-bottom: 0.25rem;
 	}
 
+	.breadcrumbs {
+		width: 100%;
+		left: 0;
+		bottom: -2rem;
+		position: absolute;
+		padding: 0;
+		margin-top: 1rem;
+		margin-left: -0.25rem;
+		color: var(--blue);
+		background-color: transparent;
+		font-family: inherit;
+		font-size: inherit;
+		text-align: left;
+		border: none;
+		cursor: pointer;
+		outline: none;
+	}
 	.chart {
 		//width: calc(100% + 2rem - 4px);
+		position: relative;
 		height: 40vh;
 		padding: 0;
 		//margin: 0 -0.875rem 0;

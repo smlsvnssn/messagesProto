@@ -312,12 +312,12 @@
 
 		@media (width < 1000px) {
 			grid: auto-flow / 1fr;
-			padding: 0rem;
-			gap: 0rem;
+			padding: 0.5rem;
+			gap: 0.5rem;
 
 			.main,
 			.aside {
-				gap: 0rem;
+				gap: 0.5rem;
 			}
 		}
 

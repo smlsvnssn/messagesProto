@@ -14,15 +14,7 @@
 
 <style lang="scss">
 	section {
-		//margin: 2rem 2rem 0rem 2rem;
-
-		@media (width < 800px) {
-			margin: 1rem;
-		}
-
-		&:last-child {
-			margin-bottom: 2rem;
-		}
+		//margin: 2rem 2rem 0rem 2rem
 
 		article {
 			margin: 0%;

@@ -1,229 +1,229 @@
 <script>
-    import { panes, activePane, isSmallWindow } from '$lib/globals'
-    import { fly, fade } from 'svelte/transition'
-    import { backOut, sineOut } from 'svelte/easing'
-    import { clickOutside } from '$lib/actions'
-    import CloseIcon from '$lib/icons/CloseIcon.svelte'
-    import NewMessage from './NewMessage.svelte'
-    import NewMessageIcon from '$lib/icons/NewMessageIcon.svelte'
-    import * as ö from 'ouml'
+	import { panes, activePane, isSmallWindow } from '$lib/globals'
+	import { fly, fade } from 'svelte/transition'
+	import { backOut, sineOut } from 'svelte/easing'
+	import { clickOutside } from '$lib/actions'
+	import CloseIcon from '$lib/icons/CloseIcon.svelte'
+	import NewMessage from './NewMessage.svelte'
+	import NewMessageIcon from '$lib/icons/NewMessageIcon.svelte'
+	import * as ö from 'ouml'
 
-    const messageStatuses = ö.createEnum(['unsent', 'pending', 'sent'])
-    let messageStatus = messageStatuses.unsent
+	const messageStatuses = ö.createEnum(['unsent', 'pending', 'sent'])
+	let messageStatus = messageStatuses.unsent
 
-    const hidePane = () => ($activePane = panes.none)
+	const hidePane = () => ($activePane = panes.none)
 
-    $: arrowXpos = `--x:${$isSmallWindow ? 8.75 : 8.25}rem;`
+	$: arrowXpos = `--x:${$isSmallWindow ? 8.75 : 8.25}rem;`
 </script>
 
 <div class="background" transition:fade={{ duration: 200 }}>
-    <div class="marginwrapper">
-        <div
-            class="messagePane"
-            in:fly={{ y: -100, duration: 300, easing: backOut }}
-            out:fly={{ y: -100, duration: 200, easing: sineOut }}
-        >
-            <div class="content" use:clickOutside on:clickoutside={hidePane}>
-                <header class="messagesHeader" style={arrowXpos}>
-                    <ul>
-                        <li>
-                            <h4>
-                                {messageStatus === messageStatuses.unsent
-                                    ? 'Skriv ett meddelande till oss'
-                                    : 'Tack för ditt meddelande'}
-                            </h4>
-                        </li>
-                        <li
-                            on:click|stopPropagation={hidePane}
-                            title="Stäng meddelanden"
-                        >
-                            <CloseIcon />
-                        </li>
-                    </ul>
-                </header>
-                <div class="messagesBody">
-                    <article>
-                        <NewMessage bind:messageStatus {messageStatuses} />
-                    </article>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="marginwrapper">
+		<div
+			class="messagePane"
+			in:fly={{ y: -100, duration: 300, easing: backOut }}
+			out:fly={{ y: -100, duration: 200, easing: sineOut }}
+		>
+			<div class="content" use:clickOutside on:clickoutside={hidePane}>
+				<header class="messagesHeader" style={arrowXpos}>
+					<ul>
+						<li>
+							<h4>
+								{messageStatus === messageStatuses.unsent ?
+									'Skriv ett meddelande till oss'
+								:	'Tack för ditt meddelande'}
+							</h4>
+						</li>
+						<li
+							on:click|stopPropagation={hidePane}
+							title="Stäng meddelanden"
+						>
+							<CloseIcon />
+						</li>
+					</ul>
+				</header>
+				<div class="messagesBody">
+					<article>
+						<NewMessage bind:messageStatus {messageStatuses} />
+					</article>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <style lang="scss">
-    .background {
-        inset: 0;
-        background: rgba(34, 34, 34, 0.25);
-        position: fixed;
-        z-index: 2;
+	.background {
+		inset: 0;
+		background: rgba(34, 34, 34, 0.25);
+		position: fixed;
+		z-index: 2;
 
-        margin: var(--headerHeight) auto 0;
-    }
-    .marginwrapper {
-        max-width: calc(1280px);
-        margin: auto;
-        padding-left: 1rem;
-        @media (width < 800px) {
-            padding-left: 0.5rem;
-        }
-    }
-    .messagePane {
-        --headerHeight: 3.75rem;
-        max-width: calc(32rem);
+		margin: var(--headerHeight) auto 0;
+	}
+	.marginwrapper {
+		max-width: calc(1280px);
+		margin: auto;
+		padding-left: 1rem;
+		@media (width < 800px) {
+			padding-left: 0.5rem;
+		}
+	}
+	.messagePane {
+		--headerHeight: 3.75rem;
+		max-width: calc(32rem);
 
-        margin: 1rem 1rem 1rem auto;
+		margin: 1rem 1rem 1rem auto;
 
-        @media (width < 800px) {
-            margin: 0.5rem 0.5rem 0.5rem auto;
-        }
+		@media (width < 800px) {
+			margin: 0.5rem 0.5rem 0.5rem auto;
+		}
 
-        filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.1))
-            drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.1));
+		filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.1))
+			drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.1));
 
-        .content {
-            background: var(--white);
-            border-radius: 0.5rem;
-            overflow: hidden;
-            max-height: calc(100mvh - var(--headerHeight) - 1rem);
+		.content {
+			background: var(--white);
+			border-radius: 0.5rem;
+			overflow: hidden;
+			max-height: calc(100mvh - var(--headerHeight) - 1rem);
 
-            .messagesHeader {
-                --x: 0;
-                box-shadow: 0 4px 4px rgba(34, 34, 34, 0.05);
-                &:before {
-                    // arrow
-                    content: '';
-                    width: 0;
-                    height: 0;
-                    border-style: solid;
-                    border-width: 0 0.5rem 0.75rem 0.5rem;
-                    border-color: transparent transparent var(--white)
-                        transparent;
-                    position: absolute;
-                    top: -0.675rem;
-                    right: var(--x);
-                    @media (width < 800px) {
-                        top: -0.5rem;
-                    }
-                }
+			.messagesHeader {
+				--x: 0;
+				box-shadow: 0 4px 4px rgba(34, 34, 34, 0.05);
+				&:before {
+					// arrow
+					content: '';
+					width: 0;
+					height: 0;
+					border-style: solid;
+					border-width: 0 0.5rem 0.75rem 0.5rem;
+					border-color: transparent transparent var(--white)
+						transparent;
+					position: absolute;
+					top: -0.675rem;
+					right: var(--x);
+					@media (width < 800px) {
+						top: -0.5rem;
+					}
+				}
 
-                ul {
-                    margin: 0%;
-                    padding: 1rem;
-                    display: flex;
-                    gap: 0.75rem;
+				ul {
+					margin: 0%;
+					padding: 1rem;
+					display: flex;
+					gap: 0.75rem;
 
-                    li {
-                        &:first-child {
-                            flex: 1;
-                        }
-                        list-style: none;
-                        h4 {
-                            margin-bottom: 0;
-                            @media (max-width: 800px) {
-                                font-size: 1.125rem;
-                            }
-                        }
-                        h6 {
-                            margin-left: 0.25rem;
-                            display: inline;
-                        }
-                        a {
-                            display: flex;
-                            align-items: center;
-                            gap: 0.5rem;
-                            &:hover {
-                                background: none;
-                            }
-                        }
-                    }
-                }
-            }
+					li {
+						&:first-child {
+							flex: 1;
+						}
+						list-style: none;
+						h4 {
+							margin-bottom: 0;
+							@media (max-width: 800px) {
+								font-size: 1.125rem;
+							}
+						}
+						h6 {
+							margin-left: 0.25rem;
+							display: inline;
+						}
+						a {
+							display: flex;
+							align-items: center;
+							gap: 0.5rem;
+							&:hover {
+								background: none;
+							}
+						}
+					}
+				}
+			}
 
-            .messagesBody {
-                display: flex;
-                transition: transform 0.3s;
-                overflow: auto;
-                //min-height: 30rem;
-                //@media (max-width: 800px) {
-                //width: 200%;
-                &.messageActive {
-                    transform: translateX(-50%);
-                }
-                //}
-            }
-        }
-    }
-    article {
-        flex: 1;
-        //background: var(--tint);
-        padding: 2.5rem;
-        position: relative;
-        max-height: calc(100dvh - 9.375rem);
-        @media (width < 800px) {
-            max-height: calc(100dvh - 8.375rem);
-        }
-        overflow-y: auto;
+			.messagesBody {
+				display: flex;
+				transition: transform 0.3s;
+				overflow: auto;
+				//min-height: 30rem;
+				//@media (max-width: 800px) {
+				//width: 200%;
+				&.messageActive {
+					transform: translateX(-50%);
+				}
+				//}
+			}
+		}
+	}
+	article {
+		flex: 1;
+		//background: var(--tint);
+		padding: 2.5rem;
+		position: relative;
+		max-height: calc(100dvh - 9.375rem);
+		@media (width < 800px) {
+			max-height: calc(100dvh - 8.375rem);
+		}
+		overflow-y: auto;
 
-        @media (max-width: 800px) {
-            padding: 1.5rem;
-        }
-        @media (min-width: 800px) {
-            .smallScreenBack {
-                display: none;
-            }
-        }
+		@media (max-width: 800px) {
+			padding: 1.5rem;
+		}
+		@media (min-width: 800px) {
+			.smallScreenBack {
+				display: none;
+			}
+		}
 
-        &.hasMessage {
-            :global(figure.img img) {
-                width: 100%;
-                aspect-ratio: 3/2;
-                object-fit: cover;
-            }
-            header {
-                display: flex;
-                align-items: baseline;
-                gap: 0.5rem;
-                padding-bottom: 0.5rem;
-                margin-bottom: 1.5rem;
-                border-bottom: 1px solid var(--shadow);
+		&.hasMessage {
+			:global(figure.img img) {
+				width: 100%;
+				aspect-ratio: 3/2;
+				object-fit: cover;
+			}
+			header {
+				display: flex;
+				align-items: baseline;
+				gap: 0.5rem;
+				padding-bottom: 0.5rem;
+				margin-bottom: 1.5rem;
+				border-bottom: 1px solid var(--shadow);
 
-                &.isThreaded {
-                    margin-bottom: 0;
-                }
-                .category {
-                    display: inline;
-                }
-                .header {
-                    font-size: 0.875rem;
-                }
-                time {
-                    flex: 1 0 auto;
-                    color: var(--gray);
-                    font-size: 11px;
-                    text-align: end;
-                }
-            }
-            a.action {
-                display: block;
-                width: fit-content;
-                margin-top: 2rem;
-            }
+				&.isThreaded {
+					margin-bottom: 0;
+				}
+				.category {
+					display: inline;
+				}
+				.header {
+					font-size: 0.875rem;
+				}
+				time {
+					flex: 1 0 auto;
+					color: var(--gray);
+					font-size: 11px;
+					text-align: end;
+				}
+			}
+			a.action {
+				display: block;
+				width: fit-content;
+				margin-top: 2rem;
+			}
 
-            // scroll shadow bottom
-            -webkit-overflow-scrolling: touch;
-            overflow-scrolling: touch;
+			// scroll shadow bottom
+			-webkit-overflow-scrolling: touch;
+			overflow-scrolling: touch;
 
-            background:
-                linear-gradient(rgba(255, 255, 255, 0), white 70%) center bottom,
-                linear-gradient(hsla(0, 0%, 13%, 0), hsla(0, 0%, 13%, 0.1))
-                    bottom;
+			background:
+				linear-gradient(rgba(255, 255, 255, 0), white 70%) center bottom,
+				linear-gradient(hsla(0, 0%, 13%, 0), hsla(0, 0%, 13%, 0.1))
+					bottom;
 
-            background-repeat: no-repeat;
-            background-size:
-                100% 100px,
-                100% 8px;
-            background-attachment: local, scroll;
-        }
-    }
+			background-repeat: no-repeat;
+			background-size:
+				100% 100px,
+				100% 8px;
+			background-attachment: local, scroll;
+		}
+	}
 </style>
