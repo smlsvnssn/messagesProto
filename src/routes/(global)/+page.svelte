@@ -1,6 +1,7 @@
 <script>
 	import BåtIcon70 from '$lib/icons/BåtIcon70.svelte'
 	import VillaIcon70 from '$lib/icons/VillaIcon70.svelte'
+	import SkadaIcon from '$lib/icons/SkadaIcon.svelte'
 	import MoneyIcon from '$lib/icons/MoneyIcon.svelte'
 
 	import Section from '$lib/Section.svelte'
@@ -236,55 +237,36 @@
 		</Section>
 	</div>
 	<aside class="aside">
-		<Section header="Försäkringar">
-			<Row>
-				<figure style:grid-column="span 6" class="hasIcon">
-					<VillaIcon70 />
+		<Section header="Att tänka på:">
+			<Row url="genericAction">
+				<figure style:grid-column="span 12" class="hasIcon">
+					<SkadaIcon />
 					<div>
-						<h3>Villa-Hem</h3>
+						<h5>Rensa stuprör</h5>
 						<!-- <span class="marginbottom">
                                 Skadenummer: 28-808329-21
                             </span> -->
-						<figcaption>Självrisk: 2 000 kr</figcaption>
+						<figcaption>
+							{lorem({ sentencesPerParagraph: 1 })}
+						</figcaption>
 					</div>
 				</figure>
-				<figure class="r" style:grid-column="span 6">
-					<h5 class="black">4 320 kr/år</h5>
-					<span class="tagsy text-sm">Aktiv</span>
-				</figure>
-				<svelte:fragment slot="details">
-					<p style:grid-column="span 4">
-						Här finns det lite detaljer, för den som gillar
-						detaljer.
-					</p>
-					<p style:grid-column="span 4" class="r">
-						<figcaption>Tillgängligt</figcaption>
-						0 kr
-					</p>
-					<p style:grid-column="span 2" class="r">
-						<figcaption>Utveckling</figcaption>
-						<span class="plus">+2.4&nbsp;%</span>
-					</p>
-					<p style:grid-column="span 2" class="r">
-						<figcaption>Värde</figcaption>
-						67 819 kr
-					</p>
-				</svelte:fragment>
 			</Row>
-			<Row>
-				<figure style:grid-column="span 6" class="hasIcon">
-					<BåtIcon70 />
+		</Section>
+
+		<Section header="Viktig info">
+			<Row url="genericAction">
+				<figure style:grid-column="span 12" class="hasIcon">
+					<SkadaIcon />
 					<div>
-						<h3>Buster X 60hp - 70hp 2008</h3>
+						<h5>Tänk på y</h5>
 						<!-- <span class="marginbottom">
                                 Skadenummer: 28-808329-21
                             </span> -->
-						<figcaption>Självrisk: 2 500 kr</figcaption>
+						<figcaption>
+							{lorem({ sentencesPerParagraph: 1 })}
+						</figcaption>
 					</div>
-				</figure>
-				<figure class="r" style:grid-column="span 6">
-					<h5 class="black">1 279 kr/år</h5>
-					<span class="tagsy text-sm">Aktiv</span>
 				</figure>
 			</Row>
 		</Section>
@@ -306,7 +288,8 @@
 
 		.main,
 		.aside {
-			display: grid;
+			display: flex;
+			flex-direction: column;
 			gap: 2rem;
 		}
 

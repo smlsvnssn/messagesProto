@@ -10,3 +10,9 @@
 		fill="#005AA0"
 	/>
 </svg>
+
+<style>
+	svg {
+		flex: 0 0 auto;
+	}
+</style>

@@ -19,7 +19,7 @@
 	import { onMount, tick } from 'svelte'
 	import { onNavigate } from '$app/navigation'
 	import { source } from 'sveltekit-sse'
-	import heroImg from '$lib/images/party.jpg?enhanced'
+	import heroImg from '$lib/images/party.jpg'
 
 	export const prerender = true
 	let innerWidth
@@ -95,7 +95,7 @@
 
 	{#if $page.url.pathname === '/'}
 		<div class="hero">
-			<enhanced:img src={heroImg} alt="öh" />
+			<img src={heroImg} alt="öh" />
 		</div>
 	{/if}
 
