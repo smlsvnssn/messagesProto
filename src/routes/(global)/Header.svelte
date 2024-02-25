@@ -158,6 +158,18 @@
 			background: var(--mist);
 		}
 	}
+	li :global(svg) {
+		transition: all 0.3s;
+	}
+	li:hover :global(svg) {
+		translate: 0 -2px;
+	}
+	li :global(.dot) {
+		transition: all ease-in-out 0.3s;
+	}
+	li:hover :global(.dot) {
+		translate: 0 -2px;
+	}
 	.me {
 		display: grid;
 		align-content: center;
