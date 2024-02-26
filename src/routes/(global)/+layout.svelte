@@ -7,6 +7,7 @@
 		activePane,
 		isSmallWindow,
 		isRedDotActive,
+		isActiveSidebar,
 		isFirstRun,
 		messages,
 		types,
@@ -15,13 +16,12 @@
 	import '../../style.css'
 	import NewMessagePane from '$lib/messages/NewMessagePane.svelte'
 	import SettingsPane from '$lib/settings/SettingsPane.svelte'
-	import LeftMenu from './LeftMenu.svelte'
 	import { onMount, tick } from 'svelte'
 	import { onNavigate } from '$app/navigation'
 	import { source } from 'sveltekit-sse'
 	import heroImg from '$lib/images/party.jpg'
+	import Sidebar from './Sidebar.svelte'
 
-	export const prerender = true
 	let innerWidth
 
 	let newMessage = source('api/listenForNewMessages').onError(event =>
@@ -86,7 +86,12 @@
 	{:else if $activePane === panes.settings}
 		<SettingsPane />
 	{/if}
+
 	<Header />
+
+	{#if $isActiveSidebar}
+		<Sidebar />
+	{/if}
 
 	<!-- Debug stuff -->
 	<!-- {$isFirstRun} -->

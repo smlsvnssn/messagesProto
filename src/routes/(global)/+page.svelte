@@ -7,15 +7,15 @@
 	import Section from '$lib/Section.svelte'
 	import Row from '$lib/Row.svelte'
 
-	import { isSmallWindow } from '$lib/globals'
+	import { isSmallWindow, isActiveSidebar } from '$lib/globals'
 	import lorem from 'loerem'
 	import Sparkline from '$lib/messages/Sparkline.svelte'
 	import Treeview from '$lib/treemap/Treeview.svelte'
-	import Slider from '../../lib/Slider.svelte'
-	export const prerender = true
 	let innerWidth
 
 	$: $isSmallWindow = innerWidth < 800
+
+	const activateSidebar = () => ($isActiveSidebar = true)
 </script>
 
 <div class="wrapper">
@@ -25,7 +25,11 @@
 				<div style:grid-column="span 13"><Treeview /></div>
 			</Row>
 			<Row>
-				<h5 style:grid-column="span 4" class="hasIcon">
+				<h5
+					style:grid-column="span 4"
+					class="hasIcon"
+					on:click|stopPropagation={activateSidebar}
+				>
 					<MoneyIcon />
 					Semester 2024
 				</h5>
@@ -61,7 +65,11 @@
 				</svelte:fragment>
 			</Row>
 			<Row url="genericAction">
-				<h5 style:grid-column="span 4" class="hasIcon">
+				<h5
+					style:grid-column="span 4"
+					class="hasIcon"
+					on:click|stopPropagation={activateSidebar}
+				>
 					<MoneyIcon />
 					Framtiden
 				</h5>
@@ -150,7 +158,11 @@
 				</figure>
 			</Row>
 			<Row type="tablerow">
-				<h5 style:grid-column="span 4" class="hasIcon">
+				<h5
+					style:grid-column="span 4"
+					class="hasIcon"
+					on:click|stopPropagation={activateSidebar}
+				>
 					Semester 2024
 				</h5>
 				<figure style:grid-column="span 4" class="r">
@@ -173,7 +185,11 @@
 				</svelte:fragment>
 			</Row>
 			<Row type="tablerow">
-				<h5 style:grid-column="span 4" class="hasIcon">
+				<h5
+					style:grid-column="span 4"
+					class="hasIcon"
+					on:click|stopPropagation={activateSidebar}
+				>
 					Barnens konto
 				</h5>
 				<figure style:grid-column="span 4" class="r">
@@ -196,7 +212,11 @@
 				</svelte:fragment>
 			</Row>
 			<Row type="tablerow">
-				<h5 style:grid-column="span 4" class="hasIcon">
+				<h5
+					style:grid-column="span 4"
+					class="hasIcon"
+					on:click|stopPropagation={activateSidebar}
+				>
 					Hemliga schweiziska kontot
 				</h5>
 				<figure style:grid-column="span 4" class="r">
