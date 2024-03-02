@@ -16,6 +16,7 @@
 	import '../../style.css'
 	import NewMessagePane from '$lib/messages/NewMessagePane.svelte'
 	import SettingsPane from '$lib/settings/SettingsPane.svelte'
+	import WhoAmIPane from '$lib/settings/WhoAmIPane.svelte'
 	import { onMount, tick } from 'svelte'
 	import { onNavigate } from '$app/navigation'
 	import { source } from 'sveltekit-sse'
@@ -85,6 +86,8 @@
 		<NewMessagePane />
 	{:else if $activePane === panes.settings}
 		<SettingsPane />
+	{:else if $activePane === panes.whoAmI}
+		<WhoAmIPane />
 	{/if}
 
 	<Header />

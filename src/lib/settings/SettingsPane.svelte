@@ -14,12 +14,6 @@
 	import { clickOutside } from '$lib/actions'
 	import PrefMarketing from './PrefMarketing.svelte'
 
-	let remind = false
-	let search = false
-
-	let searchresult = []
-	let searchstr = ''
-
 	const hidePane = () => ($activePane = panes.none)
 
 	const setAsInactive = () => ($activeSettingsTab = -1)

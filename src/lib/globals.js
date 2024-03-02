@@ -13,6 +13,7 @@ export const panes = ö.createEnum([
 	'newMessage',
 	'settings',
 	'importantMessagesNotice',
+	'whoAmI',
 ])
 export const activePane = writable(panes.none)
 export const isActiveSidebar = writable(false)

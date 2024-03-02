@@ -1,9 +1,12 @@
 <script>
+	import Me from './Me.svelte'
+
 	import MessagePaneButton from '$lib/messages/MessagePaneButton.svelte'
 	import { goto } from '$app/navigation'
 	import KundtjänstIcon from '$lib/icons/KundtjänstIcon.svelte'
 	import SettingsIcon from '$lib/icons/SettingsIcon.svelte'
 	import NewMessageIcon from '$lib/icons/NewMessageIcon.svelte'
+	import ChevronIcon from '$lib/icons/ChevronIcon.svelte'
 	import { panes, activePane } from '$lib/globals'
 	import LeftMenu from './LeftMenu.svelte'
 
@@ -57,9 +60,7 @@
 					>
 				</li>
 				<li class="layout-grow">
-					<ul class="reset-list layout-flex justify-content-end">
-						<li class="nav-item me">Lena Fransson</li>
-					</ul>
+					<Me></Me>
 				</li>
 				<li class="nav-item"><MessagePaneButton /></li>
 
@@ -171,8 +172,8 @@
 		translate: 0 -2px;
 	}
 	.me {
-		display: grid;
-		align-content: center;
+		display: flex;
+		align-items: center;
 		font-weight: 700;
 		color: var(--blue);
 		padding-right: 0.5rem;
