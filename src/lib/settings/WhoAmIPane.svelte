@@ -1,8 +1,4 @@
 <script>
-	import SettingsList from './SettingsList.svelte'
-
-	import ArrowLeftIcon from '$lib/icons/ArrowLeftIcon.svelte'
-	import CloseIcon from '$lib/icons/CloseIcon.svelte'
 	import {
 		panes,
 		activePane,

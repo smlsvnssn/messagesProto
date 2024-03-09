@@ -2,8 +2,7 @@
 	import { panes, activePane } from '$lib/globals'
 
 	const activateWhoAmIPane = () =>
-		($activePane =
-			$activePane === panes.newMessage ? panes.none : panes.whoAmI)
+		($activePane = $activePane === panes.whoAmI ? panes.none : panes.whoAmI)
 </script>
 
 <ul class="reset-list layout-flex justify-content-end">

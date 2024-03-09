@@ -1,7 +1,5 @@
 <script>
 	import { panes, activePane, isAvtalRedDotActive } from '$lib/globals'
-	import KundtjänstIcon from '$lib/icons/KundtjänstIcon.svelte'
-
 	import { goto } from '$app/navigation'
 </script>
 
@@ -77,7 +75,7 @@
 				Försäkringar</button
 			>
 		</li>
-		<li class="nav-item lvl-1" on:click={() => goto('/genericAction')}>
+		<li class="nav-item lvl-1" on:click={() => goto('/fonttest')}>
 			<button class="nav-link text-truncate w-100" data-test-id="pension"
 				><svg
 					aria-hidden="true"
@@ -149,7 +147,7 @@
 					/>
 				</svg>
 
-				Kontakta oss</button
+				Kundservice</button
 			>
 		</li>
 	</ul>
