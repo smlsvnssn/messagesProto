@@ -183,6 +183,16 @@
 }
 
 @font-face {
+	font-family: 'LF Rubrik Web';
+	src: url('./lib/assets/fonts/LFRubrikWebVF.ttf') format('ttf');
+	font-display: swap;
+	-webkit-font-kerning: normal;
+	font-kerning: normal;
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
 	font-family: 'Intro Cond';
 	src: url('./lib/assets/fonts/intro-cond-regular.woff2') format('woff2');
 	font-display: swap;

@@ -6,11 +6,17 @@
 
 <ul>
 	<li>Med: <br /><br /></li>
+	<li>LF Rubrik Web:<br /><br /></li>
 	<li>Utan:<br /><br /></li>
 	{#each ö.times(15) as size}
-		{@const l = lörem({ sentencesPerParagraph: 1 })}
+		{@const l = lörem({ sentencesPerParagraph: 1, useLörem: false })}
 		<li>
 			<p style="--font-size: {size * 0.2 + 1}">
+				{l}
+			</p>
+		</li>
+		<li class="lfweb">
+			<p style="--font-size: {size * 0.2 + 1 - 0.08}" class="utan">
 				{l}
 			</p>
 		</li>
@@ -33,10 +39,18 @@
 		background: var(--white);
 
 		li {
-			flex: 45%;
+			flex: 25%;
 			list-style: none;
 			&.utan p {
 				letter-spacing: 0 !important;
+			}
+
+			&.lfweb p {
+				letter-spacing: 0 !important;
+				font-family: 'LF Rubrik Web';
+				line-height: 1.37;
+				margin-bottom: 1em;
+				margin-top: 0.2em;
 			}
 		}
 
@@ -47,7 +61,7 @@
 			--font-size: 1;
 			font-size: calc(1rem * var(--font-size));
 			letter-spacing: calc(
-				(1 / pow(var(--font-size) + 1, 3)) * 0.4rem + 0.02em
+				(1 / pow(var(--font-size) + 1.8, 3)) * 1rem + 0.02em
 			);
 		}
 	}

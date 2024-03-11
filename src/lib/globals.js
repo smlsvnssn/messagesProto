@@ -106,16 +106,26 @@ export const messages = writable([
 	{
 		id: Math.random(),
 		dateSent: Date.now() - 86000000,
-		header: 'Vagnskadegarantin för SIK001 slutar gälla. Teckna din vagnskadeförsäkring här.',
-		content:
-			'Snart går vagnskadegarantin ut som följde med när du köpte din bil. Vi rekemmenderar att du tecknar en vagnskadeförsäkring så att bilen även i fortsättningen är helförsäkrad.',
+		header: 'Dags att förlänga bolånet',
+		content: `
+<p>Hej!</p>
+<p>Snart går bindningstiden ut för ett eller flera av dina bolån. Du kan välja något av följande alternativ för att förlänga dina bolån:</p>
+<p><b>Kolla med oss.</b> <a href="#">Kontakta oss</a> om du vill se över din helhet hos oss och vad vi kan erbjuda dig framåt.</p>
+<p><b>Bind om lånet själv.</b> Vill du själv binda om lånen gör du det här på Mina sidor eller i appen, räntan sätts dagen då bindningstiden går ut. Tjänsten kan utföras alla dagar mellan klockan 08 och 22 och det räcker att en låntagare signerar via BankID.</p>
+<p><b>Gör ingenting.</b> Om du vill binda räntan tre månader, så kallad rörlig ränta, behöver du inte göra något. Lånet förlängs löpande var tredje månad och kan bindas om till längre löptid under pågående 3-månaders period till dagsaktuell ränta.</p>
+<p>Om du hellre vill skicka in svarsbrevet som du har fått med posten behöver vi ha ditt svar så snart som möjligt.</p>
+<p>Vill du se över din helhet hos oss och kanske komplettera ditt bolån med en Bo kvar-försäkring som ger ekonomisk trygghet för dig och din familj? Välkommen att <a href="#">kontakta oss</a>.</p>
+<p>Tveka inte att höra av dig till oss om du har några frågor eller funderingar. Vi ser fram emot att hjälpa dig.</p>
+<p>Vänliga hälsningar</p>
+<p>Länsförsäkringar</p>`,
 		type: '',
-		type: types.notification,
+		type: types.marketingMessage,
 		isImportant: false,
 		isRead: false,
 		tags: ['tagg'],
 		attachments: [],
-		thumbnailImage: '',
+		thumbnailImage:
+			'https://picsum.photos/200/200?nocache=0.1976732416808615',
 		action: {
 			actionText: 'Läs mer',
 			actionUrl: 'genericAction',
