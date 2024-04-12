@@ -20,6 +20,17 @@
 
 <div class="wrapper">
 	<div class="main">
+		<lf-alert variant="info" heading="I alert you">
+			Yes I do
+			<lf-button
+				slot="end"
+				variant="secondary"
+				size="small"
+				alert-action="close"
+			>
+				Custom close button
+			</lf-button>
+		</lf-alert>
 		<Section header="Min ekonomi">
 			<Row hasChevron={false}>
 				<div style:grid-column="span 13"><Treeview /></div>

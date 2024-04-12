@@ -226,7 +226,7 @@
 				transition: transform 0.3s;
 				//min-height: 30rem;
 				//@media (max-width: 800px) {
-				width: 200%;
+				//width: 200%;
 				&.messageActive {
 					transform: translateX(-50%);
 				}

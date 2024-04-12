@@ -9,79 +9,32 @@
 
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
-	import { clickOutside } from '$lib/actions'
 
 	import { isActiveSidebar } from '$lib/globals'
 
 	const hidePane = () => ($isActiveSidebar = false)
 </script>
 
-<div class="background" transition:fade={{ duration: 200 }}>
+<div class="background" transition:fade={{ duration: 200 }} on:click={hidePane}>
 	<aside
 		class="sidebar"
-		use:clickOutside
-		on:clickoutside={hidePane}
 		in:fly={{ x: 100, duration: 300, easing: backOut }}
 		out:fly={{ x: 100, duration: 200, easing: sineOut }}
+		on:click|stopPropagation={() => null}
 	>
 		<div class="content">
 			<div>
 				<VillaIcon70 />
 				<h1 class="display-2">Mitt bolån</h1>
 			</div>
-			<Section header="Försäkringar">
+			<Section header="Produktöversikt">
 				<Row>
-					<figure style:grid-column="span 6" class="hasIcon">
-						<VillaIcon70 />
-						<div>
-							<h3>Villa-Hem</h3>
-							<!-- <span class="marginbottom">
-                            Skadenummer: 28-808329-21
-                        </span> -->
-							<figcaption>Självrisk: 2 000 kr</figcaption>
-						</div>
-					</figure>
-					<figure class="r" style:grid-column="span 6">
-						<h5 class="black">4 320 kr/år</h5>
-						<span class="tagsy text-sm">Aktiv</span>
-					</figure>
-					<svelte:fragment slot="details">
-						<p style:grid-column="span 4">
-							Här finns det lite detaljer, för den som gillar
-							detaljer.
-						</p>
-						<p style:grid-column="span 4" class="r">
-							<figcaption>Tillgängligt</figcaption>
-							0 kr
-						</p>
-						<p style:grid-column="span 2" class="r">
-							<figcaption>Utveckling</figcaption>
-							<span class="plus">+2.4&nbsp;%</span>
-						</p>
-						<p style:grid-column="span 2" class="r">
-							<figcaption>Värde</figcaption>
-							67 819 kr
-						</p>
-					</svelte:fragment>
-				</Row>
-				<Row>
-					<figure style:grid-column="span 6" class="hasIcon">
-						<BåtIcon70 />
-						<div>
-							<h3>Buster X 60hp - 70hp 2008</h3>
-							<!-- <span class="marginbottom">
-                            Skadenummer: 28-808329-21
-                        </span> -->
-							<figcaption>Självrisk: 2 500 kr</figcaption>
-						</div>
-					</figure>
-					<figure class="r" style:grid-column="span 6">
-						<h5 class="black">1 279 kr/år</h5>
-						<span class="tagsy text-sm">Aktiv</span>
-					</figure>
+					<p style:grid-column="1 / span 6">{lorem()}</p>
+					<p style:grid-column="7 / span 6">{lorem()}</p>
 				</Row>
 			</Section>
-			<Section header="Tabelltest">
+
+			<Section header="Någon annan bra info">
 				<Row type="tableheader">
 					<figure style:grid-column="span 4">
 						<figcaption>Konto</figcaption>
@@ -166,13 +119,13 @@
 					</svelte:fragment>
 				</Row>
 				<Row>
-					<h3 class="hasIcon" style:grid-column="3 / span 7">
+					<h3 class="hasIcon" style:grid-column="4 / span 6">
 						Den här raden innehåller bara rubrik och en liten text,
 						och ligger nästan i mitten.
 					</h3>
-					<p style:grid-column="3 / span 7">{lorem()}</p>
+					<p style:grid-column="4 / span 6">{lorem()}</p>
 					<a
-						style:grid-column="3 / span 7"
+						style:grid-column="4 / span 6"
 						class="nav-link"
 						href="/lfWrapped"
 						><span class="text-truncate">LF Wrapped 2025</span>

@@ -11,33 +11,34 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
-		"@formkit/auto-animate": "^0.8.1",
-		"@sveltejs/adapter-auto": "^3.1.1",
-		"@sveltejs/enhanced-img": "^0.1.8",
-		"@sveltejs/kit": "^2.5.1",
+		"@formkit/auto-animate": "^0.8.2",
+		"@sveltejs/adapter-auto": "^3.2.0",
+		"@sveltejs/enhanced-img": "^0.1.9",
+		"@sveltejs/kit": "^2.5.5",
 		"@sveltejs/pancake": "^0.0.18",
-		"@sveltejs/vite-plugin-svelte": "^3.0.2",
+		"@sveltejs/vite-plugin-svelte": "^3.1.0",
 		"@vercel/postgres": "^0.5.1",
 		"d3-hierarchy": "^3.1.2",
 		"dotenv": "^16.4.5",
 		"dotenv-expand": "^10.0.0",
 		"drizzle-kit": "^0.20.14",
 		"fuse.js": "^6.6.2",
-		"loerem": "^1.0.7",
-		"ouml": "^0.1.5",
+		"loerem": "^1.0.8",
+		"ouml": "^0.1.7",
 		"prettier": "^2.8.8",
 		"prettier-plugin-svelte": "^2.10.1",
-		"svelte": "^4.2.12",
+		"svelte": "^4.2.13",
 		"svelte-check": "^2.10.3",
-		"svelte-dnd-action": "^0.9.40",
+		"svelte-dnd-action": "^0.9.43",
 		"svelte-preprocess": "^5.1.3",
 		"sveltekit-sse": "^0.3.7",
-		"typescript": "^5.3.3",
-		"vite": "^5.1.4"
+		"typescript": "^5.4.5",
+		"vite": "^5.2.8"
 	},
 	"type": "module",
 	"dependencies": {
-		"drizzle-orm": "^0.29.4",
-		"pg": "^8.11.3"
+		"@lansforsakringar/web-components": "^0.0.2",
+		"drizzle-orm": "^0.29.5",
+		"pg": "^8.11.5"
 	}
 }
