@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@lansforsakringar/fonts':
+    specifier: ^1.0.5
+    version: 1.0.5
   '@lansforsakringar/web-components':
     specifier: ^0.0.2
     version: 0.0.2
@@ -957,6 +960,10 @@ packages:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
+
+  /@lansforsakringar/fonts@1.0.5:
+    resolution: {integrity: sha512-hDCpSJ7rgKZ8Q3BP6av8uPAvAs04vtSBIi2OrybkEqiEy1tfA+k0aRd5o10JCMPlxbWfbNbIXPN0GUTgEqr26w==}
+    dev: false
 
   /@lansforsakringar/web-components@0.0.2:
     resolution: {integrity: sha512-5aJW2i57TKM+v4xnIyV2fWGHtr9E1vXPvV9Etgc+BvhIjdD+HBtHSQ6zcCAoeM8X42+Y44Rr9B/M1XOeS0TIdA==}

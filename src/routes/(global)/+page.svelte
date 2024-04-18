@@ -7,10 +7,17 @@
 	import Section from '$lib/Section.svelte'
 	import Row from '$lib/Row.svelte'
 
-	import { isSmallWindow, isActiveSidebar } from '$lib/globals'
+	import {
+		isSmallWindow,
+		isActiveSidebar,
+		panes,
+		activePane,
+		activeSettingsTab,
+	} from '$lib/globals'
 	import lorem from 'loerem'
 	import Sparkline from '$lib/messages/Sparkline.svelte'
 	import Treeview from '$lib/treemap/Treeview.svelte'
+	import { get } from 'svelte/store'
 	let innerWidth
 
 	$: $isSmallWindow = innerWidth < 800
@@ -20,7 +27,7 @@
 
 <div class="wrapper">
 	<div class="main">
-		<lf-alert variant="info" heading="I alert you">
+		<!-- <lf-alert variant="info" heading="I alert you">
 			Yes I do
 			<lf-button
 				slot="end"
@@ -30,7 +37,47 @@
 			>
 				Custom close button
 			</lf-button>
-		</lf-alert>
+		</lf-alert> -->
+		<Section header="">
+			<Row>
+				<div class="hasIcon" style:grid-column="span 1">
+					<svg
+						width="70"
+						height="71"
+						viewBox="0 0 70 71"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M22.7548 12.4863C21.8636 16.1423 18.656 19.35 15 20.2411V36.4863C15 44.7061 21.5303 51.9934 35 58.2843C48.4697 51.9934 55 44.7061 55 36.4863V20.2411C51.344 19.35 48.1364 16.1423 47.2452 12.4863H22.7548ZM49 10.4863C49 14.4863 53 18.4863 57 18.4863V36.4863C57 45.8197 49.6667 53.8197 35 60.4863C20.3333 53.8197 13 45.8197 13 36.4863V18.4863C17 18.4863 21 14.4863 21 10.4863H49ZM41.2929 26.0229L35 32.3153L28.7071 26.0229L27.2929 27.4371L33.585 33.7293L27.2929 40.0229L28.7071 41.4371L35 35.1443L41.2929 41.4371L42.7071 40.0229L36.414 33.7293L42.7071 27.4371L41.2929 26.0229Z"
+							fill="#005AA0"
+						/>
+					</svg>
+				</div>
+				<div class="head" style:grid-column="span 8">
+					<h3 class="display-4">Vill du bli svårlurad?</h3>
+					<p class="payoff">
+						Bedrägerier över telefon och sms har blivit ett allt
+						större samhällsproblem. Vi har byggt några extra
+						säkerhetsfunktioner, som gör dig extra svårlurad. Slå på
+						dessa funktioner för att få att starkt skydd mot
+						bedrägerier!
+						<br />
+					</p>
+				</div>
+				<a
+					style:grid-column="span 3"
+					href="#"
+					class="btn btn-secondary btn-sm-block"
+					on:click|preventDefault|stopPropagation={() => {
+						$activePane = panes.settings
+						$activeSettingsTab = 'security'
+					}}
+				>
+					Bli svårlurad!
+				</a>
+			</Row>
+		</Section>
 		<Section header="Min ekonomi">
 			<Row hasChevron={false}>
 				<div style:grid-column="span 13"><Treeview /></div>
@@ -322,6 +369,10 @@
 			display: flex;
 			flex-direction: column;
 			gap: 2rem;
+		}
+
+		.payoff {
+			margin-bottom: 0;
 		}
 
 		@media (width < 1000px) {

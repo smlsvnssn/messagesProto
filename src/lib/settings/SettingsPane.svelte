@@ -13,6 +13,7 @@
 	import { backOut, sineOut } from 'svelte/easing'
 	import { clickOutside } from '$lib/actions'
 	import PrefMarketing from './PrefMarketing.svelte'
+	import PrefSecurity from './PrefSecurity.svelte'
 
 	const hidePane = () => ($activePane = panes.none)
 
@@ -33,7 +34,7 @@
 					<ul>
 						<li>
 							<h4>
-								{#if /* $isSmallWindow && */ $activeSettingsTab > -1}
+								{#if /* $isSmallWindow && */ $activeSettingsTab > -1 || isNaN($activeSettingsTab)}
 									<!-- TODO snygga till -->
 									<a
 										href="#"
@@ -55,12 +56,16 @@
 				</header>
 				<div
 					class="messagesBody"
-					class:messageActive={$activeSettingsTab >= 0}
+					class:messageActive={$activeSettingsTab >= 0 ||
+						isNaN($activeSettingsTab)}
 				>
 					<SettingsList></SettingsList>
 
-					{#if $activeSettingsTab === 2}
+					{#if $activeSettingsTab === 'marketing'}
 						<PrefMarketing></PrefMarketing>
+					{/if}
+					{#if $activeSettingsTab === 'security'}
+						<PrefSecurity></PrefSecurity>
 					{/if}
 				</div>
 			</div>
