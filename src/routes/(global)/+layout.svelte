@@ -22,8 +22,8 @@
 	import { source } from 'sveltekit-sse'
 	import heroImg from '$lib/images/party.jpg'
 	import Sidebar from './Sidebar.svelte'
-	import '@lansforsakringar/web-components'
-	import '@lansforsakringar/fonts'
+	//import '@lansforsakringar/web-components'
+	//import '@lansforsakringar/fonts'
 
 	let innerWidth
 
