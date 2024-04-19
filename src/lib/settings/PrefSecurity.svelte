@@ -1,15 +1,12 @@
 <script>
 	import Switch from '$lib/Switch.svelte'
+	import { activePane, panes } from '$lib/globals'
 	let checked
 
 	$: if (checked) {
 		checked = true
 	}
 	$: svårlurad = checked ? 'Jag är svårlurad!' : 'Vill du bli svårlurad?'
-	$: på =
-		checked ?
-			'Extra säkerhetsfunktioner påslagna. För att stänga av behöver du kontakta <a href=#>kundservice</a>.'
-		:	'Ja tack, slå på extra säkerhetsfunktioner!'
 </script>
 
 <div class="wrapper">
@@ -59,7 +56,19 @@
 			kontakta kundservice. Därefter stängs funktionen av efter 24 timmar.
 		</p>
 		<Switch bind:checked />
-		<p>{@html på}</p>
+		<p>
+			{#if !checked}
+				Ja tack, slå på extra säkerhetsfunktioner!
+			{:else}
+				Extra säkerhetsfunktioner påslagna. För att stänga av behöver du
+				kontakta <a
+					href="#"
+					on:click|preventDefault|stopPropagation={() => {
+						$activePane = panes.newMessage
+					}}>kundservice</a
+				>.
+			{/if}
+		</p>
 	</div>
 </div>
 
