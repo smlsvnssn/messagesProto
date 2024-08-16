@@ -9,10 +9,11 @@
 	import * as ö from 'ouml'
 
 	export let message
+	let timeout
 
 	const setAsActive = () => {
 		if (message.isPendingDeletion) message.isPendingDeletion = false
-		
+
 		$activeMessageId = $activeMessageId === message.id ? -1 : message.id
 		if ($activeMessageId > -1) {
 			const activeMessage = $messages.find(m => m.id === $activeMessageId)
@@ -28,7 +29,8 @@
 			$messages = $messages.filter(m => m.id !== message.id)
 	}
 
-	$: if (message.isPendingDeletion) setTimeout(deleteMessage, 10000)
+	$: if (message.isPendingDeletion && !timeout)
+		timeout = setTimeout(deleteMessage, 10000)
 
 	onDestroy(deleteMessage)
 </script>
@@ -131,7 +133,8 @@
 		}
 
 		&.pendingDeletion {
-			background: var(--tint);
+			padding: 0.5rem;
+			background: var(--yellow);
 			p {
 				text-align: end;
 				padding-right: 0.5rem;
