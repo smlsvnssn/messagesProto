@@ -5,11 +5,14 @@
 	import { messages, activeMessageId, panes, activePane } from '$lib/globals'
 	import { goto } from '$app/navigation'
 	import getDate from './getDate'
+	import { onDestroy } from 'svelte'
 	import * as ö from 'ouml'
 
 	export let message
 
 	const setAsActive = () => {
+		if (message.isPendingDeletion) message.isPendingDeletion = false
+		
 		$activeMessageId = $activeMessageId === message.id ? -1 : message.id
 		if ($activeMessageId > -1) {
 			const activeMessage = $messages.find(m => m.id === $activeMessageId)
@@ -19,65 +22,94 @@
 
 		$messages = $messages //to refresh store
 	}
+
+	const deleteMessage = () => {
+		if (message.isPendingDeletion)
+			$messages = $messages.filter(m => m.id !== message.id)
+	}
+
+	$: if (message.isPendingDeletion) setTimeout(deleteMessage, 10000)
+
+	onDestroy(deleteMessage)
 </script>
 
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <li
 	class:unread={!message.isRead}
 	class:active={message.id == $activeMessageId}
+	class:pendingDeletion={message.isPendingDeletion}
 	on:click|stopPropagation={setAsActive}
 	on:keypress
 >
-	<MessageIcon {message} />
+	{#if !message.isPendingDeletion}
+		<MessageIcon {message} />
+	{/if}
 
 	<div class="content">
-		<div class="metadata">
-			{#if message.isImportant}
-				<h6 class="importante">Att göra</h6>
+		{#if message.isPendingDeletion}
+			<p>
+				"{ö.stripTags(message.header)}" har raderats.
+				<a
+					href="#"
+					on:click|stopPropagation={() =>
+						(message.isPendingDeletion = false)}>Ångra?</a
+				>
+			</p>
+		{:else}
+			<div class="metadata">
+				{#if message.isImportant}
+					<h6 class="importante">Att göra</h6>
+				{/if}
+				<date>
+					{getDate(+message.dateSent)}
+				</date>
+				{#if message.category}
+					<h6>
+						{message?.category}&nbsp;&nbsp;{message?.tags.join(
+							'\xa0 ',
+						)}
+					</h6>
+				{/if}
+				<span class="spacer" />
+				{#if message.attachments?.length}
+					<AttachmentsIcon
+						inverted={message.id == $activeMessageId}
+					/>
+				{/if}
+				{#if Array.isArray(message.content) && message.content.length > 1}
+					<span class="thread">{message.content.length}</span>
+				{/if}
+			</div>
+			<p class="header">{ö.stripTags(message.header)}</p>
+			<p>
+				{#if Array.isArray(message.content)}
+					{ö.stripTags(message.content[0].content)}
+				{:else}
+					{ö.stripTags(message.content)}
+				{/if}
+			</p>
+			{#if (message.action || message.content[0]?.action) && !message.isRead}
+				{@const action = message.action || message.content[0]?.action}
+				<a
+					class="action"
+					href={action.actionUrl}
+					alt="dunno"
+					on:click|stopPropagation|preventDefault={() => {
+						$messages.find(m => m.id === message.id).isRead = true
+						$activePane = panes.none
+						goto(action.actionUrl)
+					}}
+				>
+					{action.actionText}
+				</a>
 			{/if}
-			<date>
-				{getDate(+message.dateSent)}
-			</date>
-			{#if message.category}
-				<h6>
-					{message?.category}&nbsp;&nbsp;{message?.tags.join('\xa0 ')}
-				</h6>
-			{/if}
-			<span class="spacer" />
-			{#if message.attachments?.length}
-				<AttachmentsIcon inverted={message.id == $activeMessageId} />
-			{/if}
-			{#if Array.isArray(message.content) && message.content.length > 1}
-				<span class="thread">{message.content.length}</span>
-			{/if}
-		</div>
-		<p class="header">{ö.stripTags(message.header)}</p>
-		<p>
-			{#if Array.isArray(message.content)}
-				{ö.stripTags(message.content[0].content)}
-			{:else}
-				{ö.stripTags(message.content)}
-			{/if}
-		</p>
-		{#if (message.action || message.content[0]?.action) && !message.isRead}
-			{@const action = message.action || message.content[0]?.action}
-			<a
-				class="action"
-				href={action.actionUrl}
-				alt="dunno"
-				on:click|stopPropagation|preventDefault={() => {
-					$messages.find(m => m.id === message.id).isRead = true
-					$activePane = panes.none
-					goto(action.actionUrl)
-				}}
-			>
-				{action.actionText}
-			</a>
 		{/if}
 	</div>
-	<div class="chevron">
-		<ChevronIcon />
-	</div>
+	{#if !message.isPendingDeletion}
+		<div class="chevron">
+			<ChevronIcon />
+		</div>
+	{/if}
 </li>
 
 <style lang="scss">
@@ -96,6 +128,14 @@
 			background: var(--silver);
 			color: var(--white);
 			text-decoration: line-through;
+		}
+
+		&.pendingDeletion {
+			background: var(--tint);
+			p {
+				text-align: end;
+				padding-right: 0.5rem;
+			}
 		}
 
 		.content {

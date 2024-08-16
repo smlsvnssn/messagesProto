@@ -5,6 +5,5 @@ const jokes = [
 	'Jag hatar träd! Gör pappersmassa av dem allihop, ett årsbesked i taget.',
 ]
 
-export async function GET() {
-	return new Response(JSON.stringify(sample(jokes), null, 2))
-}
+export const GET = async () =>
+	new Response(JSON.stringify(sample(jokes), null, 2))

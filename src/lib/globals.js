@@ -7,27 +7,27 @@ export const isSmallWindow = writable(null)
 export const isFirstRun = writable(true)
 
 // panes
-export const panes = ö.createEnum([
-	'none',
-	'message',
-	'newMessage',
-	'settings',
-	'importantMessagesNotice',
-	'whoAmI',
-])
+export const panes = ö.createEnum({
+	none: Symbol(),
+	message: Symbol(),
+	newMessage: Symbol(),
+	settings: Symbol(),
+	importantMessagesNotice: Symbol(),
+	whoAmI: Symbol(),
+})
 export const activePane = writable(panes.none)
 export const isActiveSidebar = writable(false)
 
 // messages
-export const types = ö.createEnum([
-	'massMessage',
-	'skadeärende',
-	'marketingMessage',
-	'secureMessage',
-	'notification',
-	'signDocument',
-	'newDocument',
-])
+export const types = ö.createEnum({
+	massMessage: Symbol(),
+	skadeärende: Symbol(),
+	marketingMessage: Symbol(),
+	secureMessage: Symbol(),
+	notification: Symbol(),
+	signDocument: Symbol(),
+	newDocument: Symbol(),
+})
 //export const activeMessageId = writable(get(messages)[0].id)
 export const activeMessageId = writable(-1)
 export const activeSettingsTab = writable(-1)

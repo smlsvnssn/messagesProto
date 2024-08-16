@@ -12,7 +12,9 @@
 	const closeMessagePane = () => ($activePane = panes.none)
 
 	const deleteMessage = () => {
-		$messages = $messages.filter(m => m.id !== $activeMessageId)
+		//$messages = $messages.filter(m => m.id !== $activeMessageId)
+		$messages.find(m => m.id === $activeMessageId).isPendingDeletion = true
+		$messages = $messages
 		$activeMessageId = -1
 	}
 

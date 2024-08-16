@@ -1,47 +1,33 @@
 import { chain } from 'ouml/chain'
 import { groupBy } from 'ouml'
 
-const sliceOnLargest = 5
+const LARGEST_CATEGORIES = 5
 
-const groupBySubcategory = map => {
-	map.forEach((category, categoryName, map) => {
-		map.set(categoryName, groupBy(category, 'subcategory'))
-	})
+const toGrouped = (arr, prop) =>
+	[...groupBy(arr, prop).entries()].map(([key, val]) => ({
+		name: key,
+		children: val,
+	}))
 
-	return map
-}
-
-const convertToHierachicObject = map => {
-	let root = {
-		name: 'Totalt',
-		children: [],
-	}
-
-	map.forEach((category, categoryName) => {
-		const cat = { name: categoryName, children: [] }
-		category.forEach((subcategory, subcategoryName) => {
-			cat.children.push({ name: subcategoryName, children: subcategory })
-		})
-		root.children.push(cat)
-	})
-
-	return root
-}
+const convertToTree = transactions => ({
+	name: 'Totalt',
+	children: toGrouped(transactions, 'category').map(category => ({
+		...category,
+		children: toGrouped(category.children, 'subcategory'),
+	})),
+})
 
 const sumAndSortGroups = obj => {
 	if (!obj.children) return obj
 
-	const children = obj.children
+	let children = obj.children
 		.map(sumAndSortGroups)
 		.sort((a, b) => (b.amount ?? b.sum) - (a.amount ?? a.sum))
 
 	return {
 		...obj,
 		children,
-		sum: children.reduce(
-			(v, transaction) => (v += transaction.amount ?? transaction.sum),
-			0,
-		),
+		sum: children.reduce((acc, o) => (acc += o.amount ?? o.sum), 0),
 	}
 }
 
@@ -51,24 +37,23 @@ const cleanup = obj => {
 
 	// Else, slice root to largest categories
 	obj.children = [
-		...obj.children.slice(0, sliceOnLargest),
+		...obj.children.slice(0, LARGEST_CATEGORIES),
 		{
 			name: 'Övriga kategorier',
-			children: obj.children.slice(sliceOnLargest),
+			children: obj.children.slice(LARGEST_CATEGORIES),
 		},
 	]
 
 	return obj
 }
 
-export default data =>
-	chain(data)
-		.filter(o => o.category !== 'Inkomst')
-		.map(o => ({ ...o, amount: -o.amount }))
-		.groupBy('category')
-		.f(groupBySubcategory)
-		.f(convertToHierachicObject)
-		.f(sumAndSortGroups)
-		.f(cleanup)
+export default transactions =>
+	// prettier-ignore
+	chain(transactions)
+		.filter(transaction => transaction.category !== 'Inkomst')
+		.map(transaction => ({ ...transaction, amount: -transaction.amount }))
+		(convertToTree)
+		(sumAndSortGroups)
+		(cleanup)
 		//.peek()
 		.return()

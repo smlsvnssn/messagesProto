@@ -3,7 +3,7 @@ import lorem from 'loerem'
 import { types } from '$lib/globals'
 
 let delay = 5000
-export function GET() {
+export const GET = () => {
 	return event(async emit => {
 		while (true) {
 			await new Promise(r => setTimeout(r, delay))
