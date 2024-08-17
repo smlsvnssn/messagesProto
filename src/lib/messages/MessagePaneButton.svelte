@@ -16,7 +16,7 @@
 >
 	<span class="sr-only">Visa mina meddelanden</span>
 	<EnvelopeIcon />
-	<span class="dot {isRedDotActive ? 'red-dot' : 'no-dot'}" />
+	<span class="dot {$isRedDotActive ? 'red-dot' : 'no-dot'}" />
 </button>
 
 <style lang="scss">

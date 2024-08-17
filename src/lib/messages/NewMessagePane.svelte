@@ -9,11 +9,12 @@
 	import * as ö from 'ouml'
 
 	const messageStatuses = ö.createEnum(['unsent', 'pending', 'sent'])
-	let messageStatus = messageStatuses.unsent
+	
+	let messageStatus = $state(messageStatuses.unsent)
+	let arrowXpos = $derived(`--x:${$isSmallWindow ? 8.75 : 8.25}rem;`)
 
 	const hidePane = () => ($activePane = panes.none)
 
-	$: arrowXpos = `--x:${$isSmallWindow ? 8.75 : 8.25}rem;`
 </script>
 
 <div class="background" transition:fade={{ duration: 200 }}>

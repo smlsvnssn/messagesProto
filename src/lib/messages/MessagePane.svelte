@@ -18,23 +18,23 @@
 	import { backOut, sineOut } from 'svelte/easing'
 	import { clickOutside } from '$lib/actions'
 
-	let remind = false
-	let search = false
+	let remind = $state(false)
+	let search = $state(false)
 
-	let searchresult = []
-	let searchstr = ''
+	let searchresult = $state([])
+	let searchstr = $state('')
 
-	const hidePane = () => (activePane = panes.none)
+	const hidePane = () => ($activePane = panes.none)
 
-	const setAsInactive = () => (activeMessageId = -1)
+	const setAsInactive = () => ($activeMessageId = -1)
 
-	let unread = $derived(messages.filter(m => !m.isRead).length)
+	let unread = $derived($messages.filter(m => !m.isRead).length)
 
-	let arrowXpos = $derived(`--x:${isSmallWindow ? 11.25 : 10.75}rem;`)
+	let arrowXpos = $derived(`--x:${$isSmallWindow ? 11.25 : 10.75}rem;`)
 
 	//$: if ($activeMessageId < 0) remind = false
 
-	isRedDotActive = false
+	$isRedDotActive = false
 </script>
 
 <div class="background" transition:fade={{ duration: 200 }}>
@@ -49,7 +49,7 @@
 					<ul>
 						<li>
 							<h4>
-								{#if /* $isSmallWindow && */ activeMessageId > -1}
+								{#if /* $isSmallWindow && */ $activeMessageId > -1}
 									<!-- TODO snygga till -->
 									<a
 										href="#"
@@ -73,19 +73,19 @@
 						<MessageActions bind:remind bind:search />
 					</ul>
 				</header>
-				{#if remind && activeMessageId >= 0}
+				{#if remind && $activeMessageId >= 0}
 					<Reminder bind:remind />
 				{/if}
-				{#if search && activeMessageId === -1}
+				{#if search && $activeMessageId === -1}
 					<SearchBar bind:searchresult bind:searchstr />
 				{/if}
 				<div
 					class="messagesBody"
-					class:messageActive={activeMessageId >= 0}
+					class:messageActive={$activeMessageId >= 0}
 				>
 					<MessageList {searchresult} {searchstr} />
 					<MessageView
-						message={messages.find(m => m.id === activeMessageId)}
+						message={messages.find(m => m.id === $activeMessageId)}
 					/>
 				</div>
 			</div>

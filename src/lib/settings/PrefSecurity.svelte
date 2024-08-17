@@ -1,12 +1,10 @@
 <script>
 	import Switch from '$lib/Switch.svelte'
 	import { activePane, panes } from '$lib/globals.svelte.js'
-	let checked
+	
+	let checked = $state()
 
-	$: if (checked) {
-		checked = true
-	}
-	$: svårlurad = checked ? 'Jag är svårlurad!' : 'Vill du bli svårlurad?'
+	let svårlurad = $derived(checked ? 'Jag är svårlurad!' : 'Vill du bli svårlurad?')
 </script>
 
 <div class="wrapper">

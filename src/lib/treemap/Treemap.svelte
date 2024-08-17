@@ -1,12 +1,12 @@
 <script>
 	import Node from './Node.svelte';
 
-	export let root;
+	 let {root, children} = $props();
 </script>
 
 <pancake-treemap>
 	<Node node={root} let:node>
-		<slot {node} />
+		{@render children(node)}
 	</Node>
 </pancake-treemap>
 

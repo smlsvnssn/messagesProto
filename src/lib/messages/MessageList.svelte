@@ -6,10 +6,14 @@
 	import { messages, types } from '$lib/globals.svelte.js'
 	import * as ö from 'ouml'
 
-	export let searchresult
-	export let searchstr
+	let { searchresult, searchstr } = $props()
 
-	let filteredMessages
+	let filteredMessages = $derived(
+		searchstr.length > 2 ?
+			filters[activeFilter].filter(searchresult)
+		:	filters[activeFilter].filter($messages),
+	)
+
 	let filters = [
 		{
 			name: 'Alla',
@@ -33,12 +37,7 @@
 		// 	filter: () => $messages.filter(m => m.type === types.secureMessage),
 		// },
 	]
-	let activeFilter = 0
-
-	$: filteredMessages =
-		searchstr.length > 2 ?
-			filters[activeFilter].filter(searchresult)
-		:	filters[activeFilter].filter($messages)
+	let activeFilter =  $state(0)
 </script>
 
 <nav>

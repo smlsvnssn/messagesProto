@@ -5,14 +5,13 @@
 	import { tick } from 'svelte'
 	import * as ö from 'ouml'
 
-	export let shortlist = []
-	export let keywords = []
+	let { shortlist = [], keywords = [] } = $props()
 
-	let deletedFromAutotags = []
-	let manualTags = []
-	let isEditing = false
+	let deletedFromAutotags = $state([])
+	let manualTags = $state([])
+	let isEditing = $state(false)
 
-	$: autotags = [...ö.subtract(shortlist, deletedFromAutotags)]
+	let autotags = $derived([...ö.subtract(shortlist, deletedFromAutotags)])
 
 	const addTag = () => {
 		manualTags = [...ö.unique(manualTags.filter(v => v !== '')), '']
@@ -59,7 +58,7 @@
 					on:keyup={e => {
 						if (e?.key === 'Enter') saveAndAddNewTag()
 					}}
-					bind:value={item}
+					bind:value={manualTags[i]}
 				/>
 			{:else}
 				{item}

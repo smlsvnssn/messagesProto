@@ -1,15 +1,12 @@
 <script>
-	export let direction = 'right'
+	let { direction = 'right' } = $props()
 </script>
 
 <svg
-	style:rotate={direction === 'right'
-		? '0deg'
-		: direction === 'down'
-		? '90deg'
-		: direction === 'left'
-		? '180deg'
-		: '-90deg'}
+	style:rotate={direction === 'right' ? '0deg'
+	: direction === 'down' ? '90deg'
+	: direction === 'left' ? '180deg'
+	: '-90deg'}
 	width="24"
 	height="25"
 	viewBox="0 0 24 25"

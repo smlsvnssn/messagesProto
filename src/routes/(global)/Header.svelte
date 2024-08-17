@@ -21,10 +21,6 @@
 
 <div id="header" class="lb4 fixed-top">
 	<div class="navbar navbar-light">
-		<button class="n-header-skip link-complex sr-only sr-only-focusable"
-			><span class="link-complex-target">Hoppa till innehåll</span
-			></button
-		>
 		<nav class="n-header-wrapper" aria-label="Sidhuvud" role="navigation">
 			<ul class="navbar-nav nav">
 				<li class="nav-item meny">

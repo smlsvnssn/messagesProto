@@ -1,5 +1,5 @@
 <script>
-	export let inverted = false
+	let {inverted = false} = $props()
 </script>
 
 <svg

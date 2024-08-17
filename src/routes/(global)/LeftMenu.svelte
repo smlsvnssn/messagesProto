@@ -120,14 +120,14 @@
 					<path d="M11 22.5H21V20.5H11V22.5Z" fill="white" />
 				</svg>
 				<span
-					class="dot icon {isAvtalRedDotActive() ? 'red-dot' : (
+					class="dot icon {$isAvtalRedDotActive ? 'red-dot' : (
 						'no-dot'
 					)}"
 				/>
 
 				Avtal och dokument
 				<!-- <span
-					class="dot {isAvtalRedDotActive ? 'red-dot' : 'no-dot'}"
+					class="dot {$isAvtalRedDotActive ? 'red-dot' : 'no-dot'}"
 				/> -->
 			</button>
 		</li>

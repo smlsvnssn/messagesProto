@@ -9,13 +9,13 @@
 	import { keywords } from './keywords'
 	import { slide, fade } from 'svelte/transition'
 
-	export let messageStatus, messageStatuses
+	let { messageStatus, messageStatuses } = $props()
 
 	const newMessageTemplate = {
 		subject: '',
 		body: '',
 	}
-	let newMessage = newMessageTemplate
+	let newMessage = $state(newMessageTemplate)
 
 	const clearMessage = () => {
 		newMessage = newMessageTemplate
@@ -70,17 +70,19 @@
 		ö.setLocal('newMessage', newMessage)
 	})
 
-	$: shortlist = ö.pipe(
-		newMessage.subject + newMessage.body,
-		// get unique words
-		s => s.split(' '),
-		ö.unique,
-		// match with keywords
-		a => a.map(v => fuse.search(v)),
-		// and flatten to unique matches
-		a => a.flatMap(v => v.map(r => r.item)),
-		a => a.map(v => v.group),
-		ö.unique,
+	let shortlist = $derived(
+		ö.pipe(
+			newMessage.subject + newMessage.body,
+			// get unique words
+			s => s.split(' '),
+			ö.unique,
+			// match with keywords
+			a => a.map(v => fuse.search(v)),
+			// and flatten to unique matches
+			a => a.flatMap(v => v.map(r => r.item)),
+			a => a.map(v => v.group),
+			ö.unique,
+		),
 	)
 </script>
 

@@ -25,7 +25,7 @@
 	//import '@lansforsakringar/web-components'
 	//import '@lansforsakringar/fonts'
 
-	let innerWidth
+	let innerWidth = $state()
 
 	let newMessage = source('api/listenForNewMessages').onError(event =>
 		console.error({ event }),
@@ -33,9 +33,9 @@
 
 	const getMessagesWithoutReactiveUpdateSvelteHack = () => $messages
 	const resetImportantPane = async () => {
-		isRedDotActive = true
-		if (activePane === panes.none)
-			activePane = panes.importantMessagesNotice
+		$isRedDotActive = true
+		if ($activePane === panes.none)
+			$activePane = panes.importantMessagesNotice
 	}
 	// $: {
 	//     //console.log($newMessage)
@@ -48,16 +48,18 @@
 	//         resetImportantPane()
 	//     }
 	// }
-	
-	$effect(() => isSmallWindow = innerWidth < 800)
-	
-	let importantMessages = $derived(messages.filter(m => m.isImportant && !m.isRead))
+
+	$effect(() => ($isSmallWindow = innerWidth < 800))
+
+	let importantMessages = $derived(
+		$messages.filter(m => m.isImportant && !m.isRead),
+	)
 
 	$effect(() => {
-		if (isFirstRun) {
-			activePane = panes.importantMessagesNotice
+		if ($isFirstRun) {
+			$activePane = panes.importantMessagesNotice
 
-			isFirstRun = false
+			$isFirstRun = false
 		}
 	})
 
@@ -82,21 +84,21 @@
 </svelte:head>
 
 <main class="lb4">
-	{#if isRedDotActive && importantMessages.length && activePane === panes.importantMessagesNotice}
+	{#if $isRedDotActive && importantMessages.length && $activePane === panes.importantMessagesNotice}
 		<ImportantMessagesNotice {importantMessages} />
-	{:else if activePane === panes.message}
+	{:else if $activePane === panes.message}
 		<MessagePane />
-	{:else if activePane === panes.newMessage}
+	{:else if $activePane === panes.newMessage}
 		<NewMessagePane />
-	{:else if activePane === panes.settings}
+	{:else if $activePane === panes.settings}
 		<SettingsPane />
-	{:else if activePane === panes.whoAmI}
+	{:else if $activePane === panes.whoAmI}
 		<WhoAmIPane />
 	{/if}
 
 	<Header />
 
-	{#if isActiveSidebar}
+	{#if $isActiveSidebar}
 		<Sidebar />
 	{/if}
 

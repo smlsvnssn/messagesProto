@@ -2,7 +2,7 @@
 	import { slide } from 'svelte/transition'
 	import { sineOut } from 'svelte/easing'
 
-	export let remind
+	let {remind = $bindable()} = $props()
 </script>
 
 <div

@@ -6,7 +6,7 @@
 	import * as ö from 'ouml'
 	import getDate from './getDate'
 
-	export let message
+	let { message } = $props()
 </script>
 
 <article class:hasMessage={$activeMessageId > -1}>

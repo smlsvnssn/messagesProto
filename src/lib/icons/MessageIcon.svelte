@@ -1,7 +1,7 @@
 <script>
 	import { types } from '$lib/globals.svelte.js'
 	import SkadaIcon from './SkadaIcon.svelte'
-	export let message
+	let {message} = $props()
 </script>
 
 <div class="iconwrapper">

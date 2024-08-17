@@ -3,10 +3,7 @@
 	import { slide } from 'svelte/transition'
 	import { goto } from '$app/navigation'
 
-	export let isOpen = false
-	export let url = null
-	export let type
-	export let hasChevron = true
+	let { isOpen = false, url = null, type, hasChevron = true } = $props()
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->

@@ -17,9 +17,7 @@
 	import Sparkline from '$lib/messages/Sparkline.svelte'
 	import Treeview from '$lib/treemap/Treeview.svelte'
 
-	const activateSidebar = () => (isActiveSidebar = true)
-
-	
+	const activateSidebar = () => ($isActiveSidebar = true)
 </script>
 
 <div class="wrapper">
@@ -67,8 +65,8 @@
 					href="#"
 					class="btn btn-secondary btn-sm-block"
 					on:click|preventDefault|stopPropagation={() => {
-						activePane = panes.settings
-						activeSettingsTab = 'security'
+						$activePane = panes.settings
+						$activeSettingsTab = 'security'
 					}}
 				>
 					Bli svårlurad!

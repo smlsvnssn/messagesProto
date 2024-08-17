@@ -1,6 +1,5 @@
 <script>
-	export let header = 'header (set to empty string to remove)'
-	let isOpen = false
+	let {header = 'header (set to empty string to remove)', children, isOpen = false} =$props()
 </script>
 
 <section>
@@ -8,7 +7,7 @@
 		{#if header}
 			<h4>{header}</h4>
 		{/if}
-		<slot />
+		{@render children()}
 	</article>
 </section>
 

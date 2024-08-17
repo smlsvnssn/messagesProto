@@ -1,5 +1,5 @@
 <script>
-	export let category
+	 let {category} = $props()
 </script>
 
 {#if category === 'Barn'}

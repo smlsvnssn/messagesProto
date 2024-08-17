@@ -4,7 +4,7 @@
 	import { cubicOut } from 'svelte/easing'
 	import { onMount } from 'svelte'
 
-	export let direction = 1
+	let { direction = 1 } = $props()
 
 	const length = tweened(0, {
 		duration: 500 + Math.random() * 1000,
@@ -14,9 +14,9 @@
 	const linefont = (...values) =>
 		String.fromCharCode(...values.map(v => ö.clamp(v, 0, 100) + 0x100))
 
-	let sparkline = ''
+	let sparkline = $state('')
 
-	$: $length = sparkline.length
+	$effect(() => ($length = sparkline.length))
 
 	onMount(
 		() =>

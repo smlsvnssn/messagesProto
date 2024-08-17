@@ -5,11 +5,11 @@
 	import { message } from 'ouml'
 	import getDate from './getDate'
 
-	export let threadedMessages, id, isOld
+	let { threadedMessages, id, isOld } = $props()
 
-	let open = [1]
+	let open = $state([1])
 
-	let newMessage
+	let newMessage = $state()
 
 	const toggleOpen = i => (open[i] = !open[i])
 

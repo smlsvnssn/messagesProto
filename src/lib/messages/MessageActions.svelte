@@ -12,7 +12,7 @@
 		messages,
 	} from '$lib/globals.svelte.js'
 
-	export let remind, search
+	let {remind = $bindable(), search = $bindable()} = $props()
 
 	const closeMessagePane = () => ($activePane = panes.none)
 

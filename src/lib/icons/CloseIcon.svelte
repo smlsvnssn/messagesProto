@@ -1,5 +1,5 @@
 <script>
-	export let isGray = false
+	let { isGray = false } = $props()
 </script>
 
 <svg

@@ -7,8 +7,8 @@
 
 	let { importantMessages } = $props()
 	
-	const showMessagePane = () => (activePane = panes.message)
-	const hidePane = () => (activePane = panes.none)
+	const showMessagePane = () => ($activePane = panes.message)
+	const hidePane = () => ($activePane = panes.none)
 
 	const svenskify = n => {
 		const t = [
@@ -29,7 +29,7 @@
 		return n >= 0 && n < t.length ? t[n] : n
 	}
 
-	let arrowXPos = $derived(`--x:${isSmallWindow ? 11.25 : 10.75}rem;`)
+	let arrowXpos = $derived(`--x:${isSmallWindow ? 11.25 : 10.75}rem;`)
 </script>
 
 <div class="background">

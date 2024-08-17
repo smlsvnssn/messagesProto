@@ -5,9 +5,7 @@
 	import Fuse from 'fuse.js'
 	import * as ö from 'ouml'
 
-	export let searchstr = ''
-	export let search
-	export let searchresult
+	let {searchstr = $bindable(''), searchresult = $bindable()}=$props()
 
 	const fuse = new Fuse($messages, {
 		keys: ['header', 'content'],
@@ -18,14 +16,14 @@
 		includeMatches: true,
 	})
 
-	$: searchresult = ö.pipe(
+	$effect(() => searchresult = ö.pipe(
 		searchstr,
 		//ö.log,
 		s => fuse.search(s),
 		//ö.log,
 		a => a.map(v => v.item),
 		//ö.log,
-	)
+	))
 </script>
 
 <div
