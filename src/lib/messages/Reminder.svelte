@@ -69,13 +69,13 @@
 		z-index: 1;
 		width: 100%;
 		backdrop-filter: blur(0.5rem);
+		font-size: 0.875rem;
 
 		b {
 			display: inline-block;
 			padding-bottom: 0.5rem;
 		}
 
-		font-size: 0.875rem;
 		.custom-control {
 			translate: 0 -3px;
 			&:first-child {

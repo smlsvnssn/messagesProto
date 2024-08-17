@@ -1,5 +1,9 @@
 <script>
-	import { panes, activePane, isAvtalRedDotActive } from '$lib/globals'
+	import {
+		panes,
+		activePane,
+		isAvtalRedDotActive,
+	} from '$lib/globals.svelte.js'
 	import { goto } from '$app/navigation'
 </script>
 
@@ -116,20 +120,20 @@
 					<path d="M11 22.5H21V20.5H11V22.5Z" fill="white" />
 				</svg>
 				<span
-					class="dot icon {$isAvtalRedDotActive ? 'red-dot' : (
+					class="dot icon {isAvtalRedDotActive() ? 'red-dot' : (
 						'no-dot'
 					)}"
 				/>
 
 				Avtal och dokument
 				<!-- <span
-					class="dot {$isAvtalRedDotActive ? 'red-dot' : 'no-dot'}"
+					class="dot {isAvtalRedDotActive ? 'red-dot' : 'no-dot'}"
 				/> -->
 			</button>
 		</li>
 		<li
 			class="nav-item lvl-1"
-			on:click|stopPropagation={() => ($activePane = panes.newMessage)}
+			on:click|stopPropagation={() => (activePane = panes.newMessage)}
 		>
 			<button class="nav-link text-truncate w-100" data-test-id="contact"
 				><svg
@@ -162,9 +166,9 @@
 			display: none !important;
 		}
 	}
-	.navbar-nav {
+	ul.navbar-nav {
 		display: flex !important;
-		flex-direction: row;
+		flex-direction: row !important;
 
 		padding: 0 0.5rem;
 

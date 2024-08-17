@@ -37,12 +37,14 @@
 	section {
 		--grid: auto-flow / repeat(12, 1fr) 1.5rem;
 
-		display: grid;
+		display: grid !important;
 		column-gap: 1rem;
 		row-gap: 0;
 		grid: var(--grid);
 
 		align-items: center;
+		border-bottom: 1px solid var(--tint);
+		padding: 1.5rem 1.25rem;
 
 		@container (width < 500px) {
 			--grid: auto-flow / 1fr;
@@ -55,9 +57,6 @@
 				grid-column: 1 / span 1 !important;
 			}
 		}
-
-		border-bottom: 1px solid var(--tint);
-		padding: 1.5rem 1.25rem;
 
 		@media (width < 500px) {
 			padding: 1rem 1rem;
@@ -124,13 +123,13 @@
 			transition: all 0.3s;
 			grid-column: 13 / span 1 !important;
 			grid-row: 1 / span 1;
+			width: 1.5rem;
+			aspect-ratio: 1/1;
 
 			@container (width < 500px) {
 				grid-column: 2 / span 1 !important;
 				align-self: start;
 			}
-			width: 1.5rem;
-			aspect-ratio: 1/1;
 			&.isOpen :global(svg) {
 				rotate: -90deg !important;
 			}

@@ -12,9 +12,9 @@
 	},
 	"devDependencies": {
 		"@formkit/auto-animate": "^0.8.2",
-		"@sveltejs/adapter-auto": "^3.2.2",
+		"@sveltejs/adapter-auto": "^3.2.4",
 		"@sveltejs/enhanced-img": "^0.1.9",
-		"@sveltejs/kit": "^2.5.18",
+		"@sveltejs/kit": "^2.5.22",
 		"@sveltejs/pancake": "^0.0.18",
 		"@sveltejs/vite-plugin-svelte": "^3.1.1",
 		"@vercel/postgres": "^0.5.1",
@@ -27,13 +27,13 @@
 		"ouml": "latest",
 		"prettier": "^2.8.8",
 		"prettier-plugin-svelte": "^2.10.1",
-		"svelte": "^4.2.18",
+		"svelte": "5.0.0-next.223",
 		"svelte-check": "^2.10.3",
 		"svelte-dnd-action": "^0.9.49",
 		"svelte-preprocess": "^5.1.4",
 		"sveltekit-sse": "^0.3.7",
-		"typescript": "^5.5.3",
-		"vite": "^5.3.3"
+		"typescript": "^5.5.4",
+		"vite": "^5.4.1"
 	},
 	"type": "module",
 	"dependencies": {

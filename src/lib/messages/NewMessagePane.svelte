@@ -1,5 +1,5 @@
 <script>
-	import { panes, activePane, isSmallWindow } from '$lib/globals'
+	import { panes, activePane, isSmallWindow } from '$lib/globals.svelte.js'
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
 	import { clickOutside } from '$lib/actions'
@@ -73,13 +73,12 @@
 		max-width: calc(32rem);
 
 		margin: 1rem 1rem 1rem auto;
+		filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.1))
+			drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.1));
 
 		@media (width < 800px) {
 			margin: 0.5rem 0.5rem 0.5rem auto;
 		}
-
-		filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.1))
-			drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.1));
 
 		.content {
 			background: var(--white);
@@ -114,10 +113,10 @@
 					gap: 0.75rem;
 
 					li {
+						list-style: none;
 						&:first-child {
 							flex: 1;
 						}
-						list-style: none;
 						h4 {
 							margin-bottom: 0;
 							@media (max-width: 800px) {
@@ -160,10 +159,24 @@
 		padding: 2.5rem;
 		position: relative;
 		max-height: calc(100dvh - 9.375rem);
+		overflow-y: auto;
+
+		// scroll shadow bottom
+		-webkit-overflow-scrolling: touch;
+		overflow-scrolling: touch;
+
+		background:
+			linear-gradient(rgba(255, 255, 255, 0), white 70%) center bottom,
+			linear-gradient(hsla(0, 0%, 13%, 0), hsla(0, 0%, 13%, 0.1)) bottom;
+
+		background-repeat: no-repeat;
+		background-size:
+			100% 100px,
+			100% 8px;
+		background-attachment: local, scroll;
 		@media (width < 800px) {
 			max-height: calc(100dvh - 8.375rem);
 		}
-		overflow-y: auto;
 
 		@media (max-width: 800px) {
 			padding: 1.5rem;
@@ -209,21 +222,6 @@
 				width: fit-content;
 				margin-top: 2rem;
 			}
-
-			// scroll shadow bottom
-			-webkit-overflow-scrolling: touch;
-			overflow-scrolling: touch;
-
-			background:
-				linear-gradient(rgba(255, 255, 255, 0), white 70%) center bottom,
-				linear-gradient(hsla(0, 0%, 13%, 0), hsla(0, 0%, 13%, 0.1))
-					bottom;
-
-			background-repeat: no-repeat;
-			background-size:
-				100% 100px,
-				100% 8px;
-			background-attachment: local, scroll;
 		}
 	}
 </style>

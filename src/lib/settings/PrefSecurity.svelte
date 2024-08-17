@@ -1,6 +1,6 @@
 <script>
 	import Switch from '$lib/Switch.svelte'
-	import { activePane, panes } from '$lib/globals'
+	import { activePane, panes } from '$lib/globals.svelte.js'
 	let checked
 
 	$: if (checked) {

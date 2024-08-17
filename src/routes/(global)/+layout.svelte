@@ -11,7 +11,7 @@
 		isFirstRun,
 		messages,
 		types,
-	} from '$lib/globals'
+	} from '$lib/globals.svelte.js'
 	import { page } from '$app/stores'
 	import '../../style.css'
 	import NewMessagePane from '$lib/messages/NewMessagePane.svelte'
@@ -33,9 +33,9 @@
 
 	const getMessagesWithoutReactiveUpdateSvelteHack = () => $messages
 	const resetImportantPane = async () => {
-		$isRedDotActive = true
-		if ($activePane === panes.none)
-			$activePane = panes.importantMessagesNotice
+		isRedDotActive = true
+		if (activePane === panes.none)
+			activePane = panes.importantMessagesNotice
 	}
 	// $: {
 	//     //console.log($newMessage)
@@ -48,14 +48,16 @@
 	//         resetImportantPane()
 	//     }
 	// }
-	$: $isSmallWindow = innerWidth < 800
-	$: importantMessages = $messages.filter(m => m.isImportant && !m.isRead)
+	
+	$effect(() => isSmallWindow = innerWidth < 800)
+	
+	let importantMessages = $derived(messages.filter(m => m.isImportant && !m.isRead))
 
-	onMount(() => {
-		if ($isFirstRun) {
-			$activePane = panes.importantMessagesNotice
+	$effect(() => {
+		if (isFirstRun) {
+			activePane = panes.importantMessagesNotice
 
-			$isFirstRun = false
+			isFirstRun = false
 		}
 	})
 
@@ -80,21 +82,21 @@
 </svelte:head>
 
 <main class="lb4">
-	{#if $isRedDotActive && importantMessages.length && $activePane === panes.importantMessagesNotice}
+	{#if isRedDotActive && importantMessages.length && activePane === panes.importantMessagesNotice}
 		<ImportantMessagesNotice {importantMessages} />
-	{:else if $activePane === panes.message}
+	{:else if activePane === panes.message}
 		<MessagePane />
-	{:else if $activePane === panes.newMessage}
+	{:else if activePane === panes.newMessage}
 		<NewMessagePane />
-	{:else if $activePane === panes.settings}
+	{:else if activePane === panes.settings}
 		<SettingsPane />
-	{:else if $activePane === panes.whoAmI}
+	{:else if activePane === panes.whoAmI}
 		<WhoAmIPane />
 	{/if}
 
 	<Header />
 
-	{#if $isActiveSidebar}
+	{#if isActiveSidebar}
 		<Sidebar />
 	{/if}
 
@@ -125,13 +127,13 @@
 
 		margin-top: calc(var(--headerHeight) + 3.25rem) !important;
 
-		@media (width < 800px) {
-			margin-top: var(--headerHeight) !important;
-		}
-
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 		text-rendering: optimizeLegibility;
+
+		@media (width < 800px) {
+			margin-top: var(--headerHeight) !important;
+		}
 	}
 	:global(.btn) {
 		position: initial !important;

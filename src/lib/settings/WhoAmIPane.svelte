@@ -4,7 +4,7 @@
 		activePane,
 		isSmallWindow,
 		activeSettingsTab,
-	} from '$lib/globals'
+	} from '$lib/globals.svelte.js'
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
 	import { clickOutside } from '$lib/actions'
@@ -158,13 +158,12 @@
 		max-width: calc(32rem);
 
 		margin: 1rem 1rem 1rem auto;
+		filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.1))
+			drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.1));
 
 		@media (width < 800px) {
 			margin: 0.5rem 0.5rem 0.5rem auto;
 		}
-
-		filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.1))
-			drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.1));
 
 		.content {
 			background: var(--white);
@@ -199,10 +198,10 @@
 					gap: 0.75rem;
 
 					li {
+						list-style: none;
 						&:first-child {
 							flex: 1;
 						}
-						list-style: none;
 						h4 {
 							margin-bottom: 0;
 							@media (max-width: 800px) {
@@ -249,6 +248,7 @@
 						display: flex;
 						gap: 0.75rem;
 						align-items: center;
+						transition: background 0.3s;
 
 						&.inactive {
 							svg path {
@@ -265,8 +265,6 @@
 						h5 {
 							margin: 0;
 						}
-
-						transition: background 0.3s;
 
 						&:hover {
 							background: var(--cloud);

@@ -10,7 +10,7 @@
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
 
-	import { isActiveSidebar } from '$lib/globals'
+	import { isActiveSidebar } from '$lib/globals.svelte.js'
 
 	const hidePane = () => ($isActiveSidebar = false)
 </script>
@@ -163,6 +163,9 @@
 		overflow-y: scroll;
 		height: calc(100vh - var(--headerHeight) - 3.375rem);
 
+		width: 100%;
+		max-width: calc(61rem + ((100vw - 1280px) / 2));
+
 		.content {
 			display: grid;
 			gap: 1.5rem;
@@ -170,8 +173,5 @@
 			width: 100%;
 			max-width: 56rem;
 		}
-
-		width: 100%;
-		max-width: calc(61rem + ((100vw - 1280px) / 2));
 	}
 </style>

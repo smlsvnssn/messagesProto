@@ -1,6 +1,6 @@
 import { event } from 'sveltekit-sse'
 import lorem from 'loerem'
-import { types } from '$lib/globals'
+import { types } from '$lib/globals.svelte.js'
 
 let delay = 5000
 export const GET = () => {

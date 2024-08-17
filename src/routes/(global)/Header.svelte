@@ -7,7 +7,7 @@
 	import SettingsIcon from '$lib/icons/SettingsIcon.svelte'
 	import NewMessageIcon from '$lib/icons/NewMessageIcon.svelte'
 	import ChevronIcon from '$lib/icons/ChevronIcon.svelte'
-	import { panes, activePane } from '$lib/globals'
+	import { panes, activePane } from '$lib/globals.svelte.js'
 	import LeftMenu from './LeftMenu.svelte'
 
 	const activateNewMessagePane = () =>
@@ -42,7 +42,6 @@
 						class="nav-link n-header-logo"
 						role="button"
 						on:click={() => {
-							//$isRedDotActive = !$isRedDotActive
 							goto('/')
 						}}
 						><span class="sr-only"

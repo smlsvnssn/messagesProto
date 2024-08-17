@@ -4,7 +4,7 @@
 		activePane,
 		isSmallWindow,
 		activeSettingsTab,
-	} from '$lib/globals'
+	} from '$lib/globals.svelte.js'
 
 	const hidePane = () => ($activePane = panes.none)
 </script>
@@ -214,12 +214,11 @@
 			display: flex;
 			gap: 0.75rem;
 			align-items: center;
+			transition: background 0.3s;
 
 			h5 {
 				margin: 0;
 			}
-
-			transition: background 0.3s;
 
 			&:hover {
 				background: var(--cloud);

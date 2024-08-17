@@ -26,7 +26,7 @@
 	</div>
 </div>
 
-<style lang="scss">
+<style>
 	header {
 		padding-bottom: 0.5rem;
 		margin-bottom: 2rem;

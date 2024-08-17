@@ -1,6 +1,6 @@
 <script>
 	import EnvelopeIcon from '$lib/icons/EnvelopeIcon.svelte'
-	import { panes, activePane, isRedDotActive } from '$lib/globals'
+	import { panes, activePane, isRedDotActive } from '$lib/globals.svelte.js'
 
 	const activateMessagePane = () =>
 		($activePane =
@@ -16,7 +16,7 @@
 >
 	<span class="sr-only">Visa mina meddelanden</span>
 	<EnvelopeIcon />
-	<span class="dot {$isRedDotActive ? 'red-dot' : 'no-dot'}" />
+	<span class="dot {isRedDotActive ? 'red-dot' : 'no-dot'}" />
 </button>
 
 <style lang="scss">

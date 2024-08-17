@@ -13,7 +13,7 @@
 		activeMessageId,
 		isRedDotActive,
 		isSmallWindow,
-	} from '$lib/globals'
+	} from '$lib/globals.svelte.js'
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
 	import { clickOutside } from '$lib/actions'
@@ -24,17 +24,17 @@
 	let searchresult = []
 	let searchstr = ''
 
-	const hidePane = () => ($activePane = panes.none)
+	const hidePane = () => (activePane = panes.none)
 
-	const setAsInactive = () => ($activeMessageId = -1)
+	const setAsInactive = () => (activeMessageId = -1)
 
-	$: unread = $messages.filter(m => !m.isRead).length
+	let unread = $derived(messages.filter(m => !m.isRead).length)
 
-	$: arrowXpos = `--x:${$isSmallWindow ? 11.25 : 10.75}rem;`
+	let arrowXpos = $derived(`--x:${isSmallWindow ? 11.25 : 10.75}rem;`)
 
-	$: if ($activeMessageId < 0) remind = false
+	//$: if ($activeMessageId < 0) remind = false
 
-	$isRedDotActive = false
+	isRedDotActive = false
 </script>
 
 <div class="background" transition:fade={{ duration: 200 }}>
@@ -49,7 +49,7 @@
 					<ul>
 						<li>
 							<h4>
-								{#if /* $isSmallWindow && */ $activeMessageId > -1}
+								{#if /* $isSmallWindow && */ activeMessageId > -1}
 									<!-- TODO snygga till -->
 									<a
 										href="#"
@@ -73,19 +73,19 @@
 						<MessageActions bind:remind bind:search />
 					</ul>
 				</header>
-				{#if remind && $activeMessageId >= 0}
+				{#if remind && activeMessageId >= 0}
 					<Reminder bind:remind />
 				{/if}
-				{#if search && $activeMessageId === -1}
+				{#if search && activeMessageId === -1}
 					<SearchBar bind:searchresult bind:searchstr />
 				{/if}
 				<div
 					class="messagesBody"
-					class:messageActive={$activeMessageId >= 0}
+					class:messageActive={activeMessageId >= 0}
 				>
 					<MessageList {searchresult} {searchstr} />
 					<MessageView
-						message={$messages.find(m => m.id === $activeMessageId)}
+						message={messages.find(m => m.id === activeMessageId)}
 					/>
 				</div>
 			</div>
@@ -114,13 +114,12 @@
 		max-width: calc(32rem);
 
 		margin: 1rem 1rem 1rem auto;
+		filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.1))
+			drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.1));
 
 		@media (width < 800px) {
 			margin: 0.5rem 0.5rem 0.5rem auto;
 		}
-
-		filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.1))
-			drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.1));
 
 		.content {
 			background: var(--white);
@@ -155,10 +154,10 @@
 					gap: 0.75rem;
 
 					li {
+						list-style: none;
 						&:first-child {
 							flex: 1;
 						}
-						list-style: none;
 						h4 {
 							margin-bottom: 0;
 							@media (max-width: 800px) {

@@ -5,7 +5,12 @@
 	import NewMessageIcon from '$lib/icons/NewMessageIcon.svelte'
 	import FingerIcon from '$lib/icons/FingerIcon.svelte'
 	import TrashIcon from '$lib/icons/TrashIcon.svelte'
-	import { activeMessageId, panes, activePane, messages } from '$lib/globals'
+	import {
+		activeMessageId,
+		panes,
+		activePane,
+		messages,
+	} from '$lib/globals.svelte.js'
 
 	export let remind, search
 

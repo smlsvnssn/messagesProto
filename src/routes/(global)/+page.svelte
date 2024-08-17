@@ -8,21 +8,18 @@
 	import Row from '$lib/Row.svelte'
 
 	import {
-		isSmallWindow,
 		isActiveSidebar,
 		panes,
 		activePane,
 		activeSettingsTab,
-	} from '$lib/globals'
+	} from '$lib/globals.svelte.js'
 	import lorem from 'loerem'
 	import Sparkline from '$lib/messages/Sparkline.svelte'
 	import Treeview from '$lib/treemap/Treeview.svelte'
-	import { get } from 'svelte/store'
-	let innerWidth
 
-	$: $isSmallWindow = innerWidth < 800
+	const activateSidebar = () => (isActiveSidebar = true)
 
-	const activateSidebar = () => ($isActiveSidebar = true)
+	
 </script>
 
 <div class="wrapper">
@@ -70,8 +67,8 @@
 					href="#"
 					class="btn btn-secondary btn-sm-block"
 					on:click|preventDefault|stopPropagation={() => {
-						$activePane = panes.settings
-						$activeSettingsTab = 'security'
+						activePane = panes.settings
+						activeSettingsTab = 'security'
 					}}
 				>
 					Bli svårlurad!

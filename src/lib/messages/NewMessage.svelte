@@ -5,7 +5,7 @@
 	import * as ö from 'ouml'
 	import { onDestroy, onMount } from 'svelte'
 
-	import { messages, types, panes, activePane } from '$lib/globals'
+	import { messages, types, panes, activePane } from '$lib/globals.svelte.js'
 	import { keywords } from './keywords'
 	import { slide, fade } from 'svelte/transition'
 

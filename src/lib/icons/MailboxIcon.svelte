@@ -1,5 +1,5 @@
 <script>
-	import { panes, activePane } from '$lib/globals'
+	import { panes, activePane } from '$lib/globals.svelte.js'
 </script>
 
 <div>

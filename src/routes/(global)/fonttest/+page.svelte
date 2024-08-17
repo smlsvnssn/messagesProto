@@ -1,5 +1,4 @@
 <script>
-	import { messages } from '$lib/globals'
 	import lörem from 'loerem'
 	import * as ö from 'ouml'
 </script>

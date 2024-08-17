@@ -1,5 +1,5 @@
 <script>
-	import { messages } from '$lib/globals'
+	import { messages } from '$lib/globals.svelte.js'
 </script>
 
 <article>

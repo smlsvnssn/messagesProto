@@ -1,7 +1,7 @@
 <script>
 	import { slide } from 'svelte/transition'
 	import { sineOut } from 'svelte/easing'
-	import { messages } from '$lib/globals'
+	import { messages } from '$lib/globals.svelte.js'
 	import Fuse from 'fuse.js'
 	import * as ö from 'ouml'
 
@@ -59,13 +59,13 @@
 		z-index: 10;
 		width: 100%;
 		backdrop-filter: blur(0.5rem);
+		font-size: 0.875rem;
 
 		b {
 			display: inline-block;
 			padding-bottom: 0.5rem;
 		}
 
-		font-size: 0.875rem;
 		.custom-control {
 			translate: 0 -3px;
 			&:first-child {
