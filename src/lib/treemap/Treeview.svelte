@@ -8,6 +8,7 @@
 	//import TransactionModal from '$lib/globals/TransactionModal.svelte';
 	import createGroups from './createGroups.js'
 	import arrow from '$lib/icons/arrow_medium_left_32.svg'
+	import { untrack } from 'svelte'
 
 	import * as ö from 'ouml'
 	import transactions from './cleanedTransactions.json'
@@ -15,32 +16,23 @@
 
 	//export let transactions
 
-	let groupedData = $state(),
-		hierarchy = $state(),
-		root = $state(),
-		selected = $state()
+	let groupedData = createGroups(transactions)
 
-	$effect(() => {
-		groupedData = createGroups(transactions)
+	let hierarchy = d3
+		.hierarchy(groupedData)
+		.sort((a, b) => a.amount - b.amount)
+		.sum(d => d.amount)
 
-		hierarchy = d3
-			.hierarchy(groupedData)
-			.sort((a, b) => a.amount - b.amount)
-			.sum(d => d.amount)
+	let root = d3.treemap()(hierarchy)
 
-		root = d3.treemap()(hierarchy)
+	let selected = $state(root)
 
-		setSelectedToRoot()
+	let index = $state(0)
+	let transactionList = $state([])
+	let isOpenModal = $state(false)
 
-		$extents = {
-			x1: selected.x0,
-			x2: selected.x1,
-			y1: selected.y1,
-			y2: selected.y0,
-		}
-	})
-
-	const setSelectedToRoot = () => (selected = root)
+	let visibleIndex = 0
+	let percent = $derived((selected, ö.randomNormal(0, 5)))
 
 	const select = node => {
 		if (node && node.children) selected = node
@@ -50,10 +42,18 @@
 		visibleIndex = 0
 	}
 
-	const extents = tweened(undefined, {
-		easing: eases.cubicOut,
-		duration: 600,
-	})
+	const extents = tweened(
+		{
+			x1: selected.x0,
+			x2: selected.x1,
+			y1: selected.y1,
+			y2: selected.y0,
+		},
+		{
+			easing: eases.cubicOut,
+			duration: 600,
+		},
+	)
 
 	const niceDate = d =>
 		new Date(d).toLocaleDateString('sv-SE', {
@@ -70,10 +70,6 @@
 		return false
 	}
 
-	let index = $state(0),
-		transactionList = $state([]),
-		isOpenModal = $state(false)
-
 	const openModal = node => {
 		//ö.log(node);
 		isOpenModal = true
@@ -83,15 +79,22 @@
 		index = transactionList.findIndex(t => t.id === node.data.id)
 	}
 
-	let visibleIndex = $state(0)
 	const getVisibleIndex = () => visibleIndex++
 
-	let percent = $derived((selected, ö.randomNormal(0, 5)))
+	$effect(() => {
+		$extents = {
+			x1: selected.x0,
+			x2: selected.x1,
+			y1: selected.y1,
+			y2: selected.y0,
+		}
+	})
+
+	//$inspect(selected)
 </script>
 
 <!-- <TransactionModal bind:isOpen={isOpenModal} {index} {transactionList} /> -->
 
-{#if selected}
 	<header>
 		<h4>{selected.data.name}:</h4>
 		<h2>{selected.value.toLocaleString('sv-SE')} kr</h2>
@@ -145,6 +148,7 @@
 			<Treemap {root} let:node>
 				{#if is_visible(node, selected)}
 					<div
+						
 						transition:fade|local={{ duration: 400 }}
 						class="node"
 						class:leaf={!node.children}
@@ -154,7 +158,7 @@
 							else openModal(node)
 						}}
 					>
-						<div class="contents clr{getVisibleIndex()}">
+						<div class="contents clr{visibleIndex++}">
 							{#if node.children}
 								<TransactionIcons category={node.data.name} />
 							{/if}
@@ -169,7 +173,6 @@
 			</Treemap>
 		</Pancake.Chart>
 	</div>
-{/if}
 
 <style lang="scss">
 	@use 'sass:color';

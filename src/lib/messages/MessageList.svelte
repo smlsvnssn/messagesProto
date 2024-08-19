@@ -18,9 +18,11 @@
 		{
 			name: 'Alla',
 			filter: list => {
-				$messages.forEach(m => {
-					m.isReadThisSession = false
-				})
+				$effect(() =>
+					$messages.forEach(m => {
+						m.isReadThisSession = false
+					}),
+				)
 				return list
 			},
 		},
@@ -37,7 +39,8 @@
 		// 	filter: () => $messages.filter(m => m.type === types.secureMessage),
 		// },
 	]
-	let activeFilter =  $state(0)
+
+	let activeFilter = $state(0)
 </script>
 
 <nav>

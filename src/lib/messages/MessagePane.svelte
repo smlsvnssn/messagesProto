@@ -85,7 +85,7 @@
 				>
 					<MessageList {searchresult} {searchstr} />
 					<MessageView
-						message={messages.find(m => m.id === $activeMessageId)}
+						message={$messages.find(m => m.id === $activeMessageId)}
 					/>
 				</div>
 			</div>

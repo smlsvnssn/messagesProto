@@ -13,16 +13,15 @@
 	import { onDestroy } from 'svelte'
 	import * as ö from 'ouml'
 
-	let message = $props()
-
-	let timeout
+	let {message} = $props()
 
 	const setAsActive = () => {
 		if (message.isPendingDeletion) message.isPendingDeletion = false
 
 		$activeMessageId = $activeMessageId === message.id ? -1 : message.id
+		
 		if ($activeMessageId > -1) {
-			const activeMessage = messages.find(m => m.id === $activeMessageId)
+			const activeMessage = $messages.find(m => m.id === $activeMessageId)
 			activeMessage.isRead = true
 			activeMessage.isReadThisSession = true
 		}
@@ -34,8 +33,6 @@
 		if (message.isPendingDeletion)
 			$messages = $messages.filter(m => m.id !== message.id)
 	}
-
-	
 
 	onDestroy(deleteMessage)
 </script>

@@ -8,22 +8,18 @@
 		får du föreställa dig det istället.
 		<br /><br />
 	</p>
-	<p />
-	<p />
-	<p />
-	<p />
-	<p />
 </article>
 
 <style lang="scss">
 	article {
 		flex: 1;
 		padding: 2rem;
-		display: grid;
+		display: grid !important;
 		gap: 2rem;
 		background: var(--white);
 
-		p {
+		p,
+		div {
 			padding: 2rem;
 			margin: 0%;
 			background: var(--tint);

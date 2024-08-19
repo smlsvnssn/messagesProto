@@ -9,7 +9,7 @@
 	import { keywords } from './keywords'
 	import { slide, fade } from 'svelte/transition'
 
-	let { messageStatus, messageStatuses } = $props()
+	let { messageStatus = $bindable(), messageStatuses } = $props()
 
 	const newMessageTemplate = {
 		subject: '',

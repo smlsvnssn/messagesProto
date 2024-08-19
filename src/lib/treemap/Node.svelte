@@ -1,6 +1,5 @@
 <script>
 	import * as Pancake from '@sveltejs/pancake';
-	import { getContext } from 'svelte';
 
 	let {node}  = $props();
 </script>
