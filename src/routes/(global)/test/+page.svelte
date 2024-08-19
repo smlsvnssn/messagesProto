@@ -9,15 +9,15 @@
 	<p>Innan du kan få ditt pris behöver vi lite information om ditt boende.</p>
 	{#if !checked}
 		<div class="form-group">
-		<label for="exampleInputEmail1">Bostadens adress</label>
-		<input
-			type="text"
-			required=""
-			class="form-control"
-			id="exampleInputEmail1"
-			aria-describedby="emailHelp1"
-		/>
-	</div>
+			<label for="exampleInputEmail1">Bostadens adress</label>
+			<input
+				type="text"
+				required=""
+				class="form-control"
+				id="exampleInputEmail1"
+				aria-describedby="emailHelp1"
+			/>
+		</div>
 	{/if}
 
 	<div class="form-group">
@@ -35,24 +35,23 @@
 	</div>
 
 	{#if checked}
-
-	<div class="form-group">
-		<label for="exampleInputEmail2">Fastighetsbeteckning</label>
-		<div class="searchfield">
-			<input
-				type="text"
-				pattern="[0-9]{(6, 8)}-?[0-9]{4}"
-				required=""
-				class="form-control"
-				id="exampleInputEmail2"
-				aria-describedby="emailHelp1"
-			/>
-			<a href="#" class="btn btn-secondary btn-sm-block">Sök</a>
+		<div class="form-group">
+			<label for="exampleInputEmail2">Fastighetsbeteckning</label>
+			<div class="searchfield">
+				<input
+					type="text"
+					pattern="[0-9]{(6, 8)}-?[0-9]{4}"
+					required=""
+					class="form-control"
+					id="exampleInputEmail2"
+					aria-describedby="emailHelp1"
+				/>
+				<a href="#" class="btn btn-secondary btn-sm-block">Sök</a>
+			</div>
+			<small class="text-muted form-text">
+				Skriv utan kommun, exempelvis Traktnamn 13:3
+			</small>
 		</div>
-		<small class="text-muted form-text"
-			>Skriv utan kommun, exempelvis Traktnamn 13:3</small
-		>
-	</div>
 	{/if}
 </article>
 
