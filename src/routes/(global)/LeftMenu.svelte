@@ -133,7 +133,7 @@
 		</li>
 		<li
 			class="nav-item lvl-1"
-			on:click|stopPropagation={() => (activePane = panes.newMessage)}
+			on:click|stopPropagation={() => ($activePane = panes.newMessage)}
 		>
 			<button class="nav-link text-truncate w-100" data-test-id="contact"
 				><svg
