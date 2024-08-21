@@ -1,14 +1,14 @@
 <script>
-	import { panes, activePane, isSmallWindow } from '$lib/globals.svelte.js'
+	import { panes, globalState } from '$lib/globals.svelte.js'
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
 	import { clickOutside } from '$lib/actions'
 	import CloseIcon from '$lib/icons/CloseIcon.svelte'
 
 	let { importantMessages } = $props()
-	
-	const showMessagePane = () => ($activePane = panes.message)
-	const hidePane = () => ($activePane = panes.none)
+
+	const showMessagePane = () => (globalState.activePane = panes.message)
+	const hidePane = () => (globalState.activePane = panes.none)
 
 	const svenskify = n => {
 		const t = [
@@ -29,7 +29,9 @@
 		return n >= 0 && n < t.length ? t[n] : n
 	}
 
-	let arrowXpos = $derived(`--x:${isSmallWindow ? 11.25 : 10.75}rem;`)
+	let arrowXpos = $derived(
+		`--x:${globalState.isSmallWindow ? 11.25 : 10.75}rem;`,
+	)
 </script>
 
 <div class="background">

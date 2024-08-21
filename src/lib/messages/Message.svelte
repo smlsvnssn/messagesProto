@@ -2,36 +2,34 @@
 	import ChevronIcon from '$lib/icons/ChevronIcon.svelte'
 	import AttachmentsIcon from '$lib/icons/AttachmentsIcon.svelte'
 	import MessageIcon from '$lib/icons/MessageIcon.svelte'
-	import {
-		messages,
-		activeMessageId,
-		panes,
-		activePane,
-	} from '$lib/globals.svelte.js'
+	import { messageState, globalState, panes } from '$lib/globals.svelte.js'
 	import { goto } from '$app/navigation'
 	import getDate from './getDate'
 	import { onDestroy } from 'svelte'
 	import * as ö from 'ouml'
 
-	let {message} = $props()
+	let { message } = $props()
 
 	const setAsActive = () => {
 		if (message.isPendingDeletion) message.isPendingDeletion = false
 
-		$activeMessageId = $activeMessageId === message.id ? -1 : message.id
-		
-		if ($activeMessageId > -1) {
-			const activeMessage = $messages.find(m => m.id === $activeMessageId)
+		messageState.activeMessageId =
+			messageState.activeMessageId === message.id ? -1 : message.id
+
+		if (messageState.activeMessageId > -1) {
+			const activeMessage = messageState.messages.find(
+				m => m.id === messageState.activeMessageId,
+			)
 			activeMessage.isRead = true
 			activeMessage.isReadThisSession = true
 		}
-
-		$messages = $messages //to refresh store
 	}
 
 	const deleteMessage = () => {
 		if (message.isPendingDeletion)
-			$messages = $messages.filter(m => m.id !== message.id)
+			messageState.messages = messageState.messages.filter(
+				m => m.id !== message.id,
+			)
 	}
 
 	onDestroy(deleteMessage)
@@ -40,7 +38,7 @@
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <li
 	class:unread={!message.isRead}
-	class:active={message.id == $activeMessageId}
+	class:active={message.id == messageState.activeMessageId}
 	class:pendingDeletion={message.isPendingDeletion}
 	on:click|stopPropagation={setAsActive}
 	on:keypress
@@ -77,7 +75,7 @@
 				<span class="spacer" />
 				{#if message.attachments?.length}
 					<AttachmentsIcon
-						inverted={message.id == $activeMessageId}
+						inverted={message.id == messageState.activeMessageId}
 					/>
 				{/if}
 				{#if Array.isArray(message.content) && message.content.length > 1}
@@ -99,8 +97,10 @@
 					href={action.actionUrl}
 					alt="dunno"
 					on:click|stopPropagation|preventDefault={() => {
-						$messages.find(m => m.id === message.id).isRead = true
-						$activePane = panes.none
+						messageState.messages.find(
+							m => m.id === message.id,
+						).isRead = true
+						globalState.activePane = panes.none
 						goto(action.actionUrl)
 					}}
 				>

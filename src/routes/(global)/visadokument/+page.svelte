@@ -1,7 +1,3 @@
-<script>
-	import { messages } from '$lib/globals.svelte.js'
-</script>
-
 <article>
 	<p>
 		Om det hade varit på riktigt hade det funnits ett dokument här, men nu

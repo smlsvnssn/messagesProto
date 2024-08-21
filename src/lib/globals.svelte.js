@@ -14,7 +14,9 @@ export const types = ö.createEnum({
 
 export const messageState = new (class {
 	isRedDotActive = $state(true)
+
 	activeMessageId = $state(-1)
+
 	messages = $state([
 		// {
 		// 	id: 6,
@@ -315,6 +317,7 @@ export const messageState = new (class {
 			thumbnailImage: '',
 		},
 	])
+
 	isAvtalRedDotActive = $derived(
 		this.messages.some(
 			m => m.type === types.signDocument && m.isImportant && !m.isRead,
@@ -324,19 +327,23 @@ export const messageState = new (class {
 
 // panes
 export const panes = ö.createEnum({
-	none: Symbol(),
-	message: Symbol(),
-	newMessage: Symbol(),
-	settings: Symbol(),
-	importantMessagesNotice: Symbol(),
-	whoAmI: Symbol(),
+	none: Symbol('none'),
+	message: Symbol('message'),
+	newMessage: Symbol('newMessage'),
+	settings: Symbol('settings'),
+	importantMessagesNotice: Symbol('importantMessagesNotice'),
+	whoAmI: Symbol('whoAmI'),
 })
 
 export const globalState = new (class {
 	activePane = $state(panes.none)
+
 	activeSettingsTab = $state(-1)
+
 	isActiveSidebar = $state(false)
+
 	isSmallWindow = $state(null)
+
 	isFirstRun = $state(true)
 })()
 

@@ -2,14 +2,14 @@
 	import ThreadedMessageView from './ThreadedMessageView.svelte'
 	import NewMessage from './NewMessage.svelte'
 	import Mailbox from '$lib/icons/MailboxIcon.svelte'
-	import { activeMessageId, panes, activePane } from '$lib/globals.svelte.js'
+	import { panes, messageState, globalState } from '$lib/globals.svelte.js'
 	import * as ö from 'ouml'
 	import getDate from './getDate'
 
 	let { message } = $props()
 </script>
 
-<article class:hasMessage={$activeMessageId > -1}>
+<article class:hasMessage={messageState.activeMessageId > -1}>
 	{#if message}
 		<header class:isThreaded={typeof message.content !== 'string'}>
 			<div>
@@ -44,7 +44,7 @@
 			<a
 				href={message.action.actionUrl}
 				class="action btn btn-primary btn-sm-block"
-				on:click={() => ($activePane = panes.none)}
+				on:click={() => (globalState.activePane = panes.none)}
 			>
 				{message.action.actionText}
 			</a>

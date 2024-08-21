@@ -1,12 +1,10 @@
 <script>
 	import {
 		panes,
-		activePane,
-		isSmallWindow,
-		activeSettingsTab,
+		globalState
 	} from '$lib/globals.svelte.js'
 
-	const hidePane = () => ($activePane = panes.none)
+	const hidePane = () => (globalState.activePane = panes.none)
 </script>
 
 <ul>
@@ -54,7 +52,7 @@
 			/>
 		</svg>
 
-		<a href="#" on:click={() => ($activeSettingsTab = 'security')}
+		<a href="#" on:click={() => (globalState.activeSettingsTab = 'security')}
 			><h5>Jag vill bli svårlurad</h5></a
 		>
 	</li>
@@ -108,7 +106,7 @@
 				fill="#005AA0"
 			/>
 		</svg>
-		<a href="#" on:click={() => ($activeSettingsTab = 'marketing')}
+		<a href="#" on:click={() => (globalState.activeSettingsTab = 'marketing')}
 			><h5>Vad får vi skicka till dig?</h5></a
 		>
 	</li>

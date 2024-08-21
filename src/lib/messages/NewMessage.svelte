@@ -5,7 +5,12 @@
 	import * as ö from 'ouml'
 	import { onDestroy, onMount } from 'svelte'
 
-	import { messages, types, panes, activePane } from '$lib/globals.svelte.js'
+	import {
+		types,
+		panes,
+		messageState,
+		globalState,
+	} from '$lib/globals.svelte.js'
 	import { keywords } from './keywords'
 	import { slide, fade } from 'svelte/transition'
 
@@ -24,7 +29,7 @@
 	}
 
 	const sendMessage = async () => {
-		$messages = [
+		messageState.messages.unshift(
 			{
 				id: Math.random(),
 				dateSent: Date.now(),
@@ -42,9 +47,8 @@
 				type: types.secureMessage,
 				isImportant: false,
 				isRead: true,
-			},
-			...$messages,
-		]
+			})
+
 		messageStatus = messageStatuses.pending
 		await ö.wait(200)
 		clearMessage()
@@ -52,7 +56,7 @@
 		//$activePane = panes.none
 	}
 
-	const closePane = () => ($activePane = panes.none)
+	const closePane = () => (globalState.activePane = panes.none)
 
 	const fuse = new Fuse(keywords, {
 		keys: ['words'],

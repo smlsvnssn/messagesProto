@@ -5,9 +5,7 @@
 	import CloseIcon from '$lib/icons/CloseIcon.svelte'
 	import {
 		panes,
-		activePane,
-		isSmallWindow,
-		activeSettingsTab,
+		globalState
 	} from '$lib/globals.svelte.js'
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
@@ -15,11 +13,12 @@
 	import PrefMarketing from './PrefMarketing.svelte'
 	import PrefSecurity from './PrefSecurity.svelte'
 
-	const hidePane = () => ($activePane = panes.none)
+	const hidePane = () => (globalState.activePane = panes.none)
 
-	const setAsInactive = () => ($activeSettingsTab = -1)
+	const setAsInactive = () => (globalState.activeSettingsTab = -1)
 
-	$: arrowXpos = `--x:${$isSmallWindow ? 6.25 : 5.75}rem;`
+	let arrowXpos = $derived(`--x:${globalState.isSmallWindow ? 6.25 : 5.75}rem;`)
+
 </script>
 
 <div class="background" transition:fade={{ duration: 200 }}>
@@ -34,7 +33,7 @@
 					<ul>
 						<li>
 							<h4>
-								{#if /* $isSmallWindow && */ $activeSettingsTab > -1 || isNaN($activeSettingsTab)}
+								{#if /* $isSmallWindow && */ globalState.activeSettingsTab > -1 || isNaN(globalState.activeSettingsTab)}
 									<!-- TODO snygga till -->
 									<a
 										href="#"
@@ -56,15 +55,15 @@
 				</header>
 				<div
 					class="messagesBody"
-					class:messageActive={$activeSettingsTab >= 0 ||
-						isNaN($activeSettingsTab)}
+					class:messageActive={globalState.activeSettingsTab >= 0 ||
+						isNaN(globalState.activeSettingsTab)}
 				>
 					<SettingsList></SettingsList>
 
-					{#if $activeSettingsTab === 'marketing'}
+					{#if globalState.activeSettingsTab === 'marketing'}
 						<PrefMarketing></PrefMarketing>
 					{/if}
-					{#if $activeSettingsTab === 'security'}
+					{#if globalState.activeSettingsTab === 'security'}
 						<PrefSecurity></PrefSecurity>
 					{/if}
 				</div>

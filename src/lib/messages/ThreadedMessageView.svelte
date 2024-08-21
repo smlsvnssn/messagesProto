@@ -1,7 +1,8 @@
 <script>
 	import AttachmentsIcon from '$lib/icons/AttachmentsIcon.svelte'
 	import MessageIcon from '$lib/icons/MessageIcon.svelte'
-	import { messages, activePane, panes } from '$lib/globals.svelte.js'
+	import { messageState,
+		globalState, panes } from '$lib/globals.svelte.js'
 	import { message } from 'ouml'
 	import getDate from './getDate'
 
@@ -14,7 +15,7 @@
 	const toggleOpen = i => (open[i] = !open[i])
 
 	const send = messageText => {
-		$messages
+		messageState.messages
 			.find(m => m.id === id)
 			.content.unshift({
 				id: Math.random(),
@@ -25,7 +26,6 @@
 				isRead: false,
 			})
 		newMessage = ''
-		$messages = $messages
 	}
 </script>
 
@@ -71,7 +71,7 @@
 			<br /><a
 				href="#"
 				on:click|stopPropagation={() =>
-					($activePane = panes.newMessage)}
+					(globalState.activePane = panes.newMessage)}
 				>Skriv ett nytt meddelande istället!</a
 			>
 		</p>

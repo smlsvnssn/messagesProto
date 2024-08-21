@@ -7,12 +7,9 @@
 	import MessageList from './MessageList.svelte'
 	import MessageActions from './MessageActions.svelte'
 	import {
-		messages,
 		panes,
-		activePane,
-		activeMessageId,
-		isRedDotActive,
-		isSmallWindow,
+		messageState,
+		globalState,
 	} from '$lib/globals.svelte.js'
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
@@ -30,17 +27,17 @@
 	let searchresult = $state([])
 	let searchstr = $state('')
 	
-	const hidePane = () => ($activePane = panes.none)
+	const hidePane = () => (globalState.activePane = panes.none)
 
-	const setAsInactive = () => ($activeMessageId = -1)
+	const setAsInactive = () => (messageState.activeMessageId = -1)
 
-	let unread = $derived($messages.filter(m => !m.isRead).length)
+	let unread = $derived(messageState.messages.filter(m => !m.isRead).length)
 
-	let arrowXpos = $derived(`--x:${$isSmallWindow ? 11.25 : 10.75}rem;`)
+	let arrowXpos = $derived(`--x:${globalState.isSmallWindow ? 11.25 : 10.75}rem;`)
 
 	//$: if ($activeMessageId < 0) remind = false
 
-	$isRedDotActive = false
+	messageState.isRedDotActive = false
 
 </script>
 <div class="background" transition:fade={{ duration: 200 }}>
@@ -55,7 +52,7 @@
 					<ul>
 						<li>
 							<h4>
-								{#if /* $isSmallWindow && */ $activeMessageId > -1}
+								{#if /* $isSmallWindow && */ messageState.activeMessageId > -1}
 									<!-- TODO snygga till -->
 									<a
 										href="#"
@@ -79,19 +76,19 @@
 						<MessageActions {toggleRemind} {toggleSearch} />
 					</ul>
 				</header>
-				{#if remind && $activeMessageId >= 0}
+				{#if remind && messageState.activeMessageId >= 0}
 					<Reminder bind:remind />
 				{/if}
-				{#if search && $activeMessageId === -1}
+				{#if search && messageState.activeMessageId === -1}
 					<SearchBar bind:searchresult bind:searchstr />
 				{/if}
 				<div
 					class="messagesBody"
-					class:messageActive={$activeMessageId >= 0}
+					class:messageActive={messageState.activeMessageId >= 0}
 				>
 					<MessageList {searchresult} {searchstr} />
 					<MessageView
-						message={$messages.find(m => m.id === $activeMessageId)}
+						message={messageState.messages.find(m => m.id === messageState.activeMessageId)}
 					/>
 				</div>
 			</div>

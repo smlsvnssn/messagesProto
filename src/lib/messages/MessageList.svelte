@@ -3,7 +3,7 @@
 	import autoAnimate from '@formkit/auto-animate'
 
 	import Message from './Message.svelte'
-	import { messages, types } from '$lib/globals.svelte.js'
+	import { messageState, types } from '$lib/globals.svelte.js'
 	import * as ö from 'ouml'
 
 	let { searchresult, searchstr } = $props()
@@ -11,7 +11,7 @@
 	let filteredMessages = $derived(
 		searchstr.length > 2 ?
 			filters[activeFilter].filter(searchresult)
-		:	filters[activeFilter].filter($messages),
+		:	filters[activeFilter].filter(messageState.messages),
 	)
 
 	let filters = [
@@ -19,7 +19,7 @@
 			name: 'Alla',
 			filter: list => {
 				$effect(() =>
-					$messages.forEach(m => {
+					messageState.messages.forEach(m => {
 						m.isReadThisSession = false
 					}),
 				)

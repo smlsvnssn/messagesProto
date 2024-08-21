@@ -1,8 +1,8 @@
 <script>
 	import {
 		panes,
-		activePane,
-		isAvtalRedDotActive,
+		messageState,
+		globalState,
 	} from '$lib/globals.svelte.js'
 	import { goto } from '$app/navigation'
 </script>
@@ -120,7 +120,7 @@
 					<path d="M11 22.5H21V20.5H11V22.5Z" fill="white" />
 				</svg>
 				<span
-					class="dot icon {$isAvtalRedDotActive ? 'red-dot' : (
+					class="dot icon {messageState.isAvtalRedDotActive ? 'red-dot' : (
 						'no-dot'
 					)}"
 				/>
@@ -133,7 +133,7 @@
 		</li>
 		<li
 			class="nav-item lvl-1"
-			on:click|stopPropagation={() => ($activePane = panes.newMessage)}
+			on:click|stopPropagation={() => (globalState.activePane = panes.newMessage)}
 		>
 			<button class="nav-link text-truncate w-100" data-test-id="contact"
 				><svg

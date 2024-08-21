@@ -1,5 +1,5 @@
 <script>
-	import { messages } from '$lib/globals.svelte.js'
+	import { messageState } from '$lib/globals.svelte.js'
 </script>
 
 <article>
@@ -11,10 +11,9 @@
 			href="/"
 			class="action btn btn-primary btn-sm-block"
 			on:click={() => {
-				$messages.find(
+				messageState.messages.find(
 					m => m.id === 662, // hardcoded for demo
 				).isRead = true
-				$messages = $messages
 			}}
 		>
 			Signera avtalet

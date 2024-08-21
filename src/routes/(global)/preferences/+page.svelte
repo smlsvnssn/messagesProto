@@ -4,13 +4,8 @@
 	import Section from '$lib/Section.svelte'
 	import Row from '$lib/Row.svelte'
 
-	import { isSmallWindow } from '$lib/globals.svelte.js'
-
 	import Slider from '$lib/Slider.svelte'
-	export const prerender = true
-	let innerWidth
 
-	$: $isSmallWindow = innerWidth < 800
 </script>
 
 <div class="wrapper">

@@ -4,13 +4,8 @@
 	import Header from './Header.svelte'
 	import {
 		panes,
-		activePane,
-		isSmallWindow,
-		isRedDotActive,
-		isActiveSidebar,
-		isFirstRun,
-		messages,
-		types,
+		messageState,
+		globalState,
 	} from '$lib/globals.svelte.js'
 	import { page } from '$app/stores'
 	import '../../style.css'
@@ -27,16 +22,15 @@
 
 	let innerWidth = $state()
 
-	let newMessage = source('api/listenForNewMessages').onError(event =>
-		console.error({ event }),
-	)
-
-	const getMessagesWithoutReactiveUpdateSvelteHack = () => $messages
-	const resetImportantPane = async () => {
-		$isRedDotActive = true
-		if ($activePane === panes.none)
-			$activePane = panes.importantMessagesNotice
-	}
+	// let newMessage = source('api/listenForNewMessages').onError(event =>
+	// 	console.error({ event }),
+	// )
+	// const getMessagesWithoutReactiveUpdateSvelteHack = () => $messages
+	// const resetImportantPane = async () => {
+	// 	$isRedDotActive = true
+	// 	if ($activePane === panes.none)
+	// 		$activePane = panes.importantMessagesNotice
+	// }
 	// $: {
 	//     //console.log($newMessage)
 	//     let m
@@ -49,17 +43,17 @@
 	//     }
 	// }
 
-	$effect(() => ($isSmallWindow = innerWidth < 800))
+	$effect(() => (globalState.isSmallWindow = innerWidth < 800))
 
 	let importantMessages = $derived(
-		$messages.filter(m => m.isImportant && !m.isRead),
+		messageState.messages.filter(m => m.isImportant && !m.isRead),
 	)
 
 	$effect(() => {
-		if ($isFirstRun) {
-			$activePane = panes.importantMessagesNotice
+		if (globalState.isFirstRun) {
+			globalState.activePane = panes.importantMessagesNotice
 
-			$isFirstRun = false
+			globalState.isFirstRun = false
 		}
 	})
 
@@ -84,21 +78,21 @@
 </svelte:head>
 
 <main class="lb4">
-	{#if $isRedDotActive && importantMessages.length && $activePane === panes.importantMessagesNotice}
+	{#if messageState.isRedDotActive && importantMessages.length && globalState.activePane === panes.importantMessagesNotice}
 		<ImportantMessagesNotice {importantMessages} />
-	{:else if $activePane === panes.message}
+	{:else if globalState.activePane === panes.message}
 		<MessagePane />
-	{:else if $activePane === panes.newMessage}
+	{:else if globalState.activePane === panes.newMessage}
 		<NewMessagePane />
-	{:else if $activePane === panes.settings}
+	{:else if globalState.activePane === panes.settings}
 		<SettingsPane />
-	{:else if $activePane === panes.whoAmI}
+	{:else if globalState.activePane === panes.whoAmI}
 		<WhoAmIPane />
 	{/if}
 
 	<Header />
 
-	{#if $isActiveSidebar}
+	{#if globalState.isActiveSidebar}
 		<Sidebar />
 	{/if}
 

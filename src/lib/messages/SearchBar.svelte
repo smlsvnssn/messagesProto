@@ -1,13 +1,13 @@
 <script>
 	import { slide } from 'svelte/transition'
 	import { sineOut } from 'svelte/easing'
-	import { messages } from '$lib/globals.svelte.js'
+	import { messageState } from '$lib/globals.svelte.js'
 	import Fuse from 'fuse.js'
 	import * as ö from 'ouml'
 
 	let { searchstr = $bindable(''), searchresult = $bindable() } = $props()
 
-	const fuse = new Fuse($messages, {
+	const fuse = new Fuse(messageState.messages, {
 		keys: ['header', 'content'],
 		includeScore: true,
 		threshold: 0.4,

@@ -1,6 +1,6 @@
 <script>
 	import Switch from '$lib/Switch.svelte'
-	import { activePane, panes } from '$lib/globals.svelte.js'
+	import { globalState, panes } from '$lib/globals.svelte.js'
 	
 	let checked = $state()
 
@@ -62,7 +62,7 @@
 				kontakta <a
 					href="#"
 					on:click|preventDefault|stopPropagation={() => {
-						$activePane = panes.newMessage
+						globalState.activePane = panes.newMessage
 					}}>kundservice</a
 				>.
 			{/if}

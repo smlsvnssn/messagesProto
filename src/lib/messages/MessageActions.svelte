@@ -6,25 +6,23 @@
 	import FingerIcon from '$lib/icons/FingerIcon.svelte'
 	import TrashIcon from '$lib/icons/TrashIcon.svelte'
 	import {
-		activeMessageId,
 		panes,
-		activePane,
-		messages,
+		messageState,
+		globalState,
 	} from '$lib/globals.svelte.js'
 
 	let {toggleRemind, toggleSearch} = $props()
 
-	const closeMessagePane = () => ($activePane = panes.none)
+	const closeMessagePane = () => (globalState.activePane = panes.none)
 
 	const deleteMessage = () => {
 		//$messages = $messages.filter(m => m.id !== $activeMessageId)
-		$messages.find(m => m.id === $activeMessageId).isPendingDeletion = true
-		$messages = $messages
-		$activeMessageId = -1
+		messageState.messages.find(m => m.id === messageState.activeMessageId).isPendingDeletion = true
+		messageState.activeMessageId = -1
 	}
 </script>
 
-{#if $activeMessageId >= 0}
+{#if messageState.activeMessageId >= 0}
 	<li on:click|stopPropagation={deleteMessage} title="Ta bort meddelande">
 		<TrashIcon />
 	</li>
@@ -32,7 +30,7 @@
 		<FingerIcon />
 	</li>
 {/if}
-{#if $activeMessageId === -1}
+{#if messageState.activeMessageId === -1}
 	<li on:click|stopPropagation={toggleSearch} title="Sök">
 		<SearchIcon />
 	</li>

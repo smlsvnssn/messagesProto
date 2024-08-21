@@ -8,7 +8,6 @@
 	//import TransactionModal from '$lib/globals/TransactionModal.svelte';
 	import createGroups from './createGroups.js'
 	import arrow from '$lib/icons/arrow_medium_left_32.svg'
-	import { untrack } from 'svelte'
 
 	import * as ö from 'ouml'
 	import transactions from './cleanedTransactions.json'

@@ -1,19 +1,15 @@
 <script>
 	import {
 		panes,
-		activePane,
-		isSmallWindow,
-		activeSettingsTab,
+		globalState
 	} from '$lib/globals.svelte.js'
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
 	import { clickOutside } from '$lib/actions'
 
-	const hidePane = () => ($activePane = panes.none)
+	const hidePane = () => (globalState.activePane = panes.none)
 
-	const setAsInactive = () => ($activeSettingsTab = -1)
-
-	$: arrowXpos = `--x:${$isSmallWindow ? 6.25 : 16.5}rem;`
+	let arrowXpos = $derived(`--x:${globalState.isSmallWindow ? 6.25 : 16.5}rem;`)
 </script>
 
 <div class="background" transition:fade={{ duration: 200 }}>
@@ -25,26 +21,7 @@
 		>
 			<div class="content" use:clickOutside on:clickoutside={hidePane}>
 				<header class="messagesHeader" style={arrowXpos}>
-					<!-- <ul>
-						<li>
-							<h4>
-								{#if /* $isSmallWindow && */ $activeSettingsTab > -1}
-									<a
-										href="#"
-										class="smallScreenBack"
-										on:click|stopPropagation={setAsInactive}
-									>
-										<ArrowLeftIcon /> Inställningar
-									</a>
-								{:else}
-									Inställningar
-								{/if}
-							</h4>
-						</li>
-						<li on:click={hidePane} title="Stäng meddelanden">
-							<CloseIcon />
-						</li>
-					</ul> -->
+					
 				</header>
 				<div class="messagesBody">
 					<ul>

@@ -3,15 +3,19 @@
 	import { slide } from 'svelte/transition'
 	import * as ö from 'ouml'
 
-	export let data
+	let { data } = $props()
 
 	const id = ö.randomChars(10)
 
-	$: isOn = data.isEnabled === 'true'
-	$: if (data.channels.every(channel => channel.value === false)) {
-		data.isEnabled = 'false'
-		data.channels.find(channel => channel.role === 'default').value = true
-	}
+	let isOn = $derived(data.isEnabled === 'true')
+
+	$effect(() => {
+		if (data.channels.every(channel => channel.value === false)) {
+			data.isEnabled = 'false'
+			data.channels.find(channel => channel.role === 'default').value =
+				true
+		}
+	})
 </script>
 
 <div class:isOn class="wrapper">
