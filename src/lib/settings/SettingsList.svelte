@@ -218,6 +218,7 @@
 
 			h5 {
 				margin: 0;
+
 			}
 
 			&:hover {
@@ -227,6 +228,9 @@
 				flex: 1;
 				//padding-top: 2px;
 				background: none;
+				&:hover {
+					background-image: none;
+				}
 			}
 		}
 	}

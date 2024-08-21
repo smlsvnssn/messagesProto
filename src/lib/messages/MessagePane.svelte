@@ -21,9 +21,15 @@
 	let remind = $state(false)
 	let search = $state(false)
 
+	const toggleRemind = () => (remind = !remind)
+	const toggleSearch = () => {
+		search = !search
+		if (!search) searchstr = '';
+	}
+	
 	let searchresult = $state([])
 	let searchstr = $state('')
-
+	
 	const hidePane = () => ($activePane = panes.none)
 
 	const setAsInactive = () => ($activeMessageId = -1)
@@ -35,8 +41,8 @@
 	//$: if ($activeMessageId < 0) remind = false
 
 	$isRedDotActive = false
-</script>
 
+</script>
 <div class="background" transition:fade={{ duration: 200 }}>
 	<div class="marginwrapper">
 		<div
@@ -70,7 +76,7 @@
 								{/if}
 							</h4>
 						</li>
-						<MessageActions bind:remind bind:search />
+						<MessageActions {toggleRemind} {toggleSearch} />
 					</ul>
 				</header>
 				{#if remind && $activeMessageId >= 0}

@@ -17,9 +17,9 @@
 	import Sparkline from '$lib/messages/Sparkline.svelte'
 	import Treeview from '$lib/treemap/Treeview.svelte'
 
+
 	const activateSidebar = () => ($isActiveSidebar = true)
 </script>
-
 <div class="wrapper">
 	<div class="main">
 		<!-- <lf-alert variant="info" heading="I alert you">
@@ -35,7 +35,7 @@
 		</lf-alert> -->
 		<Section header="">
 			<Row>
-				<div class="hasIcon" style:grid-column="span 1">
+				<div class="hasIcon" style="grid-column: span 1">
 					<svg
 						width="70"
 						height="71"
@@ -49,7 +49,7 @@
 						/>
 					</svg>
 				</div>
-				<div class="head" style:grid-column="span 8">
+				<div class="head" style="grid-column: span 8">
 					<h3 class="display-4">Vill du bli svårlurad?</h3>
 					<p class="payoff">
 						Bedrägerier över telefon och sms har blivit ett allt
@@ -61,7 +61,7 @@
 					</p>
 				</div>
 				<a
-					style:grid-column="span 3"
+					style="grid-column: span 3"
 					href="#"
 					class="btn btn-secondary btn-sm-block"
 					on:click|preventDefault|stopPropagation={() => {
@@ -75,69 +75,69 @@
 		</Section>
 		<Section header="Min ekonomi">
 			<Row hasChevron={false}>
-				<div style:grid-column="span 13"><Treeview /></div>
+				<div style="grid-column: span 13"><Treeview /></div>
 			</Row>
 			<Row>
 				<h5
-					style:grid-column="span 4"
+					style="grid-column: span 4"
 					class="hasIcon"
 					on:click|stopPropagation={activateSidebar}
 				>
 					<MoneyIcon />
 					Semester 2024
 				</h5>
-				<figure style:grid-column="span 4" class="r">
+				<figure style="grid-column: span 4" class="r">
 					<figcaption>Tillgängligt</figcaption>
 					42 000 000 kr
 				</figure>
-				<figure style:grid-column="span 2" class="r">
+				<figure style="grid-column: span 2" class="r">
 					<figcaption>Utveckling</figcaption>
 					<span class="plus"><Sparkline /> +2.4&nbsp%</span>
 				</figure>
-				<figure style:grid-column="span 2" class="r">
+				<figure style="grid-column: span 2" class="r">
 					<figcaption>Värde</figcaption>
 					<strong>67 819 kr</strong>
 				</figure>
 				<svelte:fragment slot="details">
-					<p style:grid-column="span 4">
+					<div style="grid-column: span 4">
 						Här finns det lite detaljer, för den som gillar
 						detaljer.
-					</p>
-					<p style:grid-column="span 4" class="r">
+					</div>
+					<div style="grid-column: span 4" class="r">
 						<figcaption>Tillgängligt</figcaption>
 						0 kr
-					</p>
-					<p style:grid-column="span 2" class="r">
+					</div>
+					<div style="grid-column: span 2" class="r">
 						<figcaption>Utveckling</figcaption>
 						<span class="plus">+2.4&nbsp;%</span>
-					</p>
-					<p style:grid-column="span 2" class="r">
+					</div>
+					<div style="grid-column: span 2" class="r">
 						<figcaption>Värde</figcaption>
 						67 819 kr
-					</p>
+					</div>
 				</svelte:fragment>
 			</Row>
 			<Row url="genericAction">
 				<h5
-					style:grid-column="span 4"
+					style="grid-column: span 4"
 					class="hasIcon"
 					on:click|stopPropagation={activateSidebar}
 				>
 					<MoneyIcon />
 					Framtiden
 				</h5>
-				<figure style:grid-column="span 4" class="r">
+				<figure style="grid-column: span 4" class="r">
 					<figcaption>Tillgängligt</figcaption>
 					4 300 kr
 				</figure>
-				<figure style:grid-column="span 2" class="r">
+				<figure style="grid-column: span 2" class="r">
 					<figcaption>Utveckling</figcaption>
 					<span class="minus">
 						<Sparkline direction="-1" />
 						-6.4&nbsp;%</span
 					>
 				</figure>
-				<figure style:grid-column="span 2" class="r">
+				<figure style="grid-column: span 2" class="r">
 					<figcaption>Värde</figcaption>
 					<strong>819 452 kr</strong>
 				</figure>
@@ -145,7 +145,7 @@
 		</Section>
 		<Section header="Försäkringar">
 			<Row>
-				<figure style:grid-column="span 6" class="hasIcon">
+				<figure style="grid-column: span 6" class="hasIcon">
 					<VillaIcon70 />
 					<div>
 						<h3>Villa-Hem</h3>
@@ -155,31 +155,31 @@
 						<figcaption>Självrisk: 2 000 kr</figcaption>
 					</div>
 				</figure>
-				<figure class="r" style:grid-column="span 6">
+				<figure class="r" style="grid-column: span 6">
 					<h5 class="black">4 320 kr/år</h5>
 					<span class="tagsy text-sm">Aktiv</span>
 				</figure>
 				<svelte:fragment slot="details">
-					<p style:grid-column="span 4">
+					<div style="grid-column: span 4">
 						Här finns det lite detaljer, för den som gillar
 						detaljer.
-					</p>
-					<p style:grid-column="span 4" class="r">
+					</div>
+					<div style="grid-column: span 4" class="r">
 						<figcaption>Tillgängligt</figcaption>
 						0 kr
-					</p>
-					<p style:grid-column="span 2" class="r">
+					</div>
+					<div style="grid-column: span 2" class="r">
 						<figcaption>Utveckling</figcaption>
 						<span class="plus">+2.4&nbsp;%</span>
-					</p>
-					<p style:grid-column="span 2" class="r">
+					</div>
+					<div style="grid-column: span 2" class="r">
 						<figcaption>Värde</figcaption>
 						67 819 kr
-					</p>
+					</div>
 				</svelte:fragment>
 			</Row>
 			<Row>
-				<figure style:grid-column="span 6" class="hasIcon">
+				<figure style="grid-column: span 6" class="hasIcon">
 					<BåtIcon70 />
 					<div>
 						<h3>Buster X 60hp - 70hp 2008</h3>
@@ -189,7 +189,7 @@
 						<figcaption>Självrisk: 2 500 kr</figcaption>
 					</div>
 				</figure>
-				<figure class="r" style:grid-column="span 6">
+				<figure class="r" style="grid-column: span 6">
 					<h5 class="black">1 279 kr/år</h5>
 					<span class="tagsy text-sm">Aktiv</span>
 				</figure>
@@ -197,98 +197,98 @@
 		</Section>
 		<Section header="Tabelltest">
 			<Row type="tableheader">
-				<figure style:grid-column="span 4">
+				<figure style="grid-column: span 4">
 					<figcaption>Konto</figcaption>
 				</figure>
-				<figure style:grid-column="span 4" class="r">
+				<figure style="grid-column: span 4" class="r">
 					<figcaption>Tillgängligt</figcaption>
 				</figure>
-				<figure style:grid-column="span 2" class="r">
+				<figure style="grid-column: span 2" class="r">
 					<figcaption>Utveckling</figcaption>
 				</figure>
-				<figure style:grid-column="span 2" class="r">
+				<figure style="grid-column: span 2" class="r">
 					<figcaption>Värde</figcaption>
 				</figure>
 			</Row>
 			<Row type="tablerow">
 				<h5
-					style:grid-column="span 4"
+					style="grid-column: span 4"
 					class="hasIcon"
 					on:click|stopPropagation={activateSidebar}
 				>
 					Semester 2024
 				</h5>
-				<figure style:grid-column="span 4" class="r">
+				<figure style="grid-column: span 4" class="r">
 					<figcaption>Tillgängligt</figcaption>
 					42 000 000 kr
 				</figure>
-				<figure style:grid-column="span 2" class="r">
+				<figure style="grid-column: span 2" class="r">
 					<figcaption>Utveckling</figcaption>
 					<span class="plus">
 						<Sparkline direction="1" />
 						+2.4&nbsp;%</span
 					>
 				</figure>
-				<figure style:grid-column="span 2" class="r">
+				<figure style="grid-column: span 2" class="r">
 					<figcaption>Värde</figcaption>
 					<strong>67 819 kr</strong>
 				</figure>
 				<svelte:fragment slot="details">
-					<p style:grid-column="span 10">Here be details</p>
+					<p style="grid-column: span 10">Here be details</p>
 				</svelte:fragment>
 			</Row>
 			<Row type="tablerow">
 				<h5
-					style:grid-column="span 4"
+					style="grid-column: span 4"
 					class="hasIcon"
 					on:click|stopPropagation={activateSidebar}
 				>
 					Barnens konto
 				</h5>
-				<figure style:grid-column="span 4" class="r">
+				<figure style="grid-column: span 4" class="r">
 					<figcaption>Tillgängligt</figcaption>
 					42 000 kr
 				</figure>
-				<figure style:grid-column="span 2" class="r">
+				<figure style="grid-column: span 2" class="r">
 					<figcaption>Utveckling</figcaption>
 					<span class="minus">
 						<Sparkline direction="-1" />
 						-2.6&nbsp;%</span
 					>
 				</figure>
-				<figure style:grid-column="span 2" class="r">
+				<figure style="grid-column: span 2" class="r">
 					<figcaption>Värde</figcaption>
 					<strong>27 361 419 kr</strong>
 				</figure>
 				<svelte:fragment slot="details">
-					<p style:grid-column="span 10">Here be details</p>
+					<p style="grid-column: span 10">Here be details</p>
 				</svelte:fragment>
 			</Row>
 			<Row type="tablerow">
 				<h5
-					style:grid-column="span 4"
+					style="grid-column: span 4"
 					class="hasIcon"
 					on:click|stopPropagation={activateSidebar}
 				>
 					Hemliga schweiziska kontot
 				</h5>
-				<figure style:grid-column="span 4" class="r">
+				<figure style="grid-column: span 4" class="r">
 					<figcaption>Tillgängligt</figcaption>
 					619 000 kr
 				</figure>
-				<figure style:grid-column="span 2" class="r">
+				<figure style="grid-column: span 2" class="r">
 					<figcaption>Utveckling</figcaption>
 					<span class="plus">
 						<Sparkline direction="1" />
 						+3.2&nbsp;%</span
 					>
 				</figure>
-				<figure style:grid-column="span 2" class="r">
+				<figure style="grid-column: span 2" class="r">
 					<figcaption>Värde</figcaption>
 					<strong>619 412 422 kr</strong>
 				</figure>
 				<svelte:fragment slot="details">
-					<p style:grid-column="span 10">Here be details</p>
+					<p style="grid-column: span 10">Here be details</p>
 				</svelte:fragment>
 			</Row>
 			<Row>
@@ -304,7 +304,7 @@
 					><span class="text-truncate">LF Wrapped 2025</span>
 				</a>
 				<svelte:fragment slot="details">
-					<p style:grid-column="span 10">Here be details</p>
+					<p style="grid-column: span 10">Here be details</p>
 				</svelte:fragment>
 			</Row>
 		</Section>
@@ -312,7 +312,7 @@
 	<aside class="aside">
 		<Section header="Att tänka på:">
 			<Row url="genericAction">
-				<figure style:grid-column="span 12" class="hasIcon">
+				<figure style="grid-column: span 12" class="hasIcon">
 					<SkadaIcon />
 					<div>
 						<h5>Rensa stuprör</h5>
@@ -329,7 +329,7 @@
 
 		<Section header="Viktig info">
 			<Row url="genericAction">
-				<figure style:grid-column="span 12" class="hasIcon">
+				<figure style="grid-column: span 12" class="hasIcon">
 					<SkadaIcon />
 					<div>
 						<h5>Tänk på y</h5>

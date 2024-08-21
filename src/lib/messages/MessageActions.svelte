@@ -12,7 +12,7 @@
 		messages,
 	} from '$lib/globals.svelte.js'
 
-	let {remind = $bindable(), search = $bindable()} = $props()
+	let {toggleRemind, toggleSearch} = $props()
 
 	const closeMessagePane = () => ($activePane = panes.none)
 
@@ -22,9 +22,6 @@
 		$messages = $messages
 		$activeMessageId = -1
 	}
-
-	const toggleRemind = () => (remind = !remind)
-	const toggleSearch = () => (search = !search)
 </script>
 
 {#if $activeMessageId >= 0}

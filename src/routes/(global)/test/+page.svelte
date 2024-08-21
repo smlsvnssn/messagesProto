@@ -69,7 +69,6 @@
 
 		.btn {
 			width: auto !important;
-			padding: auto 8rem;
 		}
 	}
 </style>

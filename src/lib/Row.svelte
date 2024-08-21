@@ -13,12 +13,12 @@
 		<div class="chevron" class:isOpen class:pointRight={!!url}>
 			{#if url}
 				<ChevronIcon />
-			{:else if $$slots.details}
+			{:else if $$slots?.details}
 				<ChevronIcon direction="down" />
 			{/if}
 		</div>
 	{/if}
-	{#if isOpen && $$slots.details}
+	{#if isOpen && $$slots?.details}
 		<div
 			transition:slide
 			class="details"
