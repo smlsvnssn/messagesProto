@@ -4,8 +4,12 @@
 	import Header from './Header.svelte'
 	import {
 		panes,
-		messageState,
-		globalState,
+		isSmallWindow,
+		messages,
+		isFirstRun,
+		activePane,
+		isRedDotActive,
+		isActiveSidebar,
 	} from '$lib/globals.svelte.js'
 	import { page } from '$app/stores'
 	import '../../style.css'
@@ -43,17 +47,17 @@
 	//     }
 	// }
 
-	$effect(() => (globalState.isSmallWindow = innerWidth < 800))
+	$effect(() => ($isSmallWindow = innerWidth < 800))
 
 	let importantMessages = $derived(
-		messageState.messages.filter(m => m.isImportant && !m.isRead),
+		$messages.filter(m => m.isImportant && !m.isRead),
 	)
 
 	$effect(() => {
-		if (globalState.isFirstRun) {
-			globalState.activePane = panes.importantMessagesNotice
+		if ($isFirstRun) {
+			$activePane = panes.importantMessagesNotice
 
-			globalState.isFirstRun = false
+			$isFirstRun = false
 		}
 	})
 
@@ -78,21 +82,21 @@
 </svelte:head>
 
 <main class="lb4">
-	{#if messageState.isRedDotActive && importantMessages.length && globalState.activePane === panes.importantMessagesNotice}
+	{#if $isRedDotActive && importantMessages.length && $activePane === panes.importantMessagesNotice}
 		<ImportantMessagesNotice {importantMessages} />
-	{:else if globalState.activePane === panes.message}
+	{:else if $activePane === panes.message}
 		<MessagePane />
-	{:else if globalState.activePane === panes.newMessage}
+	{:else if $activePane === panes.newMessage}
 		<NewMessagePane />
-	{:else if globalState.activePane === panes.settings}
+	{:else if $activePane === panes.settings}
 		<SettingsPane />
-	{:else if globalState.activePane === panes.whoAmI}
+	{:else if $activePane === panes.whoAmI}
 		<WhoAmIPane />
 	{/if}
 
 	<Header />
 
-	{#if globalState.isActiveSidebar}
+	{#if $isActiveSidebar}
 		<Sidebar />
 	{/if}
 

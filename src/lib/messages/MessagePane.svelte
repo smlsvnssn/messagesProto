@@ -8,8 +8,11 @@
 	import MessageActions from './MessageActions.svelte'
 	import {
 		panes,
-		messageState,
-		globalState,
+		activePane,
+		activeMessageId,
+		messages,
+		isSmallWindow,
+		isRedDotActive,
 	} from '$lib/globals.svelte.js'
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
@@ -21,25 +24,24 @@
 	const toggleRemind = () => (remind = !remind)
 	const toggleSearch = () => {
 		search = !search
-		if (!search) searchstr = '';
+		if (!search) searchstr = ''
 	}
-	
+
 	let searchresult = $state([])
 	let searchstr = $state('')
-	
-	const hidePane = () => (globalState.activePane = panes.none)
 
-	const setAsInactive = () => (messageState.activeMessageId = -1)
+	const hidePane = () => ($activePane = panes.none)
 
-	let unread = $derived(messageState.messages.filter(m => !m.isRead).length)
+	const setAsInactive = () => ($activeMessageId = -1)
+	let unread = $derived($messages.length)
 
-	let arrowXpos = $derived(`--x:${globalState.isSmallWindow ? 11.25 : 10.75}rem;`)
+	let arrowXpos = $derived(`--x:${$isSmallWindow ? 11.25 : 10.75}rem;`)
 
 	//$: if ($activeMessageId < 0) remind = false
 
-	messageState.isRedDotActive = false
-
+	$isRedDotActive = false
 </script>
+
 <div class="background" transition:fade={{ duration: 200 }}>
 	<div class="marginwrapper">
 		<div
@@ -52,7 +54,7 @@
 					<ul>
 						<li>
 							<h4>
-								{#if /* $isSmallWindow && */ messageState.activeMessageId > -1}
+								{#if /* $isSmallWindow && */ $activeMessageId > -1}
 									<!-- TODO snygga till -->
 									<a
 										href="#"
@@ -76,19 +78,19 @@
 						<MessageActions {toggleRemind} {toggleSearch} />
 					</ul>
 				</header>
-				{#if remind && messageState.activeMessageId >= 0}
+				{#if remind && $activeMessageId >= 0}
 					<Reminder bind:remind />
 				{/if}
-				{#if search && messageState.activeMessageId === -1}
+				{#if search && $activeMessageId === -1}
 					<SearchBar bind:searchresult bind:searchstr />
 				{/if}
 				<div
 					class="messagesBody"
-					class:messageActive={messageState.activeMessageId >= 0}
+					class:messageActive={$activeMessageId >= 0}
 				>
 					<MessageList {searchresult} {searchstr} />
 					<MessageView
-						message={messageState.messages.find(m => m.id === messageState.activeMessageId)}
+						message={$messages.find(m => m.id === $activeMessageId)}
 					/>
 				</div>
 			</div>

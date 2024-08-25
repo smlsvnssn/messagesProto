@@ -7,16 +7,16 @@
 	import SettingsIcon from '$lib/icons/SettingsIcon.svelte'
 	import NewMessageIcon from '$lib/icons/NewMessageIcon.svelte'
 	import ChevronIcon from '$lib/icons/ChevronIcon.svelte'
-	import { panes, globalState } from '$lib/globals.svelte.js'
+	import { panes, activePane } from '$lib/globals.svelte.js'
 	import LeftMenu from './LeftMenu.svelte'
 
 	const activateNewMessagePane = () =>
-		(globalState.activePane =
-			globalState.activePane === panes.newMessage ? panes.none : panes.newMessage)
+		($activePane =
+			$activePane === panes.newMessage ? panes.none : panes.newMessage)
 
 	const activateSettingsPane = () =>
-		(globalState.activePane =
-			globalState.activePane === panes.settings ? panes.none : panes.settings)
+		($activePane =
+			$activePane === panes.settings ? panes.none : panes.settings)
 </script>
 
 <div id="header" class="lb4 fixed-top">

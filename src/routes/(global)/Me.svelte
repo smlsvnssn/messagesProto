@@ -1,9 +1,9 @@
 <script>
-	import { panes, globalState } from '$lib/globals.svelte.js'
+	import { panes, activePane } from '$lib/globals.svelte.js'
 
 	const activateWhoAmIPane = () =>
-		(globalState.activePane =
-			globalState.activePane === panes.whoAmI ? panes.none : panes.whoAmI)
+		($activePane =
+			$activePane === panes.whoAmI ? panes.none : panes.whoAmI)
 </script>
 
 <ul class="reset-list layout-flex justify-content-end">

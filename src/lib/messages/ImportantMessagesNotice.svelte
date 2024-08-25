@@ -1,5 +1,5 @@
 <script>
-	import { panes, globalState } from '$lib/globals.svelte.js'
+	import { panes, activePane, isSmallWindow } from '$lib/globals.svelte.js'
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
 	import { clickOutside } from '$lib/actions'
@@ -7,8 +7,8 @@
 
 	let { importantMessages } = $props()
 
-	const showMessagePane = () => (globalState.activePane = panes.message)
-	const hidePane = () => (globalState.activePane = panes.none)
+	const showMessagePane = () => ($activePane = panes.message)
+	const hidePane = () => ($activePane = panes.none)
 
 	const svenskify = n => {
 		const t = [
@@ -30,7 +30,7 @@
 	}
 
 	let arrowXpos = $derived(
-		`--x:${globalState.isSmallWindow ? 11.25 : 10.75}rem;`,
+		`--x:${$isSmallWindow ? 11.25 : 10.75}rem;`,
 	)
 </script>
 

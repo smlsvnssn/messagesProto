@@ -1,9 +1,9 @@
 <script>
-	import { messageState } from '$lib/globals.svelte.js'
+	import { isRedDotActive } from '$lib/globals.svelte.js'
 </script>
 
 <svg
-	class:redDotActive={messageState.isRedDotActive}
+	class:redDotActive={$isRedDotActive}
 	width="24"
 	height="24"
 	viewBox="0 0 24 24"

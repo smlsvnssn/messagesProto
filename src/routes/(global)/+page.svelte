@@ -7,12 +7,12 @@
 	import Section from '$lib/Section.svelte'
 	import Row from '$lib/Row.svelte'
 
-	import { panes, globalState } from '$lib/globals.svelte.js'
+	import { panes, isActiveSidebar, activePane, activeSettingsTab } from '$lib/globals.svelte.js'
 	import lorem from 'loerem'
 	import Sparkline from '$lib/messages/Sparkline.svelte'
 	import Treeview from '$lib/treemap/Treeview.svelte'
 
-	const activateSidebar = () => (globalState.isActiveSidebar = true)
+	const activateSidebar = () => ($isActiveSidebar = true)
 </script>
 
 <div class="wrapper">
@@ -60,8 +60,8 @@
 					href="#"
 					class="btn btn-secondary btn-sm-block"
 					on:click|preventDefault|stopPropagation={() => {
-						globalState.activePane = panes.settings
-						globalState.activeSettingsTab = 'security'
+						$activePane = panes.settings
+						$activeSettingsTab = 'security'
 					}}
 				>
 					Bli svårlurad!

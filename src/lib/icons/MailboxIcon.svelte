@@ -1,5 +1,5 @@
 <script>
-	import { panes, globalState } from '$lib/globals.svelte.js'
+	import { panes, activePane } from '$lib/globals.svelte.js'
 </script>
 
 <div>
@@ -23,7 +23,7 @@
 	<button
 		type="submit"
 		class="btn btn-secondary btn-sm-block"
-		on:click|stopPropagation={() => (globalState.activePane = panes.newMessage)}
+		on:click|stopPropagation={() => ($activePane = panes.newMessage)}
 	>
 		<svg class="icon align-bottom" width="24" height="24">
 			<use href="/assets/icons/24/icons.svg#pencil-24" />

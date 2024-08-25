@@ -10,9 +10,9 @@
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
 
-	import { globalState } from '$lib/globals.svelte.js'
+	import { isActiveSidebar } from '$lib/globals.svelte.js'
 
-	const hidePane = () => (globalState.isActiveSidebar = false)
+	const hidePane = () => ($isActiveSidebar = false)
 </script>
 
 <div class="background" transition:fade={{ duration: 200 }} on:click={hidePane}>

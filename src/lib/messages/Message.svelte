@@ -2,7 +2,12 @@
 	import ChevronIcon from '$lib/icons/ChevronIcon.svelte'
 	import AttachmentsIcon from '$lib/icons/AttachmentsIcon.svelte'
 	import MessageIcon from '$lib/icons/MessageIcon.svelte'
-	import { messageState, globalState, panes } from '$lib/globals.svelte.js'
+	import {
+		activeMessageId,
+		messages,
+		panes,
+		activePane,
+	} from '$lib/globals.svelte.js'
 	import { goto } from '$app/navigation'
 	import getDate from './getDate'
 	import { onDestroy } from 'svelte'
@@ -13,23 +18,21 @@
 	const setAsActive = () => {
 		if (message.isPendingDeletion) message.isPendingDeletion = false
 
-		messageState.activeMessageId =
-			messageState.activeMessageId === message.id ? -1 : message.id
+		$activeMessageId = $activeMessageId === message.id ? -1 : message.id
 
-		if (messageState.activeMessageId > -1) {
-			const activeMessage = messageState.messages.find(
-				m => m.id === messageState.activeMessageId,
-			)
+		if ($activeMessageId > -1) {
+			const activeMessage = $messages.find(m => m.id === $activeMessageId)
 			activeMessage.isRead = true
 			activeMessage.isReadThisSession = true
 		}
 	}
 
 	const deleteMessage = () => {
-		if (message.isPendingDeletion)
-			messageState.messages = messageState.messages.filter(
-				m => m.id !== message.id,
-			)
+		ö.log('deleting', message.isPendingDeletion)
+		if (message.isPendingDeletion){
+			 ö.log('wtf', typeof $messages)
+			 $messages = $messages.filter(m => m.id !== message.id)}
+			 ö.log(typeof $messages)
 	}
 
 	onDestroy(deleteMessage)
@@ -38,7 +41,7 @@
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <li
 	class:unread={!message.isRead}
-	class:active={message.id == messageState.activeMessageId}
+	class:active={message.id == $activeMessageId}
 	class:pendingDeletion={message.isPendingDeletion}
 	on:click|stopPropagation={setAsActive}
 	on:keypress
@@ -75,7 +78,7 @@
 				<span class="spacer" />
 				{#if message.attachments?.length}
 					<AttachmentsIcon
-						inverted={message.id == messageState.activeMessageId}
+						inverted={message.id == $activeMessageId}
 					/>
 				{/if}
 				{#if Array.isArray(message.content) && message.content.length > 1}
@@ -97,10 +100,8 @@
 					href={action.actionUrl}
 					alt="dunno"
 					on:click|stopPropagation|preventDefault={() => {
-						messageState.messages.find(
-							m => m.id === message.id,
-						).isRead = true
-						globalState.activePane = panes.none
+						$messages.find(m => m.id === message.id).isRead = true
+						$activePane = panes.none
 						goto(action.actionUrl)
 					}}
 				>

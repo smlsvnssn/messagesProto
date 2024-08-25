@@ -1,15 +1,15 @@
 <script>
 	import {
 		panes,
-		globalState
+		activePane, isSmallWindow
 	} from '$lib/globals.svelte.js'
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
 	import { clickOutside } from '$lib/actions'
 
-	const hidePane = () => (globalState.activePane = panes.none)
+	const hidePane = () => ($activePane = panes.none)
 
-	let arrowXpos = $derived(`--x:${globalState.isSmallWindow ? 6.25 : 16.5}rem;`)
+	let arrowXpos = $derived(`--x:${$isSmallWindow ? 6.25 : 16.5}rem;`)
 </script>
 
 <div class="background" transition:fade={{ duration: 200 }}>

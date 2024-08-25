@@ -1,5 +1,5 @@
 <script>
-	import { panes, globalState } from '$lib/globals.svelte.js'
+	import { panes, isSmallWindow, activePane } from '$lib/globals.svelte.js'
 	import { fly, fade } from 'svelte/transition'
 	import { backOut, sineOut } from 'svelte/easing'
 	import { clickOutside } from '$lib/actions'
@@ -11,9 +11,9 @@
 	const messageStatuses = ö.createEnum(['unsent', 'pending', 'sent'])
 	
 	let messageStatus = $state(messageStatuses.unsent)
-	let arrowXpos = $derived(`--x:${globalState.isSmallWindow ? 8.75 : 8.25}rem;`)
+	let arrowXpos = $derived(`--x:${$isSmallWindow ? 8.75 : 8.25}rem;`)
 
-	const hidePane = () => (globalState.activePane = panes.none)
+	const hidePane = () => ($activePane = panes.none)
 
 </script>
 

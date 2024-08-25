@@ -78,8 +78,6 @@
 		index = transactionList.findIndex(t => t.id === node.data.id)
 	}
 
-	const getVisibleIndex = () => visibleIndex++
-
 	$effect(() => {
 		$extents = {
 			x1: selected.x0,
@@ -92,86 +90,84 @@
 	//$inspect(selected)
 </script>
 
-<!-- <TransactionModal bind:isOpen={isOpenModal} {index} {transactionList} /> -->
+<header>
+	<h4>{selected.data.name}:</h4>
+	<h2>{selected.value.toLocaleString('sv-SE')} kr</h2>
 
-	<header>
-		<h4>{selected.data.name}:</h4>
-		<h2>{selected.value.toLocaleString('sv-SE')} kr</h2>
-
-		<div>
-			<svg
-				width="12"
-				height="8"
-				viewBox="0 0 16 12"
-				style="transform:rotate({-percent * 2}deg);"
-			>
-				<path
-					fill={percent <= 0 ? 'var(--color-success)' : 'var(--wine)'}
-					d="M11.898 5.00007L8.32568 1.73846L9.67421 0.261475L15.9593 5.99997L9.67421 11.7385L8.32568 10.2615L11.8977 7.00007H0V5.00007H11.898Z"
-				/>
-			</svg>
-			<small>
-				{ö.prettyNumber(Math.abs(percent), 1)}% {percent >= 0 ? 'mer'
-				:	'mindre'} än förra månaden
-			</small>
-		</div>
-		<small>
-			{selected.descendants().length - 1} transaktion{(
-				selected.descendants().length - 1 === 1
-			) ?
-				''
-			:	'er'}. I genomsnitt {ö.prettyNumber(
-				selected.value / (selected.descendants().length - 1),
-				2,
-			)} kr.
-		</small>
-		{#if selected.parent}
-			<button
-				class="breadcrumbs"
-				on:click={() => select(selected.parent)}
-				transition:fade|local
-			>
-				<img src={arrow} alt="Stäng" />
-				{selected.parent.data.name}
-			</button>
-		{/if}
-	</header>
-
-	<div class="chart">
-		<Pancake.Chart
-			x1={$extents.x1}
-			x2={$extents.x2}
-			y1={$extents.y1}
-			y2={$extents.y2}
+	<div>
+		<svg
+			width="12"
+			height="8"
+			viewBox="0 0 16 12"
+			style="transform:rotate({-percent * 2}deg);"
 		>
-			<Treemap {root} let:node>
-				{#if is_visible(node, selected)}
-					<div
-						
-						transition:fade|local={{ duration: 400 }}
-						class="node"
-						class:leaf={!node.children}
-						on:keydown
-						on:click={() => {
-							if (node.children) select(node)
-							else openModal(node)
-						}}
-					>
-						<div class="contents clr{visibleIndex++}">
-							{#if node.children}
-								<TransactionIcons category={node.data.name} />
-							{/if}
-							<strong>{node.data.name ?? node.data.text}</strong>
-							<span>{node.value.toLocaleString('sv-SE')} kr</span>
-							{#if !node.children}
-								<span>{niceDate(node.data.date)}</span>
-							{/if}
-						</div>
-					</div>
-				{/if}
-			</Treemap>
-		</Pancake.Chart>
+			<path
+				fill={percent <= 0 ? 'var(--color-success)' : 'var(--wine)'}
+				d="M11.898 5.00007L8.32568 1.73846L9.67421 0.261475L15.9593 5.99997L9.67421 11.7385L8.32568 10.2615L11.8977 7.00007H0V5.00007H11.898Z"
+			/>
+		</svg>
+		<small>
+			{ö.prettyNumber(Math.abs(percent), 1)}% {percent >= 0 ? 'mer' : (
+				'mindre'
+			)} än förra månaden
+		</small>
 	</div>
+	<small>
+		{selected.descendants().length - 1} transaktion{(
+			selected.descendants().length - 1 === 1
+		) ?
+			''
+		:	'er'}. I genomsnitt {ö.prettyNumber(
+			selected.value / (selected.descendants().length - 1),
+			2,
+		)} kr.
+	</small>
+	{#if selected.parent}
+		<button
+			class="breadcrumbs"
+			on:click={() => select(selected.parent)}
+			transition:fade|local
+		>
+			<img src={arrow} alt="Stäng" />
+			{selected.parent.data.name}
+		</button>
+	{/if}
+</header>
+
+<div class="chart">
+	<Pancake.Chart
+		x1={$extents.x1}
+		x2={$extents.x2}
+		y1={$extents.y1}
+		y2={$extents.y2}
+	>
+		<Treemap {root} let:node>
+			{#if is_visible(node, selected)}
+				<div
+					transition:fade|local={{ duration: 400 }}
+					class="node"
+					class:leaf={!node.children}
+					on:keydown
+					on:click={() => {
+						if (node.children) select(node)
+						else openModal(node)
+					}}
+				>
+					<div class="contents clr{visibleIndex++}">
+						{#if node.children}
+							<TransactionIcons category={node.data.name} />
+						{/if}
+						<strong>{node.data.name ?? node.data.text}</strong>
+						<span>{node.value.toLocaleString('sv-SE')} kr</span>
+						{#if !node.children}
+							<span>{niceDate(node.data.date)}</span>
+						{/if}
+					</div>
+				</div>
+			{/if}
+		</Treemap>
+	</Pancake.Chart>
+</div>
 
 <style lang="scss">
 	@use 'sass:color';
