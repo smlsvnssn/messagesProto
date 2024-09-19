@@ -14,9 +14,7 @@
 	let modal
 
 	let choices = $state([])
-	let total = $derived(
-		choices.reduce((a, v) => a + v, 0)
-	)
+	let total = $derived(choices.reduce((a, v) => a + v, 0))
 
 	$effect(() => console.log(modal))
 
@@ -145,7 +143,16 @@
 					{/each}
 				</div>
 			</form>
-			<p style="text-align:right; padding-right:.5rem">Totalt per månad: <b>{total} kr</b></p>
+			<p style="text-align:right; padding-right:.5rem">
+				Totalt per månad: <b>{total} kr</b>
+			</p>
+			<hr />
+			<button class="btn btn-primary btn-arrow btn-sm-block text-left float-right">
+				Gå vidare
+				<span class="d-block text-sm font-weight-normal font-base ">
+					och köp konserverad gröt
+				</span>
+			</button>
 		{/if}
 	</div>
 </article>
