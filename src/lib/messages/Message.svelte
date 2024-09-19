@@ -29,10 +29,17 @@
 
 	const deleteMessage = () => {
 		ö.log('deleting', message.isPendingDeletion)
-		if (message.isPendingDeletion){
-			 ö.log('wtf', typeof $messages)
-			 $messages = $messages.filter(m => m.id !== message.id)}
-			 ö.log(typeof $messages)
+		if (message.isPendingDeletion) {
+			ö.log('wtf', typeof $messages)
+			$messages = $messages.filter(m => m.id !== message.id)
+		}
+		ö.log(typeof $messages)
+	}
+
+	const doAction = (action) => {
+		$messages.find(m => m.id === message.id).isRead = true
+		$activePane = panes.none
+		goto(action.actionUrl)
 	}
 
 	onDestroy(deleteMessage)
@@ -99,11 +106,8 @@
 					class="action"
 					href={action.actionUrl}
 					alt="dunno"
-					on:click|stopPropagation|preventDefault={() => {
-						$messages.find(m => m.id === message.id).isRead = true
-						$activePane = panes.none
-						goto(action.actionUrl)
-					}}
+					on:click|stopPropagation|preventDefault={() =>
+						doAction(action)}
 				>
 					{action.actionText}
 				</a>

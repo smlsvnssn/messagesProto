@@ -29,23 +29,26 @@
 	// let newMessage = source('api/listenForNewMessages').onError(event =>
 	// 	console.error({ event }),
 	// )
+
 	// const getMessagesWithoutReactiveUpdateSvelteHack = () => $messages
+
 	// const resetImportantPane = async () => {
 	// 	$isRedDotActive = true
 	// 	if ($activePane === panes.none)
 	// 		$activePane = panes.importantMessagesNotice
 	// }
-	// $: {
-	//     //console.log($newMessage)
-	//     let m
-	//     try {
-	//         m = JSON.parse($newMessage)
-	//     } catch (error) {}
-	//     if (m?.id) {
-	//         $messages = [m, ...getMessagesWithoutReactiveUpdateSvelteHack()]
-	//         resetImportantPane()
-	//     }
-	// }
+
+	// $effect(() => {
+	// 	//console.log($newMessage)
+	// 	let m
+	// 	try {
+	// 		m = JSON.parse($newMessage)
+	// 	} catch (error) {}
+	// 	if (m?.id) {
+	// 		$messages.unshift(m)
+	// 		resetImportantPane()
+	// 	}
+	// })
 
 	$effect(() => ($isSmallWindow = innerWidth < 800))
 
@@ -53,7 +56,7 @@
 		$messages.filter(m => m.isImportant && !m.isRead),
 	)
 
-	$effect(() => {
+	$effect.pre(() => {
 		if ($isFirstRun) {
 			$activePane = panes.importantMessagesNotice
 

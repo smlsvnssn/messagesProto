@@ -3,6 +3,7 @@
 	import { sineOut } from 'svelte/easing'
 
 	let {remind = $bindable()} = $props()
+	const hide = () => (remind = false)
 </script>
 
 <div
@@ -16,7 +17,7 @@
 	<b>Påminn mig:</b>
 	<div
 		class="d-md-inline-block"
-		on:click|stopPropagation={() => (remind = false)}
+		on:click|stopPropagation={hide}
 	>
 		<div class="custom-control custom-radio mr-05 mb-05">
 			<input
@@ -30,7 +31,7 @@
 	</div>
 	<div
 		class="d-md-inline-block"
-		on:click|stopPropagation={() => (remind = false)}
+		on:click|stopPropagation={hide}
 	>
 		<div class="custom-control custom-radio mr-05 mb-05">
 			<input
@@ -45,7 +46,7 @@
 	</div>
 	<div
 		class="d-md-inline-block"
-		on:click|stopPropagation={() => (remind = false)}
+		on:click|stopPropagation={hide}
 	>
 		<div class="custom-control custom-radio mr-05 mb-05">
 			<input

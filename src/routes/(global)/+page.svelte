@@ -1,4 +1,6 @@
 <script>
+  import Listbox from './Listbox.svelte';
+
 	import BåtIcon70 from '$lib/icons/BåtIcon70.svelte'
 	import VillaIcon70 from '$lib/icons/VillaIcon70.svelte'
 	import SkadaIcon from '$lib/icons/SkadaIcon.svelte'
@@ -7,7 +9,12 @@
 	import Section from '$lib/Section.svelte'
 	import Row from '$lib/Row.svelte'
 
-	import { panes, isActiveSidebar, activePane, activeSettingsTab } from '$lib/globals.svelte.js'
+	import {
+		panes,
+		isActiveSidebar,
+		activePane,
+		activeSettingsTab,
+	} from '$lib/globals.svelte.js'
 	import lorem from 'loerem'
 	import Sparkline from '$lib/messages/Sparkline.svelte'
 	import Treeview from '$lib/treemap/Treeview.svelte'
@@ -54,6 +61,7 @@
 						bedrägerier!
 						<br />
 					</p>
+					<Listbox></Listbox>
 				</div>
 				<a
 					style="grid-column: span 3"

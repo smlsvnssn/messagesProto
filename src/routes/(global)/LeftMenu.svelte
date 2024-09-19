@@ -4,6 +4,8 @@
 		isAvtalRedDotActive, activePane
 	} from '$lib/globals.svelte.js'
 	import { goto } from '$app/navigation'
+
+	const openNewMessagePane =() => ($activePane = panes.newMessage)
 </script>
 
 <aside class="navbar navbar-stacked navbar-blue">
@@ -132,7 +134,7 @@
 		</li>
 		<li
 			class="nav-item lvl-1"
-			on:click|stopPropagation={() => ($activePane = panes.newMessage)}
+			on:click|stopPropagation={openNewMessagePane}
 		>
 			<button class="nav-link text-truncate w-100" data-test-id="contact"
 				><svg

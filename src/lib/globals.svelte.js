@@ -5,10 +5,18 @@ const makeStore = (state, readable = true) => {
 	return toStore(() => state, readable ? val => (state = val) : null)
 }
 
-const makeImportableState = value =>
-	new (class {
-		v = $state(value)
-	})()
+class State {
+	constructor(value) {
+		this.state = value
+	}
+	state = $state()
+}
+
+const makeImportableState = value => new State(value)
+
+let test = makeImportableState([1, 2, 3])
+
+//ö.log(test, test.state)
 
 // panes
 export const panes = ö.createEnum({
@@ -350,5 +358,4 @@ export const isAvtalRedDotActive = derived(messages, $messages => {
 	return $messages.some(
 		m => m.type === types.signDocument && m.isImportant && !m.isRead,
 	)
-
 })

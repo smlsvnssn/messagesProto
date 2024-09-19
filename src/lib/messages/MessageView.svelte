@@ -7,6 +7,8 @@
 	import getDate from './getDate'
 
 	let { message } = $props()
+
+	const closePane = () => ($activePane = panes.none)
 </script>
 
 <article class:hasMessage={$activeMessageId > -1}>
@@ -44,7 +46,7 @@
 			<a
 				href={message.action.actionUrl}
 				class="action btn btn-primary btn-sm-block"
-				on:click={() => ($activePane = panes.none)}
+				on:click={closePane}
 			>
 				{message.action.actionText}
 			</a>

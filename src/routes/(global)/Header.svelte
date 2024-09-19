@@ -76,48 +76,6 @@
 
 				<li class="">
 					<ul class="reset-list layout-flex justify-content-end">
-						<!-- <li class="nav-item ml-1">
-							<span
-								data-test-id="personal-menu"
-								class="nav-link n-header-user rounded lg"
-								role="button"
-								tabindex="0"
-								aria-haspopup="true"
-								id="personal-menu-toggle-_182e16bb-19ba-14f2-1037-12a91c081326_25_"
-								aria-expanded="false"
-								aria-controls="personal-menu-container-_182e16bb-19ba-14f2-1037-12a91c081326_26_"
-								><span class="sr-only">Visa personlig meny</span
-								><svg
-									aria-hidden="true"
-									class="icon"
-									focusable="false"
-									width="20"
-									height="20"
-									><use
-										xlink:href="/assets/icons/20/icons.svg#user-20"
-									/></svg
-								>
-								<div aria-hidden="true">
-									<span class="n-header-user-name lg"
-										><div
-											style="white-space: nowrap; overflow: hidden;"
-										>
-											Lisa Flitig
-										</div></span
-									><span class="n-header-user-title" />
-								</div>
-								<svg
-									aria-hidden="true"
-									class="icon"
-									focusable="false"
-									width="20"
-									height="20"
-									><use
-										xlink:href="/assets/icons/20/icons.svg#chevron-down-20"
-									/></svg
-								></span
-							>
-						</li> -->
 						<li class="nav-item">
 							<a
 								class="n-header-logout btn btn-login-logout px-05"

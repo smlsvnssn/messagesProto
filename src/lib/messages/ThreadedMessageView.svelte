@@ -25,6 +25,8 @@
 			})
 		newMessage = ''
 	}
+
+	const openNewMessagePane = () => ($activePane = panes.newMessage)
 </script>
 
 <ul>
@@ -66,10 +68,7 @@
 	{#if isOld}
 		<p class="isOld">
 			Den här konversationen är gammal och går inte längre att svara på.
-			<br /><a
-				href="#"
-				on:click|stopPropagation={() =>
-					($activePane = panes.newMessage)}
+			<br /><a href="#" on:click|stopPropagation={openNewMessagePane}
 				>Skriv ett nytt meddelande istället!</a
 			>
 		</p>

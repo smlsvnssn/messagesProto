@@ -2,7 +2,7 @@ import { event } from 'sveltekit-sse'
 import lorem from 'loerem'
 import { types } from '$lib/globals.svelte.js'
 
-let delay = 5000
+let delay = 1000
 export const GET = () => {
 	return event(async emit => {
 		while (true) {
