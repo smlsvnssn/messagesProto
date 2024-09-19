@@ -295,6 +295,37 @@
 
 		&::backdrop {
 			background: #0006;
+			backdrop-filter: blur(0.5rem);
+		}
+	}
+	dialog {
+		transition:
+			display .3s allow-discrete;
+		animation: close .3s forwards;
+		&[open] {
+			animation: open .3s forwards;
+		}
+	}
+
+	@keyframes open {
+		from {
+			opacity: 0;
+			scale: .95;
+			translate: 0 2rem;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
+	@keyframes close {
+		from {
+			opacity: 1;
+		}
+		to {
+			opacity: 0;
+			scale: .95;
+			translate: 0 2rem;
 		}
 	}
 </style>
