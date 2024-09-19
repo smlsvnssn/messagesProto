@@ -1,10 +1,22 @@
 <script>
 	import autoAnimate from '@formkit/auto-animate'
 
+	let försäkringar = [
+		{ f: 'Hemförsäkring', p: 684 },
+		{ f: 'Hundförsäkring', p: 87 },
+		{ f: 'Båtförsäkring', p: 219 },
+		{ f: 'Barnförsäkring', p: 174 },
+	]
+
 	let checked = $state(true)
 	let haveRetrievedAccount = $state(false)
 
 	let modal
+
+	let choices = $state([])
+	let total = $derived(
+		choices.reduce((a, v) => a + v, 0)
+	)
 
 	$effect(() => console.log(modal))
 
@@ -108,72 +120,32 @@
 			<p>Välj de försäkringar du vill ansluta till autogiro månadsvis:</p>
 			<form>
 				<div class="form-group">
-					<div
-						class="custom-control extra-custom custom-checkbox mr-05 mb-05"
-					>
-						<input
-							type="checkbox"
-							class="custom-control-input"
-							id="checkbox1"
-						/>
-						<label
-							class="custom-control-label super-custom"
-							for="checkbox1"
+					{#each försäkringar as { f, p }, i}
+						<div
+							class="custom-control extra-custom custom-checkbox mr-05 mb-05"
 						>
-							<p class="right">Hemförsäkring</p>
-							<p><span><small>Per månad:</small></span> 684 kr</p>
-						</label>
-					</div>
-					<div
-						class="custom-control extra-custom custom-checkbox mr-05 mb-05"
-					>
-						<input
-							type="checkbox"
-							class="custom-control-input"
-							id="checkbox2"
-						/>
-						<label
-							class="custom-control-label super-custom"
-							for="checkbox2"
-						>
-							<p class="right">Hundförsäkring</p>
-							<p><span><small>Per månad:</small></span> 87 kr</p>
-						</label>
-					</div>
-					<div
-						class="custom-control extra-custom custom-checkbox mr-05 mb-05"
-					>
-						<input
-							type="checkbox"
-							class="custom-control-input"
-							id="checkbox3"
-						/>
-						<label
-							class="custom-control-label super-custom"
-							for="checkbox3"
-						>
-							<p class="right">Båtförsäkring</p>
-							<p><span><small>Per månad:</small></span> 219 kr</p>
-						</label>
-					</div>
-					<div
-						class="custom-control extra-custom custom-checkbox mr-05 mb-05"
-					>
-						<input
-							type="checkbox"
-							class="custom-control-input"
-							id="checkbox4"
-						/>
-						<label
-							class="custom-control-label super-custom"
-							for="checkbox4"
-						>
-							<p class="right">Barnförsäkring</p>
-							<p><span><small>Per månad:</small></span> 174 kr</p>
-						</label>
-					</div>
+							<input
+								type="checkbox"
+								class="custom-control-input"
+								id="f{i}"
+								value={p}
+								bind:group={choices}
+							/>
+							<label
+								class="custom-control-label super-custom"
+								for="f{i}"
+							>
+								<p class="right">{f}</p>
+								<p>
+									<span><small>Per månad:</small></span>
+									{p} kr
+								</p>
+							</label>
+						</div>
+					{/each}
 				</div>
 			</form>
+			<p style="text-align:right; padding-right:.5rem">Totalt per månad: <b>{total} kr</b></p>
 		{/if}
 	</div>
 </article>
@@ -299,18 +271,17 @@
 		}
 	}
 	dialog {
-		transition:
-			display .3s allow-discrete;
-		animation: close .3s forwards;
+		transition: display 0.3s allow-discrete;
+		animation: close 0.3s forwards;
 		&[open] {
-			animation: open .3s forwards;
+			animation: open 0.3s forwards;
 		}
 	}
 
 	@keyframes open {
 		from {
 			opacity: 0;
-			scale: .95;
+			scale: 0.95;
 			translate: 0 2rem;
 		}
 		to {
@@ -324,7 +295,7 @@
 		}
 		to {
 			opacity: 0;
-			scale: .95;
+			scale: 0.95;
 			translate: 0 2rem;
 		}
 	}
