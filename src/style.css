@@ -320,7 +320,7 @@ html {
 }
 
 input, label {
-	-webkit-font-smoothing: antialiased;
+	-webkit-font-smoothing: antialiased !important;
 
 }
 

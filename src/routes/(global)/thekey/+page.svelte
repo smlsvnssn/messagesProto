@@ -9,7 +9,8 @@
 	]
 
 	let checked = $state(true)
-	let haveRetrievedAccount = $state(false)
+	let isReadMoreOpen = $state(false)
+	let haveRetrievedAccount = $state(true)
 
 	let modal
 
@@ -23,6 +24,7 @@
 		modal.close()
 		haveRetrievedAccount = true
 	}
+	const toggleReadMore = () => (isReadMoreOpen = !isReadMoreOpen)
 </script>
 
 <article>
@@ -147,9 +149,59 @@
 				Totalt per månad: <b>{total} kr</b>
 			</p>
 			<hr />
-			<button class="btn btn-primary btn-arrow btn-sm-block text-left float-right">
+			<div class="form-group readMoreWrapper" use:autoAnimate>
+				<div class="custom-control custom-checkbox mr-1">
+					<input
+						type="checkbox"
+						class="custom-control-input"
+						id="buff"
+					/>
+					<label class="custom-control-label" for="buff">
+						Jag vill gärna få personligt anpassade erbjudanden, och
+						samtycker därför till att mina kunduppgifter delas
+						mellan Länsförsäkringar fastighetsförmedling och övriga
+						bolag inom LF.
+					</label>
+				</div>
+				<p class="samtycko">
+					<button
+						type="button"
+						class="btn btn-more {isReadMoreOpen ? 'open' : ''}"
+						onclick={toggleReadMore}>Läs mer om samtycke</button
+					>
+				</p>
+				{#if isReadMoreOpen}
+					<div class="readMore">
+						<p>
+							För att kunna ge dig paketerbjudanden, personliga
+							rabatter och rådgivning anpassad efter dina behov
+							vill vi dela information mellan Länsförsäkringar
+							Fastighetsförmedling och övriga bolag inom
+							Länsförsäkringar, såsom de lokala
+							länsförsäkringsbolagen, LF Bank och Agria. Om du
+							samtycker till det kommer vi att dela information om
+							dina avtalsengagemang hos Länsförsäkringar, köp och
+							försäljning av bostad, ditt deltagande i
+							budgivningar och vilka sidor du visat intresse för
+							på lansforsakringar.se och lansfast.se. Vi kommer
+							inte att dela känslig information om sådant som
+							banktransaktioner, lånebelopp, budgivningsnivå eller
+							försäkringsskador.
+						</p>
+						<p>
+							Du kan när som helst återkalla ditt samtycke via
+							dina inloggade kanaler på lansforsakringar.se eller
+							lansfast.se. Läs mer om hur vi behandlar
+							personuppgifter på här & här.
+						</p>
+					</div>
+				{/if}
+			</div>
+			<button
+				class="btn btn-primary btn-arrow btn-sm-block text-left float-right"
+			>
 				Gå vidare
-				<span class="d-block text-sm font-weight-normal font-base ">
+				<span class="d-block text-sm font-weight-normal font-base">
 					och köp konserverad gröt
 				</span>
 			</button>
@@ -184,8 +236,7 @@
 
 		.wrapper {
 			max-width: 600px;
-			margin: auto;
-			margin-top: 6rem;
+			margin: 6rem auto 12rem;
 		}
 
 		.searchfield {
@@ -195,6 +246,36 @@
 
 		.btn {
 			width: auto !important;
+		}
+
+		.samtycko {
+			margin-left: 1.75rem;
+			margin-top: 0.5rem;
+			margin-bottom: 0.5rem;
+
+			button:after {
+				transition: all 0.2s;
+			}
+			button.open:after {
+				rotate: 180deg;
+			}
+		}
+
+		.readMoreWrapper {
+			transition: all 0.3s;
+			outline: 0rem solid var(--white);
+			overflow: hidden;
+
+			&:has(.readMore) {
+				outline: 0.75rem solid var(--cloud);
+				border-radius: 0.01rem;
+				background: var(--cloud);
+				margin-bottom: 2rem;
+			}
+
+			.readMore {
+				margin-left: 1.75rem;
+			}
 		}
 
 		.form-group,
@@ -214,6 +295,7 @@
 				border: 2px solid var(--blue);
 				background: var(--cloud);
 			}
+
 			&:hover {
 				border: 2px solid var(--silver);
 

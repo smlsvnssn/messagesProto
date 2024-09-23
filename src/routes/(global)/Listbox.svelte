@@ -11,76 +11,100 @@
 
 <fieldset class="has-scroll-shadows">
 	<!-- <legend>Choose your...</legend> -->
-	{#each ö.times(10) as i}
-		<label for={i}>
-			<input type="checkbox" id={i} name="monster" value={i} />
-			<span>{lorem(settings)}</span>
-		</label>
-	{/each}
+	<div class="wrapper">
+		{#each ö.times(10) as i}
+			<div class="custom-control custom-checkbox">
+				<input
+					type="checkbox"
+					id={i}
+					name="nn"
+					class="custom-control-input"
+					value={i}
+				/>
+				<label class="custom-control-label" for={i}>
+					{lorem(settings)}
+				</label>
+			</div>
+		{/each}
+	</div>
 </fieldset>
 
 <style lang="scss">
 	fieldset {
 		width: 100%;
-		border: 2px solid var(--smoke) !important;
-		border-radius: 0.5rem;
-		padding-right: 0.5rem;
-		margin-top: 2rem !important;
-		max-height: 19rem;
+		//margin-top: 2rem !important;
+		max-height: 18rem;
 		overflow-y: scroll;
-		padding: 0 0.5rem !important;
 		display: block;
+		padding: 0;
+
+		.wrapper {
+			margin-top: -.5rem;
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+		}
 
 		legend {
 			padding: 0.25rem;
 		}
 
+		.custom-control {
+			margin-right: 1rem !important;
+			padding-left: 2rem !important;
+			display: flex;
+			border: 2px solid var(--shadow);
+			border-radius: 0.375rem;
+			transition: all 0.2s;
+
+			&:has(input[type='checkbox']:checked),
+			&:has(input[type='radio']:checked) {
+				border: 2px solid var(--blue);
+				background: var(--cloud);
+			}
+
+			&:hover {
+				border: 2px solid var(--silver);
+
+				label {
+					border: none !important;
+					background: none !important;
+				}
+			}
+		}
+
 		label {
 			padding: 0.5rem;
-			margin: 0.25rem;
-			border-radius: 0.375rem;
-			cursor: pointer;
-			transition: all ease-out 0.1s;
+			width: 100%;
+			margin-right: 0.25rem;
+			width: 100%;
 
-			display: flex;
+			cursor: pointer;
+
 			align-items: center;
 			gap: 0.5rem;
 
 			font-family: var(--font-family-base);
 			font-weight: 500;
-
 			line-height: 1.5;
 
-			background: var(--tint);
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
 
 			&:hover {
-				background: var(--cloud);
+				border: 2px solid var(--silver);
 			}
 
 			&:has(:checked) {
-				background: var(--blue);
-				color: var(--white);
+				border: 2px solid var(--blue);
+				background: var(--cloud);
 			}
 
-			span {
-				white-space: nowrap;
-				overflow: hidden;
-				text-overflow: ellipsis;
-			}
-
-			input {
-				appearance: none;
-				width: 18px;
-				height: 19px;
-				transition: all ease-out 0.1s;
-
-				flex: 0 0 auto;
-
-				background: url("data:image/svg+xml,%3Csvg width='18' height='19' viewBox='0 0 18 19' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect y='0.5' width='18' height='18' rx='9' fill='white'/%3E%3C/svg%3E%0A");
-
-				&:checked {
-					background: url("data:image/svg+xml,%3Csvg width='18' height='19' viewBox='0 0 18 19' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.25 9.75L7.25 12.75L13.75 6.25' stroke='white' stroke-width='2'/%3E%3C/svg%3E%0A");
-				}
+			&:before,
+			&:after {
+				top: 0.65rem !important;
+				left: 0.65rem !important;
 			}
 		}
 	}
@@ -116,7 +140,7 @@
 		}
 
 		&:before {
-			animation-range: 0em 10em;
+			animation-range: 0em 5em;
 
 			top: 0;
 			background: radial-gradient(
@@ -128,7 +152,7 @@
 
 		&:after {
 			animation-direction: reverse;
-			animation-range: calc(100% - 10em) calc(100%);
+			animation-range: calc(100% - 5em) calc(100%);
 
 			bottom: 0;
 			background: radial-gradient(

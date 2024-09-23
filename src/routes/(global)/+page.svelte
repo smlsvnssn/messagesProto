@@ -1,6 +1,4 @@
 <script>
-  import Listbox from './Listbox.svelte';
-
 	import BåtIcon70 from '$lib/icons/BåtIcon70.svelte'
 	import VillaIcon70 from '$lib/icons/VillaIcon70.svelte'
 	import SkadaIcon from '$lib/icons/SkadaIcon.svelte'
@@ -61,7 +59,6 @@
 						bedrägerier!
 						<br />
 					</p>
-					<Listbox></Listbox>
 				</div>
 				<a
 					style="grid-column: span 3"

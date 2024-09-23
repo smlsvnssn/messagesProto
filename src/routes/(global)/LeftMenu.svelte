@@ -35,7 +35,7 @@
 				Översikt
 			</button>
 		</li>
-		<li class="nav-item lvl-1" on:click={() => goto('/genericAction')}>
+		<li class="nav-item lvl-1" on:click={() => goto('/thekey')}>
 			<button class="nav-link text-truncate w-100" data-test-id="accounts"
 				><svg
 					aria-hidden="true"
@@ -55,7 +55,7 @@
 			>
 		</li>
 
-		<li class="nav-item lvl-1" on:click={() => goto('/genericAction')}>
+		<li class="nav-item lvl-1" on:click={() => goto('/test2')}>
 			<button
 				class="nav-link text-truncate w-100"
 				data-test-id="insurances"
