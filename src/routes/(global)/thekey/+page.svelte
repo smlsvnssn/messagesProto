@@ -57,7 +57,7 @@
 									for="radio1"
 								>
 									Privatkonto<br />
-									<span>83683 - 123 456 789</span>
+									<span>83683 - 123 456 789 - Swedbank</span>
 								</label>
 							</div>
 						</div>
@@ -76,7 +76,7 @@
 									for="radio2"
 								>
 									Sparkonto<br />
-									<span>83683 - 987 654 321</span>
+									<span>83683 - 987 654 321 - Swedbank</span>
 								</label>
 							</div>
 						</div>
@@ -167,7 +167,7 @@
 					<button
 						type="button"
 						class="btn btn-more {isReadMoreOpen ? 'open' : ''}"
-						onclick={toggleReadMore}>Läs mer om samtycke</button
+						onclick={toggleReadMore}>Läs mer om hur vi delar dina uppgifter</button
 					>
 				</p>
 				{#if isReadMoreOpen}
@@ -199,6 +199,7 @@
 			</div>
 			<button
 				class="btn btn-primary btn-arrow btn-sm-block text-left float-right"
+				onclick={()=> haveRetrievedAccount = !haveRetrievedAccount}
 			>
 				Gå vidare
 				<span class="d-block text-sm font-weight-normal font-base">
