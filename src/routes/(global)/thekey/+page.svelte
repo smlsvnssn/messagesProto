@@ -1,4 +1,5 @@
 <script>
+	import Dialog from './Dialog.svelte'
 	import autoAnimate from '@formkit/auto-animate'
 
 	let försäkringar = [
@@ -10,20 +11,19 @@
 
 	let checked = $state(true)
 	let isReadMoreOpen = $state(false)
-	let haveRetrievedAccount = $state(true)
+	let haveRetrievedAccount = $state(false)
 
-	let modal
+	let modal = $state(undefined)
 
 	let choices = $state([])
 	let total = $derived(choices.reduce((a, v) => a + v, 0))
-
-	$effect(() => console.log(modal))
 
 	const openModal = () => modal.showModal()
 	const closeModal = () => {
 		modal.close()
 		haveRetrievedAccount = true
 	}
+
 	const toggleReadMore = () => (isReadMoreOpen = !isReadMoreOpen)
 </script>
 
@@ -157,49 +157,62 @@
 						id="buff"
 					/>
 					<label class="custom-control-label" for="buff">
-						Jag vill gärna få personligt anpassade erbjudanden, och
-						samtycker därför till att mina kunduppgifter delas
-						mellan Länsförsäkringar fastighetsförmedling och övriga
-						bolag inom LF.
+						Ja, jag vill gärna få personligt anpassade erbjudanden
+						och rabatter från LF, och samtycker därför till att mina
+						uppgifter delas mellan Länsförsäkringar
+						Fastighetsförmedling och Länsförsäkringsgruppen.
 					</label>
 				</div>
 				<p class="samtycko">
 					<button
 						type="button"
 						class="btn btn-more {isReadMoreOpen ? 'open' : ''}"
-						onclick={toggleReadMore}>Läs mer om hur vi delar dina uppgifter</button
+						onclick={toggleReadMore}>Vad innebär det här?</button
 					>
 				</p>
 				{#if isReadMoreOpen}
 					<div class="readMore">
+						Syftet med att dela dina uppgifter mellan olika bolag i
+						Länsförsäkringsgruppen är att kunna ge dig
+						paketerbjudanden, personliga rabatter och rådgivning
+						anpassad efter dina behov. Om du ger samtycke delas
+						information om till exempel
+						<ul>
+							<li>dina avtalsengagemang hos Länsförsäkringar</li>
+							<li>
+								köp och försäljning av bostad (men inte
+								lånelöftesbelopp)
+							</li>
+							<li>
+								vilka budgivningar du deltagit i (men inte
+								budade belopp)
+							</li>
+							<li>
+								vilka sidor du visat intresse för på
+								lansforsakringar.se och lansfast.se.
+							</li>
+						</ul>
 						<p>
-							För att kunna ge dig paketerbjudanden, personliga
-							rabatter och rådgivning anpassad efter dina behov
-							vill vi dela information mellan Länsförsäkringar
-							Fastighetsförmedling och övriga bolag inom
-							Länsförsäkringar, såsom de lokala
-							länsförsäkringsbolagen, LF Bank och Agria. Om du
-							samtycker till det kommer vi att dela information om
-							dina avtalsengagemang hos Länsförsäkringar, köp och
-							försäljning av bostad, ditt deltagande i
-							budgivningar och vilka sidor du visat intresse för
-							på lansforsakringar.se och lansfast.se. Vi kommer
-							inte att dela känslig information om sådant som
-							banktransaktioner, lånebelopp, budgivningsnivå eller
-							försäkringsskador.
+							Informationen delas mellan Länsförsäkringar
+							Fastighetsförmedling och <a href="#">
+								övriga bolag inom
+								Länsförsäkringar
+							</a>.
 						</p>
 						<p>
 							Du kan när som helst återkalla ditt samtycke via
-							dina inloggade kanaler på lansforsakringar.se eller
-							lansfast.se. Läs mer om hur vi behandlar
-							personuppgifter på här & här.
+							dina inloggade kanaler på <a href="">lansforsakringar.se</a> eller
+							<a href="">lansfast.se</a>. Läs mer om hur vi <a href="">
+								behandlar
+								personuppgifter
+							</a>.
 						</p>
 					</div>
 				{/if}
 			</div>
 			<button
 				class="btn btn-primary btn-arrow btn-sm-block text-left float-right"
-				onclick={()=> haveRetrievedAccount = !haveRetrievedAccount}
+				onclick={() => (haveRetrievedAccount = !haveRetrievedAccount)}
 			>
 				Gå vidare
 				<span class="d-block text-sm font-weight-normal font-base">
@@ -210,23 +223,7 @@
 	</div>
 </article>
 
-<dialog bind:this={modal}>
-	<h3>Anslut dina konton enkelt och säkert</h3>
-	<p>Här händer det lite olika grejer.</p>
-	<p>
-		Du väljer vilken bank du har, ansluter till din bank, godkänner att
-		hämta dina konton, och signerar med bankID.
-	</p>
-	<p>Det är några enkla steg.</p>
-
-	<button
-		onclick={closeModal}
-		type="button"
-		class="btn btn-primary btn-sm-block"
-	>
-		Ok, vi låstas att det blev gjort.
-	</button>
-</dialog>
+<Dialog bind:modal {closeModal} />
 
 <style lang="scss">
 	article {
@@ -338,55 +335,6 @@
 			input[type='radio'] {
 				margin-left: 1rem;
 			}
-		}
-	}
-
-	dialog {
-		border-radius: 0.5rem;
-		border: none;
-		padding: 3rem;
-		max-width: 30rem;
-		filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.1))
-			drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.1));
-
-		button {
-			margin: auto;
-			margin-top: 2rem;
-			display: block !important;
-		}
-
-		&::backdrop {
-			background: #0006;
-			backdrop-filter: blur(0.5rem);
-		}
-	}
-	dialog {
-		transition: display 0.3s allow-discrete;
-		animation: close 0.3s forwards;
-		&[open] {
-			animation: open 0.3s forwards;
-		}
-	}
-
-	@keyframes open {
-		from {
-			opacity: 0;
-			scale: 0.95;
-			translate: 0 2rem;
-		}
-		to {
-			opacity: 1;
-		}
-	}
-
-	@keyframes close {
-		from {
-			opacity: 1;
-		}
-		to {
-			opacity: 0;
-			scale: 0.95;
-			translate: 0 2rem;
 		}
 	}
 </style>
