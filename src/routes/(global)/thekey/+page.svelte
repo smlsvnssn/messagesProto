@@ -13,7 +13,7 @@
 	let isReadMoreOpen = $state(false)
 	let haveRetrievedAccount = $state(false)
 
-	let modal = $state(undefined)
+	let modal = $state()
 
 	let choices = $state([])
 	let total = $derived(choices.reduce((a, v) => a + v, 0))
@@ -30,6 +30,8 @@
 <article>
 	<div class="wrapper">
 		<div class="form-group" use:autoAnimate>
+			<h3>Kontext: <br>Du är i ett köpflöde, och har valt att betala med autogiro.</h3>
+			<br>
 			<label for="exampleInputEmail1">Dra pengarna från</label>
 			{#if !haveRetrievedAccount}
 				<p>
