@@ -16,6 +16,7 @@
 	import lorem from 'loerem'
 	import Sparkline from '$lib/messages/Sparkline.svelte'
 	import Treeview from '$lib/treemap/Treeview.svelte'
+	import Switch from '../../lib/BigSwitch.svelte'
 
 	const activateSidebar = () => ($isActiveSidebar = true)
 </script>

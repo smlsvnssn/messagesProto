@@ -7,10 +7,15 @@
 	import autoAnimate from '@formkit/auto-animate'
 
 	let försäkringar = [
-		{ f: 'Hemförsäkring', p: 684 },
-		{ f: 'Hundförsäkring', p: 87 },
-		{ f: 'Båtförsäkring', p: 219 },
-		{ f: 'Barnförsäkring', p: 174 },
+		{ title: 'Hemförsäkring', price: 684 },
+		{ title: 'Hundförsäkring', price: 87 },
+		{ title: 'Båtförsäkring', price: 219 },
+		{ title: 'Barnförsäkring', price: 174 },
+	]
+
+	let konton = [
+		{ title: 'Privatkonto', sub: '83683 - 123 456 789 - Swedbank' },
+		{ title: 'Sparkonto', sub: '83683 - 987 654 321 - Swedbank' },
 	]
 
 	let haveRetrievedAccount = $state(true)
@@ -27,36 +32,33 @@
 	}
 </script>
 
+<Dialog bind:modal {closeModal} />
+
 <article>
 	<div class="wrapper">
 		<div class="form-group" use:autoAnimate>
 			<h3>
-				Kontext: <br />Du är i ett köpflöde, och har valt att betala med
-				autogiro.
+				Kontext: <br />
+				Du är i ett köpflöde, och har valt att betala med autogiro.
 			</h3>
 			<br />
 
 			<label for="exampleInputEmail1">Dra pengarna från</label>
+
 			{#if !haveRetrievedAccount}
 				<p>
-					Vi behöver ett bankkonto att dra pengarna från. <br />Anslut
-					till din bank med BankID, och välj det konto du vill ansluta
+					Vi behöver ett bankkonto att dra pengarna från. <br />
+					Anslut till din bank med BankID, och välj det konto du vill ansluta
 					till autogiro.
 				</p>
 			{:else}
 				<p>Välj det konto du vill ansluta till autogiro.</p>
+
 				<form>
 					<div class="form-group">
-						<CustomRadio
-							title="Privatkonto"
-							sub="83683 - 123 456 789 - Swedbank"
-							id="c1"
-						/>
-						<CustomRadio
-							title="Sparkonto"
-							sub="83683 - 987 654 321 - Swedbank"
-							id="c2"
-						/>
+						{#each konton as { title, sub }, id}
+							<CustomRadio {title} {sub} id={'account' + id} />
+						{/each}
 					</div>
 				</form>
 			{/if}
@@ -102,12 +104,12 @@
 
 			<form>
 				<div class="form-group">
-					{#each försäkringar as { f, p }, id}
+					{#each försäkringar as { title, price }, id}
 						<CustomCheckbox
 							bind:group={valdaFörsäkringar}
-							name={f}
-							price={p}
-							id={f + id}
+							name={title}
+							price={price}
+							id={title + id}
 						/>
 					{/each}
 				</div>
@@ -132,8 +134,6 @@
 		{/if}
 	</div>
 </article>
-
-<Dialog bind:modal {closeModal} />
 
 <style lang="scss">
 	article {
